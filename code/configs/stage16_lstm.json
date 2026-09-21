@@ -1,0 +1,4 @@
+{
+  "vocab": 2048, "context": 256, "family": "lstm",
+  "width": 256, "hidden": 448, "depth": 3, "dropout": 0.1
+}
