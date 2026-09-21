@@ -1,0 +1,14 @@
+{
+  "vocab": 2048,
+  "width": 128,
+  "heads": 4,
+  "depth": 4,
+  "context": 256,
+  "position": "learned",
+  "norm": "layernorm",
+  "activation": "gelu",
+  "mlp_ratio": 4.0,
+  "dropout": 0.0,
+  "bias": true,
+  "scaled_residual_init": false
+}
