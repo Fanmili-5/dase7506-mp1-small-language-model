@@ -100,3 +100,12 @@ diagnostics with dropout disabled, and drafted an architecture-first plan.
 The student requested mechanism-driven optimization rather than seed screening;
 the Stage-13 replication proposal is deferred. Diagnostic group labels are used
 only for analysis and are never available as model inputs. No new test was run.
+
+For Stage 14, Codex implemented additive prefix-copy and two-component
+mixture-of-softmax heads, a wider/shallower control configuration, contract tests,
+and a bounded validation-only runner with CPU resource gates. Designs adapt
+ideas from Merity et al. (Pointer Sentinel Mixture Models, arXiv:1609.07843) and
+Yang et al. (Breaking the Softmax Bottleneck, arXiv:1711.03953); they are not
+claimed as original algorithms or reproductions of those papers' benchmark
+scores. The unchanged backbone is hash-pinned. Training and evaluation outcomes
+must be recorded separately from implementation and test success.

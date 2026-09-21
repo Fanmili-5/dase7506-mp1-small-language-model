@@ -52,6 +52,14 @@ preregistered but is now deferred in favor of mechanism-led architecture
 screening; see `code/docs/ARCHITECTURE_REDESIGN_20260921.md`.
 No new test evaluation has been performed.
 
+Stage 14 implements three mechanism-led candidates: 4-layer/320-wide backbone,
+causal within-window prefix copy, and a two-component mixture-of-softmax output.
+The heads are in `code/student_structured.py`, with a hash-pinned dependency on
+the unchanged `student.py`; both source files must accompany their checkpoints.
+Resource-gated training is orchestrated by `scripts/run_architecture_screen.py`.
+These are unproven candidates, not new leaderboard results. See the architecture
+plan for method sources, controls, budgets, and selection rules.
+
 The first CPU FP32 validation results are baseline 2.072081282, RoPE-only
 1.922025745, SwiGLU-only 2.011474415, and modern bundle 1.835656528 BPB. Every run
 processed 9,830,400 training targets. These are single-seed validation screening
