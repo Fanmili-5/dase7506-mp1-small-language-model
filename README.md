@@ -22,13 +22,19 @@ only .002676 better than B, below the preregistered .003 resource-retest trigger
 and worse than F. Stage15 consumed 294,912,000 new gradient targets. F is the
 selected follow-up model, not yet a frozen/tested submission release.
 
-Transformer optimization continues through the bounded teacher/CE-control/KD
-plan in `code/docs/STAGE17_DISTILLATION_20260921.md`. **Teacher training started
-on Windows at 2026-09-21 13:16 UTC**; the two-update smoke and resume passed.
-The seven distillation tests passed on Windows, including CUDA BF16 backward.
-The teacher must reach <=1.482094298 CPU validation BPB to trigger the fixed
-matched CE/KD student pair. No teacher or student quality gain is established
-yet. Receipt: `code/results/stage17-launch.json`. No new test evaluation scheduled.
+Stage17 finished on 2026-09-21 at 14:24 UTC. The large teacher **failed** its
+fixed quality gate: average CPU validation BPB **1.665982500**. Its best periodic
+GPU FP32 validation was 1.521367639 at step4200, then deteriorated while training
+loss fell. No CE/KD students were trained. Search cost:117,964,800 gradient targets.
+See `code/results/stage17-completed-evidence/`; this rejects the teacher recipe,
+not distillation in general. The best qualified validation score remains F's
+**1.485094298**, not the failed teacher's score.
+
+Stage18 tests two training-only regularizers independently on F: input embedding
+row dropout .10 and SwiGLU hidden dropout .20. Same 7200-update target budget,
+seed and original trainer as F. Export restores the identical original inference
+graph with unchanged weights. Plan: `code/docs/STAGE18_GENERALIZATION_20260921.md`.
+No new test evaluation scheduled; improvements remain unproven until measured.
 LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid
 scored 1.487889082 on validation but has not passed a resource gate; it is a
 reserve experiment, not a qualified replacement.

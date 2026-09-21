@@ -1,6 +1,22 @@
 # Stage17: Transformer capacity at training time, compact inference
 
-Status: **teacher training launched on Windows at 2026-09-21 13:16:29 UTC**.
+## Completed outcome
+
+The job completed at 2026-09-21 14:24 UTC with `completed_teacher_rejected`.
+CPU FP32 validation of the fixed last-five teacher average: **1.665982500**,
+above the locked1.482094298 gate. Neither student trained. The best periodic
+GPU FP32 validation was1.521367639 at update4200; the endpoint deteriorated to
+1.679397928 while training loss declined. Do not switch averaging/selection
+post hoc or use this teacher for distillation. New gradient cost117,964,800;
+teacher forward-only distillation cost0. Raw scoring, training curves and
+diagnostic evidence: `results/stage17-completed-evidence/`.
+
+The launch record and original plan below are retained as historical evidence.
+Stage18 addresses generalization on the smaller qualified F model instead.
+
+## Original launch and preregistration
+
+Launch status (historical): **teacher training launched on Windows at 2026-09-21 13:16:29 UTC**.
 Stage15 completed and passed full artifact audit before launch. The runner
 refuses to start before Stage15 finishes successfully.
 No LSTM/CNN training, seed sweep, external weights/text, or new test evaluation.
@@ -103,6 +119,6 @@ Run inside the existing Windows `code/` workspace after Stage15 completes:
 ```
 
 The baseline path matches the existing Stage15 launch script; its hash is checked
-against Stage15's receipt. The current directory is already in use: do not rerun
-this command with `--execute` while its job is active. The one-off task was
+against Stage15's receipt. The directory contains completed artifacts: do not
+reuse it for a new run. The one-off task was
 launched through `start_windows_job.ps1 -Job stage17 -RunId stage17-20260921-a`.

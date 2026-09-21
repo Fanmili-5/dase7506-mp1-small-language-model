@@ -11,3 +11,5 @@ code/results/stage14-audit.json -text whitespace=blank-at-eol,blank-at-eof,space
 code/results/stage15-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 code/results/stage15-audit.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 code/results/stage17-launch-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/results/stage17-completed-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/results/stage18-launch-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
