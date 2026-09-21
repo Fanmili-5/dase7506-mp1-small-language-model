@@ -6,8 +6,19 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
+Stage19 completed on September22 Hong Kong time. **Current resource-qualified
+development candidate: Stage18 H, 1.482379119 CPU FP32 validation BPB**;
+three-repeat Windows CPU ratio4.802831x, peak RSS1,989,242,880 bytes and total
+inference assets29,678,074 bytes. Its unchanged train-count mixture improves
+validation to **1.473335164**, but fails CPU time at **5.437347x** (RAM and assets
+pass), so it is NOT a qualified replacement. No new gradient training or test
+evaluation. Audit checks raw scoring/resource records, source hashes and exact
+equality of all hybrid tensors to H plus the original train-only count tables.
+Both checkpoint files are backed up locally with matching SHA256 receipts.
+See `code/results/stage19-audit.json` and `code/docs/STAGE19_COMPLEMENTARITY_20260922.md`.
+
 Stage15 completed and passed its full Windows artifact audit (2026-09-21).
-**Current development candidate: eight-layer prefix-copy F**, which achieved
+**Previous qualified reference: eight-layer prefix-copy F**, which achieved
 **1.485094298 CPU FP32 validation BPB**, with a final three-repeat CPU ratio
 **4.877905x**, peak RSS **1,988,993,024 bytes**, and conservative inference assets
 **29,681,660 bytes**. Timing margin below the 5x cap is narrow. The audit checked
@@ -27,8 +38,8 @@ fixed quality gate: average CPU validation BPB **1.665982500**. Its best periodi
 GPU FP32 validation was 1.521367639 at step4200, then deteriorated while training
 loss fell. No CE/KD students were trained. Search cost:117,964,800 gradient targets.
 See `code/results/stage17-completed-evidence/`; this rejects the teacher recipe,
-not distillation in general. The best qualified validation score remains F's
-**1.485094298**, not the failed teacher's score.
+not distillation in general. At Stage17 completion the qualified validation
+reference remained F's1.485094298; it has now been superseded by H after Stage19.
 
 Stage18 tests two training-only regularizers independently on F: input embedding
 row dropout .10 and SwiGLU hidden dropout .20. Same 7200-update target budget,
@@ -37,10 +48,10 @@ graph with unchanged weights. Plan: `code/docs/STAGE18_GENERALIZATION_20260921.m
 Windows job `MP1-stage18-20260921-a` completed at 15:39 UTC on September21.
 H average CPU validation BPB **1.482379119**, I **1.482562139**; each used
 58,982,400 gradient targets. Both gains fall below the original .003 resource
-retest trigger, so neither was resource-qualified by Stage18. H is the lowest
-measured validation score, F remains the qualified fallback. These are small
+retest trigger, so neither was resource-qualified by Stage18. H was Stage18's
+lowest measured validation score; Stage19 subsequently qualified it. These are small
 single-seed gains, not evidence of robust improvement or test performance.
-Stage19 separately checks H's resources and a fixed train-count mixture grid
+Stage19 separately checked H's resources and a fixed train-count mixture grid
 (0/.05/.10), with CPU component profiling and no new training or test scoring.
 Plan: `code/docs/STAGE19_COMPLEMENTARITY_20260922.md`.
 LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid

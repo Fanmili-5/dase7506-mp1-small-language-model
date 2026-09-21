@@ -1,0 +1,9 @@
+﻿{
+    "exit_code":  1,
+    "run_id":  "stage19-20260922-a",
+    "error":  "Profile failed\r\n所在位置 C:\\Users\\23223\\mp1-challenge-20260919\\repo\\code\\scripts\\run_stage19_windows.ps1:15 字符: 28\r\n+ if ($LASTEXITCODE -ne 0) { throw \"Profile failed\" }\r\n+                            ~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Profile failed:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Profile failed\r\n \r\n",
+    "updated_utc":  "2026-09-21T16:59:23.2109262Z",
+    "started_utc":  "2026-09-21T16:59:18.8815827Z",
+    "status":  "failed",
+    "job":  "stage19"
+}

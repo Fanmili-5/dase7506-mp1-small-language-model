@@ -1,0 +1,87 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "precision": "fp32",
+  "threads": 4,
+  "checkpoint_sha256": "2be8f4f4ac195593835aaa74f042b0b5d0f5473a46eb6d09fba99b3c11d263f7",
+  "implementation_sha256": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+  "profiler_sha256": "9423c6407e0a3006371c74f2dae908351959900851f31e7c3a2e234fdf19d3b2",
+  "batch_shape": [
+    32,
+    256
+  ],
+  "measurements": {
+    "backbone": {
+      "median_seconds": 1.1221273000119254,
+      "iqr_seconds": 0.0,
+      "number_per_run": 1,
+      "raw_seconds": [
+        1.1221273000119254
+      ]
+    },
+    "vocabulary_projection_logsoftmax": {
+      "median_seconds": 0.06303224000002955,
+      "iqr_seconds": 0.0011450699981651186,
+      "number_per_run": 10,
+      "raw_seconds": [
+        0.6417730999819469,
+        0.6188717000186443
+      ]
+    },
+    "copy_attention_scatter": {
+      "median_seconds": 0.02406695999961812,
+      "iqr_seconds": 0.0009107199992286034,
+      "number_per_run": 10,
+      "raw_seconds": [
+        0.27206429999205284,
+        0.2406470999994781,
+        0.2406695999961812,
+        0.22116539999842644,
+        0.24975429999176413
+      ]
+    },
+    "mixture_with_cached_distributions": {
+      "median_seconds": 0.07751719999941997,
+      "iqr_seconds": 0.003957900014938787,
+      "number_per_run": 1,
+      "raw_seconds": [
+        0.07804890000261366,
+        0.08237210000515915,
+        0.07509090000530705,
+        0.07333929999731481,
+        0.07921840000199154,
+        0.07840609998675063,
+        0.0748277000093367,
+        0.07272509997710586,
+        0.07507819999591447,
+        0.07955560000846162,
+        0.07673240001895465,
+        0.07903610001085326,
+        0.07751719999941997
+      ]
+    },
+    "complete_head": {
+      "median_seconds": 0.1622553000051994,
+      "iqr_seconds": 0.007157900006859563,
+      "number_per_run": 1,
+      "raw_seconds": [
+        0.16158749998430721,
+        0.1622553000051994,
+        0.16852919998927973,
+        0.16873520001536235,
+        0.17125600000144914,
+        0.16136110000661574,
+        0.1613472000171896
+      ]
+    },
+    "complete_forward": {
+      "median_seconds": 1.3459855999972206,
+      "iqr_seconds": 0.0,
+      "number_per_run": 1,
+      "raw_seconds": [
+        1.3459855999972206
+      ]
+    }
+  },
+  "note": "Read-only first-batch microbenchmarks with cached intermediates; times are not additive, not an official CPU gate; no test or training."
+}

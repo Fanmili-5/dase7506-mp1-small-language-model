@@ -69,3 +69,46 @@ Transport tar SHA256:1b808de9c7e1935c05e17ddda5e5a9e63126c10fa22fdeb720cd8d77f7a
 All its pinned sources still match; score arithmetic, checkpoint receipt links,
 376599-target coverage and117964800 total gradient targets checked. This check
 does not claim to independently reconstruct Stage18's averaged tensors.
+
+## Completed outcome and decision
+
+Task `-b` completed2026-09-21 17:17:28 UTC (September22 01:17 Hong Kong), exit0.
+Transport tar SHA256:2a6db4fb38f356b9a8a6b320e8885cfc15a3c007c24d42c9f6f12341fb06d1f5.
+Raw JSON and both successful/failed job logs: `results/stage19-evidence/`.
+Audit: `results/stage19-audit.json`. Both exact checkpoints are backed up under
+the project output folder `outputs/windows-stage19-20260922/checkpoints/`.
+
+| Predictor | CPU validation BPB | Three-repeat CPU ratio | Peak RSS bytes | Inference assets bytes | Decision |
+|---|---:|---:|---:|---:|---|
+| H |1.482379119|4.802831|1989242880|29678074|new resource-qualified candidate|
+| H + .10 counts |1.473335164|5.437347|2008121344|38141585|reject for CPU time|
+
+H CPU scoring seconds:60.181821/60.154874/59.047963; paired baseline
+12.400818/12.524879/12.544873. Hybrid seconds:68.956021/67.472113/68.494924;
+its baseline12.597122/12.396578/12.691402. Every raw repeat is retained.
+The hybrid needs about8.04% lower total scoring time merely to reach5x on this
+measurement; practical deployment should seek more margin. This is not a
+guarantee of the speedup obtainable by implementation changes.
+
+The auditor verified scoring arithmetic, complete coverage, grouped-loss sums,
+all scan source hashes, checkpoint hashes, resource medians/maxima and asset
+sizes. It also loaded H, counts and hybrid and checked exact equality of every
+neural/count tensor plus config, seed and58982400-target ancestry. No new gradient
+targets or count-building pass were used. No test scoring. Qualification is for
+this measured Windows CPU, not every machine or a final frozen release.
+
+H diagnostic sampled-train NLL2.663976, validation NLL3.132205, gap.468229.
+Compared with F's .598285 gap, row dropout narrows the gap, but the small BPB
+gain still does not establish cross-seed robustness. Windows component timings
+(first batch32, cached intermediates) were backbone1.122127s, whole head.162255s,
+whole forward1.345986s. These separately timed values must not be added or
+treated as precise attribution fractions; the backbone is the dominant measured
+component, so head-only acceleration has limited overall upside.
+
+Next proposed implementation work, NOT executed in this stage: reduce full-vocab
+temporary allocations in train-count queries and avoid redundant log/exp work
+in the hybrid while preserving probability semantics. Require full-distribution
+causality/normalization and numerical-equivalence checks before resource reruns.
+If insufficient, compare a modestly narrower backbone plus statistics against
+the current H control under matched training targets. Do not automatically
+stack more regularizers, add epochs, or lower the course resource limit.

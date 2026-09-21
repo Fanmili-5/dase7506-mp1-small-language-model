@@ -1,0 +1,139 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "precision": "fp32",
+  "device": "cpu",
+  "checkpoint_sha256": "2be8f4f4ac195593835aaa74f042b0b5d0f5473a46eb6d09fba99b3c11d263f7",
+  "implementation_sha256": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+  "diagnostic_sha256": "974ca63aec0d668fe822bc2f5118661fdcb1e87cd14b5475fe5df4b2af7a1b7c",
+  "sampling_seed": 1729,
+  "training_sample_windows": 1024,
+  "training_sample_targets": 262144,
+  "training_split_tokens": 3613343,
+  "note": "Train uses uniformly sampled independent windows and is an in-sample diagnostic, not a full-train BPB. Dropout disabled for both splits. No test scoring.",
+  "sampled_train": {
+    "all": {
+      "targets": 262144,
+      "nll_nats": 698345.2063440473,
+      "mean_nll_nats": 2.6639755491029637,
+      "token_ppl": 14.35323782420074
+    },
+    "positions_1_16": {
+      "targets": 16384,
+      "nll_nats": 52256.47886920239,
+      "mean_nll_nats": 3.189482352856591,
+      "token_ppl": 24.275857861595398
+    },
+    "positions_17_64": {
+      "targets": 49152,
+      "nll_nats": 134838.2645938465,
+      "mean_nll_nats": 2.7432915159880884,
+      "token_ppl": 15.53804474111171
+    },
+    "positions_65_256": {
+      "targets": 196608,
+      "nll_nats": 511250.4628809985,
+      "mean_nll_nats": 2.6003543237355475,
+      "token_ppl": 13.468509402211094
+    },
+    "target_seen_in_prefix": {
+      "targets": 104037,
+      "nll_nats": 187177.61542817476,
+      "mean_nll_nats": 1.7991446834123894,
+      "token_ppl": 6.044475312816279
+    },
+    "target_not_seen_in_prefix": {
+      "targets": 158107,
+      "nll_nats": 511167.5909158727,
+      "mean_nll_nats": 3.2330484476707086,
+      "token_ppl": 25.356838264168402
+    },
+    "train_frequency_lt_100": {
+      "targets": 379,
+      "nll_nats": 1054.0229402526747,
+      "mean_nll_nats": 2.781063166893601,
+      "token_ppl": 16.136167270542895
+    },
+    "train_frequency_100_999": {
+      "targets": 48433,
+      "nll_nats": 187244.07174110203,
+      "mean_nll_nats": 3.8660432296389247,
+      "token_ppl": 47.753063867798836
+    },
+    "train_frequency_1000_9999": {
+      "targets": 117460,
+      "nll_nats": 337588.7230494768,
+      "mean_nll_nats": 2.8740739234588526,
+      "token_ppl": 17.70901662047436
+    },
+    "train_frequency_ge_10000": {
+      "targets": 95872,
+      "nll_nats": 172458.38861321597,
+      "mean_nll_nats": 1.798840001389519,
+      "token_ppl": 6.04263395038004
+    }
+  },
+  "validation": {
+    "all": {
+      "targets": 376599,
+      "nll_nats": 1179585.1212302714,
+      "mean_nll_nats": 3.1322046028541535,
+      "token_ppl": 22.924463210798564
+    },
+    "positions_1_16": {
+      "targets": 23552,
+      "nll_nats": 86444.71220512415,
+      "mean_nll_nats": 3.6703767070789803,
+      "token_ppl": 39.26669511653941
+    },
+    "positions_17_64": {
+      "targets": 70615,
+      "nll_nats": 231006.63911781463,
+      "mean_nll_nats": 3.271353665904052,
+      "token_ppl": 26.346980223704733
+    },
+    "positions_65_256": {
+      "targets": 282432,
+      "nll_nats": 862133.7699073333,
+      "mean_nll_nats": 3.0525357250854483,
+      "token_ppl": 21.168955073290775
+    },
+    "target_seen_in_prefix": {
+      "targets": 148196,
+      "nll_nats": 310425.7552134092,
+      "mean_nll_nats": 2.0946972604753786,
+      "token_ppl": 8.122981450391682
+    },
+    "target_not_seen_in_prefix": {
+      "targets": 228403,
+      "nll_nats": 869159.3660168624,
+      "mean_nll_nats": 3.805376312994411,
+      "token_ppl": 44.94215924977252
+    },
+    "train_frequency_lt_100": {
+      "targets": 578,
+      "nll_nats": 2261.074466741178,
+      "mean_nll_nats": 3.911893541074703,
+      "token_ppl": 49.993527201335226
+    },
+    "train_frequency_100_999": {
+      "targets": 70457,
+      "nll_nats": 321898.0472294556,
+      "mean_nll_nats": 4.568716340881043,
+      "token_ppl": 96.42025955369122
+    },
+    "train_frequency_1000_9999": {
+      "targets": 166859,
+      "nll_nats": 564278.5507366017,
+      "mean_nll_nats": 3.3817687432898538,
+      "token_ppl": 29.42276643724867
+    },
+    "train_frequency_ge_10000": {
+      "targets": 138705,
+      "nll_nats": 291147.4487974733,
+      "mean_nll_nats": 2.099040761309782,
+      "token_ppl": 8.158340362240777
+    }
+  },
+  "validation_bpb": 1.4823791185117505,
+  "validation_minus_train_mean_nll": 0.4682290537511897
+}

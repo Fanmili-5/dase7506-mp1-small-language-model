@@ -1,0 +1,56 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922010111
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage19 -RunId stage19-20260922-b
+进程 ID: 68872
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage19-20260922-b\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+backbone 1.1221273000119254
+vocabulary_projection_logsoftmax 0.06303224000002955
+copy_attention_scatter 0.02406695999961812
+mixture_with_cached_distributions 0.07751719999941997
+complete_head 0.1622553000051994
+complete_forward 1.3459855999972206
+    "weight": 0.1,
+    "nll_nats": 1172388.5048612356,
+    "bpb": 1.473335164296499
+  },
+  "scan_seconds": 68.78411400000914,
+  "note": "Scan timing reuses neural outputs and is not a resource gate; no test accessed.",
+  "official_best_bpb": 1.4733351642965178,
+  "best_checkpoint_sha256": "77031d3c570e4f4ba9882442ae0189968b5c46783035f9a6d83802b0d8e69046",
+  "inference_asset_bytes": 38141585,
+  "resource_gate_pending": true,
+  "status": "completed validation screen; resource qualification still required"
+}
+
+
+
+
+Stage19 diagnostics completed; no training or test scoring. Resource failures are recorded, not waived.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922011728
+**********************

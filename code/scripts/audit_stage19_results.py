@@ -9,6 +9,7 @@ import math
 from pathlib import Path
 import statistics
 import sys
+import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -58,12 +59,15 @@ def main():
     p.add_argument("--evidence", type=Path, required=True)
     p.add_argument("--neural", type=Path, required=True)
     p.add_argument("--hybrid", type=Path, required=True)
+    p.add_argument("--counts", type=Path, default=ROOT / "runs/stage16-ngram-min3/checkpoint.pt")
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args()
     if args.output.exists():
         p.error("Use a new audit output")
     def read(name):
         return json.loads((args.evidence / name).read_text(encoding="utf-8-sig"))
+    job = read("job-logs/stage19-20260922-b/status.json")
+    assert job["status"] == "completed" and job["exit_code"] == 0
     scan = read("mixture/scan.json")
     assert sha(args.neural) == H_SHA and scan["reference_sha256"] == H_SHA
     assert scan["counts_sha256"] == COUNTS_SHA
@@ -81,6 +85,20 @@ def main():
     assert best == scan["provisional_best"] and best["weight"] > 0
     hybrid_sha = sha(args.hybrid)
     assert scan["best_checkpoint_sha256"] == hybrid_sha
+    assert sha(args.counts) == COUNTS_SHA
+    neural = torch.load(args.neural, map_location="cpu", weights_only=True)
+    hybrid = torch.load(args.hybrid, map_location="cpu", weights_only=True)
+    counts = torch.load(args.counts, map_location="cpu", weights_only=True)
+    assert neural["train_tokens"] == hybrid["train_tokens"] == 58982400
+    assert neural["seed"] == hybrid["seed"] == 17
+    assert hybrid["config"]["neural_config"] == neural["config"]
+    assert hybrid["config"]["mixture_weight"] == best["weight"]
+    expected_keys = set()
+    for prefix, payload in (("neural.", neural), ("ngram.", counts)):
+        for key, value in payload["model"].items():
+            expected_keys.add(prefix + key)
+            assert torch.equal(hybrid["model"][prefix + key], value), prefix + key
+    assert set(hybrid["model"]) == expected_keys
     official = read("mixture/best-validation-cpu-fp32.json")
     score(official, hybrid_sha)
     close(official["bpb"], best["bpb"])
@@ -103,6 +121,7 @@ def main():
     assert profile["profiler_sha256"] == sha(ROOT / "scripts/profile_structured_cpu.py")
     result = dict(status="receipts_and_resource_aggregation_verified", protocol=PROTOCOL,
         split="validation", models=models, new_gradient_targets=0,
+        exact_hybrid_neural_and_count_tensor_equality=True,
         file_hashes={str(f.relative_to(args.evidence)): sha(f) for f in sorted(args.evidence.rglob("*.json"))},
         limitations="Does not rerun training or reaverage weights. Microbenchmarks are diagnostic, not resource gates. Qualification applies to measured Windows CPU; no test score or universal timing guarantee.")
     args.output.parent.mkdir(parents=True, exist_ok=True)
