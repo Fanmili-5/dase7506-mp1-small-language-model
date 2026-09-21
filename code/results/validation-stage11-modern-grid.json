@@ -1,0 +1,91 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "selection_warning": "Mixture weights are validation-selected; do not use test results for this choice.",
+  "device": "cpu",
+  "precision": "fp32",
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "primary": {
+    "path": "runs/stage8-long-drop010-w256_d6-s17/checkpoint-best.pt",
+    "sha256": "ca3f431b8c90fa057f460604de8e9fcb4bf2c57f630ce99f7ed6af0bc63ac303",
+    "implementation": "student"
+  },
+  "auxiliary": {
+    "path": "runs/stage3-long-modern-s17/checkpoint-best.pt",
+    "sha256": "0cc96dcc1078385454ec563337c4e1d1491dba905dfea2f2bc8fcae475a52fab",
+    "implementation": "student"
+  },
+  "results": [
+    {
+      "primary_weight": 0.7,
+      "auxiliary_weight": 0.30000000000000004,
+      "bpb": 1.5616788523400824,
+      "token_ppl": 27.10617599356035,
+      "nll_nats": 1242686.918181737
+    },
+    {
+      "primary_weight": 0.75,
+      "auxiliary_weight": 0.25,
+      "bpb": 1.5603767806236089,
+      "token_ppl": 27.031703360277092,
+      "nll_nats": 1241650.8104786894
+    },
+    {
+      "primary_weight": 0.8,
+      "auxiliary_weight": 0.19999999999999996,
+      "bpb": 1.5599801158592328,
+      "token_ppl": 27.009056610301034,
+      "nll_nats": 1241335.169325673
+    },
+    {
+      "primary_weight": 0.85,
+      "auxiliary_weight": 0.15000000000000002,
+      "bpb": 1.5606437465542116,
+      "token_ppl": 27.04695591476355,
+      "nll_nats": 1241863.2453650702
+    },
+    {
+      "primary_weight": 0.9,
+      "auxiliary_weight": 0.09999999999999998,
+      "bpb": 1.5626561803104937,
+      "token_ppl": 27.162209514701228,
+      "nll_nats": 1243464.6150057563
+    },
+    {
+      "primary_weight": 0.925,
+      "auxiliary_weight": 0.07499999999999996,
+      "bpb": 1.5643389496530924,
+      "token_ppl": 27.258959931096726,
+      "nll_nats": 1244803.6582061118
+    },
+    {
+      "primary_weight": 0.95,
+      "auxiliary_weight": 0.050000000000000044,
+      "bpb": 1.5666570948934877,
+      "token_ppl": 27.392805750586376,
+      "nll_nats": 1246648.2940352822
+    },
+    {
+      "primary_weight": 0.975,
+      "auxiliary_weight": 0.025000000000000022,
+      "bpb": 1.5699355386952059,
+      "token_ppl": 27.5832203264555,
+      "nll_nats": 1249257.0757436883
+    },
+    {
+      "primary_weight": 1.0,
+      "auxiliary_weight": 0.0,
+      "bpb": 1.5756057739947027,
+      "token_ppl": 27.915681639840617,
+      "nll_nats": 1253769.096393221
+    }
+  ],
+  "best": {
+    "primary_weight": 0.8,
+    "auxiliary_weight": 0.19999999999999996,
+    "bpb": 1.5599801158592328,
+    "token_ppl": 27.009056610301034,
+    "nll_nats": 1241335.169325673
+  }
+}

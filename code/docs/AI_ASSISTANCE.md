@@ -79,3 +79,10 @@ and a provisional Mac CPU time-gate failure. It then preregistered the Windows
 resource recheck and a fresh 7,200-step, validation-only trajectory-averaging
 experiment. These post-v1 experiments must not use the already observed v1 test
 score for model or hyperparameter selection.
+
+Codex subsequently restored the private Windows tunnel, backed up deployed
+source, ran all 25 tests and the fixed-file verification on Windows, and executed
+the three-repeat ensemble resource gate. It recorded the Windows pass alongside
+the Mac failure and launched the preregistered Stage-12 training recipe. It also
+added an audit script that checks every candidate checkpoint against the
+corresponding complete CPU FP32 validation result before selecting a candidate.

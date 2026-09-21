@@ -32,14 +32,16 @@ training utilities, model variants, logs, and documentation are additive.
   baseline. This v1 predictor remains immutable; subsequent development uses
   validation only and requires a separate freeze before any new test call.
 
-Post-v1 development continues on validation only. A predeclared two-model
-probability mixture improves validation BPB from 1.575605774 to 1.559980123,
-but a one-repeat Mac CPU probe measures 7.046x baseline time and therefore does
-not satisfy the formal limit on that machine. It remains a resource-unconfirmed
-candidate pending the three-repeat Windows gate. In parallel, Stage 12 is
-preregistered as one fresh 7,200-step run plus three same-trajectory checkpoint
-averages; this route retains single-model inference cost. No new test call is
-authorized during these experiments.
+Post-v1 development continues on validation only. A two-model probability
+mixture reaches 1.559980227 validation BPB on Windows (1.559980123 on Mac),
+compared with 1.575605774 for v1. Three fresh Windows CPU runs measure a 4.644x
+median-time ratio, 1.985 GB maximum peak RSS, and a 25.21 MB checkpoint. This
+passes the measured Windows limits with limited time headroom. The one-repeat
+Mac probe failed at 7.046x and remains recorded; passing on Windows does not
+establish portability to every CPU. The ensemble is a development candidate.
+Stage 12 is preregistered as one fresh 7,200-step run plus three same-trajectory
+checkpoint averages; this route retains single-model inference cost. No new
+test call is authorized during these experiments.
 
 The first CPU FP32 validation results are baseline 2.072081282, RoPE-only
 1.922025745, SwiGLU-only 2.011474415, and modern bundle 1.835656528 BPB. Every run

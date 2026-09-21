@@ -375,6 +375,18 @@ quality-positive but resource-unconfirmed candidate. It may advance only if a
 three-repeat alternating Windows CPU benchmark is at most 5x baseline; otherwise
 discard it without a test call.
 
+Windows recheck: all three CPU FP32 repetitions score 1.559980226523 BPB.
+Baseline times are 12.2677, 12.6689, and 12.2779 seconds; candidate times are
+56.8243, 57.8228, and 57.0146 seconds. The median ratio is 4.643681049, with
+maximum process peak RSS 1,985,134,592 bytes. Thus the Windows gate passes, but
+time headroom is only about seven percent of the 5x allowance. The Mac failure
+is retained, and the candidate is not described as universally resource-safe.
+The matching Windows checkpoint SHA-256 is
+`aadb6718a42323e392310e9c2b92f0ff6bb32abba87faec5c02c768a4ffd088c`.
+Both members trained for 39,321,600 targets; combined ancestry is 78,643,200
+targets, excluding the separately reported historical search cost. No new
+training or test scoring was performed for the Stage-11 gate.
+
 ### Stage 12 long schedule and trajectory averaging preregistration — 2026-09-21
 
 Independently of the ensemble gate, train one fresh seed-17 width-256/depth-6,
