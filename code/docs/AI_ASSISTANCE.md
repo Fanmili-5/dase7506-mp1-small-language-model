@@ -116,3 +116,13 @@ coverage, training budgets, averaging ancestry and resource evidence. The new
 auditor was checked with synthetic negative cases and real preflight JSONs; a
 complete trained-screen audit remains pending until training finishes. It does
 not change any source hash pinned by the running job or invoke test evaluation.
+
+After Stage 14 completed, Codex audited all three runs on the Windows machine,
+including final weights, exact training budgets, fixed last-five ancestry and
+raw CPU resource repetitions. It identified prefix copy as the single-seed
+validation winner (1.499334244 BPB), retained negative A/C results, and prepared
+a transfer archive with checksums, endpoint/average weights, scores and logs.
+It explicitly recorded that FP32 output-head training also differs from the
+historical control, so a precision-matched ablation is needed before isolating
+the causal contribution of copy. No further training or test run was launched
+while collecting these results.

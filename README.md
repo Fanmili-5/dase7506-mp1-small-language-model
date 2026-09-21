@@ -6,6 +6,16 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
+**Current development/submission candidate: Stage-14 B (causal prefix copy),
+1.499334244 CPU FP32 validation BPB.** This candidate replaces v1 as the active
+optimization candidate, but has not received a final test evaluation. The final
+course submission will identify one immutable code version and its matching
+predictor checkpoint bundle. Historical freezes remain reproducibility records,
+not a restriction on replacing the submission candidate. Do not use historical
+test results to tune or select a replacement.
+
+### Earlier development milestones
+
 - Framework and configurable student model: implemented.
 - Course contract tests and fixed-file verification: implemented.
 - Mac CPU and Windows CUDA smoke tests: passed.
@@ -24,11 +34,11 @@ training utilities, model variants, logs, and documentation are additive.
   validation BPB; the curve selected its 4,800-step endpoint.
 - Frozen 4,800-step recipe replication at seeds 23 and 42: completed; three-seed
   CPU FP32 validation mean 1.579745 and sample standard deviation 0.003591.
-- Final method and checkpoint: seed-17 4,800-step checkpoint selected by the
+- Historical v1 method and checkpoint: seed-17 4,800-step checkpoint selected by the
   preregistered validation rule and frozen by hashes before test evaluation.
 - Formal resource gate: passed at 3.485x baseline CPU time, 1.972 GB peak RSS,
   and 21.14 MB of core inference assets.
-- Frozen full-test result: 1.605136467 BPB versus 2.102014912 for the initial
+- Historical v1 full-test result: 1.605136467 BPB versus 2.102014912 for the initial
   baseline. This v1 predictor remains immutable; subsequent development uses
   validation only and requires a separate freeze before any new test call.
 
@@ -57,15 +67,25 @@ causal within-window prefix copy, and a two-component mixture-of-softmax output.
 The heads are in `code/student_structured.py`, with a hash-pinned dependency on
 the unchanged `student.py`; both source files must accompany their checkpoints.
 Resource-gated training is orchestrated by `scripts/run_architecture_screen.py`.
-These are unproven candidates, not new leaderboard results. See the architecture
-plan for method sources, controls, budgets, and selection rules.
+The single-seed screen is now complete. With the same 7,200 updates and fixed
+last-five averaging rule, CPU FP32 validation BPB is **1.557700785 (A)**,
+**1.499334244 (B)**, and **1.596398956 (C)**, versus the Stage-12 control
+**1.547832503**. B is the new validation leader, improving by 0.048498259 BPB;
+A and C are not advanced under this recipe. B's exact averaged checkpoint passes
+three final CPU repetitions at 3.831x baseline time, 1.976 GB peak RSS and
+23.38 MB inference assets. This is single-seed validation evidence, not a new
+test score or a frozen submission. Replication and a precision-matched copy
+ablation remain pending. The structured heads train in FP32 inside a BF16
+backbone, while the historical control also autocasts its output projection;
+therefore the gain is for the full variant, not yet an isolated copy-only effect.
+See the architecture plan and `code/results/stage14-audit.json` for evidence.
 
 All three random-initialization resource preflights have passed on Windows:
 3.255x CPU time for A (wide/shallow), 3.904x for B (prefix copy), and 4.098x for
 C (two-component output); each uses about 1.98 GB peak process RSS. Raw evidence
 is in `code/results/stage14-preflight/`. These measurements do not establish
 trained-model quality or replace the final exact-checkpoint resource gate.
-The bounded job has advanced to training. A completed screen can be audited with
+The bounded job completed on 21 September. A completed screen can be audited with
 `python scripts/audit_architecture_screen.py --run-dir runs/stage14-architecture-s17
 --output results/stage14-audit.json` (one command, run inside `code/`). The audit
 requires the original checkpoints and averaging snapshots and rejects partial

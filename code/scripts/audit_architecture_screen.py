@@ -167,6 +167,7 @@ def audit(directory):
         results.append(result)
     candidates = [r for r in results if r.get("eligible_for_followup")]
     return {"protocol": PROTOCOL, "split": "validation", "precision": "fp32", "device": "cpu",
+            "audit_script_sha256": sha(Path(__file__)),
             "screen_sha256": sha(directory / "screen.json"), "endpoint_control_bpb": endpoint_control,
             "average_control_bpb": average_control, "candidates": results,
             "new_training_targets": sum(r.get("train_targets", 0) for r in results),
