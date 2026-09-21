@@ -126,7 +126,8 @@ It explicitly recorded that FP32 output-head training also differs from the
 historical control, so a precision-matched ablation is needed before isolating
 the causal contribution of copy. No further training or test run was launched
 while collecting these results.
-# Stage 15 optimization assistance
+
+## Stage 15 optimization assistance
 
 AI assisted a validation/train-only B diagnostic, structured candidate selection,
 the FP32 matched no-copy control, a causal dual-copy implementation, its unit tests,
