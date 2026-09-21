@@ -34,11 +34,15 @@ Stage18 tests two training-only regularizers independently on F: input embedding
 row dropout .10 and SwiGLU hidden dropout .20. Same 7200-update target budget,
 seed and original trainer as F. Export restores the identical original inference
 graph with unchanged weights. Plan: `code/docs/STAGE18_GENERALIZATION_20260921.md`.
-Windows job `MP1-stage18-20260921-a` started at 15:06 UTC; H passed its two-update
-smoke/resume and was observed at update400. I is queued after H. Nine new Windows
-checks passed including CUDA BF16; local suite80 tests,75 passed/five CUDA skipped.
-Receipt: `code/results/stage18-launch.json`. No Stage18 quality result yet.
-No new test evaluation scheduled; improvements remain unproven until measured.
+Windows job `MP1-stage18-20260921-a` completed at 15:39 UTC on September21.
+H average CPU validation BPB **1.482379119**, I **1.482562139**; each used
+58,982,400 gradient targets. Both gains fall below the original .003 resource
+retest trigger, so neither was resource-qualified by Stage18. H is the lowest
+measured validation score, F remains the qualified fallback. These are small
+single-seed gains, not evidence of robust improvement or test performance.
+Stage19 separately checks H's resources and a fixed train-count mixture grid
+(0/.05/.10), with CPU component profiling and no new training or test scoring.
+Plan: `code/docs/STAGE19_COMPLEMENTARITY_20260922.md`.
 LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid
 scored 1.487889082 on validation but has not passed a resource gate; it is a
 reserve experiment, not a qualified replacement.

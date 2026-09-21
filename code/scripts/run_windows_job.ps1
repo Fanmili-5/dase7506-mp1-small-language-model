@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18")]
+    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19")]
     [string]$Job,
     [Parameter(Mandatory = $true)]
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
@@ -72,8 +72,10 @@ try {
         & "$PSScriptRoot\run_stage15_windows.ps1"
     } elseif ($Job -eq "stage17") {
         & "$PSScriptRoot\run_stage17_windows.ps1"
-    } else {
+    } elseif ($Job -eq "stage18") {
         & "$PSScriptRoot\run_stage18_windows.ps1"
+    } else {
+        & "$PSScriptRoot\run_stage19_windows.ps1"
     }
     Write-JobStatus "completed" 0 ""
     $ResultCode = 0

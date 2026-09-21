@@ -10,7 +10,14 @@ orchestration tests passed, including CUDA BF16 backward. Read-only export
 parity checks also passed using the full-width/depth real F checkpoint for both
 regularizer configs; these checks did not write candidate weights or scores.
 Startup receipt and source hashes are under `results/stage18-launch*`.
-No final candidate score yet; this is execution evidence, not improvement evidence.
+The original launch observations above are historical. Both jobs subsequently
+completed at 15:39 UTC on September21: H average CPU validation1.482379119,
+I1.482562139. Each consumed58,982,400 gradient targets. Gains over F were
+.002715179 and .002532158 respectively: neither triggered the original .003
+final-resource retest. These are small single-seed validation improvements,
+not a final submission or a statistical-significance result. Stage19 separately
+measures H resources and tests train-only count complementarity; it does not
+rewrite Stage18's gate. Completed receipts are collected with Stage19 work.
 
 ## Observations, not assumptions about model age
 
