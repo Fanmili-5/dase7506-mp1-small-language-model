@@ -6,22 +6,29 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-Stage15 is partially completed (2026-09-21). Eight-layer prefix-copy F achieved
+Stage15 completed and passed its full Windows artifact audit (2026-09-21).
+**Current development candidate: eight-layer prefix-copy F**, which achieved
 **1.485094298 CPU FP32 validation BPB**, with a final three-repeat CPU ratio
 **4.877905x**, peak RSS **1,988,993,024 bytes**, and conservative inference assets
-**29,681,660 bytes**. Timing margin below the 5x cap is narrow. Its checkpoint
-and raw score/resource hashes have been checked locally; full trajectory
-collection/audit remains pending. The six-layer 3x-duration G run is active.
-No new test evaluation is scheduled. See `code/results/stage15-partial-evidence/`.
+**29,681,660 bytes**. Timing margin below the 5x cap is narrow. The audit checked
+raw scores/resources, source hashes and recomputed the exact last-five weight
+averages on Windows. Its real averaged checkpoint is also collected locally.
+See `code/results/stage15-audit.json` and `code/results/stage15-evidence/`.
 
 The precision-matched no-copy D averaged 1.547137283. Dual-copy E failed its
 resource preflight (6.1833x) and was not trained. Stage14 B remains the archived
-qualified 1.499334244 reference. Do not select a final Stage15 winner until G
-finishes. The lower-score F is a provisional development candidate, not a release.
+qualified 1.499334244 reference. The six-layer 3x-duration G averaged 1.496658491:
+only .002676 better than B, below the preregistered .003 resource-retest trigger
+and worse than F. Stage15 consumed 294,912,000 new gradient targets. F is the
+selected follow-up model, not yet a frozen/tested submission release.
 
 Transformer optimization continues through the bounded teacher/CE-control/KD
-plan in `code/docs/STAGE17_DISTILLATION_20260921.md`. It is implemented and locally
-tested, **not launched**; CUDA checks remain pending until Stage15 finishes.
+plan in `code/docs/STAGE17_DISTILLATION_20260921.md`. **Teacher training started
+on Windows at 2026-09-21 13:16 UTC**; the two-update smoke and resume passed.
+The seven distillation tests passed on Windows, including CUDA BF16 backward.
+The teacher must reach <=1.482094298 CPU validation BPB to trigger the fixed
+matched CE/KD student pair. No teacher or student quality gain is established
+yet. Receipt: `code/results/stage17-launch.json`. No new test evaluation scheduled.
 LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid
 scored 1.487889082 on validation but has not passed a resource gate; it is a
 reserve experiment, not a qualified replacement.

@@ -8,3 +8,6 @@ code/data/* -text
 # Preserve collected Windows evidence bytes and their archive manifest hashes.
 code/results/stage14-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 code/results/stage14-audit.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/results/stage15-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/results/stage15-audit.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/results/stage17-launch-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -1,0 +1,78 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "screen_sha256": "ef96ec304e7a06b3ed0778ed7e2d88459b18299384815c6f202323b2ca8270ef",
+  "audit_script_sha256": "613e55a6579a6940582c40e1f9da58c8650bd6948bd95b8bb46d780d01865b8c",
+  "candidates": [
+    {
+      "name": "D-fp32-control",
+      "train_targets": 58982400,
+      "train_seconds": 565.3883751000103,
+      "preflight": {
+        "time_ratio": 3.482644064380517,
+        "peak_rss_bytes": 1973530624,
+        "time_pass": true,
+        "ram_pass": true
+      },
+      "eligible_for_followup": false,
+      "endpoint_bpb": 1.5509527943231265,
+      "endpoint_checkpoint_sha256": "313c3086782efaf3f4e0c2c6be0963125d6a56fe6cb1d8b556d6963e0380568c",
+      "average_bpb": 1.5471372830878503,
+      "average_checkpoint_sha256": "14bd1b7cbca6748d6b6bf144e3440b8a8d58edd0a6d4ed9a31e9f039f5006237",
+      "asset_bytes": 23247180
+    },
+    {
+      "name": "E-dual-copy",
+      "status": "resource_rejected",
+      "preflight": {
+        "time_ratio": 6.183306168247651,
+        "peak_rss_bytes": 1972953088,
+        "time_pass": false,
+        "ram_pass": true
+      }
+    },
+    {
+      "name": "F-copy-depth8",
+      "train_targets": 58982400,
+      "train_seconds": 786.391041899944,
+      "preflight": {
+        "time_ratio": 4.8534711756463205,
+        "peak_rss_bytes": 1987784704,
+        "time_pass": true,
+        "ram_pass": true
+      },
+      "eligible_for_followup": true,
+      "endpoint_bpb": 1.4899128802835424,
+      "endpoint_checkpoint_sha256": "11469a92c83d72d9afdfa87d31e6cb7c0c83aae278190e43d4911753f12b1303",
+      "average_bpb": 1.4850942978138386,
+      "average_checkpoint_sha256": "5783e16de954168793148d3a95c7559ddd6ec2916987247ea060cd459801aa16",
+      "asset_bytes": 29681660,
+      "final_resource": {
+        "time_ratio": 4.877905205660784,
+        "peak_rss_bytes": 1988993024,
+        "time_pass": true,
+        "ram_pass": true
+      }
+    },
+    {
+      "name": "G-copy-long",
+      "train_targets": 176947200,
+      "train_seconds": 1858.556113299972,
+      "preflight": {
+        "time_ratio": 3.84068418828044,
+        "peak_rss_bytes": 1973198848,
+        "time_pass": true,
+        "ram_pass": true
+      },
+      "eligible_for_followup": false,
+      "endpoint_bpb": 1.5013768648429993,
+      "endpoint_checkpoint_sha256": "a82d452bc0ff4839f9771ab26be6ca2a5c9dab34259e3d9487f548b13328db07",
+      "average_bpb": 1.4966584914170824,
+      "average_checkpoint_sha256": "48bb070afcba4a70913726a771ed27914f858989a42bea9f7249ceaa63b21d60",
+      "asset_bytes": 23380440
+    }
+  ],
+  "new_training_targets": 294912000,
+  "followup_candidate": "F-copy-depth8",
+  "status": "audited raw scores, resources and exact averages; single seed; no test result"
+}

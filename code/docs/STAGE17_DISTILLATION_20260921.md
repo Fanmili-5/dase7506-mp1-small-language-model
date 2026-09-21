@@ -1,12 +1,17 @@
 # Stage17: Transformer capacity at training time, compact inference
 
-Status: implemented and locally tested; **not launched**. Stage15 G remains
-active. The runner refuses to start before Stage15 finishes successfully.
+Status: **teacher training launched on Windows at 2026-09-21 13:16:29 UTC**.
+Stage15 completed and passed full artifact audit before launch. The runner
+refuses to start before Stage15 finishes successfully.
 No LSTM/CNN training, seed sweep, external weights/text, or new test evaluation.
 
-Local verification on 2026-09-21: 69 tests, 65 passed and four CUDA-only tests
-skipped; all ten official fixed-file hashes unchanged. Stage15 G was observed at
-8,800/21,600 updates at approximately 12:53 UTC. Stage17 has no runtime result yet.
+Local verification on 2026-09-21: 71 tests, 67 passed and four CUDA-only tests
+skipped; all ten official fixed-file hashes unchanged. The seven distillation
+tests also passed on Windows, including CUDA BF16 backward. The teacher's real
+two-update smoke and exact-plan resume passed. No final Stage17 score yet.
+Launch receipt: `results/stage17-launch.json`; immutable startup evidence is in
+`results/stage17-launch-evidence/`. This one-off Windows job survives SSH
+disconnects, but not Windows sleep/shutdown/logoff; it has a six-hour runtime cap.
 
 ## Why this experiment
 
@@ -16,7 +21,10 @@ the final same-checkpoint resource gate at 4.877905x baseline, 1,988,993,024-byt
 peak RSS and 29,681,660-byte conservative inference assets. Its CPU margin is
 small. D, the precision-matched no-copy ablation, averaged 1.547137283; this
 supports the copy component in this single seeded comparison. G, a 3x-duration
-6x256 run, is still pending. No unseen-test or leaderboard improvement is claimed.
+6x256 run, finished at 1.496658491 after averaging, worse than F. Its .002676
+gain over B did not reach the fixed .003 resource-retest trigger. The locked
+reference for Stage17 is F, and the teacher pass threshold is 1.482094298.
+No unseen-test or leaderboard improvement is claimed.
 
 Hypothesis: a larger from-scratch Transformer may learn useful distributions
 which can improve a smaller, already inference-feasible Transformer through
@@ -95,4 +103,6 @@ Run inside the existing Windows `code/` workspace after Stage15 completes:
 ```
 
 The baseline path matches the existing Stage15 launch script; its hash is checked
-against Stage15's receipt. This document does not automatically schedule training.
+against Stage15's receipt. The current directory is already in use: do not rerun
+this command with `--execute` while its job is active. The one-off task was
+launched through `start_windows_job.ps1 -Job stage17 -RunId stage17-20260921-a`.
