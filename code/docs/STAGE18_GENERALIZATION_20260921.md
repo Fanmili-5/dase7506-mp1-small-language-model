@@ -3,6 +3,15 @@
 Preregistered before training: two independent changes to Stage15 F, not a
 parameter/seed sweep. No larger teacher or extra training duration in this stage.
 
+Launch: `MP1-stage18-20260921-a`, 2026-09-21 15:06:48 UTC. H passed the two-update
+smoke and resumed, observed at update400. I is queued. Local suite80 tests:
+75 passed/five CUDA skipped. Windows seven model/export/resume tests and two
+orchestration tests passed, including CUDA BF16 backward. Read-only export
+parity checks also passed using the full-width/depth real F checkpoint for both
+regularizer configs; these checks did not write candidate weights or scores.
+Startup receipt and source hashes are under `results/stage18-launch*`.
+No final candidate score yet; this is execution evidence, not improvement evidence.
+
 ## Observations, not assumptions about model age
 
 Stage17 teacher failed its fixed quality gate: CPU validation BPB 1.665982500.

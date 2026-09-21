@@ -34,6 +34,10 @@ Stage18 tests two training-only regularizers independently on F: input embedding
 row dropout .10 and SwiGLU hidden dropout .20. Same 7200-update target budget,
 seed and original trainer as F. Export restores the identical original inference
 graph with unchanged weights. Plan: `code/docs/STAGE18_GENERALIZATION_20260921.md`.
+Windows job `MP1-stage18-20260921-a` started at 15:06 UTC; H passed its two-update
+smoke/resume and was observed at update400. I is queued after H. Nine new Windows
+checks passed including CUDA BF16; local suite80 tests,75 passed/five CUDA skipped.
+Receipt: `code/results/stage18-launch.json`. No Stage18 quality result yet.
 No new test evaluation scheduled; improvements remain unproven until measured.
 LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid
 scored 1.487889082 on validation but has not passed a resource gate; it is a

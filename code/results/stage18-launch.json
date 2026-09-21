@@ -1,0 +1,23 @@
+{
+  "job": "stage18",
+  "task_name": "MP1-stage18-20260921-a",
+  "started_utc": "2026-09-21T15:06:48.5074668Z",
+  "observed_job_status": "running",
+  "observed_candidate": "H-embedding-drop",
+  "observed_completed_steps": 400,
+  "two_update_smoke_passed": true,
+  "resumed_training_confirmed": true,
+  "git_implementation_commit": "f925b74",
+  "deployment_archive_sha256": "406ff7089e98a62eda053646a40b9aed366d3694d4ebc6f661a922db784e2450",
+  "reference_checkpoint_sha256": "5783e16de954168793148d3a95c7559ddd6ec2916987247ea060cd459801aa16",
+  "reference_bpb": 1.4850942978138386,
+  "steps_per_candidate": 7200,
+  "targets_per_candidate": 58982400,
+  "maximum_new_gradient_targets": 117964800,
+  "local_tests": {"run": 80, "passed": 75, "cuda_skipped": 5},
+  "windows_new_tests": {"run": 9, "passed": 9, "includes_bf16_backward": true},
+  "windows_full_suite_rerun_confirmed": false,
+  "full_size_F_weight_export_parity": "both configs passed CPU FP32 exact equality; read-only QA, no training",
+  "runtime_directory": "C:\\Users\\23223\\mp1-challenge-20260919\\repo\\code\\runs\\stage18-regularization-s17",
+  "note": "First candidate running, second queued. No final quality or submission claim. Identical exported inference architecture; actual improved checkpoints still require resource remeasurement. No new test evaluation."
+}
