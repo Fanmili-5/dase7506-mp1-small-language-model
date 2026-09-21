@@ -6,6 +6,12 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
+Stage 15 optimization is prepared: a precision-matched no-copy ablation, a
+dual content/successor-copy model, an eight-layer copy backbone, and a separately
+accounted 3x-duration B run. See `code/docs/STAGE15_PLAN_20260921.md` for the
+predeclared budget, causal indexing and selection rule. These are experiments,
+not yet measured improvements. No new test evaluation is scheduled.
+
 **Current development/submission candidate: Stage-14 B (causal prefix copy),
 1.499334244 CPU FP32 validation BPB.** This candidate replaces v1 as the active
 optimization candidate, but has not received a final test evaluation. The final

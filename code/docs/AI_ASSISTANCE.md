@@ -126,3 +126,15 @@ It explicitly recorded that FP32 output-head training also differs from the
 historical control, so a precision-matched ablation is needed before isolating
 the causal contribution of copy. No further training or test run was launched
 while collecting these results.
+# Stage 15 optimization assistance
+
+AI assisted a validation/train-only B diagnostic, structured candidate selection,
+the FP32 matched no-copy control, a causal dual-copy implementation, its unit tests,
+and a resource-gated Windows experiment runner. The new route maps h_j to x_(j+1)
+with j<t, so accessible values are already observed inputs. The design draws on
+continuous neural cache and pointer-mixture ideas, with sources and adaptation
+boundaries in `STAGE15_PLAN_20260921.md`. No paper performance claims are transferred
+to this task. Proposed gains are unverified until actual CPU FP32 scores arrive.
+The long schedule is separately accounted as extra training, not an equal-budget
+architecture comparison. Substantive AI assistance must remain disclosed in the
+final README/report, and the student must be able to explain the implementation.
