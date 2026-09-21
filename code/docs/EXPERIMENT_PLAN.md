@@ -407,6 +407,52 @@ Advance only if the winner improves on 1.575605774 by at least 0.003 BPB; an
 improvement below 0.002 is treated as noise. Replication and a fresh resource
 gate are required before any new freeze. No test call is allowed in Stage 12.
 
+### Stage 12 result — 2026-09-21
+
+The fresh seed-17 run completed all 7,200 updates and 58,982,400 training
+targets. Accounted training time is 621.709 seconds, including snapshot-writing
+overhead; total trainer process time is 683.479 seconds. Every periodic
+validation observation improves and the selected raw checkpoint is the endpoint.
+Complete Windows CPU FP32 validation results are:
+
+| Candidate | Validation BPB |
+|---|---:|
+| v1 selected checkpoint (Windows control) | 1.575605888394 |
+| 7,200-step endpoint / best single checkpoint | 1.551211926880 |
+| Average of last 2 checkpoints | 1.549185857066 |
+| Average of last 3 checkpoints | 1.548281604970 |
+| Average of last 5 checkpoints | 1.547832503085 |
+
+Select the predeclared last-5 average. It improves on the Windows v1 control by
+0.027773385 BPB, and on the new endpoint by 0.003379424 BPB. This is a
+single-seed validation result with five candidate comparisons, not a replicated
+or test-set improvement. The selected checkpoint is 23,101,756 bytes with SHA-256
+`c2c4b02ff9da41d09a9b152ecac46af5ccc9b6d4e3d3e43df6a547ba7d441114`.
+All five downloaded checkpoint hashes match their official CPU evaluation JSONs.
+The full audit is `results/stage12_summary.json`; original metrics, recipe, and
+all five scores are retained in `results/stage12-evidence/`.
+
+### Stage 13 replication preregistration — not yet executed
+
+**Deferred on 2026-09-21 following the user's architecture-first direction.**
+The original preregistration below is preserved as history, not an active job.
+See `ARCHITECTURE_REDESIGN_20260921.md` for the discussion-only candidate plan.
+No new architecture run or seed replication is authorized by this note alone.
+
+The Stage-12 advance threshold passes. Freeze the candidate recipe before
+replication: seed 23 and seed 42, each trained from random initialization for
+7,200 updates with precisely the Stage-12 architecture, optimizer, dropout,
+batch size, and cosine schedule. Select the uniform average of steps 6,000,
+6,300, 6,600, 6,900, and 7,200 for each seed. Do not reselect the averaging window
+for these seeds. Additional training cost will be 117,964,800 targets.
+
+Report all three seeds and mean/sample standard deviation; compare the new
+recipe against the corresponding v1 seed controls. Prospective submission
+selection is the lowest CPU FP32 validation BPB among the three last-5 averages,
+explicitly disclosing seed selection. Require a resource gate for that exact
+selected artifact and an immutable source/checkpoint freeze before considering
+any final test evaluation. Stage 13 itself uses validation only.
+
 ### Score-first follow-up agreed on 2026-09-19
 
 Keep the first equal-target screen small. Use its learning curves to decide

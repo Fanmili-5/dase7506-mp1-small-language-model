@@ -39,9 +39,18 @@ median-time ratio, 1.985 GB maximum peak RSS, and a 25.21 MB checkpoint. This
 passes the measured Windows limits with limited time headroom. The one-repeat
 Mac probe failed at 7.046x and remains recorded; passing on Windows does not
 establish portability to every CPU. The ensemble is a development candidate.
-Stage 12 is preregistered as one fresh 7,200-step run plus three same-trajectory
-checkpoint averages; this route retains single-model inference cost. No new
-test call is authorized during these experiments.
+Stage 12 has now completed one fresh 7,200-step run and all three predeclared
+checkpoint averages. Its best candidate averages the last five checkpoints and
+reaches **1.547832503 CPU FP32 validation BPB**, compared with 1.551211927 for
+the new single endpoint and 1.575605888 for the Windows v1 control. This keeps
+single-model inference and improves validation by 0.027773385 BPB. All candidate
+checkpoint hashes have been checked against their evaluation JSONs. This is
+single-seed development evidence. Its exact last-5 checkpoint passes a fresh
+three-repeat Windows resource gate: 3.643x CPU time, 1.979 GB maximum RSS, and
+23.24 MB total inference assets. Fixed-recipe seed-23/42 replication was
+preregistered but is now deferred in favor of mechanism-led architecture
+screening; see `code/docs/ARCHITECTURE_REDESIGN_20260921.md`.
+No new test evaluation has been performed.
 
 The first CPU FP32 validation results are baseline 2.072081282, RoPE-only
 1.922025745, SwiGLU-only 2.011474415, and modern bundle 1.835656528 BPB. Every run

@@ -86,3 +86,17 @@ the three-repeat ensemble resource gate. It recorded the Windows pass alongside
 the Mac failure and launched the preregistered Stage-12 training recipe. It also
 added an audit script that checks every candidate checkpoint against the
 corresponding complete CPU FP32 validation result before selecting a candidate.
+
+Codex completed the Stage-12 seed-17 run, generated the three predeclared weight
+averages, CPU-scored all five candidates, backed up the artifacts, and verified
+each checkpoint hash against its score. It selected the last-5 average on
+validation, retained every candidate result, and preregistered seed-23/42
+replication with the averaging window fixed. No new test score was used or
+generated in this stage.
+
+Codex subsequently verified the exact Stage-12 average with three fresh Windows
+CPU measurements (3.643x baseline time), collected training/validation error
+diagnostics with dropout disabled, and drafted an architecture-first plan.
+The student requested mechanism-driven optimization rather than seed screening;
+the Stage-13 replication proposal is deferred. Diagnostic group labels are used
+only for analysis and are never available as model inputs. No new test was run.

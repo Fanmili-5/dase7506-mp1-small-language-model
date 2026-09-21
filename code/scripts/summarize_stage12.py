@@ -18,6 +18,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--control", type=Path, required=True)
+    parser.add_argument("--resource", type=Path, help="Optional resource gate for the selected checkpoint.")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     metrics = json.loads((args.run_dir / "metrics.json").read_text(encoding="utf-8-sig"))
@@ -53,6 +54,31 @@ def main():
             "improvement_vs_control": control["bpb"] - score["bpb"],
         })
     winner = min(rows, key=lambda row: row["validation_bpb"])
+    inference_files = [
+        args.run_dir / winner["checkpoint"], ROOT / "student.py",
+        ROOT / "data/tokenizer.json", ROOT / "common.py", ROOT / "evaluate.py",
+        ROOT / "requirements.txt",
+    ]
+    inference_assets = [
+        {"name": path.name, "bytes": path.stat().st_size, "sha256": sha(path)}
+        for path in inference_files
+    ]
+    resource_gate = None
+    if args.resource:
+        resource = json.loads(args.resource.read_text(encoding="utf-8-sig"))
+        if resource["candidate"]["checkpoint_sha256"] != winner["checkpoint_sha256"]:
+            raise ValueError("Resource evidence is for a different checkpoint.")
+        if (resource["split"], resource["device"], resource["precision"], resource["repeats"]) != (
+            "validation", "cpu", "fp32", 3
+        ):
+            raise ValueError("Resource gate must use three CPU FP32 validation repeats.")
+        resource_gate = {
+            "evidence_sha256": sha(args.resource),
+            "time_ratio": resource["candidate_to_baseline_time_ratio"],
+            "peak_rss_bytes": resource["candidate"]["max_peak_rss_bytes"],
+            "time_pass": resource["within_five_x_time_limit"],
+            "ram_pass": resource["within_four_gib_peak_rss_limit"],
+        }
     result = {
         "protocol": PROTOCOL, "split": "validation", "precision": "fp32", "device": "cpu",
         "control_bpb": control["bpb"], "control_checkpoint_sha256": control["checkpoint_sha256"],
@@ -63,7 +89,11 @@ def main():
         "candidates": rows, "selected": winner,
         "advance_threshold_bpb": 0.003,
         "advance_to_replication": winner["improvement_vs_control"] >= 0.003,
-        "status": "validation_selection_only; replication and resource gate required before freeze",
+        "inference_assets": inference_assets,
+        "inference_asset_bytes": sum(asset["bytes"] for asset in inference_assets),
+        "within_64_mib_asset_limit": sum(asset["bytes"] for asset in inference_assets) <= 64 * 1024**2,
+        "resource_gate": resource_gate,
+        "status": "validation_selection_only; replication pending; no new test result",
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
