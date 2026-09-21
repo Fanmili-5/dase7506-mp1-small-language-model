@@ -6,17 +6,27 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-Stage 15 optimization launched on Windows at 2026-09-21 11:41 UTC: a precision-matched no-copy ablation, a
-dual content/successor-copy model, an eight-layer copy backbone, and a separately
-accounted 3x-duration B run. See `code/docs/STAGE15_PLAN_20260921.md` for the
-predeclared budget, causal indexing and selection rule. These are experiments,
-not yet measured improvements. No new test evaluation is scheduled.
-Task receipt: `code/results/stage15-launch.json`. The startup snapshot confirms
-resource preflight, not completed training or a new score.
+Stage15 is partially completed (2026-09-21). Eight-layer prefix-copy F achieved
+**1.485094298 CPU FP32 validation BPB**, with a final three-repeat CPU ratio
+**4.877905x**, peak RSS **1,988,993,024 bytes**, and conservative inference assets
+**29,681,660 bytes**. Timing margin below the 5x cap is narrow. Its checkpoint
+and raw score/resource hashes have been checked locally; full trajectory
+collection/audit remains pending. The six-layer 3x-duration G run is active.
+No new test evaluation is scheduled. See `code/results/stage15-partial-evidence/`.
 
-**Current development/submission candidate: Stage-14 B (causal prefix copy),
-1.499334244 CPU FP32 validation BPB.** This candidate replaces v1 as the active
-optimization candidate, but has not received a final test evaluation. The final
+The precision-matched no-copy D averaged 1.547137283. Dual-copy E failed its
+resource preflight (6.1833x) and was not trained. Stage14 B remains the archived
+qualified 1.499334244 reference. Do not select a final Stage15 winner until G
+finishes. The lower-score F is a provisional development candidate, not a release.
+
+Transformer optimization continues through the bounded teacher/CE-control/KD
+plan in `code/docs/STAGE17_DISTILLATION_20260921.md`. It is implemented and locally
+tested, **not launched**; CUDA checks remain pending until Stage15 finishes.
+LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid
+scored 1.487889082 on validation but has not passed a resource gate; it is a
+reserve experiment, not a qualified replacement.
+
+No replacement candidate has received a final test evaluation. The final
 course submission will identify one immutable code version and its matching
 predictor checkpoint bundle. Historical freezes remain reproducibility records,
 not a restriction on replacing the submission candidate. Do not use historical
