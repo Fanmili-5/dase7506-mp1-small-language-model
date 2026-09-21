@@ -49,3 +49,23 @@ a regression test covers the native schema. Failed logs are retained. No model
 weights or historical inference code changed. Windows three new tests pass;
 local full suite83:78 passed,5 CUDA skipped. A real F checkpoint profiler smoke
 also passed on Mac; its timings are not substituted for Windows results.
+
+The independent serialized-hybrid CPU validation has now reproduced
+1.4733351642965178 at mixture weight.10 (H alone1.4823791185117505).
+Weight.05 scored1.4742628391522223. These are validation selection results;
+resource comparisons are still pending at this checkpoint in the work log.
+The .10 mixture increases seen-target loss by837.423 nats but decreases
+unseen-target loss by8034.039 nats; net improvement7196.616 nats. This is
+diagnostic evidence of complementarity, not a gate allowed to inspect targets.
+
+Added `audit_stage19_results.py` independently checks full-score arithmetic,
+coverage, group sums, source/asset receipts and aggregation of three raw resource
+repeats. A synthetic test rejects corrupted score arithmetic and false budget
+pass flags. Local suite now84:79 pass,5 CUDA skipped; the three startup tests,
+not this later local-only audit test, were run on Windows before launch.
+
+Stage18 completed evidence archived at `results/stage18-completed-evidence/`.
+Transport tar SHA256:1b808de9c7e1935c05e17ddda5e5a9e63126c10fa22fdeb720cd8d77f7a153c7.
+All its pinned sources still match; score arithmetic, checkpoint receipt links,
+376599-target coverage and117964800 total gradient targets checked. This check
+does not claim to independently reconstruct Stage18's averaged tensors.
