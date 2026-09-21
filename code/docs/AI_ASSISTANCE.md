@@ -70,3 +70,12 @@ review has happened.
 
 This disclosure must be updated before submission to name any additional AI tools
 and to describe material changes made after the initial framework was created.
+
+On 21 September, Codex implemented and tested a resource-aware two-model
+probability ensemble, validation-only weight scanner, checkpoint packager,
+periodic checkpoint preservation, and same-trajectory parameter averaging. It
+ran the bounded ensemble screen on validation and recorded both the quality gain
+and a provisional Mac CPU time-gate failure. It then preregistered the Windows
+resource recheck and a fresh 7,200-step, validation-only trajectory-averaging
+experiment. These post-v1 experiments must not use the already observed v1 test
+score for model or hyperparameter selection.

@@ -356,6 +356,45 @@ Only after choosing the mechanism:
 The equal-target evidence from Stages 1–2 remains the mechanism comparison even
 if the final leaderboard model is trained longer.
 
+### Stage 11 ensemble screen — 2026-09-21
+
+The frozen v1 predictor leaves limited CPU and asset headroom. Screen a
+two-member probability mixture on validation using the seed-17 width-256/depth-6
+dropout-0.10 checkpoint as the primary member and a 1.05M-parameter long-modern
+checkpoint as the auxiliary member. Predeclare primary weights 0.70, 0.75, 0.80,
+0.85, 0.90, 0.925, 0.95, 0.975, and 1.0. Compare one alternative auxiliary,
+RoPE+SwiGLU, on the same grid. Do not tune on test.
+
+The modern auxiliary reaches 1.559980116 validation BPB at primary weight 0.80,
+versus 1.575605774 for the primary alone. RoPE+SwiGLU reaches 1.560451122 at the
+same weight and is not retained. A standard packed ensemble independently
+reproduces 1.559980123 BPB and occupies 25,214,901 checkpoint bytes. One Mac
+fresh-process resource probe measures 7.046x baseline time and therefore fails
+the time gate on that machine, while peak RSS passes. Treat the ensemble as a
+quality-positive but resource-unconfirmed candidate. It may advance only if a
+three-repeat alternating Windows CPU benchmark is at most 5x baseline; otherwise
+discard it without a test call.
+
+### Stage 12 long schedule and trajectory averaging preregistration — 2026-09-21
+
+Independently of the ensemble gate, train one fresh seed-17 width-256/depth-6,
+dropout-0.10 model for 7,200 updates. Fix the cosine plan to 7,200 updates from
+initialization; do not resume the 4,800-step run. Keep the optimizer, effective
+batch 32, learning rate 0.001, weight decay 0.1, and 300-step validation cadence.
+This run processes 58,982,400 targets. Preserve periodic checkpoints so the
+following same-trajectory uniform parameter averages can be evaluated:
+
+1. steps 6,900 and 7,200;
+2. steps 6,600, 6,900, and 7,200;
+3. steps 6,000, 6,300, 6,600, 6,900, and 7,200.
+
+CPU FP32-score the validation-selected single checkpoint, endpoint, and all
+three averages. Select only among these predeclared candidates using validation.
+An average does not add inference cost or assets beyond one ordinary checkpoint.
+Advance only if the winner improves on 1.575605774 by at least 0.003 BPB; an
+improvement below 0.002 is treated as noise. Replication and a fresh resource
+gate are required before any new freeze. No test call is allowed in Stage 12.
+
 ### Score-first follow-up agreed on 2026-09-19
 
 Keep the first equal-target screen small. Use its learning curves to decide

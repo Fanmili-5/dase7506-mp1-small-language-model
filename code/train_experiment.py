@@ -94,6 +94,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--eval-every", type=int, default=0)
     parser.add_argument("--eval-batch-size", type=int, default=32)
     parser.add_argument("--save-every", type=int, default=100)
+    parser.add_argument(
+        "--keep-eval-checkpoints",
+        action="store_true",
+        help="Keep an immutable checkpoint for every periodic validation step.",
+    )
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--stop-after-step", type=int, default=0,
                         help="Save and stop early without changing the planned schedule (0 disables).")
@@ -166,6 +171,7 @@ def main() -> None:
         "threads": args.threads,
         "eval_every": args.eval_every,
         "eval_batch_size": args.eval_batch_size,
+        "keep_eval_checkpoints": args.keep_eval_checkpoints,
         "config": config,
         "seed": args.seed,
         "steps": args.steps,
@@ -269,6 +275,22 @@ def main() -> None:
                 checkpoint_payload(model, args.implementation, config, args.seed,
                                    completed_steps * args.micro_batch_size * args.grad_accum * 256),
                 args.run_dir / "checkpoint-best.pt",
+            )
+        if args.keep_eval_checkpoints and kind == "periodic":
+            checkpoint_dir = args.run_dir / "checkpoints"
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            snapshot = checkpoint_dir / f"step-{completed_steps:06d}.pt"
+            if snapshot.exists():
+                raise FileExistsError(f"Refusing to overwrite evaluation checkpoint: {snapshot}")
+            atomic_torch_save(
+                checkpoint_payload(
+                    model,
+                    args.implementation,
+                    config,
+                    args.seed,
+                    completed_steps * args.micro_batch_size * args.grad_accum * 256,
+                ),
+                snapshot,
             )
 
     def save_state(completed_steps: int) -> None:

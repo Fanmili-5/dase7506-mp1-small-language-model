@@ -29,7 +29,17 @@ training utilities, model variants, logs, and documentation are additive.
 - Formal resource gate: passed at 3.485x baseline CPU time, 1.972 GB peak RSS,
   and 21.14 MB of core inference assets.
 - Frozen full-test result: 1.605136467 BPB versus 2.102014912 for the initial
-  baseline. No post-test tuning or model reselection is permitted.
+  baseline. This v1 predictor remains immutable; subsequent development uses
+  validation only and requires a separate freeze before any new test call.
+
+Post-v1 development continues on validation only. A predeclared two-model
+probability mixture improves validation BPB from 1.575605774 to 1.559980123,
+but a one-repeat Mac CPU probe measures 7.046x baseline time and therefore does
+not satisfy the formal limit on that machine. It remains a resource-unconfirmed
+candidate pending the three-repeat Windows gate. In parallel, Stage 12 is
+preregistered as one fresh 7,200-step run plus three same-trajectory checkpoint
+averages; this route retains single-model inference cost. No new test call is
+authorized during these experiments.
 
 The first CPU FP32 validation results are baseline 2.072081282, RoPE-only
 1.922025745, SwiGLU-only 2.011474415, and modern bundle 1.835656528 BPB. Every run
