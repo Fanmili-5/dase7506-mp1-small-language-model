@@ -109,3 +109,10 @@ Yang et al. (Breaking the Softmax Bottleneck, arXiv:1711.03953); they are not
 claimed as original algorithms or reproductions of those papers' benchmark
 scores. The unchanged backbone is hash-pinned. Training and evaluation outcomes
 must be recorded separately from implementation and test success.
+
+Codex verified all three Stage-14 CPU preflights from their raw repetitions and
+implemented a post-run auditor for checkpoint identities, fixed evaluation
+coverage, training budgets, averaging ancestry and resource evidence. The new
+auditor was checked with synthetic negative cases and real preflight JSONs; a
+complete trained-screen audit remains pending until training finishes. It does
+not change any source hash pinned by the running job or invoke test evaluation.

@@ -60,6 +60,17 @@ Resource-gated training is orchestrated by `scripts/run_architecture_screen.py`.
 These are unproven candidates, not new leaderboard results. See the architecture
 plan for method sources, controls, budgets, and selection rules.
 
+All three random-initialization resource preflights have passed on Windows:
+3.255x CPU time for A (wide/shallow), 3.904x for B (prefix copy), and 4.098x for
+C (two-component output); each uses about 1.98 GB peak process RSS. Raw evidence
+is in `code/results/stage14-preflight/`. These measurements do not establish
+trained-model quality or replace the final exact-checkpoint resource gate.
+The bounded job has advanced to training. A completed screen can be audited with
+`python scripts/audit_architecture_screen.py --run-dir runs/stage14-architecture-s17
+--output results/stage14-audit.json` (one command, run inside `code/`). The audit
+requires the original checkpoints and averaging snapshots and rejects partial
+results, mismatched scores, changed sources, or incompatible training budgets.
+
 The first CPU FP32 validation results are baseline 2.072081282, RoPE-only
 1.922025745, SwiGLU-only 2.011474415, and modern bundle 1.835656528 BPB. Every run
 processed 9,830,400 training targets. These are single-seed validation screening
