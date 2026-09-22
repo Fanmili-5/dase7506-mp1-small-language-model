@@ -18,3 +18,13 @@ collapsed modified-Kneser-Ney expert at weight .125. It must pass the unchanged
 5x CPU, 4 GiB RSS and 64 MiB asset limits before training is implemented or
 launched. Passing is only feasibility evidence, not a quality claim. Test is
 not scored.
+
+## Preflight result
+
+The complete random-weight MoE plus fixed collapsed MKN expert passed all three
+gates. Across three fresh CPU processes its median candidate-to-baseline ratio
+was **4.872452227x**; maximum peak RSS was 2,052,231,168 bytes and conservative
+inference assets were 52,622,669 bytes. The neural graph contains 8,954,369
+parameters. This admits one matched-target training run but does not establish
+quality, and the final trained/exported checkpoint must repeat the exact gate.
+No test split was scored.
