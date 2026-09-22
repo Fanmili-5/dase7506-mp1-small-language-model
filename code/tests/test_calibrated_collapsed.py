@@ -5,6 +5,7 @@ import torch
 from torch.nn import functional as F
 
 import student_calibrated_collapsed
+import student_calibrated_collapsed_fast
 import student_ngram
 
 
@@ -61,6 +62,26 @@ class CalibratedCollapsedTests(unittest.TestCase):
         loss.backward()
         self.assertTrue(math.isfinite(float(loss)))
         self.assertTrue(any(parameter.grad is not None for parameter in model.neural.parameters()))
+
+    def test_fast_temperature_association_is_tightly_equivalent(self):
+        _, exact, _ = self.pair()
+        config = dict(
+            kind="hybrid_calibrated_fast", mixture_weight=exact.weight,
+            vocab=exact.vocab, context=exact.context,
+            order_shapes=[(table.keys.numel(), table.mass.numel()) for table in exact.ngram.tables],
+            neural_config=exact.neural.config,
+            vocabulary_temperature=exact.vocabulary_temperature,
+            unigram_prior_weight=exact.unigram_prior_weight,
+            copy_gate_shift=exact.copy_gate_shift,
+            calibration_log_prior=exact.calibration_log_prior.tolist(),
+        )
+        fast = student_calibrated_collapsed_fast.build_model(config).eval()
+        fast.load_state_dict(exact.state_dict())
+        ids = torch.tensor([[4, 7, 4, 9, 2, 4], [3, 8, 3, 1, 6, 3]])
+        with torch.inference_mode():
+            expected, actual = exact(ids), fast(ids)
+        self.assertLess(float((expected - actual).abs().max()), 5e-5)
+        self.assertLess(float(actual.logsumexp(-1).abs().max()), 2e-6)
 
 
 if __name__ == "__main__":
