@@ -30,3 +30,16 @@ separately; Stage25 adds no gradient targets.
 Substantive AI assistance covers the estimator design, implementation, tests,
 experiment orchestration and interpretation. The student must understand and
 disclose it.
+
+## Result
+
+Both fixed screens completed and were independently reproduced by the official
+CPU FP32 evaluator. Minimum count 2 selected weight 0.125 and scored
+**1.4543903596** BPB (checkpoint SHA256
+`3669552af47ef7cae72c14be15359d798ae1afbe7fbd3608f21d43414a555ad5`).
+Minimum count 3 selected weight 0.10 and scored 1.4600359456. Thus min2 improves
+the qualified Stage24 candidate by 0.0074145488 BPB and advances to exact
+collapsed-inference/resource qualification. Its unoptimized checkpoint is
+44,053,514 bytes; this is not yet a resource pass. Raw build and screen evidence
+is retained under `results/stage25-evidence/`, with job logs separate. No test
+split was scored and Stage24 remains the qualified fallback until Stage27.

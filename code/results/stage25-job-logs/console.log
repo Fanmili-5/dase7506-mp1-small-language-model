@@ -1,0 +1,56 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922181520
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage25 -RunId stage25-20260922-a
+进程 ID: 70220
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage25-20260922-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_complete_positive_normalized_causal_distribution (tests.test_kneser_ney.KneserNeyTests.test_complete_positive_norma
+lized_causal_distribution) ... ok
+test_discounts_are_bounded_by_count_buckets (tests.test_kneser_ney.KneserNeyTests.test_discounts_are_bounded_by_count_bu
+ckets) ... ok
+test_lower_orders_use_distinct_left_continuations (tests.test_kneser_ney.KneserNeyTests.test_lower_orders_use_distinct_l
+eft_continuations) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.015s
+
+OK
+  },
+  "checkpoint_bytes": 16610566,
+  "checkpoint_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "build_seconds": 24.75074379995931,
+  "trainable_parameters": 0,
+  "status": "train-only statistics built; quality and resources pending"
+}
+
+
+
+
+Stage25 complete: two modified-KN quality screens; no resource claim or test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922182124
+**********************
