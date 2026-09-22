@@ -33,3 +33,8 @@ The prototype currently computes a separate dense count distribution and is
 expected to resemble Stage20 timing. If and only if it improves quality, its
 same arithmetic must be collapsed/directly accumulated before resource
 qualification. No unchanged-code timing reruns and no test scoring.
+
+The first Windows launch (`stage23-20260922-a`) stopped before tokenization,
+fitting, or scoring because Python used the host's GBK default codec for the
+UTF-8 training text. The failed logs are retained. The corrected launch reads
+all text inputs with an explicit UTF-8 codec and uses a new task identifier.

@@ -56,11 +56,11 @@ def main():
     if (neural_payload["protocol"]!=PROTOCOL or neural_payload["implementation"]!="student_structured"
             or neural_payload.get("seed")!=17 or "training_deep_supervision" not in neural_payload):
         raise ValueError("Expected the Stage22 exported neural model")
-    manifest=json.loads((ROOT/"data/manifest.json").read_text())
+    manifest=json.loads((ROOT/"data/manifest.json").read_text(encoding="utf-8"))
     for name in ("wikitext_train.txt","tokenizer.json"):
         if sha(ROOT/"data"/name)!=manifest["sha256"][name]: raise ValueError("Training inputs changed")
     ids=Tokenizer.from_file(str(ROOT/"data/tokenizer.json")).encode(
-        (ROOT/"data/wikitext_train.txt").read_text()).ids
+        (ROOT/"data/wikitext_train.txt").read_text(encoding="utf-8")).ids
     cut90=int(len(ids)*.90); cut95=int(len(ids)*.95)
     # Count expert never observes either gate-fit or gate-selection segment.
     fold_model,fold_config,fold_summary=fit_tables(ids[:cut90],max_order=5,min_count=3,discount=.75)
