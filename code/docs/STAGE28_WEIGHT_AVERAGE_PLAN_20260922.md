@@ -15,3 +15,13 @@ FP32 validation screens the seven fixed candidates, followed by one independent
 CPU FP32 verification of the winner. No test scoring. A winner must then be
 re-mixed with train-only counts and independently resource-qualified; otherwise
 the current Stage27/Stage24 chain remains unaffected.
+
+## Result
+
+The original last-five average remained best: GPU FP32 validation 1.4702547245,
+independently reproduced on CPU at 1.4702546457. Last-two, last-three and
+last-four averages scored 1.4716604975, 1.4709971706 and 1.4705547205. Compatible
+weight interpolation was harmful: Stage22 fractions 0.50, 0.75 and 0.875 scored
+1.9633665792, 1.6054625001 and 1.4917000370. Stage28 is rejected and changes no
+candidate. Raw evidence is under `results/stage28-evidence/`; no test scoring or
+new gradient targets occurred.
