@@ -31,9 +31,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--config", type=Path, default=Path("configs/stage33_depth10_width224.json"))
+    parser.add_argument("--beta2", type=float, default=.999)
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Choose a new run directory")
+    if not .9 <= args.beta2 < 1:
+        parser.error("--beta2 must lie in [0.9,1)")
     args.run_dir.mkdir(parents=True)
     checkpoints = args.run_dir / "checkpoints"
     checkpoints.mkdir()
@@ -44,7 +47,7 @@ def main():
     config = json.loads(config_path.read_text(encoding="utf-8"))
     torch.manual_seed(17); torch.cuda.manual_seed_all(17)
     model, implementation_sha = make_model("student_multi_token", config, device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, betas=(.9, .999), weight_decay=.1)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, betas=(.9, args.beta2), weight_decay=.1)
     data = load_data()
     tokens = data["train"][0].to(device)
     rng = torch.Generator().manual_seed(17)
@@ -59,6 +62,7 @@ def main():
         future_label_presentations=TARGETS * len(offsets), future_offsets=list(offsets),
         deep_supervision_weight=config["deep_supervision_weight"],
         future_prediction_weight=config["future_prediction_weight"],
+        optimizer="AdamW", optimizer_betas=[.9, args.beta2], weight_decay=.1,
         comparison=(f"Stage26 schedule/targets; only 8x256 to "
                     f"{config['depth']}x{config['width']} and auxiliary layer indices change"),
         precision=precision, parameters=sum(parameter.numel() for parameter in model.parameters()),
