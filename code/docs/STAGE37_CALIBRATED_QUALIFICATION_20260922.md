@@ -18,4 +18,9 @@ qualified fallback until an equivalent faster implementation passes.
 
 Stage39 separately tests the mathematically equivalent temperature reassociation
 with a declared 5e-5 full-output tolerance and an independent complete-score
-tolerance of 1e-6. No test data was scored.
+tolerance of 1e-6. It completed with checkpoint SHA-256
+`294ae321dec8eddc7e4942f759c75f16b3333ea1ecf22b532e13295b1ced3a19`,
+validation BPB **1.4464620191**, CPU ratio **4.837137190x**, peak RSS
+2,045,800,448 bytes and conservative assets 44,242,609 bytes. Stage39 therefore
+replaces Stage27 as the resource-qualified validation leader. No test data was
+scored.

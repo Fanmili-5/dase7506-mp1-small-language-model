@@ -20,6 +20,7 @@ completed one-off Windows job. Large checkpoints and per-window arrays remain
 ignored by Git; their hashes are recorded in the JSON evidence.
 
 `stage27-evidence/` and `stage27-job-logs/` contain the corresponding receipts
-for the later 1.454390432 modified-Kneser-Ney hybrid, which is the current
-resource-qualified validation leader. Stage24 remains the wider CPU-margin
-fallback.
+for the 1.454390432 modified-Kneser-Ney hybrid. `stage39-evidence/` and
+`stage39-job-logs/` contain the full-output equivalence, independent CPU FP32
+score and fresh three-repeat resource gate for the current 1.446462019
+validation leader. Stage27 remains a wider-margin fallback.
