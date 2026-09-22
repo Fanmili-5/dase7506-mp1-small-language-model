@@ -22,7 +22,7 @@ AVERAGE_STEPS = (6000, 6300, 6600, 6900, 7200)
 SOURCE_FILES = (
     "student_multi_token.py", "student_deep_supervision.py", "student_regularized.py",
     "student_structured.py", "student.py", "scripts/train_stage34_depth_multi_token.py",
-    "train_experiment.py", "evaluate.py", "common.py", "configs/stage33_depth10_width224.json",
+    "train_experiment.py", "evaluate.py", "common.py",
     "data/manifest.json", "data/tokenizer.json",
 )
 
@@ -30,6 +30,7 @@ SOURCE_FILES = (
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--config", type=Path, default=Path("configs/stage33_depth10_width224.json"))
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Choose a new run directory")
@@ -37,7 +38,9 @@ def main():
     checkpoints = args.run_dir / "checkpoints"
     checkpoints.mkdir()
     device, precision = setup("cuda", "bf16", 4)
-    config_path = ROOT / "configs/stage33_depth10_width224.json"
+    if args.config.is_absolute() or ".." in args.config.parts:
+        parser.error("Config must be a package-relative path")
+    config_path = ROOT / args.config
     config = json.loads(config_path.read_text(encoding="utf-8"))
     torch.manual_seed(17); torch.cuda.manual_seed_all(17)
     model, implementation_sha = make_model("student_multi_token", config, device)
@@ -45,7 +48,8 @@ def main():
     data = load_data()
     tokens = data["train"][0].to(device)
     rng = torch.Generator().manual_seed(17)
-    sources = {name: sha(ROOT / name) for name in SOURCE_FILES}
+    source_files = (*SOURCE_FILES, args.config.as_posix())
+    sources = {name: sha(ROOT / name) for name in source_files}
     offsets = tuple(config["future_prediction_offsets"])
     span = 256 + max(offsets)
     plan = dict(
@@ -55,7 +59,8 @@ def main():
         future_label_presentations=TARGETS * len(offsets), future_offsets=list(offsets),
         deep_supervision_weight=config["deep_supervision_weight"],
         future_prediction_weight=config["future_prediction_weight"],
-        comparison="Stage26 schedule/targets; only 8x256 to 10x224 and auxiliary layer indices change",
+        comparison=(f"Stage26 schedule/targets; only 8x256 to "
+                    f"{config['depth']}x{config['width']} and auxiliary layer indices change"),
         precision=precision, parameters=sum(parameter.numel() for parameter in model.parameters()),
         implementation_sha256=implementation_sha, source_hashes=sources,
         started_utc=datetime.now(timezone.utc).isoformat(), no_test_scoring=True,
