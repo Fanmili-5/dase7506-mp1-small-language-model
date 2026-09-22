@@ -60,6 +60,15 @@ class MoETests(unittest.TestCase):
             b = model(second)
         torch.testing.assert_close(a[:, :17], b[:, :17], atol=2e-6, rtol=0)
 
+    def test_autocast_dispatch_dtype(self):
+        model = student_moe_multi_token.build_model(self.config).train()
+        ids = torch.randint(2048, (2, 16))
+        targets = torch.randint(2048, ids.shape)
+        future = torch.randint(2048, (2, *ids.shape))
+        with torch.autocast(device_type="cpu", dtype=torch.bfloat16):
+            loss, _ = model.training_loss(ids, targets, future)
+        self.assertTrue(torch.isfinite(loss))
+
 
 if __name__ == "__main__":
     unittest.main()

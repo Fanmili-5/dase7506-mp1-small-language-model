@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $CodeRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $CodeRoot
 $Python = "$CodeRoot\.venv\Scripts\python.exe"
-$Run = "runs/stage48-top1-moe-s17"
+$Run = "runs/stage48-top1-moe-s17-b"
 $PreflightPath = "runs/stage46-top1-moe-preflight/preflight.json"
 if (Test-Path $Run) { throw "Refusing to overwrite Stage48" }
 if (-not (Test-Path $PreflightPath)) { throw "Stage46 preflight is missing" }

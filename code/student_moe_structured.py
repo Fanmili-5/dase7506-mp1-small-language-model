@@ -54,6 +54,7 @@ class Top1SwiGLU(nn.Module):
             expert_output = expert(selected)
             gate = probabilities.index_select(0, indices)[:, expert_index]
             expert_output = expert_output * (self.gate_scale * gate).to(expert_output.dtype)[:, None]
+            expert_output = expert_output.to(output.dtype)
             output = output.index_copy(0, indices, expert_output)
         if self.training:
             fractions = F.one_hot(choices, self.expert_count).float().mean(dim=0)

@@ -16,3 +16,10 @@ the learned routers and experts, with exact output equivalence checked.
 The neural average must improve Stage26 by at least 0.003 BPB before MKN
 calibration and final trained-checkpoint resource qualification. Passing the
 random-weight resource gate was not a quality claim. No test split is scored.
+
+The first launch stopped on its first BF16 forward before completing any update:
+the sparse `index_copy` destination was FP32 while autocast made expert outputs
+BF16. The failed run and logs are retained. The fix explicitly casts each
+expert result back to the residual dtype and adds a CPU BF16-autocast regression
+test. The replacement launch uses a new run directory; experimental settings
+are unchanged.
