@@ -78,3 +78,51 @@ This is a separately serialized file from the Mac copy; qualification must use
 the Windows receipt's exact checkpoint, with unchanged tensor contents audited.
 An additional local test rejects invalid/underflowing count statistics; five
 new tests pass locally, while four ran at Windows job startup.
+
+## Completed outcome
+
+Windows job completed successfully at2026-09-22 05:06:04 UTC. Successful job
+completion does not imply resource qualification. Independent official CPU
+validation and all three resource runs produced BPB1.4733352401741464.
+
+| Measurement | Result | Course gate |
+|---|---:|---|
+| Baseline seconds, three fresh processes | 12.2158342 / 12.2967602 / 12.2989462 | paired control |
+| Candidate seconds, three fresh processes | 61.8275734 / 62.0502763 / 62.0517202 | median62.0502763 |
+| Ratio of medians | 5.0460670364 | FAIL: maximum5 |
+| Peak process RSS | 2,022,481,920 bytes | PASS: maximum4GiB |
+| Uncompressed inference assets | 38,147,998 bytes | PASS: maximum64MiB |
+
+The previous hybrid's measured ratio was5.4373469283. Cross-stage timings are
+not simultaneous paired speedup estimates, but this stage's fresh paired gate
+still fails unambiguously. It exceeds5x by0.9213%; at this measured baseline,
+the candidate would need at least0.913% less time just to touch the limit.
+Do not round5.046 to5 or repeatedly benchmark unchanged code seeking a pass.
+The qualified fallback remains Stage18 H:1.4823791185117505 validation BPB.
+
+Exact Windows checkpoint was copied to the project output directory
+`outputs/windows-stage20-20260922/fast-hybrid.pt`; SHA256 matches the receipt
+above. Raw archive SHA256:
+447d7109d465f024e751dcb5959ecd7356d80c215d78650dfc8a8bac718d2e11.
+Receipts are checked in at `results/stage20-evidence/`. Local audit
+`results/stage20-audit.json` verified every source hash, score arithmetic and
+coverage, unchanged serialized tensors/config/ancestry, actual asset bytes,
+count floor, and three-repeat resource aggregation. No test scoring or new
+gradient targets. Final local suite:89 tests,84 passed and5 CUDA skipped;
+all10 official fixed files unchanged.
+
+## Next mechanism to investigate, not implemented
+
+A small Mac diagnostic processed the first validation batch in chunks of32,
+16,8 and4. Full outputs matched exactly; measured times were approximately
+.766/.762/.783/.764 seconds. This provides no useful speed signal and is not
+a Windows resource gate; no batch-tiling change was deployed.
+
+The remaining count recurrence still scans a dense full-vocabulary tensor once
+per order. A candidate follow-up is to expand the same backoff recurrence into
+one dense unigram term plus sparse per-order contributions, and accumulate it
+directly into the neural/copy mixture. This could reduce memory traffic without
+changing the predictor, but is only a hypothesis. It requires an additive
+implementation, the same full-output/normalization/BPB tolerances, followed by
+fresh paired Windows resource measurements with comfortable timing margin.
+No such follow-up has been launched; Stage20 sources and evidence are retained.

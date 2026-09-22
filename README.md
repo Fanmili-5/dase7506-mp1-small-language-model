@@ -6,7 +6,7 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-Stage19 completed on September22 Hong Kong time. **Current resource-qualified
+Stage20 completed on September22 Hong Kong time. **Current resource-qualified
 development candidate: Stage18 H, 1.482379119 CPU FP32 validation BPB**;
 three-repeat Windows CPU ratio4.802831x, peak RSS1,989,242,880 bytes and total
 inference assets29,678,074 bytes. Its unchanged train-count mixture improves
@@ -16,6 +16,16 @@ evaluation. Audit checks raw scoring/resource records, source hashes and exact
 equality of all hybrid tensors to H plus the original train-only count tables.
 Both checkpoint files are backed up locally with matching SHA256 receipts.
 See `code/results/stage19-audit.json` and `code/docs/STAGE19_COMPLEMENTARITY_20260922.md`.
+
+Stage20 preserves that hybrid's tensors, counts and .10 mixture weight while
+fusing inference operations. Full-validation numerical equivalence passed;
+official CPU FP32 BPB **1.473335240**. Three-repeat Windows CPU ratio improved
+to **5.046067x**, but still **fails** the unchanged 5x cap. Peak RSS2,022,481,920
+bytes and total inference assets38,147,998 bytes pass. This is an inference
+speed improvement, not a learned-quality gain or qualified replacement. Exact
+Windows checkpoint and raw evidence are collected and audited; no new training
+or test scoring. See `code/results/stage20-audit.json` and
+`code/docs/STAGE20_EQUIVALENT_INFERENCE_20260922.md`.
 
 Stage15 completed and passed its full Windows artifact audit (2026-09-21).
 **Previous qualified reference: eight-layer prefix-copy F**, which achieved
