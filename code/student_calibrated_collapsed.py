@@ -27,7 +27,7 @@ class CalibratedCollapsedHybridLM(student_ngram_collapsed.CollapsedHybridLM):
 
     def _neural_log_probs(self, hidden, ids):
         vocabulary = F.log_softmax(
-            self.neural.head(hidden) / self.vocabulary_temperature
+            self.neural.head(hidden / self.vocabulary_temperature)
             + self.unigram_prior_weight * self.calibration_log_prior,
             dim=-1,
         )
@@ -47,7 +47,7 @@ class CalibratedCollapsedHybridLM(student_ngram_collapsed.CollapsedHybridLM):
                 return torch.logaddexp(neural + math.log1p(-self.weight),
                                        self.ngram(ids) + math.log(self.weight))
             result = F.softmax(
-                self.neural.head(hidden) / self.vocabulary_temperature
+                self.neural.head(hidden / self.vocabulary_temperature)
                 + self.unigram_prior_weight * self.calibration_log_prior,
                 dim=-1,
             )
