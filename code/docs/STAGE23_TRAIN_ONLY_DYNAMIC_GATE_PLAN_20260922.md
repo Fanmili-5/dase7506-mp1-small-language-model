@@ -38,3 +38,14 @@ The first Windows launch (`stage23-20260922-a`) stopped before tokenization,
 fitting, or scoring because Python used the host's GBK default codec for the
 UTF-8 training text. The failed logs are retained. The corrected launch reads
 all text inputs with an explicit UTF-8 codec and uses a new task identifier.
+
+## Result
+
+The corrected `stage23-20260922-b` job completed. Train-only early stopping
+selected epoch 35 of 43 and drove the mean count weight to 0.00013485. The
+exported checkpoint scored 1.4701782815 validation BPB on CPU FP32. This is only
+0.0000763642 below the pure Stage22 neural model and is 0.0083734788 worse than
+the fixed 0.075 count mixture (1.4618048027). The dynamic gate is rejected; no
+resource qualification or test scoring is justified. Raw fit, validation and
+job evidence is retained under `results/stage23-evidence/` and
+`results/stage23-job-logs/`.

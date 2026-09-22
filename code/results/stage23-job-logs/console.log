@@ -1,0 +1,54 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922174845
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage23 -RunId stage23-20260922-b
+进程 ID: 51708
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage23-20260922-b\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_initial_gate_is_point_one_and_distribution_is_valid (tests.test_dynamic_gate.DynamicGateTests.test_initial_gate_is_
+point_one_and_distribution_is_valid) ... ok
+test_nonfinite_gate_rejected (tests.test_dynamic_gate.DynamicGateTests.test_nonfinite_gate_rejected) ... ok
+test_only_input_prefix_controls_gate_and_gradients (tests.test_dynamic_gate.DynamicGateTests.test_only_input_prefix_cont
+rols_gate_and_gradients) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.058s
+
+OK
+      }
+    ],
+    "no_validation_or_test_fitting": true,
+    "source_sha256": "8c0fdf293eb8c61f750d703911ede71a553f8609fa5392614fddae0e573de0ef"
+  },
+  "note": "Neural expert saw the full supplied training text in its earlier training; count fold excludes both gate segm
+ents. No validation/test used here."
+}
+
+
+Stage23 complete: train-only gate plus validation score; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922175231
+**********************

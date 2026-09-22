@@ -82,8 +82,10 @@ try {
         & "$PSScriptRoot\run_stage21_windows.ps1"
     } elseif ($Job -eq "stage22") {
         & "$PSScriptRoot\run_stage22_windows.ps1"
-    } else {
+    } elseif ($Job -eq "stage23") {
         & "$PSScriptRoot\run_stage23_windows.ps1"
+    } else {
+        & "$PSScriptRoot\run_stage24_windows.ps1"
     }
     Write-JobStatus "completed" 0 ""
     $ResultCode = 0
