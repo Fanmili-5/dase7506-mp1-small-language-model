@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19", "stage20", "stage21", "stage22", "stage23", "stage24", "stage25", "stage26", "stage27", "stage28", "stage30", "stage31")]
+    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19", "stage20", "stage21", "stage22", "stage23", "stage24", "stage25", "stage26", "stage27", "stage28", "stage30", "stage31", "stage32")]
     [string]$Job,
     [Parameter(Mandatory = $true)]
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
@@ -96,8 +96,10 @@ try {
         & "$PSScriptRoot\run_stage28_windows.ps1"
     } elseif ($Job -eq "stage30") {
         & "$PSScriptRoot\run_stage30_windows.ps1"
-    } else {
+    } elseif ($Job -eq "stage31") {
         & "$PSScriptRoot\run_stage31_windows.ps1"
+    } else {
+        & "$PSScriptRoot\run_stage32_windows.ps1"
     }
     Write-JobStatus "completed" 0 ""
     $ResultCode = 0
