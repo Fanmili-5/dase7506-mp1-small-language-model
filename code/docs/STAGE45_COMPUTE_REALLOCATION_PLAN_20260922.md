@@ -17,3 +17,14 @@ candidate neural graph plus the fixed collapsed min-count-2 modified-Kneser-Ney
 expert at weight .125, measured against the same baseline for three repetitions.
 It must pass 5x CPU, 4 GiB peak RSS and 64 MiB assets before any gradient update.
 Passing establishes feasibility only, not quality. No test split is scored.
+
+## Result
+
+The three-repeat random-weight full-hybrid preflight failed the unchanged CPU
+limit: median candidate-to-baseline time was **5.080119851x**. Peak RSS was
+2,051,219,456 bytes and conservative inference assets were 44,529,570 bytes, so
+memory and assets passed. The graph has 6,935,617 neural parameters. This
+isolates the failure to runtime: wider attention and vocabulary/copy projections
+cost more even though the per-block projection parameter count was matched.
+Stage45 is rejected before gradient training. No validation quality claim or
+test score was produced.
