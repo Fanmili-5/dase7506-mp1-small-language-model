@@ -82,6 +82,17 @@ class FastNgramTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"Unigram"):
             new.load_state_dict(state)
 
+    def test_invalid_and_underflowing_statistics_are_rejected(self):
+        old,new = self.pair()
+        bad = {k:v.clone() for k,v in old.state_dict().items()}
+        bad["ngram.tables.0.backoff"][0] = 0
+        with self.assertRaisesRegex(ValueError,"backoff"):
+            new.load_state_dict(bad)
+        bad = {k:v.clone() for k,v in old.state_dict().items()}
+        bad["ngram.unigram"][0] = 1e-40
+        with self.assertRaisesRegex(ValueError,"floor too small"):
+            new.load_state_dict(bad)
+
 
 if __name__ == "__main__":
     unittest.main()

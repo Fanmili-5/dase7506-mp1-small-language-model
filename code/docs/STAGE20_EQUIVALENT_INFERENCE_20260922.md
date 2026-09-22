@@ -64,3 +64,17 @@ Deployment tar SHA256:f0c53270fc8ea5c0926efdb6eed4214566e8945c33b746a591957e0f6c
 Windows performs its own full-output parity/export, then independent official
 scoring and three-repeat resources; no fixed evaluator or historical predictor
 source was modified. The recovered private SSH forward uses localhost62267.
+
+Windows one-off job `MP1-stage20-20260922-a` started2026-09-22 04:56:18 UTC
+(12:56 Hong Kong). Its four synthetic tests passed before the full parity pass.
+Local full suite88:83 passed,5 CUDA skipped; all10 official fixed-file hashes
+unchanged. Windows resource/official-score outcome still pending at launch.
+
+Windows full-validation parity subsequently passed: old BPB1.4733351642965178,
+optimized1.4733352401741464, max absolute log-prob error5.722046e-6 and
+normalization error8.344650e-7. Exported Windows checkpoint SHA256:
+6c4be27c4b0863d8cd044fde907dde5638fb0661c48dba82349aca0d219b3a37.
+This is a separately serialized file from the Mac copy; qualification must use
+the Windows receipt's exact checkpoint, with unchanged tensor contents audited.
+An additional local test rejects invalid/underflowing count statistics; five
+new tests pass locally, while four ran at Windows job startup.
