@@ -62,6 +62,12 @@ complementarity to cross1.4, but a legal gate must infer the choice from input
 features and will be worse. Therefore gate work remains a secondary path while
 one fixed neural training intervention runs.
 
+A legal-feature diagnostic grouped positions only by the highest matched n-gram
+order, then (diagnostically) selected one weight per group on validation. It
+reached1.4727502299, just0.000585 better than the fixed mixture despite using
+validation-fitted weights. Order-only gating is closed. Any later gate must use
+richer input-only features and be fitted on training text, not validation.
+
 ## Fixed primary experiment
 
 `student_deep_supervision.py` keeps H's eight-layer prefix-copy Transformer and
