@@ -1,0 +1,25 @@
+$ErrorActionPreference = "Stop"
+$CodeRoot = Split-Path -Parent $PSScriptRoot
+Set-Location $CodeRoot
+$Python = "$CodeRoot\.venv\Scripts\python.exe"
+$Run = "runs/stage37-calibrated-qualified"
+$Source = "runs/stage30-multi-token-mkn/best-mixture.pt"
+$Baseline = "runs/stage3-long-baseline-s17/checkpoint-best.pt"
+if (Test-Path $Run) { throw "Refusing to overwrite Stage37" }
+& $Python scripts/verify_fixed_files.py
+if ($LASTEXITCODE -ne 0) { throw "Fixed files changed" }
+& $Python -m unittest tests.test_calibrated_collapsed -v
+if ($LASTEXITCODE -ne 0) { throw "Calibrated collapsed tests failed" }
+& $Python scripts/prepare_stage37_calibrated.py --source $Source --run-dir $Run
+if ($LASTEXITCODE -ne 0) { throw "Stage37 serialization/equivalence failed" }
+& $Python evaluate.py --checkpoint "$Run/calibrated-collapsed.pt" --device cpu `
+    --precision fp32 --threads 4 --split validation --output "$Run/validation-cpu-fp32.json"
+if ($LASTEXITCODE -ne 0) { throw "Stage37 independent validation failed" }
+& $Python scripts/benchmark_cpu.py --baseline $Baseline --candidate "$Run/calibrated-collapsed.pt" `
+    --repeats 3 --threads 4 --output "$Run/resources.json"
+if ($LASTEXITCODE -ne 0) { throw "Stage37 resource measurement failed" }
+& $Python scripts/finalize_stage37.py --run-dir $Run
+if ($LASTEXITCODE -ne 0) { throw "Stage37 final audit failed" }
+& $Python scripts/verify_fixed_files.py
+if ($LASTEXITCODE -ne 0) { throw "Final fixed files changed" }
+Write-Output "Stage37 complete: inspect calibrated qualification; no test scoring."
