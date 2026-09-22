@@ -64,3 +64,49 @@ It compares the expanded counts to the old recurrence for missing contexts,
 lengths1/3/4/17/256, repeated IDs and scales0/.1/.9, with immutable repeatable
 outputs. This synthetic test RNG is not a model training/selection seed.
 Running Windows implementation/measurement sources have not been modified.
+
+## Completed Windows measurement
+
+Job completed2026-09-22 08:21:23 UTC. Official validation and all three fresh
+resource processes returned BPB1.473335240302804.
+
+| Measurement | Result | Gate |
+|---|---:|---|
+| Baseline seconds | 12.2451384 / 12.6848014 / 12.3499954 | median12.3499954 |
+| Candidate seconds | 60.0980746 / 61.6058403 / 59.8974415 | median60.0980746 |
+| Ratio of medians | 4.8662426708 | PASS: maximum5 |
+| Peak process RSS | 2,025,037,824 bytes | PASS: maximum4GiB |
+| All uncompressed inference assets | 38,153,250 bytes | PASS: maximum64MiB |
+
+This is the first resource-passing implementation of the fixed Stage19 hybrid.
+Compared with the prior qualified H, validation BPB is lower by0.0090438782.
+The prediction gain was already observed in Stage19; Stage21 supplies an
+equivalent implementation that passes the budget on the measured machine.
+Timing margin below5x is2.675%; this is narrow and not a universal guarantee.
+No repeated unchanged-code measurement was discarded to obtain this pass.
+
+Transport archive SHA256:
+36d07ac890f66f6892849782c6027d3f394731325eb97674caff30dc80a48655.
+Raw evidence belongs in `results/stage21-evidence/`; exact Windows checkpoint
+is backed up in project `outputs/windows-stage21-20260922/collapsed-hybrid.pt`.
+The audit checks score arithmetic/coverage, all source hashes, exact tensors and
+ancestry, serialized file size, all inference assets and resource aggregation.
+Local `results/stage21-audit.json` completed with status `verified` and
+`qualified_on_measured_windows_cpu=true`; transport/checkpoint hashes match.
+Final local suite97:92 pass,5 CUDA skipped; all10 fixed files unchanged.
+
+This candidate is a development selection, not a final frozen/tested release.
+H and all historical candidates remain preserved. No new training/search
+targets, no test score, no leaderboard submission in this stage.
+
+## Follow-up priorities
+
+The immediate CPU blocker is resolved. Further quality work should therefore
+be separated from equivalent inference optimization: fix a small hypothesis
+and comparison budget, select on validation, then recheck the exact exported
+predictor. The .10 mixture was best at the boundary of Stage19's0/.05/.10 grid;
+a small bounded extension can determine whether that branch still has room,
+but a large gain is not established. A more involved alternative is a gate
+trained only on training prefixes, compared against this fixed-weight control;
+target-dependent seen/unseen diagnostic groups must never be gate inputs.
+Neither follow-up is launched by this stage; no claim of reaching1.3 BPB.

@@ -6,12 +6,24 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-Stage20 completed on September22 Hong Kong time. **Current resource-qualified
-development candidate: Stage18 H, 1.482379119 CPU FP32 validation BPB**;
+Stage21 completed on September22 Hong Kong time. **Current resource-qualified
+development candidate: collapsed-backoff hybrid, 1.473335240 CPU FP32 validation
+BPB**. Three-repeat Windows CPU ratio **4.866243x** passes the5x limit;
+peak RSS2,025,037,824 bytes and total inference assets38,153,250 bytes also pass.
+The Stage19 hybrid's weights, count tables, .10 mixture ratio and training
+ancestry are unchanged. Full-output equivalence passed after sparse arithmetic
+reorganization. This makes its existing quality gain resource-eligible; it is
+not a new learned-quality gain. Timing margin is only2.68% on this Windows CPU,
+not a guarantee on other machines. No new training or test scoring.
+See `code/results/stage21-audit.json`, `code/docs/STAGE21_COLLAPSED_BACKOFF_20260922.md`
+and the Chinese explanation `code/docs/HYBRID_INFERENCE_EXPLAINED_ZH.md`.
+
+**Qualified fallback: Stage18 H, 1.482379119 CPU FP32 validation BPB**;
 three-repeat Windows CPU ratio4.802831x, peak RSS1,989,242,880 bytes and total
 inference assets29,678,074 bytes. Its unchanged train-count mixture improves
-validation to **1.473335164**, but fails CPU time at **5.437347x** (RAM and assets
-pass), so it is NOT a qualified replacement. No new gradient training or test
+validation to **1.473335164**, but that original implementation fails CPU time
+at **5.437347x** (RAM and assets pass). Stage21 above is the qualified optimized
+implementation, not a retroactive change to this result. No new gradient training or test
 evaluation. Audit checks raw scoring/resource records, source hashes and exact
 equality of all hybrid tensors to H plus the original train-only count tables.
 Both checkpoint files are backed up locally with matching SHA256 receipts.
@@ -40,8 +52,8 @@ The precision-matched no-copy D averaged 1.547137283. Dual-copy E failed its
 resource preflight (6.1833x) and was not trained. Stage14 B remains the archived
 qualified 1.499334244 reference. The six-layer 3x-duration G averaged 1.496658491:
 only .002676 better than B, below the preregistered .003 resource-retest trigger
-and worse than F. Stage15 consumed 294,912,000 new gradient targets. F is the
-selected follow-up model, not yet a frozen/tested submission release.
+and worse than F. Stage15 consumed 294,912,000 new gradient targets. F was the
+selected follow-up at Stage15 completion, later superseded as described above.
 
 Stage17 finished on 2026-09-21 at 14:24 UTC. The large teacher **failed** its
 fixed quality gate: average CPU validation BPB **1.665982500**. Its best periodic
