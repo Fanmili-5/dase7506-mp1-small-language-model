@@ -45,18 +45,17 @@ class Top1SwiGLU(nn.Module):
         router_logits = self.router(flat)
         probabilities = F.softmax(router_logits.float(), dim=-1)
         choices = probabilities.argmax(dim=-1)
-        output = torch.zeros_like(flat)
-        for expert_index, expert in enumerate(self.experts):
-            indices = torch.nonzero(choices == expert_index, as_tuple=False).flatten()
-            if indices.numel() == 0:
-                continue
-            selected = flat.index_select(0, indices)
-            expert_output = expert(selected)
-            gate = probabilities.index_select(0, indices)[:, expert_index]
-            expert_output = expert_output * (self.gate_scale * gate).to(expert_output.dtype)[:, None]
-            expert_output = expert_output.to(output.dtype)
-            output = output.index_copy(0, indices, expert_output)
         if self.training:
+            # Large dense GEMMs are much faster than many indexed small GEMMs on
+            # the training GPU. Only the chosen expert output contributes, so
+            # routing semantics and gradients are unchanged. Evaluation remains
+            # genuinely sparse because CPU time is part of the course budget.
+            all_outputs = torch.stack([expert(flat) for expert in self.experts], dim=1)
+            rows = torch.arange(flat.shape[0], device=flat.device)
+            selected = all_outputs[rows, choices]
+            gate = probabilities[rows, choices]
+            output = selected * (self.gate_scale * gate).to(selected.dtype)[:, None]
+            output = output.to(flat.dtype)
             fractions = F.one_hot(choices, self.expert_count).float().mean(dim=0)
             mean_probabilities = probabilities.mean(dim=0)
             self.router_balance_loss = self.expert_count * (
@@ -64,6 +63,17 @@ class Top1SwiGLU(nn.Module):
             ).sum()
             self.router_z_loss = router_logits.float().logsumexp(dim=-1).square().mean()
         else:
+            output = torch.zeros_like(flat)
+            for expert_index, expert in enumerate(self.experts):
+                indices = torch.nonzero(choices == expert_index, as_tuple=False).flatten()
+                if indices.numel() == 0:
+                    continue
+                selected = flat.index_select(0, indices)
+                expert_output = expert(selected)
+                gate = probabilities.index_select(0, indices)[:, expert_index]
+                expert_output = expert_output * (
+                    self.gate_scale * gate).to(expert_output.dtype)[:, None]
+                output = output.index_copy(0, indices, expert_output.to(output.dtype))
             self.router_balance_loss = None
             self.router_z_loss = None
         return output.reshape(shape)

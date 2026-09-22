@@ -23,3 +23,17 @@ BF16. The failed run and logs are retained. The fix explicitly casts each
 expert result back to the residual dtype and adds a CPU BF16-autocast regression
 test. The replacement launch uses a new run directory; experimental settings
 are unchanged.
+
+The corrected `-b` launch was manually stopped after its PowerShell transcript
+failed to expose live JSON progress. Recovered `progress.json` showed that the
+job had actually reached step 1,500 in 316.75 training seconds; this was a
+monitoring error, not a training hang. Its validation BPB at steps
+300/600/900/1200/1500 was 1.96699/1.76710/1.69017/1.64783/1.61698. The partial
+run and stale running-status receipt are retained rather than overwritten.
+
+The replacement training kernel evaluates both experts with large dense GEMMs
+and gathers only the routed output. A dense-training-versus-sparse-eval test
+checks their numerical semantics, while CPU evaluation continues to execute
+only the chosen expert. The `-c` run restarts from the same seed and settings;
+minor floating-point trajectory differences from full versus indexed GEMMs are
+possible and are disclosed.

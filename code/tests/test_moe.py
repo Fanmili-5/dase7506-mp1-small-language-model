@@ -69,6 +69,14 @@ class MoETests(unittest.TestCase):
             loss, _ = model.training_loss(ids, targets, future)
         self.assertTrue(torch.isfinite(loss))
 
+    def test_dense_training_and_sparse_eval_dispatch_agree(self):
+        torch.manual_seed(23)
+        module = student_moe_structured.Top1SwiGLU(32, 48, 2, False, 2.0)
+        inputs = torch.randn(3, 11, 32)
+        module.train(); dense = module(inputs)
+        module.eval(); sparse = module(inputs)
+        torch.testing.assert_close(dense, sparse, atol=2e-6, rtol=2e-6)
+
 
 if __name__ == "__main__":
     unittest.main()
