@@ -48,3 +48,19 @@ collapsed1.4733352397297033. Same serialized tensors; receipt checked in at
 51d64577afb34f4fc40008ffaa78ba033ff0d8565528139192df958d0b5f3563.
 Local suite96 tests:91 passed,5 CUDA skipped; all10 fixed-file hashes unchanged.
 These are correctness checks, not Windows timing qualification.
+
+Deployment archive SHA256:
+8eb1d0c6752865a8a16d89023a755d2318b19d614fd4345efb9fc4e812190c71.
+Windows one-off task `MP1-stage21-20260922-a` started2026-09-22 08:12:10 UTC
+(16:12 Hong Kong); no other Python workload was running at launch. Its seven
+synthetic tests ran before full equivalence. Windows parity passed with
+BPB1.473335240302804, max logp error5.7220459e-6 and normalization8.3446503e-7.
+Windows checkpoint SHA256:
+6999e012e74f438f30b39cb36ce69e23df8aa75cd3bd80a422a0b350d3d99d31.
+Independent official scoring and resource gate still pending at this entry.
+
+An additional local-only ragged-table regression test passed after launch.
+It compares the expanded counts to the old recurrence for missing contexts,
+lengths1/3/4/17/256, repeated IDs and scales0/.1/.9, with immutable repeatable
+outputs. This synthetic test RNG is not a model training/selection seed.
+Running Windows implementation/measurement sources have not been modified.

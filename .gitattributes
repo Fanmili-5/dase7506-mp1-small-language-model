@@ -16,3 +16,4 @@ code/results/stage18-launch-evidence/** -text whitespace=blank-at-eol,blank-at-e
 code/results/stage18-completed-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 code/results/stage19-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 code/results/stage20-evidence/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+code/results/stage21-evidence/** -text -whitespace
