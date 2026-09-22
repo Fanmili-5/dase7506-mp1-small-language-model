@@ -26,3 +26,15 @@ same train-only modified-Kneser-Ney mixture and calibration, then run the exact
 resource gate. Otherwise reject it without post-hoc gate tuning. No test split
 is scored. Substantive AI assistance includes the mechanism analysis,
 implementation, tests and orchestration.
+
+## Result
+
+The fixed average scored **1.4639843198 validation BPB** (checkpoint SHA-256
+`5189b364ec057de84ac2651400681ec6ac39ec7ea58de3a71095479ac2da5df3`).
+This is a real 0.0010095885 improvement over Stage26's 1.4649939083, but it is
+below the preregistered .003 advancement threshold. The endpoint improved by
+0.0014513151. Stage40 is retained as evidence that learned successor alignment
+is slightly better than content-copy in this run, but it is not advanced to
+MKN/calibration rebuilding or resource qualification. Raw artifacts are under
+`results/stage40-evidence/` and `results/stage40-job-logs/`; no test split was
+scored.
