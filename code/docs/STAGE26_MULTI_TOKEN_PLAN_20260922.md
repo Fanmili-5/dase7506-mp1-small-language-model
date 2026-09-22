@@ -28,3 +28,18 @@ training extension is allowed.
 
 Substantive AI assistance covers method selection, implementation, tests,
 orchestration and analysis; it must be disclosed and understood by the student.
+
+## Result
+
+The fixed run completed all 7,200 updates. Its final single checkpoint scored
+1.46877731497 BPB on validation. The prespecified average of updates 6,000,
+6,300, 6,600, 6,900 and 7,200 exported exactly to the unchanged
+`student_structured` inference graph and scored **1.46499390826 BPB** under an
+independent CPU FP32 evaluation. The exported checkpoint SHA-256 is
+`7e1187c61684be0b8e913c63ce30e03c24c52388460fd997fcce00b4dbdaa629`.
+
+This improves the comparable Stage22 neural result, 1.4702546457 BPB, by
+0.0052607374 BPB without changing inference cost. The result is accepted as a
+new neural component, but it is not yet a release candidate: count-model mixing
+and exact resource qualification remain separate gates. No test data was
+scored.
