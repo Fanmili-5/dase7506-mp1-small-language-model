@@ -15,3 +15,13 @@ preflight. Selection remains the fixed average of updates
 Only a quality gain will trigger renewed count mixing/calibration and exact
 resource qualification. No seed grid, beta grid, adaptive duration or test
 scoring.
+
+## Result
+
+The fixed average completed at **1.4655738362 validation BPB** (checkpoint
+SHA-256 `b03dc2100b7a6f0a49bc0db0053a49bde0e0baf677440f55470bdc81316ddd4c`).
+Stage26's matched average was 1.4649939083, so beta2=0.95 regressed by
+0.0005799279 BPB. The endpoint also regressed: 1.4694716672 versus
+1.4687773150. Stage38 is rejected without count mixing or resource retesting.
+Raw run JSON and job logs are retained under `results/stage38-evidence/` and
+`results/stage38-job-logs/`. No test split was scored.
