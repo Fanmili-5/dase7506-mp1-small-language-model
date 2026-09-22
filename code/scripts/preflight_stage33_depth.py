@@ -30,12 +30,15 @@ def main():
     parser.add_argument("--counts", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--config", type=Path, default=Path("configs/stage33_depth10_width224.json"))
+    parser.add_argument("--architecture", default="10x224 standard Transformer, 7 heads, prefix-copy64, collapsed MKN .125")
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Use a new run directory")
     if sha(args.counts) != COUNTS_SHA or sha(args.baseline) != BASELINE_SHA:
         raise ValueError("Unexpected fixed counts or baseline checkpoint")
-    training_config = json.loads((ROOT / "configs/stage33_depth10_width224.json").read_text())
+    config_path = args.config if args.config.is_absolute() else ROOT / args.config
+    training_config = json.loads(config_path.read_text())
     neural_config = {key: value for key, value in training_config.items() if key not in TRAINING_KEYS}
     count_payload = torch.load(args.counts, map_location="cpu", weights_only=True)
     if count_payload["protocol"] != PROTOCOL or count_payload["implementation"] != "student_ngram":
@@ -64,7 +67,7 @@ def main():
     assets = checkpoint.stat().st_size + sum((ROOT / name).stat().st_size for name in INFERENCE_FILES)
     result = dict(
         protocol=PROTOCOL, status="preflight_completed", seed=17,
-        architecture="10x224 standard Transformer, 7 heads, prefix-copy64, collapsed MKN .125",
+        architecture=args.architecture, config_sha256=sha(config_path),
         neural_parameters=sum(parameter.numel() for parameter in neural.parameters()),
         candidate_checkpoint_sha256=sha(checkpoint), count_checkpoint_sha256=COUNTS_SHA,
         baseline_checkpoint_sha256=BASELINE_SHA, conservative_asset_bytes=assets,

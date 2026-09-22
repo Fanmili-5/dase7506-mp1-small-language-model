@@ -21,3 +21,13 @@ optimizer and 58,982,400 primary targets as Stage26, with intermediate heads at
 layers 5/8 and the same +2/+3 training-only prediction heads. This makes the
 quality comparison a matched-target depth/width reallocation. Validation only;
 no test scoring or automatic architecture grid.
+
+## Result
+
+The three-repeat preflight rejected 10x224 before training. Its median CPU ratio
+was **5.111449788x**, above the 5x limit. Peak RSS was 2,049,167,360 bytes and
+conservative assets were 42,836,494 bytes, both within their limits. The odd
+seven-head layout is also a plausible efficiency liability. Stage34 is therefore
+not launched. A single resource-only follow-up uses 9x240 with eight heads; this
+is based on the measured CPU failure, not validation quality. No gradient target
+or test score was produced by Stage33.

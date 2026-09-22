@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922192432
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage33 -RunId stage33-20260922-a
+进程 ID: 12584
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage33-20260922-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+  "status": "preflight_completed",
+  "seed": 17,
+  "architecture": "10x224 standard Transformer, 7 heads, prefix-copy64, collapsed MKN .125",
+  "neural_parameters": 6511233,
+  "candidate_checkpoint_sha256": "50dc937ad112572ee7c5c7941477b18cacb20a153c851b536f6ab5a31c4b9c48",
+  "count_checkpoint_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "baseline_checkpoint_sha256": "2e4b9e749796dc1d6d8a2e5aedc9482d961dcabd9740760e905f7ae117ba647d",
+  "conservative_asset_bytes": 42836494,
+  "cpu_ratio": 5.111449787970479,
+  "peak_rss_bytes": 2049167360,
+  "within_five_x_time_limit": false,
+  "within_four_gib_peak_rss_limit": true,
+  "within_64mib_asset_limit": true,
+  "no_quality_claim": true,
+  "new_gradient_targets": 0,
+  "no_test_scoring": true,
+  "pass": false
+}
+
+Stage33 complete: depth-reallocation resource preflight; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922193013
+**********************
