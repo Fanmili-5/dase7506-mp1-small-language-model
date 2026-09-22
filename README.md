@@ -6,17 +6,22 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-**Current resource-qualified development candidate: Stage24 collapsed Stage22
-hybrid, 1.461804908 CPU FP32 validation BPB.** Stage22's training-only deep
-supervision improved the neural model to 1.470254646; a fixed validation grid
-then selected 0.075 weight on the unchanged train-only absolute-discount count
-expert. Stage24 preserved every learned tensor/statistic and verified the fast
-collapsed recurrence against the original predictor across full validation.
-Three-repeat Windows CPU ratio **4.920595x** passes the 5x limit; peak RSS is
-2,024,538,112 bytes and conservative inference assets are 38,153,954 bytes,
-also within 4 GiB/64 MiB. Its timing margin is only 1.59% on this machine and is
-not a portability guarantee. No test scoring occurred. See
-`code/results/stage24-evidence/` and
+**Current resource-qualified development candidate: Stage27 collapsed
+modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
+the Stage22 deep-supervised Transformer with a train-only order-5 modified
+Kneser-Ney expert at fixed validation-selected weight 0.125. Stage27 preserved
+all learned tensors/statistics and verified full-validation equivalence after
+collapsing the sparse recurrence. Three-repeat Windows CPU ratio **4.970076x**
+passes the 5x limit; peak RSS is 2,044,981,248 bytes and conservative inference
+assets are 44,210,786 bytes, within 4 GiB/64 MiB. The time margin is only 0.60%
+on this machine and is not a portability guarantee. No test scoring occurred.
+See `code/results/stage27-evidence/` and
+`code/docs/STAGE27_MKN_QUALIFICATION_20260922.md`.
+
+Stage24 is the previous qualified candidate at 1.461804908 BPB, 4.920595x CPU,
+2,024,538,112-byte peak RSS and 38,153,954-byte assets. It uses the older
+absolute-discount count expert at weight 0.075 and remains the safer timing
+fallback. See `code/results/stage24-evidence/` and
 `code/docs/STAGE24_STAGE22_QUALIFICATION_20260922.md`.
 
 Stage21 is the previous qualified candidate: collapsed-backoff hybrid,
