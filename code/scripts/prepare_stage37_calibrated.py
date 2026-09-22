@@ -80,7 +80,10 @@ def main():
             max_difference = max(max_difference, difference)
             max_normalization = max(max_normalization, normalization)
             if difference > 2e-5 or normalization > 2e-6:
-                raise ValueError("Full-output calibration equivalence failed")
+                raise ValueError(
+                    f"Full-output calibration equivalence failed: "
+                    f"difference={difference}, normalization={normalization}"
+                )
             valid = y != -100
             target = y.clamp_min(0).unsqueeze(-1)
             for index, logp in enumerate((reference, optimized)):
