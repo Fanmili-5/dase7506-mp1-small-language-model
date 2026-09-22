@@ -12,3 +12,9 @@ the frozen run metadata and publish the matching checkpoint bundle separately.
 
 No score should be entered manually into this directory without a corresponding
 metrics file and checkpoint hash.
+
+`stage24-evidence/` contains the current validation leader's full-output
+equivalence receipt, independent CPU FP32 validation score, and fresh
+three-repeat CPU/RAM resource measurement. `stage24-job-logs/` records the
+completed one-off Windows job. Large checkpoints and per-window arrays remain
+ignored by Git; their hashes are recorded in the JSON evidence.

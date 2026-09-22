@@ -6,17 +6,26 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-Stage21 completed on September22 Hong Kong time. **Current resource-qualified
-development candidate: collapsed-backoff hybrid, 1.473335240 CPU FP32 validation
-BPB**. Three-repeat Windows CPU ratio **4.866243x** passes the5x limit;
-peak RSS2,025,037,824 bytes and total inference assets38,153,250 bytes also pass.
-The Stage19 hybrid's weights, count tables, .10 mixture ratio and training
-ancestry are unchanged. Full-output equivalence passed after sparse arithmetic
-reorganization. This makes its existing quality gain resource-eligible; it is
-not a new learned-quality gain. Timing margin is only2.68% on this Windows CPU,
-not a guarantee on other machines. No new training or test scoring.
-See `code/results/stage21-audit.json`, `code/docs/STAGE21_COLLAPSED_BACKOFF_20260922.md`
-and the Chinese explanation `code/docs/HYBRID_INFERENCE_EXPLAINED_ZH.md`.
+**Current resource-qualified development candidate: Stage24 collapsed Stage22
+hybrid, 1.461804908 CPU FP32 validation BPB.** Stage22's training-only deep
+supervision improved the neural model to 1.470254646; a fixed validation grid
+then selected 0.075 weight on the unchanged train-only absolute-discount count
+expert. Stage24 preserved every learned tensor/statistic and verified the fast
+collapsed recurrence against the original predictor across full validation.
+Three-repeat Windows CPU ratio **4.920595x** passes the 5x limit; peak RSS is
+2,024,538,112 bytes and conservative inference assets are 38,153,954 bytes,
+also within 4 GiB/64 MiB. Its timing margin is only 1.59% on this machine and is
+not a portability guarantee. No test scoring occurred. See
+`code/results/stage24-evidence/` and
+`code/docs/STAGE24_STAGE22_QUALIFICATION_20260922.md`.
+
+Stage21 is the previous qualified candidate: collapsed-backoff hybrid,
+1.473335240 CPU FP32 validation BPB. Its three-repeat Windows CPU ratio was
+4.866243x, peak RSS 2,025,037,824 bytes and total inference assets 38,153,250
+bytes. The Stage19 hybrid's weights, count tables, .10 mixture ratio and
+training ancestry were unchanged. See `code/results/stage21-audit.json`,
+`code/docs/STAGE21_COLLAPSED_BACKOFF_20260922.md` and the Chinese explanation
+`code/docs/HYBRID_INFERENCE_EXPLAINED_ZH.md`.
 
 **Qualified fallback: Stage18 H, 1.482379119 CPU FP32 validation BPB**;
 three-repeat Windows CPU ratio4.802831x, peak RSS1,989,242,880 bytes and total
