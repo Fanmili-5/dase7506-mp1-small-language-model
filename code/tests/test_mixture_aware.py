@@ -2,7 +2,9 @@ import unittest
 
 import torch
 
-from student_mixture_aware import mixture_log_probs, symmetric_kl
+import student_ngram
+from student_mixture_aware import (count_target_probability, mixture_log_probs,
+                                   mixture_target_log_probs, symmetric_kl)
 
 
 class MixtureAwareTests(unittest.TestCase):
@@ -25,6 +27,33 @@ class MixtureAwareTests(unittest.TestCase):
         self.assertAlmostEqual(float(symmetric_kl(first, first)), 0.0, places=7)
         second = torch.randn(2, 5, 11).log_softmax(-1)
         self.assertGreater(float(symmetric_kl(first, second)), 0)
+
+    def test_sparse_target_query_matches_complete_count_distribution(self):
+        config = dict(context=256, vocab=2048, kind="ngram",
+                      order_shapes=[[2, 3]])
+        counts = student_ngram.NgramLM(config).eval()
+        with torch.no_grad():
+            counts.unigram.copy_(torch.rand(2048).add(.1))
+            counts.unigram.div_(counts.unigram.sum())
+            table = counts.tables[0]
+            table.keys.copy_(torch.tensor([1, 2]))
+            table.offsets.copy_(torch.tensor([0, 2, 3]))
+            table.values.copy_(torch.tensor([3, 4, 5]))
+            table.mass.copy_(torch.tensor([.1, .2, .3]))
+            table.backoff.copy_(torch.tensor([.7, .6]))
+        ids = torch.tensor([[1, 7, 2, 1], [8, 2, 9, 1]])
+        targets = torch.tensor([[3, 6, 5, 4], [2, 5, 9, 7]])
+        expected = counts.distribution(ids).gather(
+            -1, targets.unsqueeze(-1)
+        ).squeeze(-1)
+        actual = count_target_probability(counts, ids, targets)
+        torch.testing.assert_close(actual, expected, atol=0, rtol=0)
+        neural = torch.randn(2, 4, 2048).log_softmax(-1)
+        complete = mixture_log_probs(neural, counts(ids), .0625).gather(
+            -1, targets.unsqueeze(-1)
+        ).squeeze(-1)
+        sparse = mixture_target_log_probs(neural, actual, targets, .0625)
+        torch.testing.assert_close(sparse, complete, atol=2e-7, rtol=0)
 
 
 if __name__ == "__main__":

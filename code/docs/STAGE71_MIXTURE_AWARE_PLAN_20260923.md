@@ -19,3 +19,12 @@ This changes the training objective while keeping the deployed neural+MKN graph
 unchanged.  The averaged neural is rescanned once on validation with the
 existing fixed MKN grid, then the exact collapsed checkpoint must pass CPU <=5x
 baseline, RSS <=4 GiB and assets <=64 MiB.  Test remains untouched.
+
+The first launch was interrupted before its initial validation completed and
+before any gradient update.  It exposed a training-throughput problem: the
+generic MKN module materialized all 2,048 probabilities although NLL needs only
+the observed target probability.  The replacement computes the exact same CSR
+backoff probability only at each training/validation target, verified against
+the complete distribution.  R-Drop KL remains on both full neural
+distributions.  This is an algebraic training-time optimization; final export
+and official evaluation remain unchanged.

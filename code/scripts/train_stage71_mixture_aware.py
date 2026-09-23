@@ -9,11 +9,11 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import torch
-from torch.nn import functional as F
 
-from common import PROTOCOL, device_metrics, load_data, make_model, setup, sha
-from evaluate import score
-from student_mixture_aware import FixedMixtureLM, mixture_log_probs, symmetric_kl
+from common import (PROTOCOL, autocast, device_metrics, load_data, make_model,
+                    setup, sha, windows)
+from student_mixture_aware import (count_target_probability,
+                                   mixture_target_log_probs, symmetric_kl)
 from train_experiment import (atomic_json_dump, atomic_torch_save,
                               checkpoint_payload, learning_rate,
                               training_autocast)
@@ -24,6 +24,7 @@ STEPS = 3600
 BATCH = 32
 WEIGHT = .0625
 PEAK_LR = 3e-5
+EXPECTED_INITIAL_BPB = 1.4101618030902805
 AVERAGE_STEPS = (2400, 2700, 3000, 3300, 3600)
 SOURCE_FILES = (
     "student_mixture_aware.py", "student_hybrid_conv_output_bias.py",
@@ -32,6 +33,34 @@ SOURCE_FILES = (
     "train_experiment.py", "evaluate.py", "common.py", "data/manifest.json",
     "data/tokenizer.json",
 )
+
+
+def score_target_mixture(neural, counts, tokens, byte_count, device,
+                         precision, batch_size=32):
+    neural_mode, count_mode = neural.training, counts.training
+    neural.eval(); counts.eval()
+    started = time.perf_counter(); nll = 0.; target_count = 0
+    with torch.inference_mode():
+        for ids, targets in windows(tokens, batch_size):
+            ids, targets = ids.to(device), targets.to(device)
+            with autocast(device, precision):
+                neural_logp = neural.predict_log_probs(ids)
+            count_probability = count_target_probability(counts, ids, targets)
+            target_logp = mixture_target_log_probs(
+                neural_logp, count_probability, targets, WEIGHT
+            )
+            valid = targets != -100
+            nll -= float(target_logp[valid].double().sum())
+            target_count += int(valid.sum())
+    if device.type == "cuda":
+        torch.cuda.synchronize(device)
+    neural.train(neural_mode); counts.train(count_mode)
+    return dict(
+        bpb=nll / torch.log(torch.tensor(2.)).item() / byte_count,
+        token_ppl=float(torch.exp(torch.tensor(nll / target_count))),
+        nll_nats=nll, targets=target_count, utf8_bytes=byte_count,
+        seconds=time.perf_counter() - started,
+    )
 
 
 def main():
@@ -89,12 +118,13 @@ def main():
     atomic_json_dump(plan, args.run_dir / "run.json")
     history, validations = [], []
     validation_seconds = 0.; started = time.perf_counter()
-    evaluator = FixedMixtureLM(neural, counts, WEIGHT)
-
     neural.eval()
     before = time.perf_counter()
-    initial = score(evaluator, *data["validation"], device, "fp32", 32)
-    initial.pop("window_nll_nats")
+    initial = score_target_mixture(
+        neural, counts, *data["validation"], device, "fp32", 32
+    )
+    if abs(initial["bpb"] - EXPECTED_INITIAL_BPB) > 2e-6:
+        raise ValueError("Sparse target scorer disagrees with Stage68 full scoring")
     validation_seconds += time.perf_counter() - before
     validations.append(dict(step=0, **initial))
     print(json.dumps({"validation": validations[-1]}), flush=True)
@@ -112,17 +142,19 @@ def main():
         optimizer.zero_grad(set_to_none=True)
         neural.train()
         with torch.no_grad():
-            count_logp = counts.predict_log_probs(ids)
+            count_probability = count_target_probability(counts, ids, targets)
         with training_autocast(device, precision):
-            first = mixture_log_probs(
-                neural.predict_log_probs(ids), count_logp, WEIGHT
+            first_neural = neural.predict_log_probs(ids)
+            second_neural = neural.predict_log_probs(ids)
+            first_target = mixture_target_log_probs(
+                first_neural, count_probability, targets, WEIGHT
             )
-            second = mixture_log_probs(
-                neural.predict_log_probs(ids), count_logp, WEIGHT
+            second_target = mixture_target_log_probs(
+                second_neural, count_probability, targets, WEIGHT
             )
-            first_nll = F.nll_loss(first.flatten(0, 1), targets.flatten())
-            second_nll = F.nll_loss(second.flatten(0, 1), targets.flatten())
-            consistency = symmetric_kl(first, second)
+            first_nll = -first_target.mean()
+            second_nll = -second_target.mean()
+            consistency = symmetric_kl(first_neural, second_neural)
             loss = .5 * (first_nll + second_nll) + .5 * consistency
         if not torch.isfinite(loss):
             raise FloatingPointError(f"Non-finite loss at step {completed}")
@@ -142,8 +174,9 @@ def main():
             history.append(row); print(json.dumps(row), flush=True)
         if completed % 300 == 0:
             neural.eval(); before = time.perf_counter()
-            validation = score(evaluator, *data["validation"], device, "fp32", 32)
-            validation.pop("window_nll_nats")
+            validation = score_target_mixture(
+                neural, counts, *data["validation"], device, "fp32", 32
+            )
             validation_seconds += time.perf_counter() - before
             row = dict(step=completed, **validation)
             validations.append(row)
