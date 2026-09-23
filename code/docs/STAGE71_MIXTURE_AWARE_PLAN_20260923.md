@@ -20,24 +20,23 @@ unchanged.  The averaged neural is rescanned once on validation with the
 existing fixed MKN grid, then the exact collapsed checkpoint must pass CPU <=5x
 baseline, RSS <=4 GiB and assets <=64 MiB.  Test remains untouched.
 
-The first launch was interrupted before its initial validation completed and
-before any gradient update.  It exposed a training-throughput problem: the
-generic MKN module materialized all 2,048 probabilities although NLL needs only
-the observed target probability.  The replacement computes the exact same CSR
-backoff probability only at each training/validation target, verified against
-the complete distribution.  R-Drop KL remains on both full neural
-distributions.  This is an algebraic training-time optimization; final export
-and official evaluation remain unchanged.
+The first launch exposed a training-throughput problem: the generic MKN module
+materialized all 2,048 probabilities although NLL needs only the observed
+target probability.  An attempted scheduled-task stop did not terminate its
+descendant Python process; it later reached step 1,500 and overlapped newer
+diagnostics, so that trajectory is explicitly contaminated and excluded from
+selection.  The second and third launches produced no progress checkpoint.
 
-The second launch was likewise interrupted before the initial score and any
-gradient update: target-only CSR evaluation still expanded every successor row.
-The final lookup precomputes sorted `(context,target)` integer keys from the
-unchanged CSR buffers and uses one binary search per order and target.  Unit
-tests require exact equality with the complete MKN distribution.
+The replacement target scorer first removed the dense vocabulary and then the
+remaining CSR-row expansion.  It precomputes sorted `(context,target)` integer
+keys from the unchanged CSR buffers and uses one binary search per order and
+target.  Unit tests require equality with the complete MKN distribution.  The
+final launch keeps these immutable lookup buffers on CPU, sends only target
+probabilities to CUDA, and reserves GPU memory and compute for the dense neural
+expert.  R-Drop KL remains on both full neural distributions.  These are
+algebraic training-time optimizations; final export and official evaluation
+remain unchanged.
 
-The third launch showed that GPU binary search remained a poor sparse workload
-and was interrupted before the initial score or a gradient update.  The fourth
-launch keeps the immutable MKN buffers and direct target lookup on CPU, sends
-only the resulting target probabilities to CUDA, and reserves GPU memory and
-compute for the dense neural expert.  The probability calculation itself is
-unchanged.
+The final trajectory reproduced the Stage68 start at **1.4101617921 BPB**.  At
+step 300 it reached **1.4078855396 BPB**, an initial gain of 0.0022762525.  This
+is an interim validation observation, not the prespecified averaged candidate.
