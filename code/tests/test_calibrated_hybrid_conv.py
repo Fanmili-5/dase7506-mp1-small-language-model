@@ -7,6 +7,7 @@ from torch.nn import functional as F
 from scripts.build_ngram import fit_tables
 import student_hybrid_conv_output_bias
 import student_ngram_hybrid_conv_calibrated_collapsed
+import student_ngram_hybrid_conv_calibrated_untied_collapsed
 
 
 class CalibratedHybridConvTests(unittest.TestCase):
@@ -57,6 +58,18 @@ class CalibratedHybridConvTests(unittest.TestCase):
         torch.testing.assert_close(
             actual.logsumexp(-1), torch.zeros_like(actual[..., 0]),
             atol=2e-6, rtol=0)
+
+        optimized_config = dict(config, kind="hybrid_calibrated_untied_conv")
+        optimized = (
+            student_ngram_hybrid_conv_calibrated_untied_collapsed.build_model(
+                optimized_config).eval())
+        optimized.load_state_dict(candidate.state_dict(), strict=True)
+        with torch.no_grad():
+            optimized.neural.head.weight.div_(temperature)
+        with torch.inference_mode():
+            optimized_output = optimized.predict_log_probs(ids)
+        torch.testing.assert_close(
+            optimized_output.exp(), actual.exp(), atol=2e-7, rtol=2e-6)
 
     def test_invalid_temperature_is_rejected(self):
         counts, count_config, _ = fit_tables(np.tile([2, 4, 2, 5], 20), min_count=3)
