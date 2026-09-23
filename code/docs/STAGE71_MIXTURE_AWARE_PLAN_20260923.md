@@ -28,3 +28,9 @@ backoff probability only at each training/validation target, verified against
 the complete distribution.  R-Drop KL remains on both full neural
 distributions.  This is an algebraic training-time optimization; final export
 and official evaluation remain unchanged.
+
+The second launch was likewise interrupted before the initial score and any
+gradient update: target-only CSR evaluation still expanded every successor row.
+The final lookup precomputes sorted `(context,target)` integer keys from the
+unchanged CSR buffers and uses one binary search per order and target.  Unit
+tests require exact equality with the complete MKN distribution.

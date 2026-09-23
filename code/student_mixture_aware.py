@@ -33,16 +33,23 @@ def symmetric_kl(first: torch.Tensor, second: torch.Tensor) -> torch.Tensor:
 
 
 def count_target_probability(
-    counts: nn.Module, ids: torch.Tensor, targets: torch.Tensor
+    counts: nn.Module, ids: torch.Tensor, targets: torch.Tensor,
+    edge_keys: tuple[torch.Tensor, ...] | None = None,
 ) -> torch.Tensor:
     """Query exact CSR count probability only at the supplied target IDs."""
     if ids.shape != targets.shape or ids.ndim != 2:
         raise ValueError("IDs and targets must have matching [batch,time] shapes")
     batch, length = ids.shape
+    if edge_keys is None:
+        edge_keys = build_target_edge_keys(counts)
+    if len(edge_keys) != len(counts.tables):
+        raise ValueError("Expected one target lookup per count order")
     target = targets.clamp_min(0).flatten()
     result = counts.unigram[target].clone()
     positions = torch.arange(length, device=ids.device).expand(batch, -1)
-    for order, table in enumerate(counts.tables, 2):
+    for order, (table, table_edge_keys) in enumerate(
+        zip(counts.tables, edge_keys), 2
+    ):
         history = order - 1
         if history > length or table.keys.numel() == 0:
             continue
@@ -57,19 +64,27 @@ def count_target_probability(
         found = ((table.keys[locations] == keys)
                  & (positions.flatten() >= history - 1))
         result.mul_(torch.where(found, table.backoff[locations], 1.0))
-        sizes = (table.offsets[locations + 1] - table.offsets[locations]) * found
-        rows = torch.repeat_interleave(
-            torch.arange(keys.numel(), device=ids.device), sizes
-        )
-        starts = torch.repeat_interleave(table.offsets[locations], sizes)
-        local = (torch.arange(rows.numel(), device=ids.device)
-                 - torch.repeat_interleave(sizes.cumsum(0) - sizes, sizes))
-        edges = starts + local
-        matches = table.values[edges].long() == target[rows]
-        increment = torch.zeros_like(result)
-        increment.scatter_add_(0, rows[matches], table.mass[edges[matches]])
-        result.add_(increment)
+        queries = keys * counts.vocab + target
+        edge_locations = torch.searchsorted(
+            table_edge_keys, queries
+        ).clamp_max(table_edge_keys.numel() - 1)
+        edge_found = found & (table_edge_keys[edge_locations] == queries)
+        result.add_(torch.where(edge_found, table.mass[edge_locations], 0.0))
     return result.view_as(targets)
+
+
+def build_target_edge_keys(counts: nn.Module) -> tuple[torch.Tensor, ...]:
+    """Build sorted training-only (context,target) keys once per count model."""
+    result = []
+    for table in counts.tables:
+        sizes = table.offsets[1:] - table.offsets[:-1]
+        contexts = torch.repeat_interleave(table.keys, sizes)
+        keys = contexts * counts.vocab + table.values.long()
+        if keys.numel() != table.mass.numel() or (
+                keys.numel() > 1 and (keys[1:] <= keys[:-1]).any()):
+            raise ValueError("Count edges must be unique and lexicographically sorted")
+        result.append(keys)
+    return tuple(result)
 
 
 def mixture_target_log_probs(

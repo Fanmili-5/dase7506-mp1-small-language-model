@@ -12,7 +12,7 @@ import torch
 
 from common import (PROTOCOL, autocast, device_metrics, load_data, make_model,
                     setup, sha, windows)
-from student_mixture_aware import (count_target_probability,
+from student_mixture_aware import (build_target_edge_keys, count_target_probability,
                                    mixture_target_log_probs, symmetric_kl)
 from train_experiment import (atomic_json_dump, atomic_torch_save,
                               checkpoint_payload, learning_rate,
@@ -36,7 +36,7 @@ SOURCE_FILES = (
 
 
 def score_target_mixture(neural, counts, tokens, byte_count, device,
-                         precision, batch_size=32):
+                         precision, edge_keys, batch_size=32):
     neural_mode, count_mode = neural.training, counts.training
     neural.eval(); counts.eval()
     started = time.perf_counter(); nll = 0.; target_count = 0
@@ -45,7 +45,9 @@ def score_target_mixture(neural, counts, tokens, byte_count, device,
             ids, targets = ids.to(device), targets.to(device)
             with autocast(device, precision):
                 neural_logp = neural.predict_log_probs(ids)
-            count_probability = count_target_probability(counts, ids, targets)
+            count_probability = count_target_probability(
+                counts, ids, targets, edge_keys
+            )
             target_logp = mixture_target_log_probs(
                 neural_logp, count_probability, targets, WEIGHT
             )
@@ -93,6 +95,7 @@ def main():
     neural.load_state_dict(neural_payload["model"], strict=True)
     counts.load_state_dict(count_payload["model"], strict=True)
     counts.eval()
+    edge_keys = build_target_edge_keys(counts)
     for parameter in counts.parameters():
         parameter.requires_grad_(False)
     optimizer = torch.optim.AdamW(
@@ -121,7 +124,7 @@ def main():
     neural.eval()
     before = time.perf_counter()
     initial = score_target_mixture(
-        neural, counts, *data["validation"], device, "fp32", 32
+        neural, counts, *data["validation"], device, "fp32", edge_keys, 32
     )
     if abs(initial["bpb"] - EXPECTED_INITIAL_BPB) > 2e-6:
         raise ValueError("Sparse target scorer disagrees with Stage68 full scoring")
@@ -142,7 +145,9 @@ def main():
         optimizer.zero_grad(set_to_none=True)
         neural.train()
         with torch.no_grad():
-            count_probability = count_target_probability(counts, ids, targets)
+            count_probability = count_target_probability(
+                counts, ids, targets, edge_keys
+            )
         with training_autocast(device, precision):
             first_neural = neural.predict_log_probs(ids)
             second_neural = neural.predict_log_probs(ids)
@@ -175,7 +180,7 @@ def main():
         if completed % 300 == 0:
             neural.eval(); before = time.perf_counter()
             validation = score_target_mixture(
-                neural, counts, *data["validation"], device, "fp32", 32
+                neural, counts, *data["validation"], device, "fp32", edge_keys, 32
             )
             validation_seconds += time.perf_counter() - before
             row = dict(step=completed, **validation)

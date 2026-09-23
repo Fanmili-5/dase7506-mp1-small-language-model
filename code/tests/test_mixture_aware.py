@@ -3,7 +3,8 @@ import unittest
 import torch
 
 import student_ngram
-from student_mixture_aware import (count_target_probability, mixture_log_probs,
+from student_mixture_aware import (build_target_edge_keys,
+                                   count_target_probability, mixture_log_probs,
                                    mixture_target_log_probs, symmetric_kl)
 
 
@@ -46,7 +47,8 @@ class MixtureAwareTests(unittest.TestCase):
         expected = counts.distribution(ids).gather(
             -1, targets.unsqueeze(-1)
         ).squeeze(-1)
-        actual = count_target_probability(counts, ids, targets)
+        edge_keys = build_target_edge_keys(counts)
+        actual = count_target_probability(counts, ids, targets, edge_keys)
         torch.testing.assert_close(actual, expected, atol=0, rtol=0)
         neural = torch.randn(2, 4, 2048).log_softmax(-1)
         complete = mixture_log_probs(neural, counts(ids), .0625).gather(

@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $CodeRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $CodeRoot
 $Python = "$CodeRoot\.venv\Scripts\python.exe"
-$Run = "runs/stage71-mixture-aware-s71017-b"
+$Run = "runs/stage71-mixture-aware-s71017-c"
 $Start = "runs/stage67-output-bias-s17/average.pt"
 $Counts = "runs/stage25-kneser-ney/counts-min2/checkpoint.pt"
 $Baseline = "runs/stage3-long-baseline-s17/checkpoint-best.pt"
@@ -24,7 +24,7 @@ $Average = "$Run/average.pt"
     --output $Average
 if ($LASTEXITCODE -ne 0) { throw "Stage71 averaging failed" }
 $NeuralSha = (Get-FileHash $Average -Algorithm SHA256).Hash.ToLower()
-$Qualification = "runs/stage71-mixture-aware-mkn-b"
+$Qualification = "runs/stage71-mixture-aware-mkn-c"
 & $Python scripts/prepare_stage55_hybrid_conv_mkn.py `
     --neural $Average --counts $Counts --baseline $Baseline `
     --run-dir $Qualification --expected-neural-sha $NeuralSha `
