@@ -37,3 +37,20 @@ checks their numerical semantics, while CPU evaluation continues to execute
 only the chosen expert. The `-c` run restarts from the same seed and settings;
 minor floating-point trajectory differences from full versus indexed GEMMs are
 possible and are disclosed.
+
+## Result
+
+The completed `-c` run processed the fixed 58,982,400 primary targets in
+1,890.39 GPU training seconds. The 7,200-step endpoint was 1.4783006303 BPB;
+the prespecified last-five average scored **1.4745912215 BPB** on independent
+CPU FP32 validation (checkpoint SHA256
+`c3ba2e4e024937b1b95a4b214dea255e1948637708fc11c14e167d4661833138`).
+This is 0.0095973132 worse than the matched Stage26 average, 1.4649939083.
+
+Router balance remained near its ideal value (1.0166 at the final logged step),
+so expert collapse is not the explanation. The likely trade-off is unfavorable:
+each token sees only a 512-wide expert instead of the dense 683-wide FFN, while
+the small corpus does not provide enough data for conditional expert capacity
+to compensate. Stage48 is rejected without MKN mixing or a trained-checkpoint
+resource rerun. Peak allocated/reserved GPU memory was 2.325/2.496 GB. No test
+split was scored.
