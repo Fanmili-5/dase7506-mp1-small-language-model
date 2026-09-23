@@ -30,6 +30,11 @@ def main():
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--config", type=Path,
                         default=Path("configs/stage58_local_heavy_rdrop.json"))
+    parser.add_argument(
+        "--architecture",
+        default=("8x320, attention layers 1/5, six gated causal-conv layers, "
+                 "SwiGLU640, prefix-copy64, collapsed MKN .075"),
+    )
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Use a new run directory")
@@ -75,8 +80,7 @@ def main():
                                              for name in INFERENCE_FILES)
     result = dict(
         protocol=PROTOCOL, status="preflight_completed", seed=17,
-        architecture=("8x320, attention layers 1/5, six gated causal-conv layers, "
-                      "SwiGLU640, prefix-copy64, collapsed MKN .075"),
+        architecture=args.architecture,
         config_sha256=sha(config_path),
         neural_parameters=sum(p.numel() for p in neural.parameters()),
         candidate_checkpoint_sha256=sha(checkpoint),

@@ -58,6 +58,19 @@ class HybridConvTests(unittest.TestCase):
             a = model(first); b = model(second)
         torch.testing.assert_close(a[:, :19], b[:, :19], atol=2e-6, rtol=0)
 
+    def test_balanced_layout_is_causal(self):
+        training_config = json.loads(
+            (ROOT / "configs/stage70_balanced_hybrid_rdrop.json").read_text())
+        config = student_hybrid_conv_multi_token.inference_config(training_config)
+        model = student_hybrid_conv_structured.build_model(config).eval()
+        self.assertEqual(model.conv_layers, (2, 3, 5, 6, 8))
+        self.assertEqual(model.token.embedding_dim, 304)
+        first = torch.randint(2048, (1, 32))
+        second = first.clone(); second[:, 19:] = torch.randint(2048, (1, 13))
+        with torch.inference_mode():
+            a = model(first); b = model(second)
+        torch.testing.assert_close(a[:, :19], b[:, :19], atol=2e-6, rtol=0)
+
 
 if __name__ == "__main__":
     unittest.main()
