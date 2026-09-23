@@ -17,3 +17,17 @@ This adds about 2.25 MiB of assets but no new deployed matmul.
 Only validation is scored. The mechanism advances to MKN/resource qualification
 only if the fixed exported average improves Stage67 materially. Test remains
 untouched.
+
+## Result
+
+The zero-residual start reproduced Stage67 at **1.4150978831 BPB**.  Training
+loss improved monotonically across all five full passes, but validation
+immediately regressed: epochs 1--5 scored
+1.4207569637/1.4213344936/1.4214285184/1.4217941369/1.4218029379 BPB.
+The prespecified epoch-3/4/5 average independently scored
+**1.4194831103 BPB** on CPU FP32 (checkpoint SHA-256
+`92833a24f76fab41b8a590c931f1288ca96aecf37182c2a02831ed5b062aa1aa`).
+This is 0.0043852495 worse than Stage67, so the expressive output-only
+adaptation is rejected as overfitting.  It does not advance to MKN scanning or
+resource qualification and does not change the Stage68 leader.  Test was not
+scored.
