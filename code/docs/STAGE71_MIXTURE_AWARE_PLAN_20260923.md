@@ -37,6 +37,28 @@ expert.  R-Drop KL remains on both full neural distributions.  These are
 algebraic training-time optimizations; final export and official evaluation
 remain unchanged.
 
-The final trajectory reproduced the Stage68 start at **1.4101617921 BPB**.  At
-step 300 it reached **1.4078855396 BPB**, an initial gain of 0.0022762525.  This
-is an interim validation observation, not the prespecified averaged candidate.
+## Result
+
+The uncontaminated final trajectory reproduced the Stage68 start at
+**1.4101617921 BPB**.  Its five prespecified averaging checkpoints at updates
+2400/2700/3000/3300/3600 scored
+1.4079990462/1.4079124030/1.4081089402/1.4079765180/1.4079531401 BPB
+under the fixed training mixture.  The parameter average has SHA-256
+`20a81b19eef6784ec0b2c1935057a84e819e0f420b7e9e1187c9b117696db1a7`.
+
+The averaged neural expert alone scored 1.4184096196 BPB, so Stage71 is not a
+better standalone neural model.  It is deliberately more complementary to the
+frozen count expert: at the training-time count weight 0.0625 the mixture scored
+1.4078911369 BPB, and the prespecified post-average grid selected weight 0.10 at
+**1.4069594679 BPB**.  Independent collapsed CPU-FP32 evaluation reproduced
+**1.4069595406 BPB**.  This improves the qualified Stage68 predictor by
+0.0032022625 BPB and shifts the optimum toward the count expert, supporting the
+mixture-specialization hypothesis rather than a generic continuation effect.
+
+The exact collapsed checkpoint SHA-256 is
+`8c328ec873f83e85d79ac0398109542eb4b5f4889e43ae62713de85894fb5b8b`.
+Three fresh Windows CPU repetitions measured a 4.798798410x median-time ratio,
+2,040,152,064-byte peak RSS, and 48,561,852 conservative inference-asset bytes.
+All three course limits pass.  Stage71 therefore becomes the current qualified
+validation leader.  Raw evidence is in `results/stage71-evidence/`; the test
+split was not scored.
