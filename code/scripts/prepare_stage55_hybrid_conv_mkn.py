@@ -44,12 +44,16 @@ def main():
         raise ValueError("Unexpected frozen neural, count, or baseline checkpoint")
     neural_payload = torch.load(args.neural, map_location="cpu", weights_only=True)
     count_payload = torch.load(args.counts, map_location="cpu", weights_only=True)
+    training_provenance = (
+        "training_rdrop" in neural_payload
+        or "training_byte_rdrop" in neural_payload
+    )
     if (neural_payload.get("protocol") != PROTOCOL
             or neural_payload.get("implementation") != "student_hybrid_conv_structured"
-            or "training_rdrop" not in neural_payload
+            or not training_provenance
             or count_payload.get("protocol") != PROTOCOL
             or count_payload.get("implementation") != "student_ngram"):
-        raise ValueError("Expected Stage54 R-Drop hybrid-conv and Stage25 MKN experts")
+        raise ValueError("Expected an R-Drop hybrid-conv neural and Stage25 MKN experts")
 
     device, _ = setup("cpu", "fp32", 4)
     neural, _ = make_model("student_hybrid_conv_structured",

@@ -42,3 +42,18 @@ to their cost. They remain controls rather than the search boundary.
   Stage63. A gain below 0.001 BPB is retained as evidence but treated as weak.
 - Final candidate must still pass CPU <= 5x baseline, RSS <= 4 GiB, and total
   uncompressed inference assets <= 64 MiB.
+
+## Result
+
+The zero-initialized model reproduced Stage63 at step 0 with 1.4161061871 BPB.
+After an early restart disturbance, its fixed averaging points at steps
+2400/2700/3000/3300/3600 scored
+1.4163842487/1.4156552407/1.4155590939/1.4153863778/1.4152772081 BPB.
+The materialized average independently scored **1.4153287466 BPB** on CPU FP32
+(checkpoint SHA-256
+`f9c8b41efea91d5594b25760c91652edc071a161983b12b22cc738988a7a9bdc`).
+This improves the Stage63 neural average by **0.0007774199 BPB** with no deployed
+parameter or graph increment. It is a real positive result, but it misses the
+predeclared 0.001 strong-evidence threshold, so byte composition is retained as
+a weak incremental mechanism rather than the next main search direction. No
+test split was scored.
