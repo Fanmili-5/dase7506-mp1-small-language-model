@@ -1,0 +1,56 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260923171247
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage65 -RunId stage65-20260923-a
+进程 ID: 48160
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage65-20260923-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_projection_gradient_and_exact_materialization (tests.test_hybrid_conv_byte_rdrop.HybridConvByteRDropTests.test_proj
+ection_gradient_and_exact_materialization) ... ok
+test_training_parameter_is_not_deployed (tests.test_hybrid_conv_byte_rdrop.HybridConvByteRDropTests.test_training_parame
+ter_is_not_deployed) ... ok
+test_zero_initialization_matches_parent_and_rng (tests.test_hybrid_conv_byte_rdrop.HybridConvByteRDropTests.test_zero_in
+itialization_matches_parent_and_rng) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.520s
+
+OK
+  },
+  "checkpoint_sha256": "0ee8aa5983ed277f6b9715e49bf7d1bf2eaa3c30ab44278aaaddabebce475878",
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 5.684735488,
+  "peak_reserved_gb": 5.88251136
+}
+
+
+
+
+Stage65 complete: byte-composed hybrid-conv R-Drop continuation; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260923173149
+**********************
