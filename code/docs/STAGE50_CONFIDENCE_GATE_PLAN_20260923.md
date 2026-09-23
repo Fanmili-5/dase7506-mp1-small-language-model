@@ -24,3 +24,21 @@ experts and evaluate validation once.
 Stage50 runs only after Stage47 finishes and uses its fixed averaged inference
 checkpoint plus the unchanged Stage25 train-only modified Kneser-Ney expert.
 Test data remain untouched.
+
+## Result
+
+The fixed mixture grid selected count weight 0.075 at **1.4432653358 BPB**,
+improving the Stage47 neural model by 0.0073476674. The two legal-feature gates
+were fit in opposite directions on contiguous validation halves. Their combined
+out-of-half score was **1.4369943013 BPB**, another 0.0062710345 below the best
+fixed mixture.
+
+The first-half-trained gate evaluated on the second half with mean count weight
+0.10675; the reverse direction used 0.11346. Both learned higher count weight
+for higher neural entropy and stronger count confidence, and their 10/50/90%
+weight quantiles were similar. This supports a real prefix-confidence signal,
+but the score remains a validation-fit diagnostic and no gate was exported.
+
+Stage53 therefore qualifies the legal fixed 0.075 mixture immediately. A
+dynamic gate may advance only after separately trained proxy-neural predictions
+permit train-only calibration. Test remains untouched.
