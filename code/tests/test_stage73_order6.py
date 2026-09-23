@@ -5,6 +5,7 @@ import torch
 
 from scripts.build_kneser_ney import fit_kneser_ney
 from scripts.build_stage73_order6 import extend_model
+from student_mixture_aware import build_target_edge_keys, count_target_probability
 from train_experiment import checkpoint_payload
 
 
@@ -31,6 +32,24 @@ class Order6ExtensionTests(unittest.TestCase):
             probability.sum(-1), torch.ones_like(probability[..., 0]),
             atol=2e-6, rtol=0,
         )
+
+    def test_order6_target_lookup_avoids_66_bit_pair_overflow(self):
+        pattern = [2047, 2046, 2045, 2044, 2043, 2042, 2041]
+        ids = np.array(pattern * 8, dtype=np.int64)
+        base_model, config, _ = fit_kneser_ney(ids, max_order=5, min_count=1)
+        base = checkpoint_payload(base_model, "student_ngram", config, 0,
+                                  len(ids) - 1)
+        extended, _, _ = extend_model(base, ids, min_count=1)
+        x = torch.tensor([pattern[:6], pattern[1:7]])
+        y = torch.tensor([pattern[1:7], pattern[:6]])
+        with torch.inference_mode():
+            expected = extended.distribution(x).gather(
+                -1, y.unsqueeze(-1)
+            ).squeeze(-1)
+            actual = count_target_probability(
+                extended, x, y, build_target_edge_keys(extended)
+            )
+        torch.testing.assert_close(actual, expected, atol=1e-7, rtol=1e-6)
 
 
 if __name__ == "__main__":

@@ -64,7 +64,10 @@ def count_target_probability(
         found = ((table.keys[locations] == keys)
                  & (positions.flatten() >= history - 1))
         result.mul_(torch.where(found, table.backoff[locations], 1.0))
-        queries = keys * counts.vocab + target
+        # Use the compact CSR row number rather than the raw base-vocabulary
+        # context code.  A five-token context fits int64, but appending its
+        # target would require 66 bits for vocab 2048.
+        queries = locations * counts.vocab + target
         edge_locations = torch.searchsorted(
             table_edge_keys, queries
         ).clamp_max(table_edge_keys.numel() - 1)
@@ -74,12 +77,14 @@ def count_target_probability(
 
 
 def build_target_edge_keys(counts: nn.Module) -> tuple[torch.Tensor, ...]:
-    """Build sorted training-only (context,target) keys once per count model."""
+    """Build sorted overflow-safe (CSR-row,target) keys once per count model."""
     result = []
     for table in counts.tables:
         sizes = table.offsets[1:] - table.offsets[:-1]
-        contexts = torch.repeat_interleave(table.keys, sizes)
-        keys = contexts * counts.vocab + table.values.long()
+        rows = torch.repeat_interleave(
+            torch.arange(table.keys.numel(), device=table.keys.device), sizes
+        )
+        keys = rows * counts.vocab + table.values.long()
         if keys.numel() != table.mass.numel() or (
                 keys.numel() > 1 and (keys[1:] <= keys[:-1]).any()):
             raise ValueError("Count edges must be unique and lexicographically sorted")

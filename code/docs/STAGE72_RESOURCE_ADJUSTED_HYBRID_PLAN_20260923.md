@@ -14,3 +14,13 @@ and three fresh-process measurements under CPU <=5x baseline, RSS <=4 GiB and
 assets <=64 MiB.  Passing permits one matched 7,200-update R-Drop run; failure
 stops the branch without training.  This is targeted resource adjustment, not
 a seed search or a quality claim.  Test remains untouched.
+
+## Result
+
+All seven causal/gradient/export tests passed.  The complete random-weight
+7,958,701-parameter neural-plus-MKN graph measured **4.712355079x** baseline
+CPU time across three fresh-process repetitions, 2,037,936,128-byte peak RSS,
+and 48,628,272 conservative inference-asset bytes.  All three course limits
+pass, with materially more timing headroom than Stage70.  Stage72 therefore
+admits exactly one matched 7,200-update R-Drop quality run in Stage74; this
+preflight itself makes no quality claim and did not score test.

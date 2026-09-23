@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $CodeRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $CodeRoot
 $Python = "$CodeRoot\.venv\Scripts\python.exe"
-$Root = "runs/stage73-order6"
+$Root = "runs/stage73-order6-b"
 $Base = "runs/stage25-kneser-ney/counts-min2/checkpoint.pt"
 $Neural = "runs/stage67-output-bias-s17/average.pt"
 if (Test-Path $Root) { throw "Refusing to overwrite Stage73" }
