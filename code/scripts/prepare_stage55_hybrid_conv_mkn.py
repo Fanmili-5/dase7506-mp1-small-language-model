@@ -34,10 +34,12 @@ def main():
     parser.add_argument("--counts", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--expected-neural-sha", default=NEURAL_SHA)
+    parser.add_argument("--source-stage", default="Stage55")
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Use a new run directory")
-    if (sha(args.neural) != NEURAL_SHA or sha(args.counts) != COUNTS_SHA
+    if (sha(args.neural) != args.expected_neural_sha or sha(args.counts) != COUNTS_SHA
             or sha(args.baseline) != BASELINE_SHA):
         raise ValueError("Unexpected frozen neural, count, or baseline checkpoint")
     neural_payload = torch.load(args.neural, map_location="cpu", weights_only=True)
@@ -91,7 +93,7 @@ def main():
         raise ValueError("Coverage mismatch or MKN did not improve the neural expert")
     args.run_dir.mkdir(parents=True)
     scan = dict(
-        protocol=PROTOCOL, split="validation", neural_sha256=NEURAL_SHA,
+        protocol=PROTOCOL, split="validation", neural_sha256=args.expected_neural_sha,
         counts_sha256=COUNTS_SHA, weights=rows, best=best, targets=targets,
         utf8_bytes=len(raw), seconds=time.perf_counter() - started,
         method="fixed_scalar_grid_before_export", no_test_scoring=True,
@@ -118,7 +120,8 @@ def main():
     exported = dict(neural_payload, implementation="student_ngram_hybrid_conv_collapsed",
                     config=config, model=candidate.state_dict())
     exported["fixed_mixture"] = dict(
-        source="Stage55 fixed validation grid", neural_sha256=NEURAL_SHA,
+        source=f"{args.source_stage} fixed validation grid",
+        neural_sha256=args.expected_neural_sha,
         counts_sha256=COUNTS_SHA, mixture_weight=best["weight"],
         selected_validation_bpb=best["bpb"], no_new_gradient_targets=True,
         smoke_max_abs_logp_error=max_error,
@@ -146,7 +149,7 @@ def main():
                                              for name in INFERENCE_FILES)
     result = dict(
         protocol=PROTOCOL, status="fixed_mixture_resource_audited",
-        checkpoint_sha256=sha(checkpoint), neural_sha256=NEURAL_SHA,
+        checkpoint_sha256=sha(checkpoint), neural_sha256=args.expected_neural_sha,
         count_checkpoint_sha256=COUNTS_SHA, baseline_checkpoint_sha256=BASELINE_SHA,
         validation_bpb=validation["bpb"], cpu_ratio=resources[
             "candidate_to_baseline_time_ratio"],

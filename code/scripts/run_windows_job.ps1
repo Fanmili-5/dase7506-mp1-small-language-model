@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19", "stage20", "stage21", "stage22", "stage23", "stage24", "stage25", "stage26", "stage27", "stage28", "stage30", "stage31", "stage32", "stage33", "stage34", "stage35", "stage36", "stage37", "stage38", "stage39", "stage40", "stage41", "stage42", "stage43", "stage44", "stage45", "stage46", "stage47", "stage48", "stage49", "stage50", "stage51", "stage52", "stage53", "stage54", "stage55", "stage56")]
+    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19", "stage20", "stage21", "stage22", "stage23", "stage24", "stage25", "stage26", "stage27", "stage28", "stage30", "stage31", "stage32", "stage33", "stage34", "stage35", "stage36", "stage37", "stage38", "stage39", "stage40", "stage41", "stage42", "stage43", "stage44", "stage45", "stage46", "stage47", "stage48", "stage49", "stage50", "stage51", "stage52", "stage53", "stage54", "stage55", "stage56", "stage57")]
     [string]$Job,
     [Parameter(Mandatory = $true)]
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
@@ -146,8 +146,10 @@ try {
         & "$PSScriptRoot\run_stage54_windows.ps1"
     } elseif ($Job -eq "stage55") {
         & "$PSScriptRoot\run_stage55_windows.ps1"
-    } else {
+    } elseif ($Job -eq "stage56") {
         & "$PSScriptRoot\run_stage56_windows.ps1"
+    } else {
+        & "$PSScriptRoot\run_stage57_windows.ps1"
     }
     Write-JobStatus "completed" 0 ""
     $ResultCode = 0
