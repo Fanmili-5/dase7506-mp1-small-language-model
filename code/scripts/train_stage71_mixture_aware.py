@@ -42,12 +42,12 @@ def score_target_mixture(neural, counts, tokens, byte_count, device,
     started = time.perf_counter(); nll = 0.; target_count = 0
     with torch.inference_mode():
         for ids, targets in windows(tokens, batch_size):
+            count_probability = count_target_probability(
+                counts, ids, targets, edge_keys
+            ).to(device)
             ids, targets = ids.to(device), targets.to(device)
             with autocast(device, precision):
                 neural_logp = neural.predict_log_probs(ids)
-            count_probability = count_target_probability(
-                counts, ids, targets, edge_keys
-            )
             target_logp = mixture_target_log_probs(
                 neural_logp, count_probability, targets, WEIGHT
             )
@@ -91,7 +91,9 @@ def main():
     neural, implementation_sha = make_model(
         "student_hybrid_conv_output_bias", neural_payload["config"], device
     )
-    counts, _ = make_model("student_ngram", count_payload["config"], device)
+    counts, _ = make_model(
+        "student_ngram", count_payload["config"], torch.device("cpu")
+    )
     neural.load_state_dict(neural_payload["model"], strict=True)
     counts.load_state_dict(count_payload["model"], strict=True)
     counts.eval()
@@ -101,7 +103,7 @@ def main():
     optimizer = torch.optim.AdamW(
         neural.parameters(), lr=PEAK_LR, betas=(.9, .999), weight_decay=.1
     )
-    data = load_data(); tokens = data["train"][0].to(device)
+    data = load_data(); tokens = data["train"][0]
     rng = torch.Generator().manual_seed(71017)
     sources = {name: sha(ROOT / name) for name in SOURCE_FILES}
     targets_per_step = BATCH * 256
@@ -113,7 +115,8 @@ def main():
         peak_learning_rate=PEAK_LR, count_weight=WEIGHT, rdrop_alpha=.5,
         comparison="Stage67 neural optimized through fixed Stage68 MKN mixture",
         start_checkpoint_sha256=START_SHA, count_checkpoint_sha256=COUNTS_SHA,
-        count_parameters_trainable=0, precision=precision,
+        count_parameters_trainable=0, count_lookup_device="cpu",
+        neural_training_device=str(device), precision=precision,
         parameters=sum(p.numel() for p in neural.parameters()),
         implementation_sha256=implementation_sha, source_hashes=sources,
         started_utc=datetime.now(timezone.utc).isoformat(), no_test_scoring=True,
@@ -137,17 +140,16 @@ def main():
         lr = learning_rate(step, STEPS, PEAK_LR, 50, .1, "baseline")
         for group in optimizer.param_groups:
             group["lr"] = lr
-        starts = torch.randint(
-            len(tokens) - 257, (BATCH,), generator=rng
-        ).to(device)
-        sequence = tokens[starts[:, None] + torch.arange(257, device=device)]
+        starts = torch.randint(len(tokens) - 257, (BATCH,), generator=rng)
+        sequence = tokens[starts[:, None] + torch.arange(257)]
         ids, targets = sequence[:, :256], sequence[:, 1:]
-        optimizer.zero_grad(set_to_none=True)
-        neural.train()
         with torch.no_grad():
             count_probability = count_target_probability(
                 counts, ids, targets, edge_keys
-            )
+            ).to(device)
+        ids, targets = ids.to(device), targets.to(device)
+        optimizer.zero_grad(set_to_none=True)
+        neural.train()
         with training_autocast(device, precision):
             first_neural = neural.predict_log_probs(ids)
             second_neural = neural.predict_log_probs(ids)

@@ -34,3 +34,10 @@ gradient update: target-only CSR evaluation still expanded every successor row.
 The final lookup precomputes sorted `(context,target)` integer keys from the
 unchanged CSR buffers and uses one binary search per order and target.  Unit
 tests require exact equality with the complete MKN distribution.
+
+The third launch showed that GPU binary search remained a poor sparse workload
+and was interrupted before the initial score or a gradient update.  The fourth
+launch keeps the immutable MKN buffers and direct target lookup on CPU, sends
+only the resulting target probabilities to CUDA, and reserves GPU memory and
+compute for the dense neural expert.  The probability calculation itself is
+unchanged.
