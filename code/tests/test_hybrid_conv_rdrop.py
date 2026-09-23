@@ -35,6 +35,25 @@ class HybridConvRDropTests(unittest.TestCase):
         torch.testing.assert_close(actual.logsumexp(-1), torch.zeros_like(actual[..., 0]),
                                    atol=2e-6, rtol=0)
 
+    def test_local_heavy_rdrop_export(self):
+        config = json.loads(
+            (ROOT / "configs/stage58_local_heavy_rdrop.json").read_text())
+        torch.manual_seed(17)
+        model = student_hybrid_conv_rdrop.build_model(config)
+        ids = torch.randint(2048, (1, 16))
+        targets = torch.randint(2048, ids.shape)
+        future = torch.randint(2048, (2, *ids.shape))
+        model.train(); loss, _ = model.rdrop_training_loss(ids, targets, future)
+        loss.backward()
+        self.assertTrue(torch.isfinite(model.blocks[2].depthwise.weight.grad).all())
+        deployed = student_hybrid_conv_structured.build_model(
+            student_hybrid_conv_rdrop.inference_config(config))
+        deployed.load_state_dict(
+            student_hybrid_conv_rdrop.inference_state(model.state_dict()), strict=True)
+        model.eval(); deployed.eval()
+        with torch.inference_mode():
+            torch.testing.assert_close(model(ids), deployed(ids), atol=0, rtol=0)
+
 
 if __name__ == "__main__":
     unittest.main()

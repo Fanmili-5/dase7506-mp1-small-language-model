@@ -20,6 +20,7 @@ BATCH = 32
 TARGETS = STEPS * BATCH * 256
 AVERAGE_STEPS = (6000, 6300, 6600, 6900, 7200)
 CONFIG = Path("configs/stage54_hybrid_conv_rdrop.json")
+COMPARISON = "Stage47 matched R-Drop recipe; only backbone becomes Stage49 hybrid"
 SOURCE_FILES = (
     "student_hybrid_conv_rdrop.py", "student_hybrid_conv_structured.py",
     "student_rdrop_multi_token.py", "student_multi_token.py",
@@ -57,7 +58,7 @@ def main():
         deep_supervision_weight=config["deep_supervision_weight"],
         future_prediction_weight=config["future_prediction_weight"],
         optimizer="AdamW", optimizer_betas=[.9, .999], weight_decay=.1,
-        comparison="Stage47 matched R-Drop recipe; only backbone becomes Stage49 hybrid",
+        comparison=COMPARISON,
         precision=precision, parameters=sum(parameter.numel() for parameter in model.parameters()),
         implementation_sha256=implementation_sha, source_hashes=sources,
         started_utc=datetime.now(timezone.utc).isoformat(), no_test_scoring=True)
