@@ -17,3 +17,17 @@ Selection is fixed before launch: average updates
 2,400/2,700/3,000/3,300/3,600, export through the exact existing path, and
 independently score validation on CPU FP32.  MKN is reconsidered only if the
 neural average improves Stage61.  Test remains untouched.
+
+## Result
+
+The smaller learning rate and auxiliary anneal limited the initial disturbance:
+validation moved from 1.4178313777 at update 0 to 1.4190538448 at update 600,
+then recovered below the start by update 1,800.  The five fixed averaging
+points at updates 2,400/2,700/3,000/3,300/3,600 scored
+1.4169926791/1.4164341258/1.4160881818/1.4160161750/1.4160604035 BPB.
+
+The exported average independently scored **1.4161061665454577 BPB** on CPU
+FP32, improving Stage61 by **0.0017251918951285 BPB** with the identical
+deployed graph.  Its checkpoint SHA-256 is
+`878c728f43c9e2d359e165b2dfdc1e3baeed79efa4bee7e33696906378dc0b25`.
+The result advances to a fresh fixed MKN scan; no test split was scored.
