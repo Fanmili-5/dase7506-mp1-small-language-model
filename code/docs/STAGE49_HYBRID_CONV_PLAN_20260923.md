@@ -19,3 +19,16 @@ collapsed MKN expert at weight .125 must pass three fresh-process measurements:
 causality, normalized probabilities, finite gradients and training/export graph
 equivalence. Passing permits one matched Stage26-budget run; it is not a quality
 claim. No test split is scored.
+
+## Result
+
+The random-weight full hybrid passed all preregistered gates. Its median CPU
+ratio was **4.880441205x**, peak RSS was 2,039,488,512 bytes and conservative
+assets were 48,550,503 bytes. The neural graph has 7,939,009 parameters. The
+preflight checkpoint SHA-256 is
+`58adc124d0d99c2c918695dce712dd700106424ec190c580372907a1d0fc332a`.
+
+This is resource feasibility only. Stage54 trains the admitted graph with the
+already validated Stage47 R-Drop recipe, so its quality comparison isolates the
+backbone change under matched targets and regularization. No test split was
+scored.
