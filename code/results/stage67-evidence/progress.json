@@ -1,0 +1,97 @@
+{
+  "completed_epochs": 5,
+  "history": [
+    {
+      "epoch": 1,
+      "train_nll_nats": 8572150.845323086,
+      "train_token_ppl": 10.722676306528149,
+      "output_bias_l2": 12.323518753051758,
+      "output_bias_max_abs": 1.2546244859695435
+    },
+    {
+      "epoch": 2,
+      "train_nll_nats": 8571645.904264927,
+      "train_token_ppl": 10.721177986903225,
+      "output_bias_l2": 18.511930465698242,
+      "output_bias_max_abs": 1.9294196367263794
+    },
+    {
+      "epoch": 3,
+      "train_nll_nats": 8571630.90914011,
+      "train_token_ppl": 10.721133494832308,
+      "output_bias_l2": 22.740049362182617,
+      "output_bias_max_abs": 2.3871803283691406
+    },
+    {
+      "epoch": 4,
+      "train_nll_nats": 8571619.124585152,
+      "train_token_ppl": 10.72109852898051,
+      "output_bias_l2": 25.9532470703125,
+      "output_bias_max_abs": 2.7339038848876953
+    },
+    {
+      "epoch": 5,
+      "train_nll_nats": 8571612.528373241,
+      "train_token_ppl": 10.72107895746659,
+      "output_bias_l2": 28.5489501953125,
+      "output_bias_max_abs": 3.0132930278778076
+    }
+  ],
+  "validation_history": [
+    {
+      "epoch": 0,
+      "bpb": 1.415328769314137,
+      "token_ppl": 19.89622550894022,
+      "nll_nats": 1126230.622843783,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.6590863000019453
+    },
+    {
+      "epoch": 1,
+      "bpb": 1.415128673015709,
+      "token_ppl": 19.887815261400455,
+      "nll_nats": 1126071.39865242,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.0301685000304133
+    },
+    {
+      "epoch": 2,
+      "bpb": 1.4151074952090588,
+      "token_ppl": 19.88692534507485,
+      "nll_nats": 1126054.546670823,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 1.8377005000365898
+    },
+    {
+      "epoch": 3,
+      "bpb": 1.4150997579129891,
+      "token_ppl": 19.886600224732405,
+      "nll_nats": 1126048.389811752,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 1.9259273000061512
+    },
+    {
+      "epoch": 4,
+      "bpb": 1.4150974554516147,
+      "token_ppl": 19.886503476581144,
+      "nll_nats": 1126046.557656168,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 1.8555880000349134
+    },
+    {
+      "epoch": 5,
+      "bpb": 1.4150970383953907,
+      "token_ppl": 19.886485952160033,
+      "nll_nats": 1126046.2257887595,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 1.8682243999792263
+    }
+  ],
+  "observed_train_targets": 18066710
+}
