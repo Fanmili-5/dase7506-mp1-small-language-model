@@ -24,3 +24,20 @@ The cache may read only predecessors in the current independent input window;
 it resets for every row and never sees target or future tokens when building
 the table. Targets are used solely for scoring the fixed distribution. No
 test split is scored. Preserve Stage85 as the qualified fallback.
+
+## Fixed-setting screen result
+
+The zero-weight control reproduced Stage115 at **1.400224973 BPB** on all
+376,599 validation targets. The prespecified order-at-least-2, weight-0.10
+cache scored **1.398978671 BPB**, an improvement of **0.001246302 BPB**;
+it was active on 45,770 targets (12.1535%). The same fixed setting also
+ranked first in the emitted exploratory grid, but its confirmatory status
+comes from being selected in Stage43, before this Stage115 result.
+
+This passes the diagnostic quality gate, **not** the submission gates.
+Stage115 alone failed its CPU limit at 5.170x in its one-repeat preflight,
+and this diagnostic has not implemented a full-vocabulary inference cache or
+measured CPU/RAM/assets. The next step is a causal normalized predictor and
+one-batch performance pilot; only then is exact full validation and resource
+qualification justified. Raw scan evidence is in
+`../results/stage132-evidence/scan.json`. No test split was scored.
