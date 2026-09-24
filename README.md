@@ -20,6 +20,13 @@ No test scoring occurred.  See `code/results/stage85-evidence/` and
 `code/docs/STAGE85_RESIDUAL_NORMALIZATION_PLAN_20260924.md`.  Stage71 remains
 the uncalibrated qualified reference.
 
+The strongest later validation-only single-model diagnostic is Stage92 plus
+the Stage94 scalar rescan at **1.401707688 BPB**. It is not resource-qualified
+or submission-frozen. Stage90/91 also establish a **1.381623389** over-budget
+two-neural ensemble ceiling; Stage92 distillation transfers part, but not all,
+of that complementarity. Stages93, 95 and 96 reject pure distillation, a wider
+balanced student and output-LoRA respectively. Test remains untouched.
+
 **Current resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
 the Stage22 deep-supervised Transformer with a train-only order-5 modified

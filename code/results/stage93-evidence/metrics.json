@@ -1,0 +1,259 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "status": "completed_training_validation_only",
+  "seed": 92017,
+  "rng_draw_offset_updates": 1800,
+  "steps": 1500,
+  "batch_size": 24,
+  "distillation_prefixes": 9216000,
+  "optimizer": "AdamW",
+  "optimizer_betas": [
+    0.9,
+    0.999
+  ],
+  "weight_decay": 0.1,
+  "peak_learning_rate": 5e-06,
+  "teacher_primary_weight": 0.55,
+  "teacher_alternate_weight": 0.45,
+  "objective": "pure_full_distribution_teacher_cross_entropy",
+  "hard_next_token_nll_weight": 0.0,
+  "teacher_temperature": 1.0,
+  "student_calibration": {
+    "temperature": 1.1,
+    "train_unigram_prior_weight": 0.05,
+    "copy_gate_shift": 0.1875
+  },
+  "validation_count_weight": 0.075,
+  "start_checkpoint_sha256": "3e8c7c04135faaa48947bc19ab68a3ea88fa26d036eb6b14ecfb9611516af724",
+  "primary_checkpoint_sha256": "20a81b19eef6784ec0b2c1935057a84e819e0f420b7e9e1187c9b117696db1a7",
+  "alternate_checkpoint_sha256": "f4c499b63db9b39ce8062b4f07eff313ec23c491952e1b4c92f22d873b23bfdf",
+  "count_checkpoint_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "teacher_parameters_trainable": 0,
+  "teacher_predictions_use_training_prefixes_only": true,
+  "next_token_labels_not_used_for_gradients": true,
+  "validation_labels_not_used_for_gradients": true,
+  "neural_training_device": "cuda:0",
+  "precision": "bf16",
+  "student_parameters": 7941057,
+  "implementation_sha256": "8f2144117213131bf1d621809ce3c520f932ec66f0ffb03796da81bd13a2b36e",
+  "source_hashes": {
+    "student_hybrid_conv_output_bias.py": "8f2144117213131bf1d621809ce3c520f932ec66f0ffb03796da81bd13a2b36e",
+    "student_hybrid_conv_structured.py": "81e61cc36bc6aec3711de27c9860c7ac6b80238b8b5481c5bfa7710a04d9c34e",
+    "student_structured.py": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+    "student.py": "e5dc885178e1ebcc4b89215ca719ecd83687709db879cd5eafc4e504b0c67dec",
+    "student_ngram.py": "0b04b2a8c2869679a770176e71b45b970a9dcccd2a941b39f9d04655e538ebf2",
+    "student_mixture_aware.py": "22358bab0876063e50104b6db6ce07ad129c6436aa4a8e436dd37fda190910ca",
+    "scripts/train_stage86_calibration_aware.py": "ab8d52d64bace183023f62fb58dc84c8f2147283fa1786142196faaa6c90612e",
+    "scripts/train_stage93_pure_distillation.py": "0b884b09a6a2b48c79d75a6bb9c5090ec2939f798fc844c1d39faadce293f350",
+    "train_experiment.py": "d8a02d5352c0dfc797f6a90119c3fa9bad2b032cbb6dd7016cb7fb21e985a385",
+    "evaluate.py": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+    "common.py": "d40dc1fe6578b5993a563bdb4d9e5317ddc9fae8afe48822b66571c7042e84db",
+    "data/manifest.json": "f4790bb599d9fcd04e48263e685335e2f62d9bca0324b08061a10c38984f4fe4",
+    "data/tokenizer.json": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e"
+  },
+  "started_utc": "2026-09-24T09:18:14.319898+00:00",
+  "no_test_scoring": true,
+  "completed_utc": "2026-09-24T09:23:18.778456+00:00",
+  "history": [
+    {
+      "step": 100,
+      "distillation_cross_entropy": 2.9554357528686523,
+      "learning_rate": 4.951807034732313e-06,
+      "grad_norm": 0.18204768002033234,
+      "distillation_prefixes": 614400,
+      "train_seconds": 19.75451229995815
+    },
+    {
+      "step": 200,
+      "distillation_cross_entropy": 2.8998279571533203,
+      "learning_rate": 4.80738947140485e-06,
+      "grad_norm": 0.17218837141990662,
+      "distillation_prefixes": 1228800,
+      "train_seconds": 39.0445029999828
+    },
+    {
+      "step": 300,
+      "distillation_cross_entropy": 3.108396053314209,
+      "learning_rate": 4.5730541157269796e-06,
+      "grad_norm": 0.161789670586586,
+      "distillation_prefixes": 1843200,
+      "train_seconds": 58.295960999967065
+    },
+    {
+      "step": 400,
+      "distillation_cross_entropy": 2.962486743927002,
+      "learning_rate": 4.259042547207621e-06,
+      "grad_norm": 0.16139864921569824,
+      "distillation_prefixes": 2457600,
+      "train_seconds": 77.31991399999242
+    },
+    {
+      "step": 500,
+      "distillation_cross_entropy": 2.961907148361206,
+      "learning_rate": 3.879078578185749e-06,
+      "grad_norm": 0.16246159374713898,
+      "distillation_prefixes": 3072000,
+      "train_seconds": 96.44494099996518
+    },
+    {
+      "step": 600,
+      "distillation_cross_entropy": 2.939685821533203,
+      "learning_rate": 3.449768457377034e-06,
+      "grad_norm": 0.15351691842079163,
+      "distillation_prefixes": 3686400,
+      "train_seconds": 115.64886519993888
+    },
+    {
+      "step": 700,
+      "distillation_cross_entropy": 2.982603073120117,
+      "learning_rate": 2.9898750971193352e-06,
+      "grad_norm": 0.15317454934120178,
+      "distillation_prefixes": 4300800,
+      "train_seconds": 134.5997527000145
+    },
+    {
+      "step": 800,
+      "distillation_cross_entropy": 2.9246225357055664,
+      "learning_rate": 2.519498044069099e-06,
+      "grad_norm": 0.1581057459115982,
+      "distillation_prefixes": 4915200,
+      "train_seconds": 153.7704345000093
+    },
+    {
+      "step": 900,
+      "distillation_cross_entropy": 2.9032273292541504,
+      "learning_rate": 2.0591950325641437e-06,
+      "grad_norm": 0.15696074068546295,
+      "distillation_prefixes": 5529600,
+      "train_seconds": 172.97042570001213
+    },
+    {
+      "step": 1000,
+      "distillation_cross_entropy": 2.9216771125793457,
+      "learning_rate": 1.629083512986146e-06,
+      "grad_norm": 0.1593112051486969,
+      "distillation_prefixes": 6144000,
+      "train_seconds": 192.3748382999911
+    },
+    {
+      "step": 1100,
+      "distillation_cross_entropy": 3.0049662590026855,
+      "learning_rate": 1.2479614226447214e-06,
+      "grad_norm": 0.15099740028381348,
+      "distillation_prefixes": 6758400,
+      "train_seconds": 211.6408726000227
+    },
+    {
+      "step": 1200,
+      "distillation_cross_entropy": 2.965670585632324,
+      "learning_rate": 9.324856257144857e-07,
+      "grad_norm": 0.15136095881462097,
+      "distillation_prefixes": 7372800,
+      "train_seconds": 230.7903106000158
+    },
+    {
+      "step": 1300,
+      "distillation_cross_entropy": 3.0450503826141357,
+      "learning_rate": 6.964439283421188e-07,
+      "grad_norm": 0.16361279785633087,
+      "distillation_prefixes": 7987200,
+      "train_seconds": 250.05886599997757
+    },
+    {
+      "step": 1400,
+      "distillation_cross_entropy": 2.9296443462371826,
+      "learning_rate": 5.501524853565229e-07,
+      "grad_norm": 0.15272703766822815,
+      "distillation_prefixes": 8601600,
+      "train_seconds": 269.09002730000066
+    },
+    {
+      "step": 1500,
+      "distillation_cross_entropy": 2.879437208175659,
+      "learning_rate": 5.000049348003967e-07,
+      "grad_norm": 0.16330087184906006,
+      "distillation_prefixes": 9216000,
+      "train_seconds": 288.17624579998665
+    }
+  ],
+  "validation_history": [
+    {
+      "step": 0,
+      "bpb": 1.4017357354616213,
+      "token_ppl": 19.332904356358384,
+      "nll_nats": 1115414.1317825057,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 3.3060466999886557
+    },
+    {
+      "step": 300,
+      "bpb": 1.402491368747725,
+      "token_ppl": 19.36379633783863,
+      "nll_nats": 1116015.4177627675,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.555226099968422
+    },
+    {
+      "step": 600,
+      "bpb": 1.4025776116169373,
+      "token_ppl": 19.367325276489584,
+      "nll_nats": 1116084.044475101,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.549331800022628
+    },
+    {
+      "step": 900,
+      "bpb": 1.4025814060797508,
+      "token_ppl": 19.367480555417302,
+      "nll_nats": 1116087.0638726503,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.620650199998636
+    },
+    {
+      "step": 1200,
+      "bpb": 1.4026035272962667,
+      "token_ppl": 19.368385835821442,
+      "nll_nats": 1116104.6665611528,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.582172700029332
+    },
+    {
+      "step": 1500,
+      "bpb": 1.4025834375127046,
+      "token_ppl": 19.36756368725649,
+      "nll_nats": 1116088.6803606711,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5377081999904476
+    }
+  ],
+  "final_validation": {
+    "step": 1500,
+    "bpb": 1.4025834375127046,
+    "token_ppl": 19.36756368725649,
+    "nll_nats": 1116088.6803606711,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 2.5377081999904476
+  },
+  "best_validation": {
+    "step": 0,
+    "bpb": 1.4017357354616213,
+    "token_ppl": 19.332904356358384,
+    "nll_nats": 1115414.1317825057,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 3.3060466999886557
+  },
+  "train_seconds": 288.29596309998306,
+  "validation_seconds": 16.155742299975827,
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 2.234666496,
+  "peak_reserved_gb": 2.518679552
+}

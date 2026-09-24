@@ -30,11 +30,12 @@ class MixtureAwareTests(unittest.TestCase):
         self.assertGreater(float(symmetric_kl(first, second)), 0)
 
     def test_sparse_target_query_matches_complete_count_distribution(self):
+        generator = torch.Generator().manual_seed(71017)
         config = dict(context=256, vocab=2048, kind="ngram",
                       order_shapes=[[2, 3]])
         counts = student_ngram.NgramLM(config).eval()
         with torch.no_grad():
-            counts.unigram.copy_(torch.rand(2048).add(.1))
+            counts.unigram.copy_(torch.rand(2048, generator=generator).add(.1))
             counts.unigram.div_(counts.unigram.sum())
             table = counts.tables[0]
             table.keys.copy_(torch.tensor([1, 2]))
@@ -50,12 +51,15 @@ class MixtureAwareTests(unittest.TestCase):
         edge_keys = build_target_edge_keys(counts)
         actual = count_target_probability(counts, ids, targets, edge_keys)
         torch.testing.assert_close(actual, expected, atol=0, rtol=0)
-        neural = torch.randn(2, 4, 2048).log_softmax(-1)
+        neural = torch.randn(2, 4, 2048, generator=generator).log_softmax(-1)
         complete = mixture_log_probs(neural, counts(ids), .0625).gather(
             -1, targets.unsqueeze(-1)
         ).squeeze(-1)
         sparse = mixture_target_log_probs(neural, actual, targets, .0625)
-        torch.testing.assert_close(sparse, complete, atol=2e-7, rtol=0)
+        # The two algebraically equivalent FP32 paths can differ by one or two
+        # CPU/backend rounding units after logaddexp; keep this deterministic
+        # and use the same 1e-6 scale as the normalization contract above.
+        torch.testing.assert_close(sparse, complete, atol=1e-6, rtol=0)
 
 
 if __name__ == "__main__":
