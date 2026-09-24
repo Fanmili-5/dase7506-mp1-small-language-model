@@ -59,6 +59,14 @@ precomputation saves only **1.37%**, alternative sparse-add kernels are slower,
 and 10–25% FFN channel masks cause substantial quality loss. None was
 promoted. See `code/results/stage112-evidence/` through
 `code/results/stage119-evidence/`.
+Stage120's 22.12-million-target hard-label continuation regressed: its fixed
+order-six monitor went from 1.401288462 to 1.401841357 BPB, and its planned
+late weight average scored 1.401887300. Stage121's exact static Stage92/order-5
+export reproduced **1.401707663** CPU FP32 validation BPB, but its three-repeat
+CPU ratio was **5.173329x**, so it failed the time gate despite passing RAM
+and assets. Stage85 therefore remains the qualified development candidate.
+See `code/results/stage120-evidence/`, `code/results/stage121-evidence/`, and
+their experiment documents. No new-candidate test scoring occurred.
 
 **Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

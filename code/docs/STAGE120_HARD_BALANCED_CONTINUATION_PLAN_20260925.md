@@ -16,3 +16,15 @@ Only supplied train prefixes generate gradients. The complete order-six
 validation monitor includes the unchanged Stage92 reference; no test scoring
 occurs. An apparent BPB gain still requires exact fused export and the
 three-repeat CPU/RAM/asset check before promotion.
+
+## Observed result
+
+Windows RTX 3070 Ti training completed all 3,600 updates and 22,118,400 new
+targets. The fixed order-six validation monitor was best at step 0
+(1.401288462 BPB); the endpoint was 1.401841357. The preregistered four-step
+late parameter average (steps 1800/2400/3000/3600, SHA-256
+`7b70fd562e159b8c95b0cb01bafec0231c2a84193ae19b1324530ac5ebdbbc6e`)
+scored 1.401887300 BPB on the same validation windows. Thus stronger real-label
+continuation did not improve Stage92. It is rejected without an export or
+resource audit; no test evaluation was run. Raw metrics, checkpoint ancestry,
+and the separate average score are in `../results/stage120-evidence/`.
