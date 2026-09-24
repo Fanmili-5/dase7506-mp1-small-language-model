@@ -1,0 +1,47 @@
+{
+  "stage92_neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+  "source_sha256": "5992f56a8fe088778e4e17cd5a0d0f54a0b49d0fc3fc3b1d90a9f7156a4c540a",
+  "torch_version": "2.7.1+cu126",
+  "onnxruntime_version": "1.30.0",
+  "input_shape": [
+    32,
+    256
+  ],
+  "replaced_rmsnorm_layers": 17,
+  "portable_max_hidden_error": 0.0,
+  "graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "graph_bytes": 31805041,
+  "export_seconds": 4.847263499977998,
+  "session_creation_seconds": 0.6237222999916412,
+  "max_hidden_error": {
+    "first": 5.9604644775390625e-06,
+    "second": 5.811452865600586e-06,
+    "single": 4.112720489501953e-06
+  },
+  "seconds_runs": {
+    "eager": [
+      2.1661608000285923,
+      2.1326518999994732,
+      2.1640004999935627,
+      2.1981658000149764,
+      2.1419917999883182,
+      2.182818599976599
+    ],
+    "onnxruntime": [
+      2.232257600000594,
+      2.169013399980031,
+      2.197908100031782,
+      2.2088555000373162,
+      2.1726983000407927,
+      2.19111499999417
+    ]
+  },
+  "median_seconds": {
+    "eager": 2.1650806500110775,
+    "onnxruntime": 2.194511550012976
+  },
+  "ort_relative_time": 1.0135934428132032,
+  "meets_12_percent_feature_speed_gate": false,
+  "validation_inputs_without_labels": true,
+  "no_test_scoring": true
+}

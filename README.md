@@ -88,6 +88,11 @@ numerical preflight correction and **9.216 million** new training targets,
 its best validation score remained the unchanged start (1.401707689 BPB);
 the endpoint and fixed average were **1.401806218** and **1.401822708**.
 It was not promoted. See `code/results/stage125-evidence/`.
+Stage126's ONNX Runtime feature pilot reproduced the Stage92 hidden states
+within 6e-6 after an equivalent RMSNorm export rewrite, but its six-run CPU
+median was 1.36% slower than eager PyTorch. It did not pass the predeclared
+12% speed gate and was not integrated or promoted. See
+`code/results/stage126-evidence/`.
 
 **Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

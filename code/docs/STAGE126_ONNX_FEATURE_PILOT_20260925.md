@@ -30,3 +30,16 @@ untouched eager model on two input batches, then applies the original ONNX
 equivalence and 12% speed gates. The original attempt's error is recorded in
 `../results/stage126-evidence/export-failure.json`; the rerun uses a new
 output directory and source hash.
+
+## Stage126b result
+
+All 17 rewritten RMSNorm layers exactly matched the original PyTorch copy
+on the pre-export checks. The 31,805,041-byte ONNX graph then matched eager
+hidden states within 5.97e-6 across two full batches and one single-window
+input. Six warmed CPU FP32 medians were **2.165081 s eager** and
+**2.194512 s ONNX Runtime**, so ORT was **1.36% slower**, not at least 12%
+faster. The graph is only a pilot artifact, not a deployable model; no
+checkpoint or full scorer audit follows. This rejects ONNX as a speed-only
+solution for the unchanged Stage92 feature extractor on this Windows machine.
+The raw result is in `../results/stage126-evidence/result.json`; no test
+scoring occurred.
