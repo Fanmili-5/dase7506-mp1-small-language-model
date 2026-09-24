@@ -19,3 +19,15 @@ variant is at least 8% faster in median feature latency and passes parity;
 then implement a portable single-copy checkpoint and independently score
 full validation plus three-repeat official CPU/RAM/asset gates. A pilot is
 not a qualification. No validation labels, test scores, or new training.
+
+## Observed result
+
+All three transposed-weight variants matched the eager model's complete
+features **exactly** (maximum absolute error 0 on both input batches), but
+none improved speed materially. Eight interleaved four-thread CPU runs gave
+median full-feature times of **2.087724 s** eager, **2.084634 s** input-only,
+**2.095787 s** output-only and **2.090770 s** both. Relative times were
+0.99852, 1.00386 and 1.00146, far short of the 0.92 gate. The current
+linear path already handles transposed operands efficiently on this host.
+No new inference module, full validation score, or resource audit follows.
+Raw input-only evidence is in `../results/stage139-evidence/`.

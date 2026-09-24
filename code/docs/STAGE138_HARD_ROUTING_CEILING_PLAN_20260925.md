@@ -23,3 +23,15 @@ headroom to beat 1.4 after routing mistakes. Otherwise stop: hard window
 routing cannot plausibly recover the ensemble advantage. Even if it passes,
 two stored experts must be shown to fit 64MiB with inference code, and the
 official four-thread CPU/RSS gates must be tested after a real router exists.
+
+## Observed result
+
+The primary Stage90 control reproduced **1.409161337 BPB**; the alternate
+alone scored **1.418444574 BPB**. Even the label-using perfect choice among
+the two on each of all 1,472 independent validation windows scored only
+**1.403444438 BPB** on 376,599 targets. The hindsight oracle selected the
+alternate on 504 windows. This fails the 1.38 exploratory ceiling gate and
+does not even cross 1.4. An input-only window router cannot outperform this
+oracle on the same two experts. The branch is closed without router training,
+export, CPU resource audit or test scoring. Raw evidence is in
+`../results/stage138-evidence/validation-oracle.json`.
