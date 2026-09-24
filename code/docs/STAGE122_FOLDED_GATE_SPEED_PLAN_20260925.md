@@ -22,3 +22,15 @@ The fixed CPU FP32 batch passed equivalence (maximum probability error
 or **3.196% faster**. This meets the preregistered 3% threshold, so the exact
 checkpoint export and complete validation/three-repeat resource audit proceed.
 The probe record is in `../results/stage122-evidence/probe.json`.
+
+## Complete resource result
+
+The exact exported checkpoint (SHA-256
+`c1b5e45b853b34074a215a5d71a9c61e8a96ed7ea0aca082b868b994d3d69e9c`)
+reproduced 1.400224947 CPU FP32 validation BPB. Three fresh-process runs
+measured baseline median 23.704637 s and candidate median 122.484984 s,
+or **5.167132x**. Peak RSS was 2,052,743,168 bytes and conservative assets
+50,403,435 bytes; those two limits passed, CPU did not. The short-batch
+3.196% gain did **not** persist sufficiently through complete scoring.
+Stage122 is not qualified and is not promoted; no test scoring occurred.
+Full raw records are in `../results/stage122-evidence/`.

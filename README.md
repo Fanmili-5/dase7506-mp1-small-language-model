@@ -20,8 +20,8 @@ No test scoring occurred.  See `code/results/stage85-evidence/` and
 `code/docs/STAGE85_RESIDUAL_NORMALIZATION_PLAN_20260924.md`.  Stage71 remains
 the uncalibrated qualified reference.
 
-The strongest later validation-only single-model diagnostic is Stage92 plus
-the Stage94 scalar rescan at **1.401707688 BPB**. It is not resource-qualified
+The later Stage92 neural-model diagnostic plus
+the Stage94 scalar rescan reached **1.401707688 BPB**. It is not resource-qualified
 or submission-frozen. Stage90/91 also establish a **1.381623389** over-budget
 two-neural ensemble ceiling; Stage92 distillation transfers part, but not all,
 of that complementarity. Stages93 and 95 disfavor pure distillation and a wider
@@ -30,7 +30,8 @@ to improve validation. Stage97 independently loaded the primary teacher and
 replicated Stage96 within 1e-9 BPB, confirming its teacher was fixed despite
 the less clear original code. Stage98's low-overhead validation cross-fit
 diagnostic reached **1.400016286 BPB**, but its gate was fitted using validation
-labels and is not an exportable candidate. Test remains untouched.
+labels and is not an exportable candidate. No post-v1 candidate used test for
+development selection.
 Stage99's train-only order-6 MKN improved the fixed Stage92 mixture to
 **1.401288435 BPB**. Stage100's direct train-fitted gate transferred poorly;
 Stage101's bounded slope attenuation reached **1.400398787 BPB** with order
@@ -67,6 +68,11 @@ CPU ratio was **5.173329x**, so it failed the time gate despite passing RAM
 and assets. Stage85 therefore remains the qualified development candidate.
 See `code/results/stage120-evidence/`, `code/results/stage121-evidence/`, and
 their experiment documents. No new-candidate test scoring occurred.
+Stage122 folded the dynamic gate's fixed affine calibration and cached count
+row maxima. Its one-batch CPU probe was 3.196% faster at equivalent outputs,
+but the formal three-repeat audit still measured **5.167132x** CPU time for
+**1.400224947** validation BPB. It also fails the CPU gate, so no candidate
+was promoted. See `code/results/stage122-evidence/`.
 
 **Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
