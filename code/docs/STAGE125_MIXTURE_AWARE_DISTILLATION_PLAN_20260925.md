@@ -38,3 +38,10 @@ training loss only*. This restores a valid teacher/student cross-entropy
 without changing the fixed CPU inference graph or scoring pipeline. The
 first raw record remains in `../results/stage125-evidence/probe-original.json`;
 the second uses a distinct output path and source hash.
+
+The corrected probe passed: teacher/student maximum log-normalization errors
+were 8.16e-7/2.98e-7, gradient norm 0.2093, peak GPU allocation 2.414 GB,
+and finite combined loss 2.8914. Count construction took 0.207 s and the
+GPU forward/backward 1.459 s for the fixed 24x256 batch. Its raw record is
+`../results/stage125-evidence/probe-normalized.json`. The 1,500-step training
+run is therefore allowed under the original feasibility rule.

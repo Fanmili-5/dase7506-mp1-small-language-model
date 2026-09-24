@@ -1,0 +1,29 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "purpose": "stage125_train_prefix_feasibility_only",
+  "source_sha256": "f768a145b2a82d7e2c72275ebf22ca6d37bd56404d71c8ea2554d987ab94388b",
+  "seed": 125017,
+  "batch_size": 24,
+  "train_unigram_tokens": 3613343,
+  "ancestry": {
+    "runs\\stage92-heterogeneous-distillation-s92017\\average.pt": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+    "runs\\stage71-mixture-aware-s71017-d\\average.pt": "20a81b19eef6784ec0b2c1935057a84e819e0f420b7e9e1187c9b117696db1a7",
+    "runs\\stage76-balanced-hybrid-continuation-s17\\average-inference.pt": "f4c499b63db9b39ce8062b4f07eff313ec23c491952e1b4c92f22d873b23bfdf",
+    "runs\\stage25-kneser-ney\\counts-min2\\checkpoint.pt": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2"
+  },
+  "teacher_cross_entropy": 3.0209097862243652,
+  "hard_mixture_nll": 2.502929210662842,
+  "loss": 2.8914146423339844,
+  "gradient_norm_before_clip": 0.2093426138162613,
+  "teacher_max_log_normalization_error": 8.158385753631592e-07,
+  "student_max_log_normalization_error": 2.980232238769531e-07,
+  "count_seconds": 0.20747429999755695,
+  "gpu_forward_backward_seconds": 1.4587471000268124,
+  "peak_gpu_allocated_bytes": 2414173184,
+  "finite_loss_and_gradients": true,
+  "no_optimizer_step": true,
+  "training_prefixes_only": true,
+  "no_validation_or_test_labels_in_gradients": true,
+  "no_test_scoring": true,
+  "passes_feasibility_gate": true
+}
