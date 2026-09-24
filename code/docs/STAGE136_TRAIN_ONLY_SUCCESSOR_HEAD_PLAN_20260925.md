@@ -37,3 +37,23 @@ useful for matching prior contexts, or training may merely drive copy-gate
 weight toward zero. Report validation BPB and mean gate activation, so an
 apparent recovery cannot be mistaken for successful successor retrieval.
 Only train text generates gradients; test stays untouched.
+
+## Completed result
+
+The Windows RTX 3070 Ti run completed all 2,400 updates and 14,745,600
+training targets. The fixed static-mixture validation trajectory at steps
+0/300/600/900/1200/1500/1800/2100/2400 was
+**1.560908/1.437538/1.411317/1.410222/1.409999/1.410026/1.409914/
+1.409918/1.409885 BPB** over every one of 376,599 targets. The selected
+last endpoint was 1.409885016 BPB. The prespecified four-checkpoint average
+(SHA-256 `5cc7e6957ec03aae9d9acaa28bb5681b3ecc2b50aa284bf7f497ca99b3f5d4fc`)
+scored **1.409892011 BPB**. Mean validation copy-gate activation first fell
+from 0.11590 to 0.03965 and then recovered to 0.08270 at the endpoint;
+the route did not simply shut off.
+
+This is a large recovery from the untrained swap but still 0.00818 BPB worse
+than the unchanged Stage92 static control. The predeclared quality gate fails,
+so this frozen-backbone head-only recipe is not exported or resource-audited.
+It does not rule out jointly adapting the backbone and head, which is a
+different, more expensive experiment. Raw run, complete trajectory and
+average evidence are in `../results/stage136-evidence/`. No test scoring.
