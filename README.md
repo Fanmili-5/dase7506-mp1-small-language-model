@@ -77,6 +77,11 @@ Stage123 tested nine prespecified neural temperature/prior combinations under
 the same train-fitted order-five dynamic gate. The original 1.125/0.0625
 calibration remained best at **1.400224946 BPB**; none reached 1.4. No
 checkpoint was exported. See `code/results/stage123-evidence/`.
+Stage124 tested a frozen/optimized TorchScript version of the same Stage92
+neural feature extractor without changing outputs. Its six-run CPU median was
+1.14% *slower* than eager execution, far short of the preregistered 12%
+feature-speed gate needed to revisit the sub-1.4 Stage105 predictor. No
+checkpoint was exported. See `code/results/stage124-evidence/`.
 
 **Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

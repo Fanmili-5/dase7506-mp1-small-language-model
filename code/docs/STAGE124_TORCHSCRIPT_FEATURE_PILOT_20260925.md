@@ -19,3 +19,13 @@ intentionally large enough to be relevant to Stage105's roughly 10% runtime
 overage. If the pilot misses it, retain the negative evidence and do not
 export a TorchScript candidate. Validation inputs are used without labels;
 test is not read or scored.
+
+## Result
+
+Both frozen and optimized TorchScript feature graphs matched eager hidden
+states exactly on the two fixed 32x256 input batches. Six warmed CPU FP32
+timings gave eager median 2.097834 s, frozen median 2.106655 s, and optimized
+median 2.121751 s. Optimized was **1.14% slower** than eager, not 12% faster.
+Stage124 therefore stops at the pilot; no checkpoint is exported and no full
+resource audit or test scoring occurs. Raw timings, shapes, hashes, and
+Torch version are in `../results/stage124-evidence/result.json`.

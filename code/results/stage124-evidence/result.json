@@ -1,0 +1,53 @@
+{
+  "stage92_neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+  "source_sha256": "b73d14fd12f852287529156010940c0d238d166cb70beb7c03ab880082e03976",
+  "torch_version": "2.7.1+cu126",
+  "thread_count": 4,
+  "input_shape": [
+    32,
+    256
+  ],
+  "second_input_shape": [
+    32,
+    256
+  ],
+  "max_hidden_error": {
+    "frozen": 0.0,
+    "optimized": 0.0
+  },
+  "seconds_runs": {
+    "eager": [
+      2.08972819999326,
+      2.1092114000348374,
+      2.1173019999987446,
+      2.105939600034617,
+      2.0792934999917634,
+      2.078274999978021
+    ],
+    "frozen": [
+      2.0830552999977954,
+      2.10483910003677,
+      2.134262999985367,
+      2.0954198999679647,
+      2.1084704999811947,
+      2.191540999978315
+    ],
+    "optimized": [
+      2.123474600026384,
+      2.1408519000397064,
+      2.1160997000406496,
+      2.1379749000188895,
+      2.10387950000586,
+      2.120027700031642
+    ]
+  },
+  "median_seconds": {
+    "eager": 2.0978339000139385,
+    "frozen": 2.1066548000089824,
+    "optimized": 2.121751150029013
+  },
+  "optimized_relative_time": 1.01140092645796,
+  "meets_12_percent_feature_speed_gate": false,
+  "validation_inputs_without_labels": true,
+  "no_test_scoring": true
+}
