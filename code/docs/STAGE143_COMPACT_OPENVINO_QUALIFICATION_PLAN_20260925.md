@@ -59,3 +59,14 @@ effective full-model parameter count. The bytes above include both the graph
 and checkpoint. Source, smoke, scorer and individual resource-run evidence are
 under `code/results/stage143-evidence/`. This is local Windows evidence, not a
 course-server guarantee or a test result.
+
+## Clean-extract reproduction
+
+An archive of commit `384fadf` was extracted into a fresh Windows directory,
+without copying the original experiment run directory. With the existing
+Python 3.12 environment containing the pinned dependencies, the repository's
+unchanged `evaluate.py` scored the bundled checkpoint on full CPU FP32
+validation at **1.399686162042141 BPB** over 376,599 targets. The checkpoint,
+implementation, evaluator and tokenizer SHA-256 values matched the primary
+score record. The independent output is
+`code/results/stage143-evidence/clean-extract-validation.json`.
