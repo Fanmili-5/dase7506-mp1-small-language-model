@@ -48,3 +48,19 @@ No labels, gradients, test data, external text or non-FP32 arithmetic are
 used. The strongest objection is conversion between dense and oneDNN tensor
 formats at every FFN boundary; this pilot measures that overhead rather than
 assuming packing helps.
+
+## Observed Windows result
+
+The source-pinned FP32 pilot completed on PyTorch 2.7.1, four threads, and
+the i7-12700H Windows host. Input-only and output-only packing changed hidden
+features by at most `5.72e-6` and `4.53e-6`; packing both changed them by at
+most `6.14e-6`. All pass the `3e-5` parity bound. Six warmed full-feature
+median times were **2.155173 s** eager, **2.238180 s** input-packed,
+**2.176416 s** output-packed, and **2.230659 s** both-packed. These are
+respectively 3.85%, 0.99%, and 3.50% slower than eager, not 12% faster.
+
+No variant advances to full predictor integration, validation-label scoring,
+or resource qualification. The exact weights/FP32 semantics are sound; this
+oneDNN conversion path does not solve the CPU bottleneck on the measured host.
+Raw evidence is at `../results/stage134-evidence/result.json`. Stage85 remains
+the qualified fallback, and test was not scored.
