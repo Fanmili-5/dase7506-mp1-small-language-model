@@ -32,3 +32,24 @@ The strongest objection is that random-crop exposure should already cover
 all causal positions. If the aligned version still fails, the stage rules
 out this specific geometry mismatch as a sufficient solution; it does not
 rule out other objectives or architectures.
+
+## Completed controlled result
+
+The step-0 control reproduced **1.401707689 BPB** over all 376,599
+validation targets, and zero-delta/merge smoke errors were zero. The sampler
+identified 14,114 complete train windows and excluded only the last 158
+partial-window targets; 1,800 updates still presented exactly 11,059,200
+valid training targets. At steps 300/600/900/1200/1500/1800, full validation
+scored **1.402403/1.402365/1.402060/1.401795/1.401798/1.401765 BPB**.
+The prespecified average of merged checkpoints has SHA-256
+`2bda85a0a3a7344c5471133960adec79dc743d78ac03c9d178f52eb0482f3654`
+and scored **1.401753113 BPB**. Its runtime train phase was 417.3 s on the
+RTX 3070 Ti with 2.136 GB peak allocated GPU memory.
+
+This is 0.000182168 BPB better than Stage129's matched random-crop average
+(1.401935281), so the sampling geometry matters for this trajectory. But it
+is still 0.000045424 worse than the unchanged Stage92 start and 0.001753113
+above the target. The quality gate fails; no fused export, resource audit, or
+test scoring was performed. Raw plan, trajectory, and average validation
+records are under `../results/stage131-evidence/`. Stage85 remains the
+qualified fallback.
