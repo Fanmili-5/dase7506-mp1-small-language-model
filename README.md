@@ -82,6 +82,12 @@ neural feature extractor without changing outputs. Its six-run CPU median was
 1.14% *slower* than eager execution, far short of the preregistered 12%
 feature-speed gate needed to revisit the sub-1.4 Stage105 predictor. No
 checkpoint was exported. See `code/results/stage124-evidence/`.
+Stage125 tested a different train-only objective that directly distills the
+final neural/count mixture from the Stage91 three-expert teacher. After a
+numerical preflight correction and **9.216 million** new training targets,
+its best validation score remained the unchanged start (1.401707689 BPB);
+the endpoint and fixed average were **1.401806218** and **1.401822708**.
+It was not promoted. See `code/results/stage125-evidence/`.
 
 **Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

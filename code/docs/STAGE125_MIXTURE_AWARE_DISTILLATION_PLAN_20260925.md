@@ -45,3 +45,17 @@ and finite combined loss 2.8914. Count construction took 0.207 s and the
 GPU forward/backward 1.459 s for the fixed 24x256 batch. Its raw record is
 `../results/stage125-evidence/probe-normalized.json`. The 1,500-step training
 run is therefore allowed under the original feasibility rule.
+
+## Completed training result
+
+All 1,500 steps and 9,216,000 new training targets completed in 603.50 GPU
+training seconds. The unchanged start scored **1.401707689** validation BPB.
+The fixed monitoring points at 300/600/900/1200/1500 scored
+1.401831935/1.401820078/1.401844660/1.401822694/1.401806218 BPB.
+The prespecified three-checkpoint average (SHA-256
+`4fdb334d40f922efd55eea0ae35e7a9f968cc2e1fc47b40fd7c8c06c71e1119b`)
+scored **1.401822708**. Best remains step 0, so final-mixture-aware
+distillation is rejected without export or a CPU resource audit. This
+particular objective did not close the teacher-student gap. Raw metadata,
+training history, and average score are under `../results/stage125-evidence/`.
+No test score was run.

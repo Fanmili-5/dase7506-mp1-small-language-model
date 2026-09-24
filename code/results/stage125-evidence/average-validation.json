@@ -1,0 +1,17 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "precision": "fp32",
+  "purpose": "stage125_fixed_three_checkpoint_average",
+  "neural_sha256": "4fdb334d40f922efd55eea0ae35e7a9f968cc2e1fc47b40fd7c8c06c71e1119b",
+  "counts_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "calibration": "Stage94 fixed",
+  "count_weight": 0.0625,
+  "train_unigram_tokens": 3613343,
+  "utf8_bytes": 1148007,
+  "no_test_scoring": true,
+  "bpb": 1.401822708052817,
+  "nll_nats": 1115483.3391622156,
+  "targets": 376599,
+  "neural_seconds": 2.5309769000159577
+}
