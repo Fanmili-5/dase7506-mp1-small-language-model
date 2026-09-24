@@ -24,8 +24,13 @@ The strongest later validation-only single-model diagnostic is Stage92 plus
 the Stage94 scalar rescan at **1.401707688 BPB**. It is not resource-qualified
 or submission-frozen. Stage90/91 also establish a **1.381623389** over-budget
 two-neural ensemble ceiling; Stage92 distillation transfers part, but not all,
-of that complementarity. Stages93, 95 and 96 reject pure distillation, a wider
-balanced student and output-LoRA respectively. Test remains untouched.
+of that complementarity. Stages93 and 95 disfavor pure distillation and a wider
+balanced student respectively. Stage96's rank-16 output-LoRA recipe also failed
+to improve validation. Stage97 independently loaded the primary teacher and
+replicated Stage96 within 1e-9 BPB, confirming its teacher was fixed despite
+the less clear original code. Stage98's low-overhead validation cross-fit
+diagnostic reached **1.400016286 BPB**, but its gate was fitted using validation
+labels and is not an exportable candidate. Test remains untouched.
 
 **Current resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

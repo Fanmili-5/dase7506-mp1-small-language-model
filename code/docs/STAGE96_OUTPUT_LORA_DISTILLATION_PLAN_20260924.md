@@ -17,5 +17,12 @@ the resource budget. Validation monitors the calibrated neural plus MKN weight
 
 The exact-zero start reproduced 1.4030241601 BPB. All five epochs regressed;
 the best trained point was epoch 1 at 1.4031641160 and epoch 5 scored
-1.4034162016. The heterogeneous advantage is not representable as a static
-rank-16 vocabulary correction, so no adapter was exported. Test was not scored.
+1.4034162016. An audit initially suspected that passing the student object to
+the primary teacher scorer caused teacher drift. Inspection of the forward path
+showed the scorer uses `neural.head(hidden)`, not the trainable
+`student.output_weight()` LoRA projection; the backbone, tied head and bias were
+frozen. Stage97 independently loaded and froze Stage71 and reproduced all six
+validation scores within 1e-9 BPB. Thus the Stage96 teacher was fixed after
+all, and this rank-16 output-LoRA recipe did not improve validation. A broader
+claim about all low-rank corrections is not supported. No adapter was exported.
+Test was not scored.

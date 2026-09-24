@@ -1,4 +1,9 @@
-"""Fit a frozen-backbone output LoRA to the heterogeneous neural teacher."""
+"""Fit a frozen-backbone output LoRA to a fixed heterogeneous neural teacher.
+
+Stage96's original run accidentally used the changing student as the primary
+teacher. The corrected implementation is used by the Stage97 rerun; the old
+Stage96 source remains available in Git history at commit 74862a2.
+"""
 from __future__ import annotations
 
 import argparse
@@ -112,6 +117,9 @@ def main() -> None:
     if (incompatible.missing_keys != ["output_lora_a", "output_lora_b"]
             or incompatible.unexpected_keys):
         raise ValueError(f"Unexpected LoRA initialization: {incompatible}")
+    primary, _ = make_model(primary_payload["implementation"],
+                            primary_payload["config"], device)
+    primary.load_state_dict(primary_payload["model"], strict=True)
     alternate, _ = make_model(alternate_payload["implementation"],
                               alternate_payload["config"], device)
     alternate.load_state_dict(alternate_payload["model"], strict=True)
@@ -122,8 +130,8 @@ def main() -> None:
         parameter.requires_grad_(False)
     student.output_lora_a.requires_grad_(True)
     student.output_lora_b.requires_grad_(True)
-    student.eval(); alternate.eval(); counts.eval()
-    for model in (alternate, counts):
+    student.eval(); primary.eval(); alternate.eval(); counts.eval()
+    for model in (primary, alternate, counts):
         for parameter in model.parameters():
             parameter.requires_grad_(False)
     edge_keys = build_target_edge_keys(counts)
@@ -146,6 +154,7 @@ def main() -> None:
         trained_parameters=(student.output_lora_a.numel()
                             + student.output_lora_b.numel()),
         frozen_backbone=True,
+        fixed_primary_teacher=True,
         windowing="deterministic independent non-overlapping 256-token windows",
         initialization="Gaussian A and exact-zero B; exact Stage85 start",
         primary_checkpoint_sha256=PRIMARY_SHA,
@@ -170,7 +179,7 @@ def main() -> None:
             valid = targets_cpu != -100
             ids, targets = ids_cpu.to(device), targets_cpu.to(device)
             with torch.no_grad():
-                primary_logp = calibrated_neural_log_probs(student, ids, log_prior)
+                primary_logp = calibrated_neural_log_probs(primary, ids, log_prior)
                 alternate_logp = alternate.predict_log_probs(ids)
                 teacher_probability = torch.logaddexp(
                     primary_logp + log_primary,
