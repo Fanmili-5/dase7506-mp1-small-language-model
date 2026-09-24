@@ -52,10 +52,15 @@ Transformer block 5. The repaired seven-block average scored **1.422508959**
 validation BPB, so it was not promoted. Stage114's cheaper order-5 count gate
 screen reached **1.400224946**; exact Stage115 export reproduced that score but
 its one-repeat CPU preflight was **5.169956×**, still over the limit. Test
-remains untouched. See `code/results/stage112-evidence/` through
-`code/results/stage115-evidence/`.
+was not scored for these new candidates. Stage117's train-only no-margin gate
+refit improved the cheap variant only to **1.400478201**; the best full gate
+remained at **1.400187297**. Exact-output CPU probes found that row-max
+precomputation saves only **1.37%**, alternative sparse-add kernels are slower,
+and 10–25% FFN channel masks cause substantial quality loss. None was
+promoted. See `code/results/stage112-evidence/` through
+`code/results/stage119-evidence/`.
 
-**Current resource-qualified development candidate: Stage27 collapsed
+**Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
 the Stage22 deep-supervised Transformer with a train-only order-5 modified
 Kneser-Ney expert at fixed validation-selected weight 0.125. Stage27 preserved
