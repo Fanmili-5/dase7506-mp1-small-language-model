@@ -24,3 +24,9 @@ pass the original 5x/4GiB/64MiB limits. Because Stage115 already exceeds the
 CPU gate, any added overhead is expected to be a serious obstacle; a failed
 pilot is reported as such, not hidden. Stage85 remains the qualified fallback.
 Test stays untouched.
+
+The first Windows pilot attempt stopped before scoring because its script
+imported `scripts.train_experiment` rather than the existing top-level
+`train_experiment` module. Its unit tests passed, but it produced no timing
+or score. The corrected runner uses a new `-v2` output directory; the first
+attempt is not silently overwritten.

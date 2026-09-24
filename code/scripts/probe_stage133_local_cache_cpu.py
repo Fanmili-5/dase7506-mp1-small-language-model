@@ -14,7 +14,7 @@ import torch
 
 from common import PROTOCOL, load_data, make_model, setup, sha, windows
 from scripts.scan_stage43_exact_local_cache import local_successor_statistics
-from scripts.train_experiment import atomic_json_dump
+from train_experiment import atomic_json_dump
 from student_stage133_exact_local_cache import add_exact_local_cache
 
 STAGE115_SHA = "902e4b21c9ddf3afda2258ae032fe852517716cccfd5341567b2fabc21910e76"

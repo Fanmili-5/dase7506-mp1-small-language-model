@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $CodeRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $CodeRoot
 $Python = "$CodeRoot\.venv\Scripts\python.exe"
-$Run = "runs/stage133-deployable-local-cache-pilot"
+$Run = "runs/stage133-deployable-local-cache-pilot-v2"
 $Checkpoint = "runs/stage115-order5-gate-export/stage115-order5-gate.pt"
 if (Test-Path $Run) { throw "Refusing to overwrite Stage133" }
 & $Python scripts/verify_fixed_files.py
