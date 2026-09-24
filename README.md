@@ -45,6 +45,15 @@ sparse feature extraction and count addition into one traversal but reached
 **5.512127×** in a separate three-repeat audit. Both kept validation BPB at
 1.399686 and passed RAM/asset checks, but neither clears the CPU gate. See
 `code/results/stage104-evidence/` and `code/results/stage105-evidence/`.
+Stage109's teacher-only continuation of Stage92 regressed to **1.402744180**
+BPB after 14.75 million new training targets, so it was not exported.
+Stages112–113 tested physical removal and train-only repair of original
+Transformer block 5. The repaired seven-block average scored **1.422508959**
+validation BPB, so it was not promoted. Stage114's cheaper order-5 count gate
+screen reached **1.400224946**; exact Stage115 export reproduced that score but
+its one-repeat CPU preflight was **5.169956×**, still over the limit. Test
+remains untouched. See `code/results/stage112-evidence/` through
+`code/results/stage115-evidence/`.
 
 **Current resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

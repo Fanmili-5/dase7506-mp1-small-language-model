@@ -1,0 +1,363 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "status": "completed_training_validation_only",
+  "seed": 109017,
+  "mechanism": "teacher_only_second_stage_heterogeneous_distillation",
+  "steps": 2400,
+  "batch_size": 24,
+  "new_training_targets": 14745600,
+  "prior_checkpoint_train_targets": 11059200,
+  "optimizer": "AdamW",
+  "optimizer_betas": [
+    0.9,
+    0.999
+  ],
+  "weight_decay": 0.1,
+  "peak_learning_rate": 5e-06,
+  "teacher_primary_weight": 0.55,
+  "teacher_alternate_weight": 0.45,
+  "distillation_cross_entropy_weight": 1.0,
+  "hard_next_token_nll_weight": 0.0,
+  "student_checkpoint_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+  "primary_checkpoint_sha256": "20a81b19eef6784ec0b2c1935057a84e819e0f420b7e9e1187c9b117696db1a7",
+  "alternate_checkpoint_sha256": "f4c499b63db9b39ce8062b4f07eff313ec23c491952e1b4c92f22d873b23bfdf",
+  "count_checkpoint_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "fixed_monitor_calibration": {
+    "temperature": 1.1,
+    "train_unigram_prior_weight": 0.05,
+    "copy_gate_shift": 0.1875,
+    "count_weight": 0.075
+  },
+  "selected_average_steps": [
+    1500,
+    1800,
+    2100,
+    2400
+  ],
+  "teacher_predictions_use_training_prefixes_only": true,
+  "validation_labels_not_used_for_gradients": true,
+  "no_test_scoring": true,
+  "neural_training_device": "cuda:0",
+  "precision": "bf16",
+  "implementation_sha256": "8f2144117213131bf1d621809ce3c520f932ec66f0ffb03796da81bd13a2b36e",
+  "source_hashes": {
+    "student_hybrid_conv_output_bias.py": "8f2144117213131bf1d621809ce3c520f932ec66f0ffb03796da81bd13a2b36e",
+    "student_hybrid_conv_structured.py": "81e61cc36bc6aec3711de27c9860c7ac6b80238b8b5481c5bfa7710a04d9c34e",
+    "student_structured.py": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+    "student.py": "e5dc885178e1ebcc4b89215ca719ecd83687709db879cd5eafc4e504b0c67dec",
+    "student_ngram.py": "0b04b2a8c2869679a770176e71b45b970a9dcccd2a941b39f9d04655e538ebf2",
+    "student_mixture_aware.py": "22358bab0876063e50104b6db6ce07ad129c6436aa4a8e436dd37fda190910ca",
+    "scripts/train_stage86_calibration_aware.py": "ab8d52d64bace183023f62fb58dc84c8f2147283fa1786142196faaa6c90612e",
+    "scripts/train_stage92_heterogeneous_distillation.py": "98b670ae2eb2e741c01db4e377e24d86b2344890bce68f7294e67d5d96777bad",
+    "scripts/train_stage109_teacher_only_continuation.py": "d70f0c96465c89e1b0ef9e2105bcf283341cf495864d343e15b83f9cb4c821e6",
+    "train_experiment.py": "d8a02d5352c0dfc797f6a90119c3fa9bad2b032cbb6dd7016cb7fb21e985a385",
+    "evaluate.py": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+    "common.py": "d40dc1fe6578b5993a563bdb4d9e5317ddc9fae8afe48822b66571c7042e84db",
+    "data/manifest.json": "f4790bb599d9fcd04e48263e685335e2f62d9bca0324b08061a10c38984f4fe4",
+    "data/tokenizer.json": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e"
+  },
+  "train_unigram_tokens": 3613343,
+  "started_utc": "2026-09-24T15:10:03.407266+00:00",
+  "completed_utc": "2026-09-24T15:18:13.543293+00:00",
+  "history": [
+    {
+      "step": 100,
+      "distillation_cross_entropy": 2.8448779582977295,
+      "learning_rate": 4.981133458184494e-06,
+      "grad_norm": 0.15935809910297394,
+      "new_training_targets": 614400,
+      "train_seconds": 19.950794300064445
+    },
+    {
+      "step": 200,
+      "distillation_cross_entropy": 2.951552152633667,
+      "learning_rate": 4.9240935319692254e-06,
+      "grad_norm": 0.15528102219104767,
+      "new_training_targets": 1228800,
+      "train_seconds": 39.36372390005272
+    },
+    {
+      "step": 300,
+      "distillation_cross_entropy": 2.9267139434814453,
+      "learning_rate": 4.82985426264936e-06,
+      "grad_norm": 0.15028069913387299,
+      "new_training_targets": 1843200,
+      "train_seconds": 58.952832800045144
+    },
+    {
+      "step": 400,
+      "distillation_cross_entropy": 2.94258451461792,
+      "learning_rate": 4.7000281102510195e-06,
+      "grad_norm": 0.16735194623470306,
+      "new_training_targets": 2457600,
+      "train_seconds": 78.29057630005991
+    },
+    {
+      "step": 500,
+      "distillation_cross_entropy": 2.836324691772461,
+      "learning_rate": 4.536836436236353e-06,
+      "grad_norm": 0.16321368515491486,
+      "new_training_targets": 3072000,
+      "train_seconds": 97.68125860008877
+    },
+    {
+      "step": 600,
+      "distillation_cross_entropy": 2.9042022228240967,
+      "learning_rate": 4.343071495393027e-06,
+      "grad_norm": 0.16125258803367615,
+      "new_training_targets": 3686400,
+      "train_seconds": 117.12893010006519
+    },
+    {
+      "step": 700,
+      "distillation_cross_entropy": 3.043790817260742,
+      "learning_rate": 4.122048659580667e-06,
+      "grad_norm": 0.16521614789962769,
+      "new_training_targets": 4300800,
+      "train_seconds": 136.28539590007858
+    },
+    {
+      "step": 800,
+      "distillation_cross_entropy": 2.9495248794555664,
+      "learning_rate": 3.877549690799124e-06,
+      "grad_norm": 0.15322241187095642,
+      "new_training_targets": 4915200,
+      "train_seconds": 155.81863850005902
+    },
+    {
+      "step": 900,
+      "distillation_cross_entropy": 2.9871768951416016,
+      "learning_rate": 3.6137580341921753e-06,
+      "grad_norm": 0.1481284201145172,
+      "new_training_targets": 5529600,
+      "train_seconds": 175.12126930005616
+    },
+    {
+      "step": 1000,
+      "distillation_cross_entropy": 3.0175490379333496,
+      "learning_rate": 3.3351872381412274e-06,
+      "grad_norm": 0.15919257700443268,
+      "new_training_targets": 6144000,
+      "train_seconds": 194.4622984000016
+    },
+    {
+      "step": 1100,
+      "distillation_cross_entropy": 2.9802703857421875,
+      "learning_rate": 3.0466037262011296e-06,
+      "grad_norm": 0.15251001715660095,
+      "new_training_targets": 6758400,
+      "train_seconds": 214.08539320004638
+    },
+    {
+      "step": 1200,
+      "distillation_cross_entropy": 3.025609016418457,
+      "learning_rate": 2.7529452422716417e-06,
+      "grad_norm": 0.1625991314649582,
+      "new_training_targets": 7372800,
+      "train_seconds": 233.50441640004283
+    },
+    {
+      "step": 1300,
+      "distillation_cross_entropy": 2.869616985321045,
+      "learning_rate": 2.459236364430311e-06,
+      "grad_norm": 0.16044816374778748,
+      "new_training_targets": 7987200,
+      "train_seconds": 252.67521810001926
+    },
+    {
+      "step": 1400,
+      "distillation_cross_entropy": 2.933929443359375,
+      "learning_rate": 2.170502533008487e-06,
+      "grad_norm": 0.15578658878803253,
+      "new_training_targets": 8601600,
+      "train_seconds": 271.95649530005176
+    },
+    {
+      "step": 1500,
+      "distillation_cross_entropy": 3.003572463989258,
+      "learning_rate": 1.891684063913939e-06,
+      "grad_norm": 0.15029564499855042,
+      "new_training_targets": 9216000,
+      "train_seconds": 291.19242730003316
+    },
+    {
+      "step": 1600,
+      "distillation_cross_entropy": 2.9967734813690186,
+      "learning_rate": 1.627551618455959e-06,
+      "grad_norm": 0.14963093400001526,
+      "new_training_targets": 9830400,
+      "train_seconds": 310.7590984000708
+    },
+    {
+      "step": 1700,
+      "distillation_cross_entropy": 2.9155211448669434,
+      "learning_rate": 1.3826245760076812e-06,
+      "grad_norm": 0.1521429866552353,
+      "new_training_targets": 10444800,
+      "train_seconds": 331.044050800032
+    },
+    {
+      "step": 1800,
+      "distillation_cross_entropy": 3.037691831588745,
+      "learning_rate": 1.1610937061720034e-06,
+      "grad_norm": 0.1528097242116928,
+      "new_training_targets": 11059200,
+      "train_seconds": 350.23301270004595
+    },
+    {
+      "step": 1900,
+      "distillation_cross_entropy": 2.874326705932617,
+      "learning_rate": 9.66749463551771e-07,
+      "grad_norm": 0.14600904285907745,
+      "new_training_targets": 11673600,
+      "train_seconds": 369.5835336999735
+    },
+    {
+      "step": 2000,
+      "distillation_cross_entropy": 3.0159995555877686,
+      "learning_rate": 8.029171320206219e-07,
+      "grad_norm": 0.152437224984169,
+      "new_training_targets": 12288000,
+      "train_seconds": 388.9299956000177
+    },
+    {
+      "step": 2100,
+      "distillation_cross_entropy": 2.981065511703491,
+      "learning_rate": 6.723999281939589e-07,
+      "grad_norm": 0.16423937678337097,
+      "new_training_targets": 12902400,
+      "train_seconds": 408.20714110002154
+    },
+    {
+      "step": 2200,
+      "distillation_cross_entropy": 3.0175094604492188,
+      "learning_rate": 5.774310376154588e-07,
+      "grad_norm": 0.15542495250701904,
+      "new_training_targets": 13516800,
+      "train_seconds": 427.72874599997886
+    },
+    {
+      "step": 2300,
+      "distillation_cross_entropy": 3.019225597381592,
+      "learning_rate": 5.196354043332724e-07,
+      "grad_norm": 0.15225574374198914,
+      "new_training_targets": 14131200,
+      "train_seconds": 446.9794461999554
+    },
+    {
+      "step": 2400,
+      "distillation_cross_entropy": 2.7943544387817383,
+      "learning_rate": 5.000019276568345e-07,
+      "grad_norm": 0.15770749747753143,
+      "new_training_targets": 14745600,
+      "train_seconds": 466.28084699995816
+    }
+  ],
+  "validation_history": [
+    {
+      "step": 0,
+      "bpb": 1.4017970556677046,
+      "token_ppl": 19.33540942527587,
+      "nll_nats": 1115462.9265893288,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 3.2820208000484854
+    },
+    {
+      "step": 300,
+      "bpb": 1.4026050948886786,
+      "token_ppl": 19.36844998899346,
+      "nll_nats": 1116105.913953714,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.489728100015782
+    },
+    {
+      "step": 600,
+      "bpb": 1.4027018648977416,
+      "token_ppl": 19.372410679287448,
+      "nll_nats": 1116182.9175093137,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.53474890004145
+    },
+    {
+      "step": 900,
+      "bpb": 1.4027479747770277,
+      "token_ppl": 19.374298190949506,
+      "nll_nats": 1116219.608883921,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5739314000238664
+    },
+    {
+      "step": 1200,
+      "bpb": 1.402713742517824,
+      "token_ppl": 19.372896873048376,
+      "nll_nats": 1116192.368980769,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.54212609998649
+    },
+    {
+      "step": 1500,
+      "bpb": 1.4027698106944129,
+      "token_ppl": 19.375192110171067,
+      "nll_nats": 1116236.9845491163,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.523237200046424
+    },
+    {
+      "step": 1800,
+      "bpb": 1.4027546811751441,
+      "token_ppl": 19.37457273322105,
+      "nll_nats": 1116224.9454185069,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5993473999551497
+    },
+    {
+      "step": 2100,
+      "bpb": 1.4027334334142914,
+      "token_ppl": 19.373702919229533,
+      "nll_nats": 1116208.0377717055,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5973292000126094
+    },
+    {
+      "step": 2400,
+      "bpb": 1.4027348239867836,
+      "token_ppl": 19.3737598435353,
+      "nll_nats": 1116209.1443028226,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.588845400023274
+    }
+  ],
+  "final_validation": {
+    "step": 2400,
+    "bpb": 1.4027348239867836,
+    "token_ppl": 19.3737598435353,
+    "nll_nats": 1116209.1443028226,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 2.588845400023274
+  },
+  "best_validation": {
+    "step": 0,
+    "bpb": 1.4017970556677046,
+    "token_ppl": 19.33540942527587,
+    "nll_nats": 1115462.9265893288,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 3.2820208000484854
+  },
+  "train_seconds": 466.3918616999872,
+  "validation_seconds": 23.73647030000575,
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 2.183392768,
+  "peak_reserved_gb": 2.472542208
+}
