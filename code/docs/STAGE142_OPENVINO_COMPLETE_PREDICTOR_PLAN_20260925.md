@@ -26,3 +26,21 @@ weights alongside the ONNX graph, so it is deliberately *not* an eligible
 duplicated backbone with an ONNX graph asset, retain only head/count/gate
 weights, and run clean-load official validation plus three alternating
 fresh-process CPU/RAM/asset measurements. Test is not scored.
+
+## Complete validation result
+
+The source-pinned Stage105 model with only its `features` method temporarily
+replaced reproduced the complete 376,599-target validation score at
+**1.399686162042 BPB** versus **1.399686163172 BPB** for untouched eager.
+On the two input batches, maximum full-distribution probability error was
+`2.62e-6`, log-probability error `1.25e-4`, and log-normalization error
+`2.99e-6`; all prespecified guards passed. The unchanged evaluator's
+complete scoring function took **86.7310 s** with OpenVINO and **126.0794 s**
+eager, relative time **0.687908** (31.21% faster). OpenVINO reported FP32,
+four threads, one stream and no CPU pinning. The complete record is at
+`../results/stage142-evidence/validation-cpu-fp32.json`.
+
+The quality/20%-speed gate passes. This in-memory pilot still duplicates
+the PyTorch feature weights and is **not** asset-qualified. Proceed to
+Stage143's single-copy bundle and fresh-process resource measurements.
+No test scoring occurred.

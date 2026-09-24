@@ -1,0 +1,2 @@
+# Install the base requirements first, then this pinned CPU runtime.
+openvino==2026.4.0
