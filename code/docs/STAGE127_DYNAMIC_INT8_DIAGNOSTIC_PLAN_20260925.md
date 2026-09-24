@@ -22,3 +22,16 @@ then rule clarification is required before adopting INT8 for submission.
 This gate is diagnostic, not a claim that 12% feature speed implies 5x full
 evaluation, nor that feature error bounds BPB. The qualified Stage85 candidate
 remains unchanged.
+
+## Result
+
+On the fixed Windows host with PyTorch 2.7.1 and four CPU threads, the eight-run
+median feature times were 2.083780 s FP32, 2.021619 s with FFNs in dynamic
+INT8, and 2.005327 s with all linear layers in dynamic INT8. Thus the
+quantized variants saved only 2.98% and 3.77%, respectively, versus the
+predeclared 12% gate. Their hidden-feature relative RMS errors were 15.97–16.23%
+and 17.46–17.90% on the two input-only batches, versus the 5% gate. Both
+variants fail both tests. No complete validation, export, resource audit, or
+test scoring was done. This also avoids needing a course interpretation of
+internal INT8 arithmetic. Raw evidence is in
+`../results/stage127-evidence/result.json`.
