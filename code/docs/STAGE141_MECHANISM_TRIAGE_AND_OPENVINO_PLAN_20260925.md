@@ -63,3 +63,22 @@ This 15% feature gate accounts for the roughly 9.3% full-predictor CPU
 shortfall plus integration overhead. An input-only pilot is never a score or
 resource qualification. Complete official validation and three-repeat
 CPU/RAM/asset checks remain mandatory. Test is not scored.
+
+## Input-only pilot result
+
+OpenVINO `2026.4.0` was installed into the existing Windows virtual
+environment with dependencies unchanged (`--no-deps`). The exact Stage126b
+ONNX graph compiled for `CPU` with reported inference precision `float32`,
+four inference threads, one stream and CPU pinning disabled. Maximum hidden
+errors on two full input batches and one single window were respectively
+`7.15e-6`, `6.17e-6` and `4.41e-6`, below the `3e-4` gate. Eight interleaved
+warmed FP32 full-feature medians were **2.172431 s** eager PyTorch and
+**1.251868 s** OpenVINO, a relative time of **0.576252** (42.37% faster).
+The graph hash, compiled properties, all timing samples and source hash are
+in `../results/stage141-evidence/input-only-cpu-fp32.json`.
+
+This passes the 15% *feature* gate, so Stage142 may integrate the same
+feature graph with Stage105's unchanged head, copy and count/gate path.
+It is not yet a full predictor score, asset bundle, or CPU/RAM qualification.
+The OpenVINO package requirement and a single-copy graph asset must be
+included if that later predictor succeeds. No test scoring occurred.
