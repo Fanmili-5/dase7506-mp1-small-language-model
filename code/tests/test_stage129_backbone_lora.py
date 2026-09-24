@@ -47,7 +47,9 @@ class Stage129BackboneLoraTests(unittest.TestCase):
             adapted = distilled_log_probs(model, ids, prior)
             merged = merged_model(model)
             after_merge = distilled_log_probs(merged, ids, prior)
+            adapted_again = distilled_log_probs(model, ids, prior)
         torch.testing.assert_close(adapted, after_merge, atol=3e-5, rtol=3e-5)
+        torch.testing.assert_close(adapted, adapted_again, atol=1e-6, rtol=1e-6)
         self.assertFalse(any("parametrizations" in key for key in merged.state_dict()))
 
 

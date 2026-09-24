@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import copy
 from datetime import datetime, timezone
 import json
 import math
@@ -89,11 +88,25 @@ def attach_lora(model: nn.Module) -> tuple[list[str], list[nn.Parameter]]:
 
 
 def merged_model(model: nn.Module):
-    merged = copy.deepcopy(model).eval()
-    for _, layer in internal_linears(merged):
-        parametrize.remove_parametrizations(layer, "weight", leave_parametrized=True)
-    if any("parametrizations" in key for key in merged.state_dict()):
-        raise ValueError("LoRA parameters remained after merge")
+    """Materialize effective weights without mutating PyTorch's shared wrapper class."""
+    device = next(model.parameters()).device
+    devices = [device.index if device.index is not None else torch.cuda.current_device()] \
+        if device.type == "cuda" else []
+    with torch.random.fork_rng(devices=devices):
+        merged, _ = make_model("student_hybrid_conv_output_bias", model.config, device)
+    source = model.state_dict()
+    destination = merged.state_dict()
+    adapted_linears = dict(internal_linears(model))
+    with torch.no_grad():
+        for key in destination:
+            if key in source:
+                destination[key] = source[key].detach().clone()
+            elif key.endswith(".weight") and key[:-7] in adapted_linears:
+                destination[key] = adapted_linears[key[:-7]].weight.detach().clone()
+            else:
+                raise ValueError(f"Cannot materialize LoRA state: {key}")
+    merged.load_state_dict(destination, strict=True)
+    merged.eval()
     return merged
 
 

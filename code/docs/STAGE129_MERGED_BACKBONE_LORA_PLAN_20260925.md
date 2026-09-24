@@ -34,3 +34,16 @@ This is a *single-model architecture-preserving training intervention*, not
 seed selection. Its strongest objection is that Stage92 may already sit at
 the capacity/teacher-transfer ceiling; the fixed trajectory and step-0
 control expose that failure directly. Stage85 stays the qualified fallback.
+
+## First preflight correction
+
+The first invocation failed before it created a run directory or performed an
+optimizer step. Its zero-delta and initial merge smoke tests passed, but the
+subsequent full-validation control raised `AttributeError` because removing
+parametrizations from a deep copy interfered with the live model's shared
+dynamic `ParametrizedLinear` class. The failure is preserved in
+`../results/stage129-evidence/preflight-failure.json`. The corrected merge
+builds a fresh ordinary model and copies each effective adapted weight into
+it, leaving the training model untouched. The regression test now evaluates
+the original *again after merging* to guard this exact failure. Training
+settings and gate thresholds are unchanged.

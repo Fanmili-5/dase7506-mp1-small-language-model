@@ -1,0 +1,12 @@
+{
+  "stage": 129,
+  "attempt": "first_preflight_before_training",
+  "source_commit": "6d111e1",
+  "status": "failed_before_run_directory_or_optimizer_step",
+  "error": "AttributeError: 'ParametrizedLinear' object has no attribute 'weight'",
+  "location": "initial full-validation control after deepcopy-and-remove merge smoke",
+  "cause_hypothesis": "Removing parametrization on a deep copy changed the shared dynamic ParametrizedLinear class descriptor used by the live model",
+  "correction": "Materialize effective adapter weights into a separately instantiated plain model without removing parametrizations from the live model",
+  "validation_score_produced": false,
+  "test_scored": false
+}
