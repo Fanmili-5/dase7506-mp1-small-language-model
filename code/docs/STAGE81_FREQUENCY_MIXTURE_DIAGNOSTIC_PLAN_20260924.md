@@ -19,3 +19,11 @@ Stage79 scalar reference.  Validation-fitted vectors are never exported.  A
 material gain is only evidence to fit the same low-dimensional mechanism using
 the supplied training text; otherwise the branch stops.  Test remains
 untouched.
+
+## Result
+
+The best two-half cross-fit candidate used four frequency groups and reached
+validation BPB `1.4029399363`, versus `1.4030241673` for the fixed weight.  The
+gain was only `0.0000842311`; finer 8/16/32-group candidates were weaker.  This
+is far below the material-gain gate, so no frequency-conditioned checkpoint is
+exported and this route is closed.

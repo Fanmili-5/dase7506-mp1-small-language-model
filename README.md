@@ -6,16 +6,19 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-**Current resource-qualified development candidate: Stage71 mixture-aware
-hybrid, 1.406959541 CPU FP32 validation BPB.**  It starts from the Stage67
-output-biased neural average and continues training against the final
-neural-plus-frozen-MKN probability mixture.  A fixed five-checkpoint parameter
-average followed by the declared validation grid selects count weight 0.10.
-The exact collapsed checkpoint passes the three-repeat Windows gate at
-**4.798798x** baseline CPU time, **2,040,152,064 bytes** peak RSS and
-**48,561,852 bytes** of conservative inference assets.  No test scoring
-occurred.  See `code/results/stage71-evidence/` and
-`code/docs/STAGE71_MIXTURE_AWARE_PLAN_20260923.md`.
+**Current resource-qualified development candidate: Stage85 calibrated
+mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
+Stage71 neural and frozen train-only MKN experts, applies the closed Stage79
+scalar calibration, folds temperature into the final norm, scatters prefix-copy
+mass directly into the vocabulary tensor, and omits a redundant final dense
+division while bounding FP32 normalization drift.  The exact checkpoint passes
+the three-repeat Windows gate at **4.900108x** baseline CPU time,
+**2,041,077,760 bytes** peak RSS and **48,570,230 bytes** of conservative
+inference assets.  Checkpoint SHA-256 is
+`4d8d5a8356c49287985f0efc02f7dc5dddf33de875cbb4c15eddc394d836cffb`.
+No test scoring occurred.  See `code/results/stage85-evidence/` and
+`code/docs/STAGE85_RESIDUAL_NORMALIZATION_PLAN_20260924.md`.  Stage71 remains
+the uncalibrated qualified reference.
 
 **Current resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

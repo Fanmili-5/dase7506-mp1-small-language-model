@@ -6,6 +6,7 @@ from torch.nn import functional as F
 
 from scripts.build_ngram import fit_tables
 import student_hybrid_conv_output_bias
+import student_ngram_hybrid_conv_bias_collapsed
 import student_ngram_hybrid_conv_calibrated_collapsed
 import student_ngram_hybrid_conv_calibrated_untied_collapsed
 
@@ -70,6 +71,23 @@ class CalibratedHybridConvTests(unittest.TestCase):
             optimized_output = optimized.predict_log_probs(ids)
         torch.testing.assert_close(
             optimized_output.exp(), actual.exp(), atol=2e-7, rtol=2e-6)
+
+        folded_config = dict(config, kind="hybrid")
+        folded_config.pop("vocabulary_temperature")
+        folded = student_ngram_hybrid_conv_bias_collapsed.build_model(
+            folded_config).eval()
+        folded.load_state_dict(candidate.state_dict(), strict=True)
+        with torch.no_grad():
+            folded.neural.norm.weight.div_(temperature)
+            if getattr(folded.neural.norm, "bias", None) is not None:
+                folded.neural.norm.bias.div_(temperature)
+            folded.neural.copy_query.weight.mul_(temperature)
+            folded.neural.copy_key.weight.mul_(temperature)
+            folded.neural.copy_gate.weight.mul_(temperature)
+        with torch.inference_mode():
+            folded_output = folded.predict_log_probs(ids)
+        torch.testing.assert_close(
+            folded_output.exp(), actual.exp(), atol=2e-7, rtol=2e-6)
 
     def test_invalid_temperature_is_rejected(self):
         counts, count_config, _ = fit_tables(np.tile([2, 4, 2, 5], 20), min_count=3)
