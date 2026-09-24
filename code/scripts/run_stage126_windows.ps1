@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $CodeRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $CodeRoot
 $Python = "$CodeRoot\.venv\Scripts\python.exe"
-$Run = "runs/stage126-onnx-feature-pilot"
+$Run = "runs/stage126b-onnx-feature-pilot"
 if (Test-Path $Run) { throw "Refusing to overwrite Stage126" }
 & $Python scripts/verify_fixed_files.py
 if ($LASTEXITCODE -ne 0) { throw "Fixed files changed" }

@@ -18,3 +18,15 @@ negative pilot and do not promote. Any positive pilot still needs a single
 checkpoint/graph bundle under 64 MiB and formal three-repeat CPU/RAM/asset
 qualification; a model file with duplicate weights is not acceptable.
 Validation inputs are read without labels and test is not scored.
+
+## Exporter compatibility correction
+
+The first source-pinned attempt stopped before timing: PyTorch's installed
+ONNX exporter rejected `aten::rms_norm` for opset 17. This is an exporter
+failure, not a measured speed result. Stage126b rewrites only the frozen
+RMSNorm expression into square/mean/reciprocal-square-root/multiply operations
+in a *copy* of the neural model. It first checks the portable copy against the
+untouched eager model on two input batches, then applies the original ONNX
+equivalence and 12% speed gates. The original attempt's error is recorded in
+`../results/stage126-evidence/export-failure.json`; the rerun uses a new
+output directory and source hash.

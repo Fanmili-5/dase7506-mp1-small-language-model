@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from pathlib import Path
 import statistics
@@ -26,6 +27,29 @@ class FeatureWrapper(nn.Module):
 
     def forward(self, ids: torch.Tensor) -> torch.Tensor:
         return self.neural.features(ids)
+
+
+class PortableRMSNorm(nn.Module):
+    """Express the fixed RMSNorm in ONNX-supported elementary operations."""
+
+    def __init__(self, original: nn.RMSNorm):
+        super().__init__()
+        self.eps = original.eps
+        self.weight = nn.Parameter(original.weight.detach().clone())
+
+    def forward(self, x):
+        return x * torch.rsqrt(x.square().mean(-1, keepdim=True) + self.eps) * self.weight
+
+
+def make_portable(module: nn.Module) -> int:
+    count = 0
+    for name, child in tuple(module.named_children()):
+        if isinstance(child, nn.RMSNorm):
+            setattr(module, name, PortableRMSNorm(child))
+            count += 1
+        else:
+            count += make_portable(child)
+    return count
 
 
 def benchmark(fn, ids, repeats=6):
@@ -55,14 +79,24 @@ def main():
     neural.load_state_dict(payload["model"], strict=True)
     neural.eval()
     eager = FeatureWrapper(neural).eval()
+    portable = FeatureWrapper(copy.deepcopy(neural)).eval()
+    replaced_norms = make_portable(portable)
+    if replaced_norms == 0:
+        raise ValueError("Expected RMSNorm layers to rewrite for ONNX")
     source = windows(load_data()["validation"][0], 32)
     first, _ = next(source)
     second, _ = next(source)
     graph = args.run_dir / "stage126-features.onnx"
+    with torch.inference_mode():
+        portable_error = max(
+            float((portable(first) - eager(first)).abs().max()),
+            float((portable(second) - eager(second)).abs().max()))
+    if portable_error > 3e-4:
+        raise ValueError(f"Portable RMSNorm changes eager features: {portable_error}")
     export_started = time.perf_counter()
     with torch.inference_mode():
         torch.onnx.export(
-            eager, first, str(graph), export_params=True,
+            portable, first, str(graph), export_params=True,
             opset_version=17, do_constant_folding=True,
             input_names=["ids"], output_names=["hidden"],
             dynamic_axes={"ids": {0: "batch"}, "hidden": {0: "batch"}})
@@ -100,6 +134,8 @@ def main():
                   torch_version=torch.__version__,
                   onnxruntime_version=ort.__version__,
                   input_shape=list(first.shape),
+                  replaced_rmsnorm_layers=replaced_norms,
+                  portable_max_hidden_error=portable_error,
                   graph_sha256=sha(graph), graph_bytes=graph.stat().st_size,
                   export_seconds=export_seconds,
                   session_creation_seconds=session_creation_seconds,
