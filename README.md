@@ -6,7 +6,21 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-**Current resource-qualified development candidate: Stage85 calibrated
+**Current resource-qualified development candidate: Stage143 single-copy
+OpenVINO + train-only order-six MKN, 1.399686162 CPU FP32 validation BPB.**
+Its exact checkpoint passed three alternating fresh-process Windows CPU
+measurements at **3.617702x** baseline median time, **2,176,729,088 bytes**
+maximum peak RSS and **55,810,412 bytes** of conservative inference assets.
+The checkpoint and ONNX graph are tracked in this repository with SHA-256
+`256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3`
+and `5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4`.
+See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
+`code/results/stage143-evidence/`, and the reproduction instructions in
+`code/README.md`. This is a **validation-only local Windows qualification**;
+the new candidate has not been frozen or scored on test, and passing on the
+course CPU is not yet established.
+
+**Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
 Stage71 neural and frozen train-only MKN experts, applies the closed Stage79
 scalar calibration, folds temperature into the final norm, scatters prefix-copy
@@ -65,7 +79,7 @@ order-six monitor went from 1.401288462 to 1.401841357 BPB, and its planned
 late weight average scored 1.401887300. Stage121's exact static Stage92/order-5
 export reproduced **1.401707663** CPU FP32 validation BPB, but its three-repeat
 CPU ratio was **5.173329x**, so it failed the time gate despite passing RAM
-and assets. Stage85 therefore remains the qualified development candidate.
+and assets. Stage85 was the qualified development candidate at that stage.
 See `code/results/stage120-evidence/`, `code/results/stage121-evidence/`, and
 their experiment documents. No new-candidate test scoring occurred.
 Stage122 folded the dynamic gate's fixed affine calibration and cached count
@@ -322,7 +336,8 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the initial validation experiments. Human review and
+the validation experiments through Stage143, including the OpenVINO inference
+port, compact checkpoint packaging and resource audit. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.

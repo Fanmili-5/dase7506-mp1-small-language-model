@@ -1,5 +1,19 @@
 # AI assistance disclosure
 
+## Latest Stage141–143 work (25 September 2026)
+
+Codex screened speed mechanisms for the existing Stage105 predictor, exported
+and checked its frozen neural feature extractor as an ONNX graph, implemented
+the OpenVINO CPU inference path and compact checkpoint packaging, and ran the
+complete Windows validation scorer plus three alternating fresh-process
+resource repetitions. It selected Stage143 because the locally measured
+1.399686162 BPB, 3.617702x CPU time, 2,176,729,088-byte peak RSS and
+55,810,412-byte conservative asset sum satisfy the assignment limits on this
+machine. Earlier failed routes and exact evidence remain in the repository.
+The student must still inspect and understand the graph/export equivalence,
+train-only count tables, copy/gate behavior, resource measurements and
+portability risk before submission. This is not a new test score.
+
 OpenAI Codex provided substantive assistance in this project. Its contributions
 included analysis of the assignment constraints, design and implementation of the
 configurable experiment framework, drafting of model variants and training tools,

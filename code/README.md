@@ -1,6 +1,6 @@
 # MP1 code — installation and usage
 
-Read [the project guide](../guide/GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules. The package has only these two documents.
+Read [the project guide](../GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules.
 
 All commands below run from **code/**. Data and the tokenizer are included. No API key, pretrained weights or additional dataset download is needed; after installing dependencies, training and evaluation work offline.
 
@@ -36,7 +36,20 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
-Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. Windows/macOS timings have not been measured.
+Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. The Stage143 candidate was separately measured on Windows; its timing is machine-specific.
+
+For the Stage143 development candidate, additionally install the pinned
+OpenVINO CPU runtime after the base requirements:
+
+```bash
+python -m pip install -r requirements_stage143.txt
+python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output results/stage143-reproduction.json
+```
+
+The checkpoint uses the relative, hash-checked feature graph at
+`inference_assets/stage143-stage92-features.onnx`. Keep both files alongside
+the source. On Windows PowerShell, use backslashes in paths if needed. This
+command scores validation only; do not use test to select or tune a candidate.
 
 ## 2. Train and evaluate
 
@@ -106,7 +119,7 @@ Measure all three limits for the same frozen predictor:
 
 ## 5. Prepare your submission and reproduce a peer
 
-The [guide](../guide/GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
+The [guide](../GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
 
 - **Report, at most 10 pages including figures, tables and references** 
 - **Reproduction instructions**

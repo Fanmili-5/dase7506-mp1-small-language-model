@@ -38,3 +38,24 @@ The strongest objection is platform-dependent CPU performance. Passing on
 Windows is necessary local evidence but does not guarantee the course Xeon
 ratio; the final report must distinguish local qualification from remote
 instructor verification.
+
+## Observed Windows qualification (25 September 2026)
+
+The exact compact checkpoint passed the unchanged full-validation scorer on
+all 376,599 targets: **1.399686162042141 BPB**. Three alternating fresh-process
+four-thread CPU runs gave baseline times 23.7861255, 23.8256361 and
+23.3135692 seconds, and candidate times 86.8676388, 86.0511059 and
+85.9281289 seconds. The ratio of medians was **3.617701668x**, below 5x.
+Maximum candidate peak working set was **2,176,729,088 bytes**, below 4 GiB;
+conservatively counted inference assets were **55,810,412 bytes**, below
+64 MiB. The compact checkpoint is 23,824,895 bytes (SHA-256
+`256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3`);
+the ONNX graph is 31,805,041 bytes (SHA-256
+`5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4`).
+
+The resource probe's `parameters=629025` counts only live PyTorch parameters,
+not weights stored in the ONNX graph. It must **not** be presented as the
+effective full-model parameter count. The bytes above include both the graph
+and checkpoint. Source, smoke, scorer and individual resource-run evidence are
+under `code/results/stage143-evidence/`. This is local Windows evidence, not a
+course-server guarantee or a test result.
