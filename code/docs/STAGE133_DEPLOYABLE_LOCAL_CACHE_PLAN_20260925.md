@@ -30,3 +30,22 @@ imported `scripts.train_experiment` rather than the existing top-level
 `train_experiment` module. Its unit tests passed, but it produced no timing
 or score. The corrected runner uses a new `-v2` output directory; the first
 attempt is not silently overwritten.
+
+## CPU pilot result
+
+The corrected Windows pilot completed. Five cache tests passed. On the first
+32-by-256 validation-input batch, the actual full-distribution model exactly
+matched the independently constructed full cache probabilities in log space;
+its maximum log-normalization error was `2.71e-6`, and maximum target
+probability difference against the Stage43 causal diagnostic was `4.77e-8`.
+Six warmed CPU FP32 repeats gave medians **2.679938 s** for unchanged
+Stage115 and **2.934045 s** for Stage133, a **1.094818x** time ratio.
+
+Thus the quality signal from Stage132 is numerically realizable as a causal,
+normalized predictor, but this direct implementation adds about 9.5% CPU
+time to a parent that already failed at 5.170x. It fails the performance
+feasibility gate. No complete official validation score, checkpoint export,
+three-repeat resource qualification, or test score is claimed. Stage85
+remains the last measured resource-qualified fallback. Raw pilot evidence is
+in `../results/stage133-evidence/probe.json`. The 1.398979 Stage132 number
+remains a target-only diagnostic, not a deployable score.
