@@ -78,6 +78,9 @@ def main():
         student_logp = distilled_log_probs(student, ids, log_prior)
         final_logp = torch.logaddexp(
             student_logp + math.log(.9375), count_logp + math.log(.0625))
+        # BF16 expert arithmetic can leave a small row-sum drift. Keep the
+        # training CE/NLL a proper distribution without altering CPU inference.
+        final_logp = final_logp - final_logp.logsumexp(-1, keepdim=True)
         teacher_ce = -(teacher_probability * final_logp).sum(-1).mean()
         hard_nll = F.nll_loss(final_logp.reshape(-1, final_logp.shape[-1]),
                               labels.reshape(-1))

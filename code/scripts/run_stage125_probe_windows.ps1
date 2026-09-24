@@ -2,7 +2,7 @@ $ErrorActionPreference = "Stop"
 $CodeRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $CodeRoot
 $Python = "$CodeRoot\.venv\Scripts\python.exe"
-$Output = "runs/stage125-mixture-objective-probe.json"
+$Output = "runs/stage125-mixture-objective-normalized-probe.json"
 if (Test-Path $Output) { throw "Refusing to overwrite Stage125 probe" }
 & $Python scripts/verify_fixed_files.py
 if ($LASTEXITCODE -ne 0) { throw "Fixed files changed" }

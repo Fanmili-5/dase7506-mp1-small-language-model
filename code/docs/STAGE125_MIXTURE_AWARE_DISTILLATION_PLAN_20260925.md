@@ -26,3 +26,15 @@ promotion if neither endpoint nor fixed average improves Stage92 on full
 validation. Any gain still needs exact fused export and the three-repeat
 5x CPU / 4 GiB RAM / 64 MiB asset audit. Stage85 stays the qualified fallback.
 No validation or test label is used in gradients, and no test score is run.
+
+## Numerical preflight correction
+
+The first source-pinned probe had finite gradients and used only 2.41 GB GPU
+memory, but BF16 arithmetic left the student final-mixture row sums off by
+up to 0.001816 in log space, above the predeclared 0.001 threshold. It was
+recorded as a failed preflight, not waved through. A second probe explicitly
+subtracts the student final mixture's row-wise `logsumexp` *inside the
+training loss only*. This restores a valid teacher/student cross-entropy
+without changing the fixed CPU inference graph or scoring pipeline. The
+first raw record remains in `../results/stage125-evidence/probe-original.json`;
+the second uses a distinct output path and source hash.
