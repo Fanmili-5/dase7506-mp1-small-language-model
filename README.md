@@ -40,6 +40,11 @@ this exact predictor and independently reproduced the score, but its CPU ratio
 was **6.064540×**, above the fixed 5× limit; RSS and assets passed. It is not
 the current qualified candidate. See `code/results/stage102-evidence/`,
 `code/results/stage103-evidence/`, and the corresponding Stage102/103 plans.
+Stage104 fused copy/count inference reached **5.484419×**; Stage105 merged
+sparse feature extraction and count addition into one traversal but reached
+**5.512127×** in a separate three-repeat audit. Both kept validation BPB at
+1.399686 and passed RAM/asset checks, but neither clears the CPU gate. See
+`code/results/stage104-evidence/` and `code/results/stage105-evidence/`.
 
 **Current resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
