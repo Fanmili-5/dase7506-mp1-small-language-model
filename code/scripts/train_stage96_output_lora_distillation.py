@@ -1,8 +1,9 @@
 """Fit a frozen-backbone output LoRA to a fixed heterogeneous neural teacher.
 
-Stage96's original run accidentally used the changing student as the primary
-teacher. The corrected implementation is used by the Stage97 rerun; the old
-Stage96 source remains available in Git history at commit 74862a2.
+Stage97 explicitly loads the primary teacher. Stage96 used the student object,
+but its teacher path called the frozen tied head rather than the LoRA output
+projection, so that earlier teacher was fixed as well. The Stage97 run source
+is preserved in commit 043db25.
 """
 from __future__ import annotations
 

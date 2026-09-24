@@ -6,6 +6,8 @@ from torch.nn import functional as F
 import student_hybrid_conv_output_bias
 import student_hybrid_conv_output_lora
 from scripts.export_stage69_output_lora import materialize_model
+from scripts.train_stage86_calibration_aware import calibrated_neural_log_probs
+from scripts.train_stage96_output_lora_distillation import adapter_log_probs
 
 
 class HybridConvOutputLoRATests(unittest.TestCase):
@@ -52,6 +54,21 @@ class HybridConvOutputLoRATests(unittest.TestCase):
         source.eval(); deployed.eval()
         with torch.inference_mode():
             torch.testing.assert_close(source(ids), deployed(ids), atol=0, rtol=0)
+
+    def test_primary_teacher_ignores_trainable_lora_residual(self):
+        model = student_hybrid_conv_output_lora.build_model(self.config()).eval()
+        ids = torch.randint(2048, (2, 16))
+        log_prior = torch.zeros(2048)
+        with torch.inference_mode():
+            teacher_before = calibrated_neural_log_probs(model, ids, log_prior)
+            student_before = adapter_log_probs(model, ids, log_prior)
+        with torch.no_grad():
+            model.output_lora_b.normal_(std=.1)
+        with torch.inference_mode():
+            teacher_after = calibrated_neural_log_probs(model, ids, log_prior)
+            student_after = adapter_log_probs(model, ids, log_prior)
+        torch.testing.assert_close(teacher_after, teacher_before, atol=0, rtol=0)
+        self.assertGreater((student_after - student_before).abs().max().item(), 1e-6)
 
 
 if __name__ == "__main__":
