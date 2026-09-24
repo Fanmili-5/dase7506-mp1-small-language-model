@@ -1,0 +1,105 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "purpose": "bounded_gate_aware_neural_calibration_screen",
+  "neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+  "counts_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "train_gate_sha256": "8608489f8c2ea6df6909ba8ff52557c024ba9dbd3c8b7032246d2579b435e991",
+  "gate_active_features": [
+    "neural_max_logp",
+    "neural_margin",
+    "highest_backoff",
+    "highest_max_mass"
+  ],
+  "anchor_weight": 0.0625,
+  "gate_slope_scale": 0.4,
+  "copy_gate_shift": 0.25,
+  "temperatures": [
+    1.1,
+    1.125,
+    1.15
+  ],
+  "prior_weights": [
+    0.05,
+    0.0625,
+    0.075
+  ],
+  "candidates": [
+    {
+      "temperature": 1.1,
+      "prior_weight": 0.05,
+      "nll_nats": 1114345.5162057444,
+      "bpb": 1.400392811251917
+    },
+    {
+      "temperature": 1.1,
+      "prior_weight": 0.0625,
+      "nll_nats": 1114418.4634199508,
+      "bpb": 1.400484483675676
+    },
+    {
+      "temperature": 1.1,
+      "prior_weight": 0.075,
+      "nll_nats": 1114556.807748375,
+      "bpb": 1.400658340347763
+    },
+    {
+      "temperature": 1.125,
+      "prior_weight": 0.05,
+      "nll_nats": 1114225.9200372808,
+      "bpb": 1.4002425153049831
+    },
+    {
+      "temperature": 1.125,
+      "prior_weight": 0.0625,
+      "nll_nats": 1114211.9395330013,
+      "bpb": 1.400224946070481
+    },
+    {
+      "temperature": 1.125,
+      "prior_weight": 0.075,
+      "nll_nats": 1114264.4177318243,
+      "bpb": 1.4002908951781055
+    },
+    {
+      "temperature": 1.15,
+      "prior_weight": 0.05,
+      "nll_nats": 1114632.1993696291,
+      "bpb": 1.4007530846464544
+    },
+    {
+      "temperature": 1.15,
+      "prior_weight": 0.0625,
+      "nll_nats": 1114531.1487472432,
+      "bpb": 1.4006260948007525
+    },
+    {
+      "temperature": 1.15,
+      "prior_weight": 0.075,
+      "nll_nats": 1114497.4387421662,
+      "bpb": 1.4005837315946457
+    }
+  ],
+  "center": {
+    "temperature": 1.125,
+    "prior_weight": 0.0625,
+    "nll_nats": 1114211.9395330013,
+    "bpb": 1.400224946070481
+  },
+  "best": {
+    "temperature": 1.125,
+    "prior_weight": 0.0625,
+    "nll_nats": 1114211.9395330013,
+    "bpb": 1.400224946070481
+  },
+  "sub_1_4_candidates": [],
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "train_unigram_tokens": 3613343,
+  "seconds": 212.72985499998322,
+  "validation_selected_scalars_only": true,
+  "no_validation_gradient_fitting": true,
+  "exported_checkpoint": false,
+  "no_test_scoring": true,
+  "source_sha256": "71fa2b2c5cffcd2c59e3555c8336d1915f0124f51212a7bb72d7e569c3362748"
+}

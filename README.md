@@ -73,6 +73,10 @@ row maxima. Its one-batch CPU probe was 3.196% faster at equivalent outputs,
 but the formal three-repeat audit still measured **5.167132x** CPU time for
 **1.400224947** validation BPB. It also fails the CPU gate, so no candidate
 was promoted. See `code/results/stage122-evidence/`.
+Stage123 tested nine prespecified neural temperature/prior combinations under
+the same train-fitted order-five dynamic gate. The original 1.125/0.0625
+calibration remained best at **1.400224946 BPB**; none reached 1.4. No
+checkpoint was exported. See `code/results/stage123-evidence/`.
 
 **Historical resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines

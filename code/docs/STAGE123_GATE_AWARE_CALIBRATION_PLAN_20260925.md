@@ -19,3 +19,12 @@ scalars; no coefficients or model weights are trained on validation.
 Only a result below 1.4 BPB warrants exact folded export and full three-repeat
 CPU, RAM, and asset qualification. Otherwise record the negative screen. This
 is not test tuning; no test score is requested or read during development.
+
+## Result
+
+The center reproduced Stage114 at **1.400224946 BPB** on all 376,599
+validation targets. It was also the lowest of the nine prespecified settings;
+none crossed 1.4. This rejects a small gate-aware temperature/prior adjustment
+as the missing gain. No checkpoint was exported and no resource or test scoring
+was performed. All nine scores and source/ancestry hashes are preserved in
+`../results/stage123-evidence/result.json`.
