@@ -14,3 +14,11 @@ forwards. Only if the median is at least 3% faster and the probability error
 is at most 3e-6 should the candidate be exported for complete validation and
 the three-repeat resource audit. Otherwise stop with a negative speed probe.
 No new training, new fitted values, validation-label fitting, or test scoring.
+
+## One-batch gate result
+
+The fixed CPU FP32 batch passed equivalence (maximum probability error
+1.82e-6) and the ten-repeat median fell from 2.685419 to 2.599588 seconds,
+or **3.196% faster**. This meets the preregistered 3% threshold, so the exact
+checkpoint export and complete validation/three-repeat resource audit proceed.
+The probe record is in `../results/stage122-evidence/probe.json`.
