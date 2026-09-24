@@ -25,3 +25,16 @@ train-only copy-head adaptation may still be considered. If it passes, run
 CPU FP32 complete validation and three fresh-process CPU/RAM/asset audits;
 the old Stage115 5.170x preflight means quality alone is insufficient.
 Stage85 stays the qualified fallback. Test is not scored.
+
+## Untrained transfer result
+
+Seven existing/new successor tests passed. The exported model was causal
+(zero observed future-prefix difference) and normalized (maximum log-row-sum
+error `1.92e-6`). The unchanged evaluator scored all 376,599 validation
+targets in GPU FP32 at **1.559767700 BPB**, dramatically worse than
+Stage115's 1.400225. This decisively rejects an *untrained value swap*.
+The original content-copy query/key and gate were optimized for different
+value semantics; this observation is consistent with that mismatch, but does
+not establish that a trained successor head would fail. The quality gate
+failed, so no CPU resource or test score was run. Raw export/source hashes
+and evaluator output are in `../results/stage135-evidence/`.
