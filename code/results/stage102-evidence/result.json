@@ -1,0 +1,1149 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "purpose": "bounded_train_gate_feature_ablation",
+  "neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+  "counts_sha256": "b901f11766c005733f769fa5582e82f586db31a41edaefe93122aae1ed471953",
+  "train_gate_sha256": "8608489f8c2ea6df6909ba8ff52557c024ba9dbd3c8b7032246d2579b435e991",
+  "anchor_weight": 0.0625,
+  "variants": {
+    "full": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "highest_total_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ],
+    "without_log_edges": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_max_mass",
+      "highest_total_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ],
+    "without_order": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "highest_total_mass"
+    ],
+    "without_position": [
+      "neural_max_logp",
+      "neural_margin",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "highest_total_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ],
+    "without_total_mass": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ],
+    "neural_plus_max_mass": [
+      "neural_max_logp",
+      "neural_margin",
+      "highest_max_mass"
+    ],
+    "neural_backoff_mass": [
+      "neural_max_logp",
+      "neural_margin",
+      "highest_backoff",
+      "highest_max_mass"
+    ],
+    "clipped_one": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "highest_total_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ],
+    "clipped_half": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "highest_total_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ]
+  },
+  "slope_scales": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.3,
+    0.5
+  ],
+  "candidates": [
+    {
+      "variant": "full",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06658042913956803,
+      "nll_nats": 1114586.131759087,
+      "bpb": 1.4006951916952142
+    },
+    {
+      "variant": "full",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.07542323455280892,
+      "nll_nats": 1114350.2713256304,
+      "bpb": 1.4003987869888928
+    },
+    {
+      "variant": "full",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.08919884578030908,
+      "nll_nats": 1114431.4488173327,
+      "bpb": 1.4005008023639827
+    },
+    {
+      "variant": "full",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.10793118081122212,
+      "nll_nats": 1115003.7483897025,
+      "bpb": 1.4012200085665238
+    },
+    {
+      "variant": "full",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.15813862344309837,
+      "nll_nats": 1118411.6739330455,
+      "bpb": 1.4055027326972127
+    },
+    {
+      "variant": "full",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.2723717826090679,
+      "nll_nats": 1135291.770693352,
+      "bpb": 1.4267158715420283
+    },
+    {
+      "variant": "without_log_edges",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06444764972593149,
+      "nll_nats": 1114692.8057183037,
+      "bpb": 1.400829248362076
+    },
+    {
+      "variant": "without_log_edges",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.06769141429374138,
+      "nll_nats": 1114400.2171877087,
+      "bpb": 1.4004615537207448
+    },
+    {
+      "variant": "without_log_edges",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.07241219170213153,
+      "nll_nats": 1114195.6097943708,
+      "bpb": 1.4002044245641303
+    },
+    {
+      "variant": "without_log_edges",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.07869895687922675,
+      "nll_nats": 1114107.5348998492,
+      "bpb": 1.400093741255097
+    },
+    {
+      "variant": "without_log_edges",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.09614594896198382,
+      "nll_nats": 1114445.941004094,
+      "bpb": 1.4005190146274724
+    },
+    {
+      "variant": "without_log_edges",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.14759315721383628,
+      "nll_nats": 1118336.7000515328,
+      "bpb": 1.4054085133701055
+    },
+    {
+      "variant": "without_order",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06536120453116781,
+      "nll_nats": 1114669.1895966176,
+      "bpb": 1.4007995700921336
+    },
+    {
+      "variant": "without_order",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.07118253711056642,
+      "nll_nats": 1114422.6242576141,
+      "bpb": 1.4004897125809552
+    },
+    {
+      "variant": "without_order",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.07993914751940318,
+      "nll_nats": 1114320.9461254908,
+      "bpb": 1.4003619341466937
+    },
+    {
+      "variant": "without_order",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.0916166836169893,
+      "nll_nats": 1114417.0963234955,
+      "bpb": 1.4004827656519387
+    },
+    {
+      "variant": "without_order",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.12355775143096319,
+      "nll_nats": 1115549.720593175,
+      "bpb": 1.4019061292874018
+    },
+    {
+      "variant": "without_order",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.2124358342350651,
+      "nll_nats": 1123711.1878970994,
+      "bpb": 1.412162607171029
+    },
+    {
+      "variant": "without_position",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06657541107017853,
+      "nll_nats": 1114596.099320642,
+      "bpb": 1.4007077178833167
+    },
+    {
+      "variant": "without_position",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.07540153538629538,
+      "nll_nats": 1114369.838587862,
+      "bpb": 1.4004233770760484
+    },
+    {
+      "variant": "without_position",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.0891478043526036,
+      "nll_nats": 1114461.0830931107,
+      "bpb": 1.4005380436200945
+    },
+    {
+      "variant": "without_position",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.10784149128778295,
+      "nll_nats": 1115044.0321015096,
+      "bpb": 1.4012706329192086
+    },
+    {
+      "variant": "without_position",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.15799021675316866,
+      "nll_nats": 1118477.7641026638,
+      "bpb": 1.4055857879050293
+    },
+    {
+      "variant": "without_position",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.2723517850983188,
+      "nll_nats": 1135475.1535805517,
+      "bpb": 1.4269463279608017
+    },
+    {
+      "variant": "without_total_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06640502470305244,
+      "nll_nats": 1114580.1087876093,
+      "bpb": 1.400687622655058
+    },
+    {
+      "variant": "without_total_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.07483164806066474,
+      "nll_nats": 1114302.3091406738,
+      "bpb": 1.400338513134825
+    },
+    {
+      "variant": "without_total_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.08799764193318928,
+      "nll_nats": 1114291.0609880267,
+      "bpb": 1.4003243776338712
+    },
+    {
+      "variant": "without_total_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.10591909644137687,
+      "nll_nats": 1114695.9731415957,
+      "bpb": 1.4008332288481493
+    },
+    {
+      "variant": "without_total_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.15372505879860485,
+      "nll_nats": 1117447.504708121,
+      "bpb": 1.4042910657305687
+    },
+    {
+      "variant": "without_total_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.2614999154613672,
+      "nll_nats": 1131861.5129076326,
+      "bpb": 1.4224050825865355
+    },
+    {
+      "variant": "neural_plus_max_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06359278418857395,
+      "nll_nats": 1114820.1199203674,
+      "bpb": 1.4009892435258267
+    },
+    {
+      "variant": "neural_plus_max_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.06508889248765672,
+      "nll_nats": 1114599.5456302082,
+      "bpb": 1.40071204884447
+    },
+    {
+      "variant": "neural_plus_max_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.06711156448356002,
+      "nll_nats": 1114397.3324257466,
+      "bpb": 1.4004579284538459
+    },
+    {
+      "variant": "neural_plus_max_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.06969612087648298,
+      "nll_nats": 1114216.9686518074,
+      "bpb": 1.4002312661406213
+    },
+    {
+      "variant": "neural_plus_max_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.07665957795052086,
+      "nll_nats": 1113946.7723005095,
+      "bpb": 1.3998917116465426
+    },
+    {
+      "variant": "neural_plus_max_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.09759498096886968,
+      "nll_nats": 1114001.527534362,
+      "bpb": 1.3999605222934652
+    },
+    {
+      "variant": "neural_backoff_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06358998920722021,
+      "nll_nats": 1114809.6598740893,
+      "bpb": 1.4009760984344701
+    },
+    {
+      "variant": "neural_backoff_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.06501646156601193,
+      "nll_nats": 1114579.9609973773,
+      "bpb": 1.400687436927763
+    },
+    {
+      "variant": "neural_backoff_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.06688517996486067,
+      "nll_nats": 1114368.8027813951,
+      "bpb": 1.4004220753828942
+    },
+    {
+      "variant": "neural_backoff_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.06921551283894502,
+      "nll_nats": 1114178.1996061555,
+      "bpb": 1.400182545261827
+    },
+    {
+      "variant": "neural_backoff_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.0753304131066878,
+      "nll_nats": 1113876.3813612312,
+      "bpb": 1.3998032516815595
+    },
+    {
+      "variant": "neural_backoff_mass",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "highest_backoff",
+        "highest_max_mass"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.09349056541736162,
+      "nll_nats": 1113783.2095972882,
+      "bpb": 1.399686163160504
+    },
+    {
+      "variant": "clipped_one",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06452622698097885,
+      "nll_nats": 1114737.5828641537,
+      "bpb": 1.4008855195923582
+    },
+    {
+      "variant": "clipped_one",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.06800865430307847,
+      "nll_nats": 1114527.7276684023,
+      "bpb": 1.400621795546934
+    },
+    {
+      "variant": "clipped_one",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.07312731055995782,
+      "nll_nats": 1114454.3494621243,
+      "bpb": 1.4005295814974494
+    },
+    {
+      "variant": "clipped_one",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.07997102742116224,
+      "nll_nats": 1114559.462406598,
+      "bpb": 1.4006616764443667
+    },
+    {
+      "variant": "clipped_one",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.09897898436377033,
+      "nll_nats": 1115530.9196810608,
+      "bpb": 1.4018825022688635
+    },
+    {
+      "variant": "clipped_one",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.154352355468371,
+      "nll_nats": 1121945.5773117803,
+      "bpb": 1.4099437725858908
+    },
+    {
+      "variant": "clipped_half",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.05,
+      "mean_count_weight": 0.06364358069784536,
+      "nll_nats": 1114873.1221965507,
+      "bpb": 1.4010558512390248
+    },
+    {
+      "variant": "clipped_half",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.1,
+      "mean_count_weight": 0.0653598047243149,
+      "nll_nats": 1114737.652384952,
+      "bpb": 1.4008856069588211
+    },
+    {
+      "variant": "clipped_half",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.15,
+      "mean_count_weight": 0.06775377551799995,
+      "nll_nats": 1114655.0950164383,
+      "bpb": 1.4007818574989803
+    },
+    {
+      "variant": "clipped_half",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.2,
+      "mean_count_weight": 0.07084620768313067,
+      "nll_nats": 1114631.9551787614,
+      "bpb": 1.4007527777729305
+    },
+    {
+      "variant": "clipped_half",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.3,
+      "mean_count_weight": 0.07921100944853092,
+      "nll_nats": 1114803.7632940116,
+      "bpb": 1.400968688229797
+    },
+    {
+      "variant": "clipped_half",
+      "active_features": [
+        "neural_max_logp",
+        "neural_margin",
+        "position_fraction",
+        "highest_backoff",
+        "highest_log_edges",
+        "highest_max_mass",
+        "highest_total_mass",
+        "order_1",
+        "order_2",
+        "order_3",
+        "order_4",
+        "order_5"
+      ],
+      "slope_scale": 0.5,
+      "mean_count_weight": 0.10493121072906153,
+      "nll_nats": 1116412.627903347,
+      "bpb": 1.4029905408782124
+    }
+  ],
+  "reference": {
+    "variant": "full",
+    "active_features": [
+      "neural_max_logp",
+      "neural_margin",
+      "position_fraction",
+      "highest_backoff",
+      "highest_log_edges",
+      "highest_max_mass",
+      "highest_total_mass",
+      "order_1",
+      "order_2",
+      "order_3",
+      "order_4",
+      "order_5"
+    ],
+    "slope_scale": 0.1,
+    "mean_count_weight": 0.07542323455280892,
+    "nll_nats": 1114350.2713256304,
+    "bpb": 1.4003987869888928
+  },
+  "best": {
+    "variant": "neural_backoff_mass",
+    "active_features": [
+      "neural_max_logp",
+      "neural_margin",
+      "highest_backoff",
+      "highest_max_mass"
+    ],
+    "slope_scale": 0.5,
+    "mean_count_weight": 0.09349056541736162,
+    "nll_nats": 1113783.2095972882,
+    "bpb": 1.399686163160504
+  },
+  "gain_vs_stage101_bpb": 0.0007126238283887698,
+  "train_unigram_tokens": 3613343,
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "seconds": 142.1981642000028,
+  "no_validation_gradient_fitting": true,
+  "no_test_scoring": true,
+  "exported_checkpoint": false,
+  "source_sha256": "cbf9311e26357e20bb6a8804ba3de283795283c80e9f82c5a8332c9ddb1fa8f9"
+}

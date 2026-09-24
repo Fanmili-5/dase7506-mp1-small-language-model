@@ -14,3 +14,14 @@ maps sixth-order prefixes into the fifth-order indicator so the same learned
 gate can be applied without using validation labels. Stage94 calibration is
 fixed. A score below 1.4 still requires a serialized inference candidate and
 independent 5× CPU, 4 GiB RAM, and 64 MiB asset checks. Test remains untouched.
+
+## Result
+
+The 90–95% fit contained 180,666 targets and the 95–100% train selection held
+180,667. The gate improved selection mean NLL from 2.498390 to 2.474408, but
+failed to transfer: on validation it assigned mean MKN weight only 0.00169
+instead of the fixed 0.0625. Order-5 BPB worsened from 1.4017076623 to
+**1.4051350331**; order-6 worsened from 1.4012884355 to **1.4049710399**.
+The full neural model had seen the gate slices whereas the proxy MKN had not.
+This training-confidence mismatch is a plausible explanation, not a proven
+causal attribution. Stage100 exports no gate or checkpoint. Test was not scored.

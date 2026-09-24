@@ -31,6 +31,15 @@ replicated Stage96 within 1e-9 BPB, confirming its teacher was fixed despite
 the less clear original code. Stage98's low-overhead validation cross-fit
 diagnostic reached **1.400016286 BPB**, but its gate was fitted using validation
 labels and is not an exportable candidate. Test remains untouched.
+Stage99's train-only order-6 MKN improved the fixed Stage92 mixture to
+**1.401288435 BPB**. Stage100's direct train-fitted gate transferred poorly;
+Stage101's bounded slope attenuation reached **1.400398787 BPB** with order
+six. Stage102's train-learned four-feature gate, with feature mask and slope
+scale selected on validation, reached **1.399686163 BPB**. Stage103 exported
+this exact predictor and independently reproduced the score, but its CPU ratio
+was **6.064540×**, above the fixed 5× limit; RSS and assets passed. It is not
+the current qualified candidate. See `code/results/stage102-evidence/`,
+`code/results/stage103-evidence/`, and the corresponding Stage102/103 plans.
 
 **Current resource-qualified development candidate: Stage27 collapsed
 modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
