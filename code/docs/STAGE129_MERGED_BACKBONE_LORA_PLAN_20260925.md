@@ -47,3 +47,24 @@ builds a fresh ordinary model and copies each effective adapted weight into
 it, leaving the training model untouched. The regression test now evaluates
 the original *again after merging* to guard this exact failure. Training
 settings and gate thresholds are unchanged.
+
+## Completed run
+
+The corrected step-0 control reproduced **1.401707689 BPB** on all 376,599
+validation targets; zero-delta and initial merge probability errors were both
+zero. The 32 internal linears contained 276,480 trainable rank-8 adapter
+parameters, and each saved adapter was merged into an ordinary Stage92
+neural checkpoint with a bounded probability discrepancy. The RTX 3070 Ti
+run processed 11,059,200 additional training targets in 411.3 training
+seconds (2.144 GB peak allocated GPU memory).
+
+Validation at steps 300/600/900/1200/1500/1800 was
+**1.402304/1.402396/1.402270/1.402047/1.401957/1.401965 BPB**. The
+prespecified four-merged-checkpoint average (SHA-256
+`840cadf5224b9e63fadd0f9434a0a957867c52111693925575f11eddc7829f7c`)
+scored **1.401935281 BPB**. The best point remained step 0. This falsifies
+the hypothesis that rank-8 backbone residuals, under this teacher/objective,
+close the generalization gap. It does not show that LoRA merging itself is
+invalid; the merged plain-network prediction checks passed. No fused
+submission export, CPU resource audit, or test scoring was performed. Raw
+plan, trajectory, and average records are in `../results/stage129-evidence/`.
