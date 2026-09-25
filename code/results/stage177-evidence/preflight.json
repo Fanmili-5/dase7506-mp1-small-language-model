@@ -1,0 +1,46 @@
+{
+  "purpose": "stage177_input_only_random_weight_resource_screen",
+  "split": "validation_inputs_no_labels",
+  "test_scored": false,
+  "config_sha256": "87aeec0297b7f8b015276cdd51a5e3289de1ba0fef59f6c9845e69967d93fc39",
+  "source_sha256": "5ffc3c51ca49d2906a991bd4a6019c7e0b29393f1967a8f9040e90619b95c557",
+  "parallel_module_sha256": "454bd8daf6b3fe168ff3718c5ab1b0ad0170292f12b35071320392b81cab32f7",
+  "stage145_utilities_sha256": "4aa8aa10cd8363c6b36cdde8addadcb427a52e06427832889383d7502c5e4948",
+  "reference_graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "candidate_graph_sha256": "b18d4b524e23473bec4addf93c97408c156eaeaeb9a13c4e950ab1d09ba34e05",
+  "candidate_graph_bytes": 36172843,
+  "neural_parameters": 9266113,
+  "portable_norm_count": 17,
+  "max_portable_hidden_error": 0.0,
+  "max_openvino_hidden_error": 3.814697265625e-06,
+  "timing_seconds": {
+    "reference": [
+      1.2704706999938935,
+      1.2402022000169381,
+      1.246778400032781,
+      1.2425820999778807,
+      1.2425259000156075,
+      1.2442080999026075,
+      1.2365623000077903,
+      1.2563818999333307
+    ],
+    "candidate": [
+      1.768498699995689,
+      1.7893240000121295,
+      1.7923926999792457,
+      1.8077729999786243,
+      1.7748529999516904,
+      1.778996100067161,
+      1.7968370999442413,
+      1.788095899973996
+    ]
+  },
+  "median_seconds": {
+    "reference": 1.243395099940244,
+    "candidate": 1.7887099499930628
+  },
+  "candidate_to_reference_feature_time": 1.438569244867561,
+  "conservative_projected_assets_bytes": 61372843,
+  "eligible_for_pilot": false,
+  "warning": "Input-only random-weight feasibility, not full-predictor score or resource qualification"
+}

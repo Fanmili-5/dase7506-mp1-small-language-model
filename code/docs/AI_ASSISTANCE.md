@@ -368,3 +368,15 @@ analysis; they are not a legal inference asset or submission result. The
 combined 1.400044877-BPB diagnostic failed its 1.35 advancement gate.
 The student must understand the distinction between a causal input feature
 and a coefficient illegally learned from validation targets.
+
+## Stage177 parallel-mixer preflight assistance
+
+Codex designed the parallel local-convolution/global-attention candidate,
+implemented zero-start training and inference modules plus structural tests,
+and ran an input-only Windows OpenVINO parity, asset and timing preflight.
+The candidate was rejected before gradient training because its feature graph
+exceeded the predeclared timing ratio. This is an adaptation of standard
+causal attention and gated convolution within the existing Transformer,
+not an original architecture claim. The student must understand the
+additional branch, its zero-start initialization and the distinction between
+feature-only timing and complete submission resource qualification.

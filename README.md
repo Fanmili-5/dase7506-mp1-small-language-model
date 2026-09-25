@@ -193,6 +193,13 @@ Stage143; one direction improved only slightly and the other regressed. The
 predeclared <=1.35 gate failed. No validation-fitted coefficients were
 deployed and no test score was made; see
 `code/docs/STAGE176_CAUSAL_FEATURE_GATE_FEASIBILITY_20260925.md`.
+Stage177 tested a more capable Transformer block that runs local convolution
+and global attention in parallel. Structural parity and the projected
+61,372,843-byte asset gate passed, but its Windows input-only OpenVINO
+feature graph was **1.438569x** the Stage143 feature time, beyond the fixed
+1.25x pilot-admission threshold. It was stopped **before training**; there
+is no Stage177 validation BPB or deployable checkpoint. See
+`code/docs/STAGE177_PARALLEL_GLOBAL_LOCAL_MIXER_PLAN_20260926.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
