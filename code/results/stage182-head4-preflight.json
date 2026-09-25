@@ -1,0 +1,44 @@
+{
+  "purpose": "input_only_random_weight_resource_screen",
+  "split": "validation_inputs_no_labels",
+  "test_scored": false,
+  "config_sha256": "73c980a90b9b5575096429710e9611809d73f332c77edf4b37f73b4b0bf3eae2",
+  "control_config_sha256": "87aeec0297b7f8b015276cdd51a5e3289de1ba0fef59f6c9845e69967d93fc39",
+  "source_sha256": "be012b68e5100bb9cb6d70087448054831ec5341fa78b7fc2fc10bd58c11adb9",
+  "reference_graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "candidate_graph_sha256": "2c4a5f2b3dbfa618c1c8ef7156d90fbd2ed12e00d32d0e97d6b313a0ebe9c97a",
+  "candidate_graph_bytes": 31861057,
+  "neural_parameters": 7939009,
+  "portable_norm_count": 17,
+  "max_portable_hidden_error": 0.0,
+  "max_openvino_hidden_error": 3.6954879760742188e-06,
+  "timing_seconds": {
+    "reference": [
+      1.2518718000501394,
+      1.2636856000171974,
+      1.2396933999843895,
+      1.253264099941589,
+      1.2520512000191957,
+      1.243260100018233,
+      1.2373833000892773,
+      1.2376188000198454
+    ],
+    "candidate": [
+      1.2213454999728128,
+      1.2157123000361025,
+      1.2156227000523359,
+      1.21365579997655,
+      1.209098800085485,
+      1.2044666999718174,
+      1.1973230999428779,
+      1.2173143000109121
+    ]
+  },
+  "median_seconds": {
+    "reference": 1.2475659500341862,
+    "candidate": 1.214639250014443
+  },
+  "candidate_to_reference_feature_time": 0.9736072469604985,
+  "conservative_projected_assets_bytes": 57061057,
+  "eligible_for_pilot": true
+}
