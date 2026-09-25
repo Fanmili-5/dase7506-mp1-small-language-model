@@ -1,5 +1,15 @@
 # AI assistance disclosure
 
+## Stage156 complementary-error diagnostic (25 September 2026)
+
+Codex predeclared, implemented and ran a hash-pinned complete-validation
+diagnostic comparing the retained Stage143 model to the rejected Stage155
+average. Their fixed equal-probability mixture scored 1.376182664 BPB, which
+passed a threshold for considering train-only distillation. This diagnostic
+uses validation target probabilities and is not a deployable, resource-audited
+predictor or test result. The student must understand that distinction and
+review any later distillation design before submission.
+
 ## Stage155 neural-budget reallocation (25 September 2026)
 
 Codex analyzed the limited measured benefit and resource cost of the count

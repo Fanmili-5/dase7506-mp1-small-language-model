@@ -25,3 +25,20 @@ deployed student. A weaker teacher is unlikely to close the 0.049686 gap to
 1.35. Otherwise, archive the error comparison and pivot to a genuinely new
 conditional output/training objective instead of another ensemble weight scan.
 No test scoring or checkpoint selection follows this diagnostic.
+
+## Observed complete-validation diagnostic
+
+The exact fixed 50:50 mixture scored **1.3761826642 BPB** on all 376,599
+validation targets, a **0.0235034979-BPB** gain over Stage143 and below the
+predeclared 1.385/0.014 advancement thresholds. Both individual target
+streams reproduced their independent full-evaluator scores to <2e-12 BPB.
+The four train-frequency/prefix groups and their additive NLLs are in
+`../results/stage156-evidence/complementarity.json`.
+
+This is evidence of complementary *errors*, not a resource-qualified model:
+the two checkpoint/graph bundles exceed the 64-MiB asset cap, the diagnostic
+uses a cached validation target stream, and no CPU/RAM qualification was run.
+The passed gate permits a **train-only distillation pilot**, conditional on
+a concrete teacher implementation and GPU memory preflight. It does not
+authorize selecting ensemble weights or reporting 1.376 as a submission
+score. The 1.35 target remains unmet.

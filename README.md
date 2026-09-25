@@ -71,6 +71,12 @@ average was **1.409877270 BPB** on complete GPU FP32 validation. Both are
 worse than Stage143's 1.399686162, so Stage155 was rejected before compact
 export or CPU qualification. No new test result exists.
 See `code/docs/STAGE155_NEURAL_BUDGET_REALLOCATION_PLAN_20260925.md`.
+Stage156's fixed diagnostic showed that Stage143 and Stage155 have
+complementary errors: a non-deployable 50:50 probability mixture scores
+**1.376182664 BPB** on complete validation. This is not a qualified or test
+score because simultaneous deployment exceeds the asset budget. It cleared
+the predeclared gate for considering train-only distillation into one model;
+see `code/docs/STAGE156_COMPLEMENTARITY_DIAGNOSTIC_PLAN_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
