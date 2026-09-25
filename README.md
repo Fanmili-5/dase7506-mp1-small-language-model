@@ -40,6 +40,15 @@ complete-validation score records, and the three-repeat Windows resource
 measurements. It is reproducible with
 `cd code && python scripts/audit_stage143_pretest_readiness.py` and does
 **not** freeze the method or authorize test scoring by itself.
+An independently extracted **pre-test candidate bundle** now contains the
+exact 18 counted checkpoint/inference files (55,810,412 uncompressed bytes).
+Its SHA-256 is `e3e2765dccfa5859140bcb4ba33fb5a606d1a80e3087f5197ac1b66c32c43da3`.
+The transfer hash matched on Windows, and evaluating solely from the fresh
+extraction with the fixed course data reproduced **1.399686162** BPB on all
+376,599 validation targets. The [bundle audit](code/results/stage143-pretest-bundle-evidence/audit.json)
+and packaging script are tracked; the ZIP is a local staging artifact under
+`output/pretest/`, **not a frozen or submitted release**. Its manifest pins
+code commit `898f37b5c31eb65095bc8bb4d84e3c6a3b9cc4e0`.
 
 `REPORT.pdf` is an **eight-page historical report for the earlier Stage10
 checkpoint** (1.605136467 full-test BPB), created before Stage143 existed.
@@ -47,7 +56,7 @@ It does not document or qualify Stage143 and must not be submitted as
 Stage143's final report. A matching report and full-test score are pending
 candidate freeze. The tracked `REPORT_STAGE143_DRAFT.md` has an ignored,
 visually checked **three-page development PDF preview** covering experiments
-through Stage179; it is explicitly watermarked **NOT FOR SUBMISSION** and
+through Stage180; it is explicitly watermarked **NOT FOR SUBMISSION** and
 contains no Stage143 test score.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history
