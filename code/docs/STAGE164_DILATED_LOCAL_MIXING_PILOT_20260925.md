@@ -45,3 +45,29 @@ output contract is mandatory. Test remains untouched until method freeze.
 The existing Stage143 checkpoint and ONNX graph are protected. Pilot outputs
 go to new, non-overwriting Windows run/log directories. A failed quality or
 correctness gate stops this route without resource qualification or test.
+
+## Observed matched pilot and decision
+
+The scheduled Windows job completed all **2,400** updates and **19,660,800**
+primary training-target presentations. The exact new training checkpoint's
+SHA-256 is `455f9a949a193555ef0ea293de37b98eae55ce7de9beaf3bde3142e720af5b66`;
+an independent Windows file hash matched the metric record. Training took
+628.70 seconds, with 16.44 seconds of full-validation scoring. Peak CUDA
+allocation/reservation were 5.648/5.975 GB. The fixed-file checks and three
+new structural tests passed before training, and fixed files passed again
+afterward. The job receipt says completed without error.
+
+Complete GPU FP32 validation at the predeclared step 2,400 was
+**1.535790478 BPB** over all 376,599 targets and 1,148,007 raw bytes,
+versus the matched Stage54 control's **1.519950369 BPB**. Thus dilation
+*worsened* the control by **0.015840109 BPB**, rather than improving it by
+the required 0.020. All eight 300-step validation points were worse than
+the corresponding Stage54 points. This is a direct controlled negative
+result for the fixed 1/2/4/8 dilation pattern, not a proof that every
+dilated-convolution design must fail.
+
+The quality gate failed. **Do not run a 7,200-step continuation, count
+calibration, OpenVINO export, resource qualification or test scoring for
+Stage164.** Stage143 remains the resource-qualified development candidate.
+Raw run plan, metrics, progress, completion receipt and console transcript
+are under [`../results/stage164-evidence/`](../results/stage164-evidence/).

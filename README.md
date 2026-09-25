@@ -124,6 +124,13 @@ inspired by kNN-LM, using 100,000 compressed keys. On complete validation,
 every prespecified nonzero retrieval mixture worsened Stage143; the best
 nonzero setting scored **1.401071171 BPB**. Its quality gate failed, so no
 CPU index or test score was produced. See the Stage163 plan and evidence.
+Stage164 kept Stage54's initial weights, parameter count, sampled windows
+and 2,400-step training schedule while increasing the four causal-convolution
+dilations to 1/2/4/8. Its complete-validation endpoint was **1.535790478
+BPB**, worse than the matched Stage54 control's **1.519950369 BPB**; all
+eight intermediate comparisons were also worse. The predeclared quality
+gate failed, so Stage164 was not extended, exported or test-scored. See
+`code/docs/STAGE164_DILATED_LOCAL_MIXING_PILOT_20260925.md` and its evidence.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -441,8 +448,9 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage155, including the OpenVINO inference
-port, compact checkpoint packaging and resource audit. Human review and
+the validation experiments through Stage164, including the OpenVINO inference
+port, compact checkpoint packaging, resource audit, rejected retrieval and
+multiscale-convolution pilots, and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.

@@ -157,7 +157,8 @@ their predeclared continuation gates. Stage155's larger neural model reached
 distilled an over-budget complementary teacher only to about 1.403 BPB.
 Stage160's context-conditioned spelling residual, Stage161's
 medium-frequency loss emphasis, Stage162's impossible sparse two-model
-oracle, and Stage163's compact train-only nearest-neighbor expert also
+oracle, Stage163's compact train-only nearest-neighbor expert and Stage164's
+multiscale causal convolutions also
 failed their predeclared quality gates. These negative results constrain the
 chosen method; they are not test scores. Exact details are in the linked
 stage plans and evidence files, including target-only diagnostics that must
