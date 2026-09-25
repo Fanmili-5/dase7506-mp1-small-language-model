@@ -60,3 +60,14 @@ predeclare one mechanism, a complete-validation quality gate of at least
 This prioritization is not a claim that 1.35 is mathematically impossible.
 It is a deadline-aware comparison of measured routes and their residual
 risks. It does not authorize test scoring or publishing the private repo.
+
+## 26 September addendum: tested the narrow parallel middle point
+
+After this triage, a specific resource-saving variant was isolated from the
+Stage177 full-width failure: four 72-channel parallel attention paths rather
+than four 288-channel paths or Stage154's single late path. It was
+predeclared separately as Stage186. Its input-only resource screen passed,
+but the matched 2,400-step quality gain was only **0.005195929 BPB** versus
+the required **0.020**. This new evidence closes that narrow design point;
+it does not retroactively justify a branch-width sweep. The Stage185
+release-readiness priorities therefore remain in force.

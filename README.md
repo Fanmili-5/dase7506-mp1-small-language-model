@@ -57,7 +57,9 @@ Stage143's final report. A matching report and full-test score are pending
 candidate freeze. The tracked `REPORT_STAGE143_DRAFT.md` has an ignored,
 visually checked **three-page development PDF preview** covering experiments
 through Stage184. The preview is explicitly watermarked **NOT FOR SUBMISSION**
-and contains no Stage143 test score.
+and contains no Stage143 test score. The Markdown draft has since incorporated
+Stage186 and its updated search-cost audit; the PDF preview has not yet been
+regenerated from that revision.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history
 coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
@@ -253,6 +255,12 @@ Stage185 ranks remaining architecture/count hypotheses against the measured
 quality gap and the submission deadline; it records a release-readiness
 decision, not a new model or test score. See
 `code/docs/STAGE185_DESIGN_SPACE_TRIAGE_20260926.md`.
+Stage186 tested one quarter-width attention path beside each local block.
+Its input-only Windows OpenVINO resource preflight passed, but the matched
+2,400-step complete-validation gain was only **0.005196 BPB** versus the
+predeclared **0.020** continuation gate. There was no long run, complete CPU
+qualification or test score; see
+`code/docs/STAGE186_NARROW_PARALLEL_ATTENTION_PLAN_20260926.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

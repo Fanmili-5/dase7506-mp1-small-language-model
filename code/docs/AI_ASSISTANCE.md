@@ -475,3 +475,15 @@ draft, and recorded a deadline-aware decision not to launch an unsupported
 GPU sweep. This planning and documentation are substantive AI assistance.
 The student must review both the technical ranking and final submission
 choice; the triage is not a proof that better methods are impossible.
+
+## Stage186 narrow parallel-attention assistance
+
+Codex designed and preregistered a quarter-width attention path in all four
+local blocks, implemented and tested the causal zero-start training/inference
+views, ran and audited its Windows input-only OpenVINO resource screen, and
+ran the one fixed matched 2,400-step GPU validation pilot. The small
+0.005196-BPB early gain missed the predeclared 0.020 advancement gate; Codex
+stopped without full training, deployment qualification or test scoring.
+The student must understand the added attention branch, zero-start equality,
+the limited early gain and the distinction between feature-level feasibility
+and complete submission compliance.

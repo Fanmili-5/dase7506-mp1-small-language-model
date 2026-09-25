@@ -65,3 +65,30 @@ pass. This uses validation inputs only; it is neither a BPB score nor a
 complete predictor CPU/RAM/asset qualification. The source/config/graph
 hashes and all timings are in
 `../results/stage186-evidence/preflight.json`.
+
+## Matched pilot result and stop decision
+
+The Windows RTX 3070 Ti run completed exactly **2,400 updates / 19,660,800
+primary target presentations**. All eight scheduled complete GPU FP32
+validation checks covered **376,599 targets and 1,148,007 raw bytes**. The
+fixed endpoint scored **1.514754439945 BPB** versus Stage54's matched
+**1.519950368612 BPB**, an improvement of **0.005195928667 BPB**. This is
+real under the fixed comparison but only about one quarter of the predeclared
+0.020 advancement gate. Recorded training time was **769.35 seconds**;
+peak allocated/reserved CUDA memory was 5.903/6.218 GB, which is training
+memory rather than evaluation RAM.
+
+The separate Windows file-hash query returned checkpoint SHA-256
+`acab46a711a5cf726301202870a064fe78f813c3c5df4dedc950a2264d0d62ff`,
+matching the training record. The job completed and rechecked course-fixed
+files. The [read-only audit](../results/stage186-evidence/audit.json) binds
+the preflight, one-change config, source hashes, target count, all scheduled
+validation coverage, fixed control endpoint, job completion and checkpoint
+digest. Raw run/metrics/progress/status JSON are archived beside it; the
+unpromoted checkpoint and graph remain on the private Windows machine.
+
+**Stop Stage186.** Do not run a 7,200-step continuation, adjust branch width,
+build a final MKN hybrid, perform complete CPU qualification or score test.
+The result shows that this narrow global path gives a small early gain but
+does not justify replacing Stage143 under the fixed quality gate. Stage143
+remains protected at 1.399686162 validation BPB.
