@@ -343,4 +343,16 @@ it is not claimed as an original language-model architecture. Only the
 supplied tokenizer and training targets define auxiliary labels. The student
 must understand how the hook captures each causal hidden state and how the
 heads are removed for inference. No validation gain, resource qualification
-or test score is implied by implementation and unit tests alone.
+or test score is implied by implementation and unit tests alone. The later
+complete-validation pilot slightly regressed against its matched control.
+
+## Stage175 current-expert oracle assistance
+
+Codex distinguished the older Stage22 oracle from the current Stage143
+experts, implemented and tested a target-only diagnostic for the frozen
+Stage143 neural/MKN pair, ran it on complete Windows CPU FP32 validation,
+and archived its reconstruction checks and aggregate result. The 1.300186476
+BPB oracle uses validation answers to select an expert at each target and is
+impossible to deploy; no validation-fitted gate, new checkpoint, or test score
+was created. The student must be able to explain both why this oracle is a
+feasibility bound and why its gap cannot be reported as a real model gain.

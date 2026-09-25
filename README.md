@@ -179,6 +179,13 @@ endpoint was **1.520019189 BPB**, slightly worse than the same-target control
 promotion or test score followed. See
 `code/docs/STAGE174_BYTE_AUXILIARY_SUPERVISION_PLAN_20260925.md` and the raw
 records under `code/results/stage174-evidence/`.
+Stage175 measured a **hindsight-only**, non-deployable ceiling for the
+unchanged Stage143 neural/count experts. Its per-target answer-aware oracle
+reached **1.300186476 BPB** on complete validation, while the original
+model reproduced **1.399686162 BPB**. A legal gate would need to capture
+about half of this oracle gap to reach 1.35; the diagnostic is not a score,
+checkpoint or authorization to fit a gate on validation labels. See
+`code/docs/STAGE175_CURRENT_EXPERT_ORACLE_PLAN_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
