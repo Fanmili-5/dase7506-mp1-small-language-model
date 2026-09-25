@@ -97,3 +97,15 @@ the table, hashes, command block, references and footers remain legible,
 with no clipping or orphan page. Extracted text confirms Stage182, the new
 cost total, `PENDING FREEZE` and three `NOT FOR SUBMISSION` watermarks.
 The tracked historical `REPORT.pdf` was not replaced.
+
+On 26 September, the development draft added Stage183's rejected geometric
+fusion screen and the freeze-gated test-entry wording. The Linux portability
+paragraph was shortened without changing its measured one-thread failure or
+the unavailable four-thread conclusion, so section 6 starts cleanly on page
+three. The regenerated ignored PDF is **three A4 pages / 76,621 bytes**,
+SHA-256 `04300a1725fb7d27f946ce7db8b0473f7bd2112429302afbcca5398a6213e7b5`.
+All three pages were rendered to 1,200-pixel PNGs and visually inspected:
+no clipped text, orphaned paragraph, split command block or broken ablation
+table. Text extraction confirms Stage183, the frozen-test-entry reference,
+`PENDING FREEZE`, and all three `NOT FOR SUBMISSION` footers. The tracked
+historical `REPORT.pdf` remains unchanged; this preview is not a final report.

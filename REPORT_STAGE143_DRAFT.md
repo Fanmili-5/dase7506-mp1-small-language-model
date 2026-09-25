@@ -132,20 +132,13 @@ contains exact hashes and individual measurements. A fresh directory
 extraction reproduced 1.399686162 BPB with the tracked assets.
 An independent [Linux x86-64 CI run](code/docs/STAGE167_LINUX_X86_REPRODUCTION_20260925.md)
 reproduced **1.399686179 BPB** over the same complete validation split,
-using one actual FP32 OpenVINO thread. That run did not measure the three
-resource limits, so it is not an additional resource qualification.
-The subsequent three-repeat Linux one-thread same-host measurement found
-**5.502555x** baseline CPU time (67.2504 versus 12.2217 median seconds),
-failing that host's 5x gate, though its 2,209,579,008-byte peak RSS and the
-55,810,412-byte asset total pass. This portable-resource risk is unresolved;
-the Windows result must not be described as universal eligibility.
-An attempted Linux four-thread recheck could not measure Stage143: the CI
-host exposed two logical CPUs and OpenVINO reported one inference thread
-even when four were requested, so the implementation's strict guard stopped
-before candidate timing. It is neither a four-thread pass nor a time failure.
-An unchanged-graph ONNX Runtime pilot was 5.31% faster on sampled Linux
-one-thread feature calls, below its 12% integration threshold. Neither
-diagnostic changed the selected predictor; see the
+using one actual FP32 OpenVINO thread. A separate three-repeat, same-host
+Linux one-thread resource check measured **5.502555x** baseline CPU time,
+above 5x; RAM and assets passed. A four-thread recheck was unavailable on
+that two-logical-CPU host because OpenVINO reported one inference thread,
+so neither a four-thread pass nor failure was measured. An unchanged-graph
+ONNX Runtime pilot improved sampled feature time only 5.31%, below its 12%
+gate. The Windows pass therefore is not universal CPU eligibility; see the
 [Stage172](code/docs/STAGE172_LINUX_BACKEND_PREFLIGHT_PLAN_20260925.md) and
 [Stage173](code/docs/STAGE173_LINUX_FOUR_THREAD_RESOURCE_PLAN_20260925.md)
 records.
@@ -181,8 +174,9 @@ python evaluate.py \
   --split validation --output results/stage143-reproduction.json
 ```
 
-After the final freeze, use the same exact checkpoint/source bundle with
-`--split test` once for the ranked score. **Do not run this command yet.**
+After committing a method freeze, use the SHA-bound
+[`frozen-test entry point`](code/scripts/run_stage143_frozen_test.py) once
+for the ranked CPU FP32 score. **Do not run it yet.**
 The final code link must be immutable and must match the complete checkpoint
 bundle, ONNX graph, dependencies and report. **PENDING FINAL HASH/LINK AUDIT.**
 
@@ -213,13 +207,13 @@ Stage180's hidden-matrix Muon optimizer pilot scored 1.534018833 at the
 matched 2,400-step endpoint, versus AdamW's 1.519950369; its 0.020-BPB
 advancement gate failed and it cost 1.52x as much training time. Its
 [adapted algorithm and license](code/docs/STAGE180_MUON_OPTIMIZER_PILOT_20260926.md)
-are disclosed. Stage181's zero-training intermediate-layer readout gave
-only **0.0041 bit per target** improvement on a 32,768-target validation
-prefix, below its predeclared 0.02-bit pilot gate; it was not evaluated on
-the full split or deployed. Stage182 isolated the attention-head count and
-improved the matched 2,400-step control by only **0.001139 BPB**, below its
-0.015 continuation gate. These are not submission scores; Stage162's
-sparse two-model oracle is also non-deployable.
+are disclosed. Stage181's zero-training intermediate-layer readout gained
+only **0.0041 bit per target** on a 32,768-target validation prefix, below
+its 0.02-bit gate. Stage182's matched four-head pilot gained **0.001139
+BPB**, below its 0.015 gate. Stage183's normalized geometric expert fusion
+gained only **0.001439 BPB** on complete validation, below its 0.015 gate;
+it was not deployed. These are not submission scores; Stage162's sparse
+two-model oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows
