@@ -102,3 +102,27 @@ position, whether the target was observed in the prefix, and train-token
 frequency. This is an error-allocation diagnostic, not an optimization or
 extra test. It will decide whether to prioritize data/regularization,
 copy/count specialization, or further architecture work.
+
+The observed Stage143 diagnostic reproduces 1.399686162 BPB. The 1,024
+seed-1729 sampled *in-sample* training windows average 2.321660 nats/target,
+versus 2.957478 on complete validation, a 0.635818 gap; it is not a paired
+generalization estimate because the train sample is drawn from text used for
+fitting. On validation, 228,403 targets absent from their current input prefix
+average 3.587674 nats, versus 1.986206 for 148,196 seen targets. The
+frequency-100–999 group also has a 4.316574-nat validation average. These
+groups overlap and cannot be added. The data support investigating unseen-
+context generalization, not a claim that more parameters alone will suffice.
+Raw group sums and hashes: `../results/stage146-evidence/stage143-generalization.json`.
+
+Before building an expensive suffix index, run a target-probability-only
+diagnostic with the exact Stage143 predictor: save its probability for every
+validation target under the fixed scorer, then use *only training text* to
+form unsmoothed exact successor distributions for six-, seven- and eight-token
+histories. For matched histories, try fixed mixture weights 0, .02, .05, .10
+and .20; unmatched histories use Stage143 unchanged. Respect every independent
+256-token window boundary. Report all cells, not only the best. Target labels
+are used only for retrospective scoring, never in the lookup or deployment.
+Require at least 0.01 BPB improvement on complete validation before attempting
+a compressed index, causal implementation and official resource audit. A
+positive target-only result is a ceiling-like diagnostic, not a valid
+checkpoint or leaderboard result. No test scoring.
