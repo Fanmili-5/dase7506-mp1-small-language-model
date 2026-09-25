@@ -21,6 +21,11 @@ See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
 `code/README.md`. This is a **validation-only local Windows qualification**;
 the new candidate has not been frozen or scored on test, and passing on the
 course CPU is not yet established.
+An additional Linux x86-64 one-thread, three-repeat same-host benchmark
+found **5.502555x** baseline CPU time, **above** the 5x limit on that host.
+Its RAM and asset gates passed. This is a portability risk that must be
+resolved or explicitly disclosed; Windows qualification is not a universal
+CPU guarantee. See `code/docs/STAGE170_LINUX_RESOURCE_RECHECK_PLAN_20260925.md`.
 The read-only [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
 rechecked the checkpoint, graph and all counted source-file hashes, three
 complete-validation score records, and the three-repeat Windows resource

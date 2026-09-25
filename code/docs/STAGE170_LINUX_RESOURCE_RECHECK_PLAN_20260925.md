@@ -35,3 +35,31 @@ before claiming portability. If all pass, report it as an **additional
 same-host resource observation**, not proof of the instructor's hardware
 result or of sub-1.35 performance. No architecture, weights, validation
 selection or test scoring will change during this recheck.
+
+## Observed same-host result and decision
+
+The [GitHub Actions run](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36146490224)
+completed all six alternating fresh-process measurements. The exact
+baseline checkpoint scored **1.754262767 BPB** in each repetition, with
+times **12.285680 / 12.023632 / 12.221671 s** (median 12.221671). The
+unchanged Stage143 checkpoint scored **1.399686178 BPB** each time, with
+times **67.250413 / 66.985173 / 68.741920 s** (median 67.250413).
+The ratio of medians is **5.502555x**, exceeding the 5x limit on this
+Linux one-thread host. Maximum candidate whole-process RSS was
+**2,209,579,008 bytes** and conservatively counted inference assets stayed
+**55,810,412 bytes**; those two gates pass. All exact checkpoint, source,
+tokenizer, evaluator, coverage and score identities passed the auditor,
+which intentionally made CI fail on the CPU-time gate.
+
+This is a genuine portability/resource warning, not a BPB regression or an
+auditor false positive. The Windows four-thread 3.617702x observation still
+holds on that host but cannot be promoted to a cross-hardware guarantee.
+Stage143 remains the best Windows-qualified candidate; **do not call it
+Linux-resource-qualified**. Before final freeze, profile and seek an
+algebraically equivalent inference-speed change with a target of at least
+9.2% Linux candidate loop-time reduction (67.25 to <=61.11 seconds at the
+observed baseline median), then re-run both hosts' complete score and
+resource gates. No test split was scored.
+
+Raw records and the failed-gate audit are in
+`../results/stage170-linux-evidence/` (the CI artifact from the linked run).
