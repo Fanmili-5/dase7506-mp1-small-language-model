@@ -86,3 +86,14 @@ watermarks. No clipping, orphan page, broken table or split command block
 was observed. The tracked historical `REPORT.pdf` remains unchanged at
 SHA-256 `44607086c854236627d2a375f84a1e92fa8dc2f16b65122c9bb17308c0413c9b`.
 This is still a development preview, not a Stage143 test result or submission.
+
+After the completed Stage182 head-count pilot, the draft and archived
+search-cost figures were refreshed to **63** metrics files, **61** comparable
+training-time fields and **52,121.37 seconds / 14.48 hours** of reported
+training. The regenerated ignored PDF is **three A4 pages / 76,932 bytes**,
+SHA-256 `717a85eec7d16bd62b1abd121281426922ef86483a2a71c8f00b7126ff2c5517`.
+All three pages were rendered to 1,200-pixel PNGs and visually inspected;
+the table, hashes, command block, references and footers remain legible,
+with no clipping or orphan page. Extracted text confirms Stage182, the new
+cost total, `PENDING FREEZE` and three `NOT FOR SUBMISSION` watermarks.
+The tracked historical `REPORT.pdf` was not replaced.

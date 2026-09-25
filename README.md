@@ -56,7 +56,7 @@ It does not document or qualify Stage143 and must not be submitted as
 Stage143's final report. A matching report and full-test score are pending
 candidate freeze. The tracked `REPORT_STAGE143_DRAFT.md` has an ignored,
 visually checked **three-page development PDF preview** covering experiments
-through Stage181; it is explicitly watermarked **NOT FOR SUBMISSION** and
+through Stage182; it is explicitly watermarked **NOT FOR SUBMISSION** and
 contains no Stage143 test score.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history

@@ -71,8 +71,8 @@ the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
 project-wide hardware-time bill remains unavailable. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
-62 distinct metrics files: 60 comparable `train_seconds` fields sum to
-**51,569.31 seconds (14.32 hours)** of reported training, including the
+63 distinct metrics files: 61 comparable `train_seconds` fields sum to
+**52,121.37 seconds (14.48 hours)** of reported training, including the
 accepted lineage and rejected trials. The Stage136 record reports only
 broader elapsed time; the Stage169 aggregate record has no `train_seconds`
 because its two arm-specific metrics records supply those durations. Both
@@ -216,7 +216,9 @@ advancement gate failed and it cost 1.52x as much training time. Its
 are disclosed. Stage181's zero-training intermediate-layer readout gave
 only **0.0041 bit per target** improvement on a 32,768-target validation
 prefix, below its predeclared 0.02-bit pilot gate; it was not evaluated on
-the full split or deployed. These are not submission scores; Stage162's
+the full split or deployed. Stage182 isolated the attention-head count and
+improved the matched 2,400-step control by only **0.001139 BPB**, below its
+0.015 continuation gate. These are not submission scores; Stage162's
 sparse two-model oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
