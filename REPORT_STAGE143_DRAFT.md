@@ -119,6 +119,10 @@ but do not guarantee the instructor's CPU timing. The [Stage143 qualification
 record](code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md)
 contains exact hashes and individual measurements. A fresh directory
 extraction reproduced 1.399686162 BPB with the tracked assets.
+An independent [Linux x86-64 CI run](code/docs/STAGE167_LINUX_X86_REPRODUCTION_20260925.md)
+reproduced **1.399686179 BPB** over the same complete validation split,
+using one actual FP32 OpenVINO thread. That run did not measure the three
+resource limits, so it is not an additional resource qualification.
 
 The prospective checkpoint and feature graph are pinned separately (these
 are candidate hashes, not a final release manifest):

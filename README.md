@@ -8,6 +8,8 @@ training utilities, model variants, logs, and documentation are additive.
 
 **Current resource-qualified development candidate: Stage143 single-copy
 OpenVINO + train-only order-six MKN, 1.399686162 CPU FP32 validation BPB.**
+An independent Linux x86-64 one-thread CPU FP32 run reproduced
+1.399686179 validation BPB; it was a score check, not a Linux resource gate.
 Its exact checkpoint passed three alternating fresh-process Windows CPU
 measurements at **3.617702x** baseline median time, **2,176,729,088 bytes**
 maximum peak RSS and **55,810,412 bytes** of conservative inference assets.
