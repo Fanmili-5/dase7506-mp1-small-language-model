@@ -1,4 +1,4 @@
-name: Stage143 Linux CPU validation reproduction
+name: Stage143 Linux CPU validation and resource recheck
 
 on:
   push:
@@ -56,11 +56,27 @@ jobs:
             --checkpoint checkpoints/stage143-openvino-order6.pt \
             --device cpu --precision fp32 --threads 1 --split validation \
             --output results/stage143-linux-x86-validation.json
+      - name: Benchmark same-host baseline and Stage143 resources
+        working-directory: code
+        run: |
+          python scripts/benchmark_cpu.py \
+            --baseline benchmark_controls/baseline-stage3-long-s17.pt \
+            --candidate checkpoints/stage143-openvino-order6.pt \
+            --threads 1 --repeats 3 \
+            --output results/stage170-linux-resource.json
+      - name: Audit exact hashes, coverage, ratio, memory and assets
+        working-directory: code
+        run: |
+          python scripts/audit_stage170_linux_resource.py \
+            --resource results/stage170-linux-resource.json --threads 1 \
+            --output results/stage170-linux-resource-audit.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: stage143-linux-validation
+          name: stage143-linux-validation-and-resource
           path: |
             code/results/stage143-linux-x86-validation.json
             code/results/stage143-linux-x86-validation.window-nll.npy
+            code/results/stage170-linux-resource.json
+            code/results/stage170-linux-resource-audit.json
           if-no-files-found: ignore
