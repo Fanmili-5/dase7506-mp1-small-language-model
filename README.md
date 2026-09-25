@@ -271,6 +271,12 @@ Its input-only Windows OpenVINO resource preflight passed, but the matched
 predeclared **0.020** continuation gate. There was no long run, complete CPU
 qualification or test score; see
 `code/docs/STAGE186_NARROW_PARALLEL_ATTENTION_PLAN_20260926.md`.
+Stage188 kept the same neural model and count-table support but rebuilt the
+count probabilities from the supplied train text with Witten–Bell smoothing.
+It scored **1.414884002 CPU FP32 complete-validation BPB**, worse than
+Stage143's 1.399686162, so it failed its fixed 0.015-BPB improvement gate.
+No gate refit, formal resource qualification or test score followed; see
+`code/docs/STAGE188_WITTEN_BELL_COUNT_SWAP_20260926.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -588,12 +594,13 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage187,
+the validation experiments through Stage188,
 including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, the Stage186 parallel-block pilot,
 the Stage187 Linux operation profile,
+the Stage188 train-only count-estimator comparison,
 and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the

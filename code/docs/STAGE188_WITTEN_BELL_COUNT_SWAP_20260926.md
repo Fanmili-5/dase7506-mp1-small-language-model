@@ -40,3 +40,38 @@ candidate cannot replace Stage143. Do not score test during development.
 The strong rival is that modified Kneser–Ney already estimates continuation
 probability better and the frozen gate was trained for its backoff feature;
 a failed exact swap does not rule out all alternative smoothing schemes.
+
+## Complete result and stop decision
+
+The train-only builder verified the exact Stage143 checkpoint and fixed
+train/tokenizer hashes. All five Witten–Bell tables had **identical** keys,
+offsets and successor IDs to the protected MKN tables; the raw
+[build record](../results/stage188-evidence/build.json) lists every order's
+actual support. Maximum post-FP32 per-context mass-plus-
+backoff error was `5.22e-8`. A count-only input-prefix smoke test had
+`1.79e-7` maximum distribution-sum error and zero causal-prefix difference.
+The challenger checkpoint SHA-256 was
+`c60c1fa2590fcce1f0698c8293331d30b952a59e36c997bf891a00afbe477c00`;
+projected 18-file assets were **55,810,500 bytes**, only 88 bytes above
+Stage143. This projection is not a fresh whole-process resource gate.
+
+The checkpoint transfer SHA matched on Windows. The unchanged evaluator
+scored the **complete** 376,599-target, 1,148,007-byte validation split on
+CPU FP32 with four threads. The [raw result](../results/stage188-evidence/validation.json)
+was **1.414884001808139 BPB**, **0.015197839765998 worse** than Stage143's
+1.399686162042141. The 1,472-window loss sidecar summed to its reported
+NLL within `2.33e-10`; its local SHA-256 is
+`4a3a9952ce99ed38cb080759da80b8b9841eae6e3c8cd0a1dde6a1d06d747186`.
+The transferred JSON SHA-256 matched the Windows original:
+`4967a95989d7fec0c8ef6f98e09e4aa5b3f06cdeecbe2d4406c2f1bc6e1c570c`.
+Git normalizes its Windows CRLF line endings in the committed text blob;
+the committed LF-content SHA-256 is
+`cec10a5dbf11b837fd378d0a7217c279b4829c1fa40b49a05f48195dca8f6c14`.
+No test score was computed.
+
+The predeclared >=0.015-BPB **improvement** gate fails decisively. Stop
+Stage188: no gate refit, full resource qualification, clean-extract promotion
+or submission of this challenger. The protected Stage143 predictor remains
+the best resource-qualified development candidate. This negative result
+applies to the fixed same-support Witten–Bell swap with Stage143's frozen
+gate; it does not establish that MKN is optimal among all count estimators.

@@ -141,7 +141,8 @@ ONNX Runtime pilot improved sampled feature time only 5.31%, below its 12%
 gate. The Windows pass therefore is not universal CPU eligibility; see the
 [Stage172](code/docs/STAGE172_LINUX_BACKEND_PREFLIGHT_PLAN_20260925.md) and
 [Stage173](code/docs/STAGE173_LINUX_FOUR_THREAD_RESOURCE_PLAN_20260925.md)
-records.
+records. A Stage187 node profile found dense FP32 projections dominated
+sampled feature time; no qualifying local rewrite followed.
 The separate [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
 rechecked the frozen-file *candidate* hashes, score coverage and Windows
 resource arithmetic. It is a consistency check, not method freeze, test
@@ -218,7 +219,8 @@ matched Stage54 control **1.519950369 BPB**; it was stopped without a long
 run. Stage186's four narrow parallel attention paths passed an input-only
 resource screen but improved the matched 2,400-step endpoint by only
 **0.005196 BPB**, below its 0.020 gate. These are not submission scores;
-Stage162's sparse
+Stage188's same-support Witten–Bell count swap regressed to **1.414884002
+BPB** on complete CPU FP32 validation and was rejected. Stage162's sparse
 two-model oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development

@@ -133,3 +133,15 @@ ablation table, hashes, command block, Stage186 paragraph and references are
 legible, with no clipping or orphan page. Extracted text confirms Stage186,
 the new cost total, `PENDING FREEZE` and all three `NOT FOR SUBMISSION`
 footers. The historical tracked `REPORT.pdf` is still unchanged.
+
+On 26 September, the draft incorporated the Stage187 Linux node profile and
+the rejected Stage188 same-support Witten–Bell count swap. The ignored
+development PDF was regenerated to **three A4 pages / 76,961 bytes**,
+SHA-256 `52a46552dbeaef71a8398bb560824c6a3bfb95346c3f899845cc7c64b8350257`.
+All three pages were rendered to 1,200-pixel PNGs and visually inspected:
+the ablation table, hashes, command block, new Stage187/188 sentences,
+references and footers are legible; no clipped text or orphan fourth page
+appeared. Text extraction confirms Stage187, Stage188, `PENDING FREEZE` and
+three `NOT FOR SUBMISSION` footers. This remains a preview, not the final
+Stage143 report or a test score; the historical tracked `REPORT.pdf` was
+not replaced.

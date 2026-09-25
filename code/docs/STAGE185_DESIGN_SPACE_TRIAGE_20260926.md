@@ -71,3 +71,17 @@ but the matched 2,400-step quality gain was only **0.005195929 BPB** versus
 the required **0.020**. This new evidence closes that narrow design point;
 it does not retroactively justify a branch-width sweep. The Stage185
 release-readiness priorities therefore remain in force.
+
+## 26 September addendum: one same-support smoothing alternative
+
+Stage188 tested the previously unmeasured count-estimator branch without
+altering neural weights, gate coefficients, sparse support or inference
+asset class. Train-only Witten–Bell masses/backoffs normalized and passed
+causal checks, but the complete Windows CPU FP32 validation score regressed
+to **1.414884002 BPB** from Stage143's 1.399686162. Its fixed >=0.015
+improvement gate failed; no gate refit or resource promotion followed.
+This closes only the *frozen-gate, same-support Witten–Bell* branch, not all
+smoothing algorithms. Stage187 separately found dense FP32 projections were
+the Linux one-thread runtime bottleneck, with no clear local rewrite large
+enough to pass its feature-speed plausibility gate. The release-readiness
+priority remains unchanged.
