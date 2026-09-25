@@ -69,10 +69,12 @@ the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
 deduplicated project-wide search-cost ledger is still pending. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
-56 distinct metrics files: 55 comparable `train_seconds` fields sum to
-**47,669.47 seconds (13.24 hours)** of reported training, including the
-accepted lineage and rejected trials. The remaining Stage136 record reports
-only broader elapsed time and is excluded. The sum omits unarchived/failed
+59 distinct metrics files: 57 comparable `train_seconds` fields sum to
+**48,018.74 seconds (13.34 hours)** of reported training, including the
+accepted lineage and rejected trials. The Stage136 record reports only
+broader elapsed time; the Stage169 aggregate record has no `train_seconds`
+because its two arm-specific metrics records supply those durations. Both
+aggregate-only records are excluded from the sum. The sum omits unarchived/failed
 runs, validation, preflights, table construction and system overhead, so it
 must not be mistaken for a complete hardware bill.
 
@@ -181,6 +183,10 @@ results constrain the
 chosen method; they are not test scores. Exact details are in the linked
 stage plans and evidence files, including target-only diagnostics that must
 never be used as inference-time gates.
+Stage169's matched strong-student distillation pilot scored 1.399440139
+complete-validation BPB, only 0.000246 better than Stage143, while its
+hard-only control worsened to 1.403915928. It failed the prespecified
+0.005 gain gate and was not resource-qualified or test-scored.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows

@@ -150,6 +150,14 @@ Stage54 Transformer/R-Drop recipe. Its fixed 2,400-step endpoint was
 and training took 1.889x as long. The predeclared gate failed, so no long
 run, inference promotion or test evaluation followed. See the Stage168 plan
 and evidence.
+Stage169 then distilled the same fixed Stage105/Stage155 complementary teacher
+into a Stage103/105-equivalent *strong* student, with an identical-start,
+identical-train-window hard-label control. Its 900-step complete-validation
+endpoint was **1.399440139 BPB**, only **0.000246023** better than Stage143,
+while the hard-only control worsened to **1.403915928 BPB**. The prespecified
+0.005 gain gate failed, so no continuation, compact export, resource promotion
+or test score followed. See the Stage169 plan and evidence under `code/docs/`
+and `code/results/`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -467,7 +475,7 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage168 and the Stage166–167 portability
+the validation experiments through Stage169 and the Stage166–167 portability
 checks, including the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, and report drafting. Human review and

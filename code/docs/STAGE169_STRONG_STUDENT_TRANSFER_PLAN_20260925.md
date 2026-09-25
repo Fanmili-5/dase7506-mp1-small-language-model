@@ -77,3 +77,32 @@ record is `../results/stage169-evidence/preflight.json` (canonical JSON SHA-256
 `81b1cd227c630e55c1cacca97741b70e302c6ded9ea331b3b584b0de7db7787e`,
 so Windows/Mac line endings do not change the identity). This authorizes the
 two-arm pilot under the fixed rules above; it establishes no validation gain.
+
+## Matched pilot outcome and stop decision
+
+The scheduled Windows task completed successfully. Both arms started at
+**1.399686190 BPB** on the complete 376,599-target, 1,148,007-byte
+validation split, agreeing to 1.3e-11 BPB. Each ran all 900 updates and
+presented **1,843,200** primary next-token targets from the same seeded
+training-window stream. The teacher arm's predeclared 300/600/900-step BPBs
+were **1.399783118 / 1.399510987 / 1.399440139**; the hard-only arm's were
+**1.403014529 / 1.403876749 / 1.403915928**. The teacher arm took 211.87
+training seconds versus 137.40 for hard-only, excluding 40.11/39.44 seconds
+of validation respectively.
+
+At the fixed endpoint, teacher transfer beats Stage143 by only **0.000246023
+BPB**, below the prespecified **0.005** continuation requirement. It beats
+the matched hard-only arm by **0.004475789 BPB**, above the second 0.003
+requirement, so the distinction is informative: additional hard-label
+training damaged validation while teacher targets largely protected it, but
+did **not** transfer enough quality to justify another long run. The
+conjunctive gate fails. Neither the teacher nor control pilot is promoted,
+exported to OpenVINO, resource-qualified or test-scored. Stage143 remains
+the qualified development candidate at 1.399686162 BPB.
+
+All four validation measurements per arm used the complete unchanged split.
+The 17 source hashes in the Windows run record match the tracked sources;
+the task ended with success and the fixed-file verifier passed both before
+and after training. Raw plan, curves, metrics, console transcript and task
+status are in `../results/stage169-evidence/`. The pilot checkpoints remain
+on the Windows experiment host and are not inference or submission assets.

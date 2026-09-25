@@ -1,12 +1,13 @@
 {
   "purpose": "archived_training_time_record_sum_not_complete_project_search_cost",
-  "metrics_records": 56,
-  "positive_train_seconds_records": 55,
+  "metrics_records": 59,
+  "positive_train_seconds_records": 57,
   "missing_train_seconds_record_paths": [
-    "results/stage136-evidence/metrics.json"
+    "results/stage136-evidence/metrics.json",
+    "results/stage169-evidence/metrics.json"
   ],
-  "raw_sum_reported_train_seconds": 47669.465845599276,
-  "raw_sum_reported_train_hours": 13.241518290444244,
+  "raw_sum_reported_train_seconds": 48018.74004029934,
+  "raw_sum_reported_train_hours": 13.33853890008315,
   "records": [
     {
       "metrics_path": "results/stage109-evidence/metrics.json",
@@ -287,6 +288,36 @@
       "train_seconds": 1207.4390667998232,
       "other_reported_elapsed_seconds": null,
       "checkpoint_sha256": "17156f8bbd3476c6c076e3760639c24c565df9dc3f071c1f84f3e1d6a70bd903"
+    },
+    {
+      "metrics_path": "results/stage169-evidence/hard_only/metrics.json",
+      "metrics_sha256": "74abb8f752399e65f07ffe69e484adb6fdf78b59d19a5ab5643e55c4b1f9033f",
+      "run_path": null,
+      "run_sha256": null,
+      "reported_device": null,
+      "train_seconds": 137.40263749996666,
+      "other_reported_elapsed_seconds": null,
+      "checkpoint_sha256": "80f6e30c8aeec47120bcf9bb5d9b0affaa9c82c21499e05d5ec7d70a3831e35e"
+    },
+    {
+      "metrics_path": "results/stage169-evidence/metrics.json",
+      "metrics_sha256": "c09049963babb073e5ac1aec8a78bc7c6a0363e15886376fc63b072601b8fadb",
+      "run_path": "results/stage169-evidence/run.json",
+      "run_sha256": "16e34e7ac922957bb54acf3bad803c73963b52d769939b03105fe6f5d40861b5",
+      "reported_device": "cuda:0",
+      "train_seconds": null,
+      "other_reported_elapsed_seconds": null,
+      "checkpoint_sha256": null
+    },
+    {
+      "metrics_path": "results/stage169-evidence/teacher/metrics.json",
+      "metrics_sha256": "a973743caa2dab09b78d08c60238406b22b252f58ae2c207fc4af07efa2df8ab",
+      "run_path": null,
+      "run_sha256": null,
+      "reported_device": null,
+      "train_seconds": 211.87155720009468,
+      "other_reported_elapsed_seconds": null,
+      "checkpoint_sha256": "bfb026ec30342f659e863b3a3d12dd5f4b30aa4cfc855a4a4fe317211c7d05aa"
     },
     {
       "metrics_path": "results/stage17-completed-evidence/metrics.json",

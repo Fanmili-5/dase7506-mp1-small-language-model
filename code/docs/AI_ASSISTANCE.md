@@ -306,3 +306,15 @@ to this task. Proposed gains are unverified until actual CPU FP32 scores arrive.
 The long schedule is separately accounted as extra training, not an equal-budget
 architecture comparison. Substantive AI assistance must remain disclosed in the
 final README/report, and the student must be able to explain the implementation.
+
+## Stage169 strong-student transfer assistance
+
+Codex formulated the bounded Stage169 hypothesis from earlier Stage156–158
+validation evidence, implemented the differentiable Stage103 student and
+train-only Stage105/Stage155 teacher preflight, prespecified matched
+teacher-versus-hard-label arms, deployed and monitored the Windows run, and
+audited the complete-validation negative result. The adapted concept is
+knowledge distillation from a fixed teacher probability mixture, not a new
+algorithm claim. The student must review the loss, source-only training rule,
+the two-arm comparison and its failed continuation gate. No new test score
+was generated and Stage143 remains the qualified candidate.
