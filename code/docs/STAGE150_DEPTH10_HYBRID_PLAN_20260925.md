@@ -36,3 +36,15 @@ Strongest objection: more depth raises inference cost and may just memorize
 the small supplied training corpus. The paired resource preflight and matched
 early validation trajectory are low-cost ways to reject that hypothesis;
 neither can guarantee reaching 1.35 at the final checkpoint.
+
+## Input-only preflight result
+
+The random-weight ten-block graph has **9,766,945** neural parameters and
+occupies **39,125,349 bytes**. Adding the predeclared 25 MB count/head
+checkpoint reserve and 0.2 MB source reserve yields **64,325,349 bytes**,
+below the 64 MiB limit of 67,108,864 bytes. Eight interleaved Windows CPU
+FP32 feature timings had medians **1.628874 s** for the candidate and
+**1.318449 s** for Stage143, ratio **1.235447x**. Maximum hidden error
+against eager PyTorch was **3.94e-6**. All three fixed pilot gates pass.
+This does not establish complete predictor runtime or trained quality.
+Hashes and raw timings are in `../results/stage150-evidence/preflight.json`.
