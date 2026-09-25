@@ -25,6 +25,8 @@ coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
 control by only 0.004699 BPB, below its predeclared 0.015 advancement gate.
 Neither produced a qualified replacement or a test score. See the Stage144
 triage and Stage145 evidence under `code/docs/` and `code/results/`.
+Stage146's exact train-suffix target-probability diagnostic gained at most
+0.003037 BPB, below its predeclared 0.01 gate, so no suffix index was built.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

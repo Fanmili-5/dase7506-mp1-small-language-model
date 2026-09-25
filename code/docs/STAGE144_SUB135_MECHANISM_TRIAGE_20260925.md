@@ -126,3 +126,18 @@ Require at least 0.01 BPB improvement on complete validation before attempting
 a compressed index, causal implementation and official resource audit. A
 positive target-only result is a ceiling-like diagnostic, not a valid
 checkpoint or leaderboard result. No test scoring.
+
+## Suffix probability result and decision
+
+The cached Stage143 target log probabilities reproduced complete validation
+at **1.399686162042141 BPB** with the checkpoint and source hashes intact.
+The best cell in the fixed grid was six-token history, weight 0.10, at
+**1.396648904 BPB**, a gain of **0.003037258**. Seven- and eight-token
+histories reached only **1.396830820** and **1.396941995** at their best
+fixed weights. All are well below the 0.01 BPB advancement gate. These
+calculations used true validation targets only to read out probabilities and
+measure loss; no target-dependent lookup is allowed at inference. Even the
+diagnostic gain would explain only about 6% of the 0.049686 BPB gap to 1.35.
+No suffix index or deployed model is built. The ignored target-probability
+array can be regenerated from the exact Stage143 checkpoint; its SHA-256 and
+the full score grid are recorded under `../results/stage146-evidence/`.

@@ -11,6 +11,10 @@ validation trajectory with the archived Stage54 control, and rejected the
 long run under its predeclared 0.015-BPB advancement gate. This is substantive
 AI-led experiment design, coding, execution and interpretation. The student
 must review the code, gate rationale, evidence and resource constraints.
+Codex then audited Stage143 train/validation error groups and ran a separate,
+predeclared validation-target-probability screen for train-only long-suffix
+retrieval. The best diagnostic gain was 0.003037 BPB, so the route was rejected
+without building a deployable index. No new test result was generated.
 
 ## Latest Stage141–143 work (25 September 2026)
 

@@ -1,0 +1,13 @@
+{
+  "purpose": "validation_target_probability_diagnostic_only",
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "test_scored": false,
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "bpb": 1.3996861620421412,
+  "checkpoint_sha256": "256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3",
+  "implementation_sha256": "1c31716eccd3bffdd2664b9ba654950a5d64d3ca0ad4e4ded817b1acbf6c9615",
+  "source_sha256": "5c7bdeb3b2e2ef5e9b5eac3beda1bd3b31b05835553276c4d28d9acd195b9f90",
+  "array_sha256": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3"
+}

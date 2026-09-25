@@ -4,5 +4,6 @@ __pycache__/
 runs/
 *.pt
 *.window-nll.npy
+results/stage146-evidence/target-logp.npy
 .coverage
 .pytest_cache/
