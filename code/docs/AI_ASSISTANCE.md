@@ -1,5 +1,17 @@
 # AI assistance disclosure
 
+## Stage144–145 target revision (25 September 2026)
+
+After the student lowered the development target to 1.35 validation BPB,
+Codex designed and ran a train-only exact-suffix coverage diagnostic and a
+resource-screened six-attention/two-convolution architecture pilot. It
+reconnected the existing private Windows tunnel, implemented the experiment
+scripts, ran the 2,400-step matched-budget GPU job, compared the complete
+validation trajectory with the archived Stage54 control, and rejected the
+long run under its predeclared 0.015-BPB advancement gate. This is substantive
+AI-led experiment design, coding, execution and interpretation. The student
+must review the code, gate rationale, evidence and resource constraints.
+
 ## Latest Stage141–143 work (25 September 2026)
 
 Codex screened speed mechanisms for the existing Stage105 predictor, exported

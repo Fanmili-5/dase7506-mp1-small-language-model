@@ -20,6 +20,12 @@ See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
 the new candidate has not been frozen or scored on test, and passing on the
 course CPU is not yet established.
 
+The later Stage144 train-suffix coverage diagnostic found little long-history
+coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
+control by only 0.004699 BPB, below its predeclared 0.015 advancement gate.
+Neither produced a qualified replacement or a test score. See the Stage144
+triage and Stage145 evidence under `code/docs/` and `code/results/`.
+
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
 Stage71 neural and frozen train-only MKN experts, applies the closed Stage79

@@ -78,3 +78,27 @@ four-thread feature median was 1.513403 seconds per 32x256 batch versus
 3.58e-6. This is **not** a complete predictor resource result, a trained
 model, or a BPB claim. Raw eight-pair timing and hashes are in
 `../results/stage145-evidence/preflight.json`.
+
+## Stage145 matched pilot outcome
+
+The scheduled Windows job completed all **2,400** prespecified updates,
+presenting **19,660,800** primary training targets in 693.55 training seconds.
+The complete GPU FP32 validation result at step 2,400 was
+**1.515251139 BPB** (376,599 targets), versus the unchanged same-seed,
+same-budget Stage54 step-2,400 control at **1.519950369 BPB**. The measured
+gain is **0.004699230 BPB**, below the predeclared 0.015 pilot gate. The
+new allocation was initially worse, overtook the control after 1,200 steps,
+and ended only modestly better. This is not evidence that full 7,200-step
+training would reach or approach 1.35, so no long continuation is launched.
+The full 300-step curve, source/checkpoint hashes, job status and transcript
+are under `../results/stage145-evidence/`. No CPU qualification or test score
+was attempted for this rejected exploratory model. Stage143 remains the only
+sub-1.4 resource-qualified candidate.
+
+Next, use the existing `diagnose_generalization.py` with the exact Stage143
+checkpoint, four CPU threads, 1,024 sampled train windows (seed 1729) and
+the complete validation stream. Compare train/validation NLL by within-window
+position, whether the target was observed in the prefix, and train-token
+frequency. This is an error-allocation diagnostic, not an optimization or
+extra test. It will decide whether to prioritize data/regularization,
+copy/count specialization, or further architecture work.
