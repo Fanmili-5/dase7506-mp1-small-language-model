@@ -45,3 +45,22 @@ after initialization and peak CUDA allocation was **1,471,342,080 bytes**.
 All four fixed thresholds pass, authorizing the 900-step pilot. The raw
 hash-pinned record is in `../results/stage157-evidence/preflight.json`.
 These measurements do not establish pilot quality or inference eligibility.
+
+## Fixed 900-step pilot result
+
+The Windows task completed all **900** updates and **3,686,400** train-target
+presentations in 152.69 training seconds. Complete GPU FP32 validation BPB was
+1.4098772704 at start, then **1.4063239362 / 1.4053808331 /
+1.4051487476** at steps 300/600/900. The endpoint gain is **0.0047285228
+BPB**, above the predeclared 0.004 continuation gate. The pilot checkpoint
+SHA-256 is
+`daa1bfa9ef598f1e5d7f00e7af2e8df8802a39c945284962f79392ecbc6687bf`.
+Raw run, validation, source-hash and task records are in
+`../results/stage157-evidence/`.
+
+The gain establishes partial transfer from the complementary teacher, but
+the student still trails Stage143 by **0.0054625856 BPB** and is not a
+qualified candidate. The last 300 updates gained only 0.0002320855 BPB as
+the LR approached its minimum. A single predeclared low-LR continuation may
+test whether the end-of-schedule flattening is a learning-rate effect;
+unbounded schedule tuning is not justified. No test split was scored.

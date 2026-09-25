@@ -4,10 +4,11 @@
 
 Codex designed a fixed Stage143/Stage155 teacher-to-single-student transfer
 experiment and implemented the parity, memory and speed preflight plus a
-bounded train-only pilot. The preflight passed; any pilot result must be
-reported separately. This is substantive AI-generated experiment design and
-code. The student must review the teacher/student separation, training-only
-labels, normalization, validation gate and eventual asset boundary.
+bounded train-only pilot. The preflight passed, and the 900-step pilot gained
+0.004728523 validation BPB without reaching Stage143. This is substantive
+AI-generated experiment design, code, execution and analysis. The student
+must review the teacher/student separation, training-only labels,
+normalization, validation gate and eventual asset boundary.
 
 ## Stage156 complementary-error diagnostic (25 September 2026)
 

@@ -77,6 +77,12 @@ complementary errors: a non-deployable 50:50 probability mixture scores
 score because simultaneous deployment exceeds the asset budget. It cleared
 the predeclared gate for considering train-only distillation into one model;
 see `code/docs/STAGE156_COMPLEMENTARITY_DIAGNOSTIC_PLAN_20260925.md`.
+Stage157 trained a single Stage155-capacity student against this fixed
+teacher using only training prefixes. A 900-update pilot improved complete
+GPU FP32 validation from 1.409877270 to **1.405148748 BPB**, clearing its
+predeclared 0.004 transfer gate, but it remains worse than Stage143 and has
+not been CPU-qualified or test-scored. See
+`code/docs/STAGE157_TRAIN_ONLY_COMPLEMENTARITY_TRANSFER_PLAN_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
