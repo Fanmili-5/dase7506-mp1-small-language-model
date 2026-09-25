@@ -35,6 +35,9 @@ pilot reached **1.508604645 BPB** against Stage54's **1.519950369** at the
 same step; the 0.011346 gain missed its predeclared 0.015 continuation gate.
 No long run, CPU qualification or test scoring followed. The sub-1.35 target
 is still unmet; see `code/docs/STAGE147_WIDE_GLOBAL_LOCAL_PILOT_20260925.md`.
+Stage148's train-only skip-context diagnostic showed a best target-only gain
+of **0.003159 BPB**, below its predeclared 0.010 gate. It was not turned into
+an inference predictor; see `code/docs/STAGE148_SKIP_CONTEXT_DIAGNOSTIC_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

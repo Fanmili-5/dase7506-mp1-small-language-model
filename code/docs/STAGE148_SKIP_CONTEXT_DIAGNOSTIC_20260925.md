@@ -26,3 +26,16 @@ CPU/RAM/assets. Even a positive result below that gate is unlikely to close
 a useful fraction of the 1.35 gap. The strongest objection is that skipped
 patterns mostly duplicate information already learned by Stage143; this
 diagnostic falsifies them at low cost.
+
+## Result and decision
+
+The hash-checked scan completed all five patterns and six weights on the
+complete validation target stream without reading test. Its best cell was
+lags `(0,1,2,4)` at weight `0.05`: **1.396527257 BPB** versus the exact
+Stage143 cache at **1.399686162 BPB**, a **0.003158905-BPB** target-only gain.
+That is less than one third of the predeclared 0.010-BPB advancement gate and
+only about 6.4% of the gap to 1.35. All cells, training-match coverage and
+file/source hashes are in `../results/stage148-evidence/skip-context-scan.json`.
+
+Decision: do not build a skip-context index or deploy this target-only
+calculation. No resource qualification or test score exists for Stage148.
