@@ -186,6 +186,13 @@ model reproduced **1.399686162 BPB**. A legal gate would need to capture
 about half of this oracle gap to reach 1.35; the diagnostic is not a score,
 checkpoint or authorization to fit a gate on validation labels. See
 `code/docs/STAGE175_CURRENT_EXPERT_ORACLE_PLAN_20260925.md`.
+Stage176 then tested whether a 294-feature causal residual MLP gate could
+capture that apparent opportunity. Its fixed two-direction, out-of-half
+validation diagnostic scored **1.400044877 BPB**, worse than the unchanged
+Stage143; one direction improved only slightly and the other regressed. The
+predeclared <=1.35 gate failed. No validation-fitted coefficients were
+deployed and no test score was made; see
+`code/docs/STAGE176_CAUSAL_FEATURE_GATE_FEASIBILITY_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

@@ -356,3 +356,15 @@ BPB oracle uses validation answers to select an expert at each target and is
 impossible to deploy; no validation-fitted gate, new checkpoint, or test score
 was created. The student must be able to explain both why this oracle is a
 feasibility bound and why its gap cannot be reported as a real model gain.
+
+## Stage176 causal gate feasibility assistance
+
+Codex fixed a two-direction, out-of-half diagnostic before observing its
+result, implemented the 294-feature zero-start residual gate and tests,
+ran it using the unchanged Stage143 predictor, and archived both negative
+held-out directions. Although all inputs to the gate were causal, its
+coefficients were fitted to validation answers solely for feasibility
+analysis; they are not a legal inference asset or submission result. The
+combined 1.400044877-BPB diagnostic failed its 1.35 advancement gate.
+The student must understand the distinction between a causal input feature
+and a coefficient illegally learned from validation targets.
