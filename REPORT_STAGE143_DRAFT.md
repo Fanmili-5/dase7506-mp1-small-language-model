@@ -120,10 +120,20 @@ record](code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md)
 contains exact hashes and individual measurements. A fresh directory
 extraction reproduced 1.399686162 BPB with the tracked assets.
 
-| Frozen component for prospective submission | SHA-256 |
-| --- | --- |
-| `code/checkpoints/stage143-openvino-order6.pt` | `256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3` |
-| `code/inference_assets/stage143-stage92-features.onnx` | `5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4` |
+The prospective checkpoint and feature graph are pinned separately (these
+are candidate hashes, not a final release manifest):
+
+`code/checkpoints/stage143-openvino-order6.pt` (23,824,895 bytes):
+
+```text
+256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3
+```
+
+`code/inference_assets/stage143-stage92-features.onnx` (31,805,041 bytes):
+
+```text
+5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4
+```
 
 Reproduction from `code/`, in an environment installed per
 [`code/README.md`](code/README.md):
