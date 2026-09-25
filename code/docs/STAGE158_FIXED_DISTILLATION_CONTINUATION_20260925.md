@@ -25,3 +25,23 @@ equivalence, complete CPU FP32 validation, three-repeat CPU/RAM/asset audit,
 and clean-extract reproduction. Otherwise stop this teacher-transfer route
 and preserve Stage143. No test scoring occurs. The 1.35 goal remains the
 development target, not a score guaranteed by this continuation.
+
+## Result and stop decision
+
+The Windows job completed all 3,600 additional updates and **14,745,600**
+additional primary train-target presentations in 718.84 training seconds.
+The complete GPU FP32 validation score improved from 1.4051487477 at the
+start to **1.4031053912 BPB** at step 3,600. The prespecified five-point
+parameter average independently scored **1.4032149590 BPB** on all 376,599
+targets (SHA-256
+`603ab643ac274cb46206c80e7fdf8b52337c0e55c9bbc69100c5b3db1318fe55`).
+The endpoint is better than the average but remains **0.0034192291 BPB worse**
+than resource-qualified Stage143; it also misses the 1.35 target by
+0.0531053912 BPB.
+
+The fixed teacher-transfer route is stopped. The continuation did recover
+another 0.0020433565 BPB after restarting the learning rate, so the Stage157
+tail was not an absolute plateau; nevertheless it failed the predeclared
+Stage143 quality gate. No compact graph export, CPU/RAM/asset qualification,
+promotion or test scoring followed. Full source hashes, trajectory, average
+score, task status and console are in `../results/stage158-evidence/`.

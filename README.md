@@ -83,6 +83,11 @@ GPU FP32 validation from 1.409877270 to **1.405148748 BPB**, clearing its
 predeclared 0.004 transfer gate, but it remains worse than Stage143 and has
 not been CPU-qualified or test-scored. See
 `code/docs/STAGE157_TRAIN_ONLY_COMPLEMENTARITY_TRANSFER_PLAN_20260925.md`.
+Stage158's one fixed low-LR continuation further improved the student to
+**1.403105391 BPB** at step 3,600; the prespecified average was
+**1.403214959**. Both remain above Stage143, so the teacher-transfer route
+was stopped before CPU qualification or test scoring. See
+`code/docs/STAGE158_FIXED_DISTILLATION_CONTINUATION_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

@@ -1,5 +1,15 @@
 # AI assistance disclosure
 
+## Stage158 bounded teacher-transfer continuation (25 September 2026)
+
+Codex preregistered, implemented, ran and audited one fixed low-learning-rate
+continuation from Stage157, with the teacher frozen and training sampler
+advanced beyond the pilot. The endpoint improved to 1.403105391 validation
+BPB but failed to beat Stage143; the predeclared average was 1.403214959.
+Codex stopped this route without CPU promotion or new test scoring. The
+student must understand the additional training cost and why the measured
+gain did not justify a deployable candidate.
+
 ## Stage157 train-only transfer pilot (25 September 2026)
 
 Codex designed a fixed Stage143/Stage155 teacher-to-single-student transfer
