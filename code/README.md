@@ -141,6 +141,12 @@ The [guide](../GUIDE.md) specifies the deadline and website workflow. Include th
 - **Reproduction instructions**
 
 Your final website submission must link to this code and the matching complete checkpoint bundle. The website generates the Issue JSON automatically. Keep all inference assets downloadable for verification.
+After the explicit method freeze and one matching CPU FP32 full-test run,
+`scripts/package_stage143_final_release.py` can bind the committed freeze
+record, full-test result and replacement `REPORT.pdf` to an exact bundle.
+It refuses to package the historical Stage10 report. See the
+[`submission readiness sequence`](docs/SUBMISSION_PORTAL_READINESS_20260926.md);
+do not use the pre-test candidate ZIP as the final checkpoint link.
 
 To check a peer, obtain their exact code version and checkpoint, follow their installation instructions, and run their frozen model with the supplied evaluator:
 

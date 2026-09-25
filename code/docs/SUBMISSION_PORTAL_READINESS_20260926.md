@@ -43,6 +43,16 @@ Do not treat the live site's later date as an extension of the written guide.
    retraining. The local pre-test ZIP is explicitly non-final and is not yet a
    publicly downloadable checkpoint link. Audit its replacement against the
    frozen commit, checkpoint and ONNX graph before posting.
+   `scripts/package_stage143_final_release.py` is prepared for **after** the
+   freeze, CPU FP32 full-test JSON, and replacement `REPORT.pdf` have all been
+   committed. It requires `--freeze`, `--test-result`, `--report` and a new
+   `--output` ZIP path; it checks full-test coverage/BPB arithmetic, exact
+   evaluator/checkpoint/tokenizer hashes, ancestry of the frozen commit,
+   the clean final code commit and all 18 inference-file hashes. It rejects
+   the tracked historical Stage10 report. Synthetic metadata unit tests
+   cover rejection paths but are not a substitute for a real final bundle
+   audit. Independently verify the final PDF page count (<=10) and visual
+   layout; the packaging script does not certify those properties.
 6. When the portal enters its links-required phase, it asks for the **original
    score issue number** and both links; confirm the generated link issue on
    GitHub. The guide's earlier final-link deadline remains the conservative
