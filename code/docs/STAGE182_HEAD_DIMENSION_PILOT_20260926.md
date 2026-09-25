@@ -58,3 +58,29 @@ a **0.973607x** ratio. This is input-only feasibility, not a complete
 predictor resource qualification or a quality score. Exact timing samples,
 configuration/source/graph hashes and the no-test flag are in
 `../results/stage182-head4-preflight.json`.
+
+## Completed matched pilot and stop decision
+
+The Windows run completed all 2,400 updates and **19,660,800 primary train
+targets** in 552.06 recorded training seconds. All eight scheduled complete
+GPU FP32 validation calls covered **376,599 targets / 1,148,007 raw bytes**.
+The fixed endpoint scored **1.5188114758795954 BPB**, versus the archived
+same-seed/same-target Stage54 endpoint **1.5199503686120217 BPB**. The gain
+is only **0.0011388927 BPB**, not the predeclared 0.015. Intermediate points
+were not used for selection. CUDA peak allocated/reserved memory was
+4.403/4.742 GB, a training metric rather than the assignment's CPU RAM gate.
+
+The job ended successfully and re-ran the supplied fixed-file verifier.
+The remote checkpoint's independently queried SHA-256 matches the training
+record: `ee8decea07ae7a9925fa099521259029e41290ef5c2c359c04c153572f7bf2f9`.
+The local [audit](../results/stage182-evidence/audit.json) checks the exact
+config-only head change, source hashes, job completion, scheduled validation
+coverage, target count, control endpoint and checksum. Raw run/metrics/
+progress/status JSON are archived beside it; the console transcript and
+unpromoted checkpoint stay on the private Windows machine.
+
+**Stop Stage182.** No 7,200-step run, trained graph export, full CPU/RAM/
+asset qualification or test scoring is justified. This narrow result shows
+that changing 8 to 4 heads under this fixed recipe does not materially close
+the 0.049686-BPB gap. It does not claim all head structures are equivalent.
+Stage143 remains the protected submission candidate.
