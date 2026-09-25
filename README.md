@@ -38,6 +38,11 @@ candidate timing. This is not a four-thread failure or pass; see
 The fixed-graph ONNX Runtime backend probe improved Linux one-thread feature
 time by only **5.31%**, below its predeclared 12% advancement gate; it was not
 integrated. See `code/docs/STAGE172_LINUX_BACKEND_PREFLIGHT_PLAN_20260925.md`.
+Stage187's read-only Linux node profile attributed **9.884/14.790 seconds**
+of eight-batch feature runtime to distributed FP32 dense projections. No
+single algebraically equivalent local rewrite cleared its plausibility gate;
+the Stage143 inference files remain unchanged. See
+`code/docs/STAGE187_LINUX_NODE_PROFILE_20260926.md`.
 The read-only [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
 rechecked the checkpoint, graph and all counted source-file hashes, three
 complete-validation score records, and the three-repeat Windows resource
@@ -580,11 +585,12 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage186,
+the validation experiments through Stage187,
 including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, the Stage186 parallel-block pilot,
+the Stage187 Linux operation profile,
 and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the

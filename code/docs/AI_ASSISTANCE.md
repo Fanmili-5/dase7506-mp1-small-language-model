@@ -495,3 +495,14 @@ architecture, causal data flow, training lineage, score/resource evidence and
 non-deployable oracle distinction. This is substantive AI-assisted writing,
 not proof of student understanding. Before submission the student must check
 the claims against code and answer the self-check in their own words.
+
+## Stage187 Linux node-level runtime diagnostic (26 September 2026)
+
+Codex preregistered, implemented and ran a validation-input-only OpenVINO
+operation profile on the unchanged Stage143 graph, checked output equality,
+archived the raw node timings and rejected a speculative local rewrite when
+no single operation had a plausible 12% feature-time saving. This is
+substantive AI-assisted profiling and interpretation, not a new model,
+complete resource qualification, validation BPB or test score. The student
+must understand that the Windows resource pass and Linux one-thread failure
+remain separate observations.

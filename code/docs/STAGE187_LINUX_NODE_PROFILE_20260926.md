@@ -39,3 +39,32 @@ assets beyond 64 MiB. The rewrite must first pass exact-shape, finite,
 causality/normalization and full-distribution parity checks, then a paired
 feature-time gate of >=12% before any full-validation or resource promotion.
 Otherwise stop this route and retain the reported Linux risk.
+
+## Observed result and decision
+
+The [Linux run](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36191286223)
+completed successfully. The archived [raw node profile](../results/stage187-linux-evidence/stage187-linux-node-profile.json)
+pins the unchanged checkpoint, graph and source hashes. Both compiled
+versions returned exactly equal FP32 hidden tensors on the first input
+(`max difference = 0`). There were eight batches, 256 independent input
+rows, **zero scored targets** and no test score.
+
+The unprofiled reference took **14.790237 s** and the profiled graph
+**14.742509 s** over those eight batches; the small reversal is ordinary
+measurement noise, not a speedup claim. Summed OpenVINO node times were
+14.312990 s. `FullyConnected` nodes accounted for **9.884000 s**, or
+66.83% of the unprofiled reference wall time. The eight MLP input
+projections alone contributed **4.477477 s**. The next categories were
+`Subgraph` 1.347242 s, `Concat` 1.012093 s and `Slice` 0.443730 s.
+Individual `Concat`/`Slice` changes cannot plausibly save the required
+~12% of feature time even if their measured cost vanished entirely.
+
+The dominant cost is spread across 32 dense projections, not one redundant
+operator. Replacing FP32 matrix multiplication with a faster kernel is a
+backend/hardware project rather than a simple algebraically equivalent
+graph rewrite; Stage172's tested alternate backend gained only 5.31% in
+feature time. No concrete single source-local rewrite currently meets the
+predeclared plausibility gate. **Stop Stage187 without modifying inference
+or promoting a new model.** This does not prove all graph optimization is
+impossible; it keeps the Linux one-thread risk explicit while preserving
+the Windows-qualified candidate and the submission timeline.
