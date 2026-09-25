@@ -1,5 +1,19 @@
 # AI assistance disclosure
 
+## Stage164–167 pilots and portability checks (25 September 2026)
+
+Codex proposed, implemented, preregistered, ran and interpreted the matched
+Stage164 multiscale-convolution and Stage165 training-only input-embedding
+masking pilots. Both regressed against their same-schedule control and were
+stopped without inference promotion or test scoring. Codex then installed
+the pinned OpenVINO dependency in a local Mac environment, diagnosed a
+pre-scoring ARM64 device-discovery abort, built the Linux x86-64 CI check,
+identified a runner CPU-thread mismatch, and reproduced Stage143's full
+validation BPB with the unchanged checkpoint and scorer. These were
+substantive AI-led development and verification steps. The Linux run is a
+score reproduction, not a second resource qualification; the student must
+review the portability caveats before submission.
+
 ## Stage163 compact train-only kNN-LM pilot (25 September 2026)
 
 Codex adapted the train-only datastore/interpolated-neighbor concept from
