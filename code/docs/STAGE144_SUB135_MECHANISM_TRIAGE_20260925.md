@@ -90,6 +90,11 @@ gain is **0.004699230 BPB**, below the predeclared 0.015 pilot gate. The
 new allocation was initially worse, overtook the control after 1,200 steps,
 and ended only modestly better. This is not evidence that full 7,200-step
 training would reach or approach 1.35, so no long continuation is launched.
+The pilot also shortened its learning-rate cycle to 2,400 steps whereas the
+archived Stage54 control was still on its 7,200-step cycle at step 2,400;
+therefore the 0.004699 margin is exploratory, not a strictly isolated
+architecture effect. The next architecture pilot will preserve Stage54's
+original learning-rate trajectory.
 The full 300-step curve, source/checkpoint hashes, job status and transcript
 are under `../results/stage145-evidence/`. No CPU qualification or test score
 was attempted for this rejected exploratory model. Stage143 remains the only

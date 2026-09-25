@@ -1,0 +1,44 @@
+{
+  "purpose": "input_only_random_weight_resource_screen",
+  "split": "validation_inputs_no_labels",
+  "test_scored": false,
+  "config_sha256": "dcb9dd19db7dae342c2323038e9b3f4dd28579798930abb57df9fd08763b78f0",
+  "source_sha256": "61069b548ca6ebd3bd7cd19a646af2cd9e14ea703e0185d06526ed68efdef285",
+  "stage145_utilities_sha256": "4aa8aa10cd8363c6b36cdde8addadcb427a52e06427832889383d7502c5e4948",
+  "reference_graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "candidate_graph_sha256": "64a769fc7b74f7d7f3567d181743828fc8eb63a9ac243d60c22921c9576d2524",
+  "candidate_graph_bytes": 38909889,
+  "neural_parameters": 9722241,
+  "portable_norm_count": 17,
+  "max_portable_hidden_error": 0.0,
+  "max_openvino_hidden_error": 4.212372004985809e-06,
+  "timing_seconds": {
+    "reference": [
+      1.2990670999861322,
+      1.2623185000265948,
+      1.2698352999868803,
+      1.2617638999945484,
+      1.2472274000174366,
+      1.2582897000247613,
+      1.256641199986916,
+      1.253172299999278
+    ],
+    "candidate": [
+      1.5214345999993384,
+      1.4646773000131361,
+      1.4601116999983788,
+      1.457152999995742,
+      1.4759873000439256,
+      1.4644268999691121,
+      1.465023199969437,
+      1.4997844999888912
+    ]
+  },
+  "median_seconds": {
+    "reference": 1.2600268000096548,
+    "candidate": 1.4648502499912865
+  },
+  "candidate_to_reference_feature_time": 1.1625548361194082,
+  "conservative_projected_assets_bytes": 64109889,
+  "eligible_for_pilot": true
+}
