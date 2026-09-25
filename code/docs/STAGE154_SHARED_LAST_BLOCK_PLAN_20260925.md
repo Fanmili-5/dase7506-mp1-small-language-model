@@ -35,3 +35,13 @@ Risk: two branches with a shared seven-layer trunk may converge to almost the
 same predictor; even if feature-time is feasible, dual copy computation may
 exceed the official full-predictor 5x CPU limit. Neither gain nor eligibility
 is assumed from input-only screening.
+
+## Input-only preflight (2026-09-25)
+
+The two synthetic structural tests passed. On Windows CPU, the random-weight
+OpenVINO graph matched PyTorch within `3.82e-6`; its conservative projected
+asset size was 60,824,632 bytes; and eight interleaved calls gave a median
+feature-time ratio of **1.196239583x** versus the frozen Stage143 graph.
+This passes the prespecified 1.20x feasibility screen. It does **not**
+establish quality or complete-predictor resource compliance. Exact measurements
+and source hashes are in `../results/stage154-evidence/preflight.json`.
