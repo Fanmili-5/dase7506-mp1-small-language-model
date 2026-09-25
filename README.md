@@ -219,10 +219,15 @@ Stage180 is an isolated, validation-only optimizer pilot on the same Stage54
 model and seed. It replaces AdamW on hidden block matrices with Muon while
 retaining AdamW elsewhere, and changes no inference code. Before the run, the
 step-2,400 continuation gate was fixed at BPB <= 1.499950369 (at least 0.020
-below the matched Stage54 endpoint). No Stage180 score, resource qualification
-or test score is claimed until the run completes and is audited. The Muon
+below the matched Stage54 endpoint). It scored **1.534018833** on the complete
+validation split, worse than the matched AdamW control **1.519950369** by
+0.014068464 BPB; the gate failed, so no long run or inference promotion was
+made. The pilot took 972.36 versus 639.37 training seconds through step 2,400
+on the same laptop. No Stage180 test score or resource qualification is
+claimed. The Muon
 algorithm is adapted from [Keller Jordan's MIT-licensed implementation](https://github.com/KellerJordan/Muon);
-its license is preserved in `code/third_party/Muon-LICENSE.txt`.
+its license is preserved in `code/third_party/Muon-LICENSE.txt`. See the
+prespecified run record and independent auditor under `code/results/stage180-evidence/`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

@@ -10,10 +10,12 @@ single-GPU adaptation of Keller Jordan's MIT-licensed Muon implementation
 parameters retain AdamW. The source and license are disclosed in
 `code/muon_pilot.py` and `code/third_party/Muon-LICENSE.txt`. Codex wrote the
 tests, fixed a 0.020-BPB improvement gate before execution, deployed the
-Windows validation-only job and will interpret the outcome. This is
+Windows validation-only job and audited the complete-validation outcome.
+The pilot scored 1.534018833 BPB versus the matched AdamW control 1.519950369,
+so the route stopped without a long run, inference promotion or test score. This is
 substantive AI assistance and reused algorithmic work. The student must
 understand the optimizer partition, source attribution, comparison and result
-before submission. At the time of this entry the pilot has no verified score.
+before submission.
 
 ## Stage168 sharpness-aware optimization pilot (25 September 2026)
 
