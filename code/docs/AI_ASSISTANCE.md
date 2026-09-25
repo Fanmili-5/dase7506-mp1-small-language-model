@@ -1,5 +1,32 @@
 # AI assistance disclosure
 
+## Stages181–182 architecture diagnostics (26 September 2026)
+
+Codex designed, implemented, tested and interpreted a validation-only
+intermediate-layer readout screen for the retained Stage143 Transformer.
+The readout weights and layer choices were fixed before scoring. Its best
+32,768-target gain was about 0.0041 bits per target, below the declared
+0.020 gate, so no validation-fitted layer mixture or new inference asset
+was promoted. Codex then designed and ran an isolated Stage54-matched
+attention-head comparison (eight heads versus four at the same width),
+including input-only OpenVINO parity, size and timing preflight before
+training. The four-head endpoint was 1.518811476 BPB versus 1.519950369
+for the eight-head control, below the declared 0.015-BPB advancement gain.
+The pilot stopped without long training, Stage143 replacement or test
+evaluation. These are substantive AI-led diagnostics, not proof that other
+attention configurations cannot improve the task.
+
+## Stage143 freeze and final-release tooling (26 September 2026)
+
+Codex implemented and tested a read-only method-freeze preflight and a
+fail-closed final-release packager. They check the recorded inference file
+set and hashes, source identity, test-score metadata, report replacement and
+Git cleanliness; synthetic metadata tests exercise rejection paths. Passing
+these structural gates is not a full-test result, an originality claim or a
+substitute for the student's review of the implementation. No Stage143
+method freeze, complete-test score or final submission bundle had been
+created when this disclosure section was written.
+
 ## Stage180 hidden-matrix Muon pilot (26 September 2026)
 
 Codex proposed and implemented an isolated, matched 2,400-step optimizer
