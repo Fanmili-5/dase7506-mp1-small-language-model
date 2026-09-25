@@ -25,6 +25,31 @@ jobs:
         run: |
           python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
           python -m pip install -r requirements.txt -r requirements_stage143.txt
+      - name: Inspect CPU allocation and OpenVINO reported thread limits
+        working-directory: code
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          import openvino as ov
+          print('logical_cpus', os.cpu_count(), flush=True)
+          print('affinity_cpus', len(os.sched_getaffinity(0)), flush=True)
+          quota = Path('/sys/fs/cgroup/cpu.max')
+          print('cgroup_cpu_max', quota.read_text().strip() if quota.exists() else 'unavailable', flush=True)
+          core = ov.Core()
+          for requested in (1, 2, 3, 4):
+              compiled = core.compile_model('inference_assets/stage143-stage92-features.onnx', 'CPU', {
+                  'INFERENCE_PRECISION_HINT': ov.Type.f32,
+                  'INFERENCE_NUM_THREADS': requested,
+                  'NUM_STREAMS': 1,
+                  'ENABLE_CPU_PINNING': False,
+              })
+              print('requested', requested, 'reported', {
+                  key: str(compiled.get_property(key))
+                  for key in ('INFERENCE_PRECISION_HINT', 'INFERENCE_NUM_THREADS',
+                              'NUM_STREAMS', 'ENABLE_CPU_PINNING')
+              }, flush=True)
+          PY
       - name: Verify fixed inputs and run alternating fresh-process resource comparison
         working-directory: code
         run: |
