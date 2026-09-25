@@ -244,6 +244,11 @@ all 376,599 validation targets. Its best fixed cell reached **1.398247514
 BPB**, only **0.001438648** below Stage143 and far short of its 0.015-BPB
 deployment gate. It is a diagnostic, not a resource-qualified model or test
 score; see `code/docs/STAGE183_EXPERT_FUSION_DIAGNOSTIC_20260926.md`.
+Stage184 then tested one training-only 0.10 block drop-path intervention
+against Stage54 at the fixed 2,400-step endpoint. It scored **1.537355105
+BPB**, worse than the matched **1.519950369**, and missed the predeclared
+0.015-BPB advancement gate. There was no long run or test scoring; see
+`code/docs/STAGE184_DROP_PATH_PILOT_20260926.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -561,7 +566,7 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage179 and the Stage180 optimizer pilot,
+the validation experiments through Stage184,
 including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and

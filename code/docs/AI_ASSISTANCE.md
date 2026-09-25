@@ -452,3 +452,16 @@ was produced. The student must understand the one-variable comparison,
 training-only versus inference behavior of dropout, and the failed fixed
 advancement gate. This is substantive AI assistance, not evidence that every
 regularization method fails.
+
+## Stages180–184 assistance
+
+Codex planned, implemented, ran and audited the rejected Stage180 optimizer
+pilot and Stage182 head-count pilot, and diagnosed the Stage181 intermediate
+readout and Stage183 normalized expert-fusion alternatives on validation only.
+For Stage184, Codex proposed the training-only per-example block drop path,
+predeclared its matched control and fixed advancement gate, implemented and
+tested the hooks, ran the Windows pilot, and audited the complete-validation
+result. The Stage184 intervention made the fixed endpoint worse and was
+stopped. These are substantive AI-assisted experiment-design, coding,
+execution and interpretation contributions; none establishes a superior
+submitted model or uses the held-out test set for development selection.

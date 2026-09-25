@@ -35,3 +35,27 @@ Strongest objection: the existing dropout and R-Drop already regularize the
 small-data model; dropping whole blocks may impede optimization and worsen the
 early endpoint. The 2400-step screen will directly test that risk at fixed
 train budget rather than relying on a general claim about stochastic depth.
+
+## Completed run and decision
+
+The Windows RTX 3070 Ti pilot completed all **2,400 updates / 19,660,800
+primary target presentations** in 662.32 recorded training seconds. All eight
+scheduled full GPU FP32 validations covered **376,599 targets and 1,148,007
+raw bytes**. The fixed endpoint was **1.537355105402 BPB**, versus Stage54's
+matched **1.519950368612 BPB**: the pilot is **0.017404737 BPB worse**, not
+the required 0.015 better. The independently queried checkpoint SHA-256 was
+`534fd4bfafbc15dfc8f194330a33985c005eb86488a6a221f27a7557f1e543e3`,
+matching the training record. The job ended successfully and verified the
+course-fixed files again. Peak allocated/reserved CUDA memory of 5.650/5.983
+GB is a training metric, not the assignment's inference RAM qualification.
+
+The [read-only audit](../results/stage184-evidence/audit.json) checks the
+one-field config change, complete validation coverage, target count, source
+hashes, fixed control endpoint, job completion and checkpoint digest. Raw
+run/metrics/progress/status JSON are archived beside it; the unpromoted
+checkpoint remains on the private Windows machine.
+
+**Stop Stage184.** No 7,200-step continuation, rate/seed sweep, CPU inference
+qualification or test scoring follows this failed gate. This result rejects
+this fixed drop-path intervention under the Stage54 recipe; it does not prove
+that stochastic depth is universally harmful. Stage143 remains protected.
