@@ -1,5 +1,16 @@
 # AI assistance disclosure
 
+## Stage155 neural-budget reallocation (25 September 2026)
+
+Codex analyzed the limited measured benefit and resource cost of the count
+expert, proposed a larger single-neural allocation, wrote the prespecified
+feasibility and quality gates, implemented the Windows OpenVINO/GPU screens,
+and ran the matched seed-17 pilot. The 2,400-step validation gain of
+0.022450508 BPB authorized a fresh long run, not promotion or test scoring.
+This is substantive AI-led design, code and analysis. The student must
+understand the model, the removal of the count expert, the comparison and the
+remaining CPU/asset risks before submission.
+
 ## Stage146–154 mechanism and architecture screens (25 September 2026)
 
 Codex analyzed Stage143's validation errors, tested bounded train-only

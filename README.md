@@ -61,6 +61,13 @@ BPB** versus Stage54's **1.519950369**. The **0.005998** gain missed its
 predeclared 0.015 continuation gate. No Stage154 long run, complete CPU
 qualification or test scoring followed; see the Stage153/154 plans and
 evidence under `code/docs/` and `code/results/`.
+Stage155 reallocates the count-expert asset budget to a single 10-layer,
+width-320 neural model. Input-only OpenVINO and batch-32 GPU memory screens
+passed. Its matched 2,400-step GPU FP32 validation endpoint was **1.497499861
+BPB**, **0.022450508** below Stage54 at the same step, clearing its
+predeclared 0.020 continuation gate. A fresh full run is warranted, but no
+Stage155 complete CPU score, resource qualification or test result exists yet.
+See `code/docs/STAGE155_NEURAL_BUDGET_REALLOCATION_PLAN_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -378,7 +385,7 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage154, including the OpenVINO inference
+the validation experiments through Stage155, including the OpenVINO inference
 port, compact checkpoint packaging and resource audit. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the

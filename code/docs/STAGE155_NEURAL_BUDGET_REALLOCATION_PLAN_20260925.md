@@ -78,3 +78,20 @@ completed at physical/effective batch 32 without accumulation, peaking at
 pass, authorizing the fixed 2,400-step quality pilot. They do not establish
 trained quality, complete CPU time or final asset eligibility. Source hashes
 and raw timings are in `../results/stage155-evidence/`.
+
+## Matched pilot result (2026-09-25)
+
+The scheduled Windows job completed all 2,400 seed-17 updates using physical
+and effective batch 32. It presented 19,660,800 primary targets in 662.85
+training seconds; the fixed-file checks and inherited hybrid R-Drop tests
+passed. Complete GPU FP32 validation at step 2,400 was **1.497499861 BPB**
+on 376,599 targets, versus Stage54's same-schedule **1.519950369 BPB**.
+The improvement is **0.022450508 BPB**, exceeding the prespecified 0.020
+full-run continuation threshold. The trajectory, source/checkpoint hashes,
+console and task status are in `../results/stage155-evidence/`.
+
+Decision: start a **fresh** seed-17 7,200-step run using the unchanged
+Stage54 learning-rate trajectory and fixed last-five averaging window.
+The 2,400-step pilot checkpoint is not treated as a final candidate. The
+full run still must beat Stage143 in complete CPU FP32 validation and satisfy
+all three official resource limits; no test score has been produced.
