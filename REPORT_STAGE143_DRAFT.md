@@ -130,6 +130,10 @@ An independent [Linux x86-64 CI run](code/docs/STAGE167_LINUX_X86_REPRODUCTION_2
 reproduced **1.399686179 BPB** over the same complete validation split,
 using one actual FP32 OpenVINO thread. That run did not measure the three
 resource limits, so it is not an additional resource qualification.
+The separate [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
+rechecked the frozen-file *candidate* hashes, score coverage and Windows
+resource arithmetic. It is a consistency check, not method freeze, test
+evaluation or final submission.
 
 The prospective checkpoint and feature graph are pinned separately (these
 are candidate hashes, not a final release manifest):

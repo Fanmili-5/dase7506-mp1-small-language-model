@@ -21,6 +21,12 @@ See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
 `code/README.md`. This is a **validation-only local Windows qualification**;
 the new candidate has not been frozen or scored on test, and passing on the
 course CPU is not yet established.
+The read-only [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
+rechecked the checkpoint, graph and all counted source-file hashes, three
+complete-validation score records, and the three-repeat Windows resource
+measurements. It is reproducible with
+`cd code && python scripts/audit_stage143_pretest_readiness.py` and does
+**not** freeze the method or authorize test scoring by itself.
 
 `REPORT.pdf` is an **eight-page historical report for the earlier Stage10
 checkpoint** (1.605136467 full-test BPB), created before Stage143 existed.
