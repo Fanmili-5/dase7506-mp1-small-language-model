@@ -1,5 +1,20 @@
 # AI assistance disclosure
 
+## Stage180 hidden-matrix Muon pilot (26 September 2026)
+
+Codex proposed and implemented an isolated, matched 2,400-step optimizer
+comparison, using the same Stage54 model, seed, training data, loss, batch,
+context and 7,200-step schedule horizon. Hidden block matrices use a small
+single-GPU adaptation of Keller Jordan's MIT-licensed Muon implementation
+(https://github.com/KellerJordan/Muon); embeddings, norms and auxiliary/output
+parameters retain AdamW. The source and license are disclosed in
+`code/muon_pilot.py` and `code/third_party/Muon-LICENSE.txt`. Codex wrote the
+tests, fixed a 0.020-BPB improvement gate before execution, deployed the
+Windows validation-only job and will interpret the outcome. This is
+substantive AI assistance and reused algorithmic work. The student must
+understand the optimizer partition, source attribution, comparison and result
+before submission. At the time of this entry the pilot has no verified score.
+
 ## Stage168 sharpness-aware optimization pilot (25 September 2026)
 
 Codex used structured failure analysis and idea screening to select one

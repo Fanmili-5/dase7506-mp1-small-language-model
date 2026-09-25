@@ -215,6 +215,14 @@ BPB**, worse than the same-target Stage54 control **1.428594045**. The
 predeclared 0.015 advancement gate failed; no continuation or test score
 followed. The full record and auditor are under `code/docs/`, `code/results/`
 and `code/scripts/` as Stage179. Stage143 remains unchanged.
+Stage180 is an isolated, validation-only optimizer pilot on the same Stage54
+model and seed. It replaces AdamW on hidden block matrices with Muon while
+retaining AdamW elsewhere, and changes no inference code. Before the run, the
+step-2,400 continuation gate was fixed at BPB <= 1.499950369 (at least 0.020
+below the matched Stage54 endpoint). No Stage180 score, resource qualification
+or test score is claimed until the run completes and is audited. The Muon
+algorithm is adapted from [Keller Jordan's MIT-licensed implementation](https://github.com/KellerJordan/Muon);
+its license is preserved in `code/third_party/Muon-LICENSE.txt`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -532,7 +540,8 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage174, including the Stage166–173 portability
+the validation experiments through Stage179 and the Stage180 optimizer pilot,
+including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, and report drafting. Human review and
