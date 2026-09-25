@@ -23,7 +23,7 @@ conservatively counted inference assets. Full-test BPB: **PENDING FREEZE**.
 
 ## 2. Task, data and evaluation
 
-The [assignment guide](guide.md) ranks complete-test bits per raw UTF-8 byte
+The [assignment guide](GUIDE.md) ranks complete-test bits per raw UTF-8 byte
 under a fixed scorer, independent 256-token causal windows, CPU FP32 scoring,
 at most 5x baseline CPU time, at most 4 GiB peak RAM and at most 64 MiB of
 uncompressed inference assets. Training may use CPU/GPU, but only the
@@ -32,10 +32,11 @@ the method is frozen. No external text or pretrained weights were used in
 the experiments reported here. The model does not retain state across
 evaluation windows or call a network during inference.
 
-The original course baseline is approximately **2.10 full-test BPB**. A
-previously frozen Stage10 model produced **1.605136467 full-test BPB**, but
-that is a different checkpoint and must not be presented as Stage143's test
-score. The current candidate's complete validation BPB is reported above;
+The original course baseline measured **2.102014912 full-test BPB** in the
+earlier frozen comparison. A previously frozen Stage10 model produced
+**1.605136467 full-test BPB**, but that is a different checkpoint and must
+not be presented as Stage143's test score. The current candidate's complete
+validation BPB is reported above;
 test comparison and relative improvement remain pending.
 
 ## 3. Model and training mechanism
@@ -78,9 +79,10 @@ log-probabilities for the unchanged scorer.
 ## 4. Equal-target controls and ablations
 
 The following completed runs use seed 17, batch 32, **7,200 updates** and
-**58,982,400 unique primary next-token targets**; the same sampled windows,
-optimizer trajectory and five-checkpoint average make the paired comparisons
-interpretable. R-Drop processes each primary position twice stochastically;
+**58,982,400 primary next-token presentations**; the same sampled-window
+sequence, optimizer settings and five-checkpoint averaging rule make the
+paired comparisons interpretable. The optimization trajectories differ by
+design. R-Drop processes each primary position twice stochastically;
 this extra training compute is not a new independent target count.
 
 | Model | Complete CPU FP32 validation BPB | Controlled question |
@@ -162,13 +164,36 @@ OpenAI Codex provided substantive assistance with assignment analysis,
 model/experiment design, implementation, testing, Windows execution,
 diagnostics, documentation and this report draft. Earlier conceptual work
 reused RoPE, SwiGLU, RMSNorm, R-Drop, modified Kneser–Ney, prefix-copy and
-kNN-LM ideas; the implemented method and relevant references should be
-acknowledged in the final report. The [detailed disclosure](code/docs/AI_ASSISTANCE.md)
+kNN-LM ideas. The implemented concepts' original publications are listed
+below; citing an idea does not imply that the paper's implementation or
+pretrained weights were copied. The [detailed disclosure](code/docs/AI_ASSISTANCE.md)
 and experiment records distinguish reused ideas, AI contributions and
 original project-specific implementations. Passing automated checks is
 not a substitute for student review.
 
-## 7. Pending finalization checklist
+## 7. Method references
+
+- Su et al. (2021), [RoFormer: Enhanced Transformer with Rotary Position
+  Embedding](https://arxiv.org/abs/2104.09864) — RoPE.
+- Shazeer (2020), [GLU Variants Improve Transformer](https://arxiv.org/abs/2002.05202)
+  — SwiGLU.
+- Zhang and Sennrich (2019), [Root Mean Square Layer
+  Normalization](https://proceedings.neurips.cc/paper/2019/hash/1e8a19426224ca89e83cef47f1e7f53b-Abstract.html)
+  — RMSNorm.
+- Liang et al. (2021), [R-Drop: Regularized Dropout for Neural
+  Networks](https://proceedings.neurips.cc/paper/2021/hash/5a66b9200f29ac3fa0ae244cc2a51b39-Abstract.html)
+  — stochastic consistency objective.
+- Chen and Goodman (1999), [An Empirical Study of Smoothing Techniques for
+  Language Modeling](https://www.sciencedirect.com/science/article/pii/S0885230899901286)
+  — modified Kneser–Ney smoothing.
+- Merity et al. (2016), [Pointer Sentinel Mixture
+  Models](https://arxiv.org/abs/1609.07843) — within-context copy concept.
+
+The later compact kNN-LM pilot was rejected and is documented in the
+[Stage163 record](code/docs/STAGE163_COMPACT_KNN_LM_PILOT_20260925.md), which
+cites its originating publication. It is not part of the Stage143 predictor.
+
+## 8. Pending finalization checklist
 
 - Decide and record the frozen method using validation only; stop all
   development decisions before reading Stage143 test results.

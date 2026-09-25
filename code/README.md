@@ -53,11 +53,11 @@ command scores validation only; do not use test to select or tune a candidate.
 
 ## 2. Train and evaluate
 
-**Quick installation check** — 10 training steps, then full-test evaluation:
+**Quick installation check** — 10 training steps, then validation evaluation:
 
 ```bash
 python train.py --implementation model --steps 10 --run-dir runs/smoke
-python evaluate.py --checkpoint runs/smoke/checkpoint.pt --split test
+python evaluate.py --checkpoint runs/smoke/checkpoint.pt --split validation
 ```
 
 This checks that the pipeline works; its score is **not** the full baseline. Each training run needs a new output directory.
@@ -111,11 +111,22 @@ Training writes `checkpoint.pt` and `metrics.json`. Evaluation writes `test_cpu_
 
 Use validation for all development and checkpoint/mixture selection. Weights, statistics and retrieval entries must derive only from training text. The public test text enables reproduction; it must not be used to tune the method. Once frozen, the same predictor may be evaluated repeatedly for timing or reproduction. Token perplexity is not directly comparable with published word-level perplexity.
 
-Measure all three limits for the same frozen predictor:
+Measure all three limits for the same frozen predictor. First train the supplied
+baseline using the command above; then run three alternating fresh-process
+comparisons from `code/`:
 
-- **CPU time ≤5× baseline:**
-- **Peak RAM ≤4 GiB:**
-- **Inference assets ≤64 MiB uncompressed:** 
+```bash
+python scripts/benchmark_cpu.py --baseline runs/baseline/checkpoint.pt --candidate checkpoints/stage143-openvino-order6.pt --threads 4 --repeats 3 --output results/stage143-resource-recheck.json
+```
+
+- **CPU time ≤5× baseline:** compare the medians in the benchmark JSON.
+- **Peak RAM ≤4 GiB:** use the candidate's maximum whole-process RSS.
+- **Inference assets ≤64 MiB uncompressed:** count the checkpoint, ONNX graph,
+  and every student-authored file required to run the model, not only the
+  checkpoint bytes printed by the benchmark script. The [Stage143 qualification
+  record](docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md) gives
+  the current local asset count and its scope. Recheck the count if the bundle
+  changes.
 
 ## 5. Prepare your submission and reproduce a peer
 
