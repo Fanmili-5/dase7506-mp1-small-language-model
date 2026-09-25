@@ -169,7 +169,10 @@ split and may be optimistic. The course CPU may differ from the Windows
 laptop. The resource audit excludes third-party runtime wheel sizes but
 counts every student-authored inference asset. The current candidate has
 not yet been tested or submitted; exact final accuracy and ranking are
-unknown. A student must inspect and understand the code and all claims.
+unknown. A separate [macOS ARM64 runtime check](code/docs/STAGE166_MACOS_ARM64_RUNTIME_CHECK_20260925.md)
+aborted during OpenVINO CPU-device discovery before model compilation or
+scoring, so macOS compatibility remains unverified. A student must inspect
+and understand the code and all claims.
 
 OpenAI Codex provided substantive assistance with assignment analysis,
 model/experiment design, implementation, testing, Windows execution,
