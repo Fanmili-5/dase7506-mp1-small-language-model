@@ -70,20 +70,20 @@ def styles() -> dict[str, ParagraphStyle]:
                                 leading=20, textColor=colors.HexColor("#17354f"),
                                 alignment=TA_LEFT, spaceAfter=10),
         "h2": ParagraphStyle("h2", fontName="Vera-Bold", fontSize=11.3,
-                             leading=14, textColor=colors.HexColor("#17354f"),
-                             spaceBefore=10, spaceAfter=6, keepWithNext=True),
-        "body": ParagraphStyle("body", fontName="Vera", fontSize=8.6,
-                               leading=11.9, textColor=colors.HexColor("#182630"),
-                               spaceAfter=6),
+                             leading=13.7, textColor=colors.HexColor("#17354f"),
+                             spaceBefore=9, spaceAfter=5, keepWithNext=True),
+        "body": ParagraphStyle("body", fontName="Vera", fontSize=8.5,
+                               leading=11.3, textColor=colors.HexColor("#182630"),
+                               spaceAfter=5, allowOrphans=0, allowWidows=0),
         "bullet": ParagraphStyle("bullet", fontName="Vera", fontSize=8.4,
-                                 leading=11.5, leftIndent=12, firstLineIndent=-8,
-                                 textColor=colors.HexColor("#182630"), spaceAfter=4),
+                                 leading=11.0, leftIndent=12, firstLineIndent=-8,
+                                 textColor=colors.HexColor("#182630"), spaceAfter=3),
         "table_head": ParagraphStyle("table_head", fontName="Vera-Bold",
                                      fontSize=7.7, leading=9.8, textColor=colors.white),
         "table": ParagraphStyle("table", fontName="Vera", fontSize=7.6,
                                 leading=9.8, textColor=colors.HexColor("#182630")),
         "code": ParagraphStyle("code", fontName="Courier", fontSize=6.7,
-                               leading=8.5, leftIndent=7, rightIndent=7,
+                               leading=8.3, leftIndent=7, rightIndent=7,
                                backColor=colors.HexColor("#f3f6f8"),
                                borderPadding=6, spaceAfter=7),
         "footer": ParagraphStyle("footer", fontName="Vera", fontSize=7,
@@ -148,7 +148,7 @@ def make_story(source: str, sty: dict[str, ParagraphStyle]) -> list:
                 i += 1
             if i == len(lines):
                 raise ValueError("Unclosed code fence")
-            story.append(Preformatted("\n".join(block), sty["code"]))
+            story.append(KeepTogether([Preformatted("\n".join(block), sty["code"])]))
             i += 1
             continue
         if line.startswith("| "):

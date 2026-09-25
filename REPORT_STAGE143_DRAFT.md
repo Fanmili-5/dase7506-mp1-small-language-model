@@ -20,6 +20,8 @@ score is **1.399686162 BPB** over 376,599 next-token targets. Three
 fresh-process local CPU comparisons yield **3.617702x** baseline time,
 **2,176,729,088 bytes** maximum peak RSS and **55,810,412 bytes** of
 conservatively counted inference assets. Full-test BPB: **PENDING FREEZE**.
+An independent Linux one-thread host exceeded the 5x CPU-time limit; this
+Windows qualification is not a cross-platform guarantee.
 
 ## 2. Task, data and evaluation
 
@@ -69,8 +71,8 @@ the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
 deduplicated project-wide search-cost ledger is still pending. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
-59 distinct metrics files: 57 comparable `train_seconds` fields sum to
-**48,018.74 seconds (13.34 hours)** of reported training, including the
+60 distinct metrics files: 58 comparable `train_seconds` fields sum to
+**48,662.34 seconds (13.52 hours)** of reported training, including the
 accepted lineage and rejected trials. The Stage136 record reports only
 broader elapsed time; the Stage169 aggregate record has no `train_seconds`
 because its two arm-specific metrics records supply those durations. Both
@@ -137,6 +139,16 @@ The subsequent three-repeat Linux one-thread same-host measurement found
 failing that host's 5x gate, though its 2,209,579,008-byte peak RSS and the
 55,810,412-byte asset total pass. This portable-resource risk is unresolved;
 the Windows result must not be described as universal eligibility.
+An attempted Linux four-thread recheck could not measure Stage143: the CI
+host exposed two logical CPUs and OpenVINO reported one inference thread
+even when four were requested, so the implementation's strict guard stopped
+before candidate timing. It is neither a four-thread pass nor a time failure.
+An unchanged-graph ONNX Runtime pilot was 5.31% faster on sampled Linux
+one-thread feature calls, below its 12% integration threshold. Neither
+diagnostic changed the selected predictor; see the
+[Stage172](code/docs/STAGE172_LINUX_BACKEND_PREFLIGHT_PLAN_20260925.md) and
+[Stage173](code/docs/STAGE173_LINUX_FOUR_THREAD_RESOURCE_PLAN_20260925.md)
+records.
 The separate [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
 rechecked the frozen-file *candidate* hashes, score coverage and Windows
 resource arithmetic. It is a consistency check, not method freeze, test
@@ -195,6 +207,11 @@ Stage169's matched strong-student distillation pilot scored 1.399440139
 complete-validation BPB, only 0.000246 better than Stage143, while its
 hard-only control worsened to 1.403915928. It failed the prespecified
 0.005 gain gate and was not resource-qualified or test-scored.
+Stage174's training-only byte-boundary auxiliary objective reached
+1.520019189 BPB at the matched 2,400-step endpoint versus 1.519950369 for
+the Stage54 control. All eight intermediate checks were also worse, so its
+predeclared long-run gate failed. No Stage174 inference model or test score
+was produced.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows

@@ -29,3 +29,15 @@ every claim or final-submission readiness. After the method and exact bundle
 are frozen, insert the one matching test score and final links, regenerate
 the report as the actual `REPORT.pdf`, inspect every final page, check the
 page count again, and ensure the old Stage10 PDF is replaced only then.
+
+After adding the Stage170–174 results and refreshing the archived search-cost
+total, the development preview was regenerated from the revised Markdown on
+25 September 2026. The latest ignored PDF is **three A4 pages / 77,087
+bytes**, again below the ten-page cap. All three latest page images were
+visually inspected: the code example is kept together, the ablation table,
+section breaks, references, hashes, page numbers and development watermark
+are legible, with no clipping or nearly empty fourth page. Extracted text
+contains the Stage174 failed gate, Linux one-thread ratio, updated 60-record
+cost audit and explicit pending-test status. The temporary preview is still
+**not** the final `REPORT.pdf`; later candidate changes or the frozen test
+result require another render and full visual QA.
