@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260925180437
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_stage159_pilot_windows.ps1
+进程 ID: 73652
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_local_heavy_rdrop_export (tests.test_hybrid_conv_rdrop.HybridConvRDropTests.test_local_heavy_rdrop_export) ... ok
+test_loss_gradients_and_exact_export (tests.test_hybrid_conv_rdrop.HybridConvRDropTests.test_loss_gradients_and_exact_ex
+port) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.673s
+
+OK
+    "nll_nats": 1363903.4973606402,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 1.0408901000628248
+  },
+  "checkpoint_sha256": "dcaff3653c5b190f1cedab1c54456ef2893e00f5eed2c99aad0f25b3dcb0a1cf",
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 2.561206784,
+  "peak_reserved_gb": 2.661285888
+}
+
+
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260925181050
+**********************

@@ -88,6 +88,12 @@ Stage158's one fixed low-LR continuation further improved the student to
 **1.403214959**. Both remain above Stage143, so the teacher-transfer route
 was stopped before CPU qualification or test scoring. See
 `code/docs/STAGE158_FIXED_DISTILLATION_CONTINUATION_20260925.md`.
+Stage159 tested a compact independent Transformer as a second expert.
+Its input-only graph fit the CPU/asset preflight, but its 2,400-step
+validation was **1.714011162 BPB** and the fixed 10%/20% mixtures with
+Stage143 both worsened BPB. The quality gate failed, so no integrated
+two-model predictor or test score was produced; see
+`code/docs/STAGE159_COMPACT_COMPLEMENT_PREFLIGHT_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

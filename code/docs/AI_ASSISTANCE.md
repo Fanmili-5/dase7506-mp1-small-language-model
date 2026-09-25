@@ -1,5 +1,15 @@
 # AI assistance disclosure
 
+## Stage159 compact complementary expert (25 September 2026)
+
+Codex used failure analysis, composition and simplicity checks to propose a
+small independent Transformer within Stage143's spare resource budget. It
+implemented and ran the input-only OpenVINO parity/speed/asset preflight,
+then a fixed matched-schedule training and validation-only mixture pilot.
+Although the preflight passed, both nonzero mixtures worsened BPB; Codex
+rejected the full-run/deployment route at its predeclared quality gate.
+This was substantive AI-led design, code and analysis, not a test score.
+
 ## Stage158 bounded teacher-transfer continuation (25 September 2026)
 
 Codex preregistered, implemented, ran and audited one fixed low-learning-rate

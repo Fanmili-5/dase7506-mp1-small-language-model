@@ -54,3 +54,23 @@ before paying for a full train or integrated inference path. The diagnostic
 may gather true validation target probabilities only for loss measurement;
 the predictor must never use the true target to choose a mixture or gate.
 If the threshold fails, preserve the negative result and stop. No test scoring.
+
+## Pilot result and rejection
+
+The scheduled Windows job completed all 2,400 updates and **19,660,800**
+primary train-target presentations in 313.24 training seconds. Its endpoint
+complete GPU FP32 validation was **1.714011162 BPB** over 376,599 targets.
+The fixed target-probability diagnostic reproduced Stage143 at 1.399686162
+and gave **1.403317245** at compact weight 0.1 and **1.412771929** at 0.2.
+The best nonzero cell **worsened** BPB by 0.003631083, far from the
+predeclared 0.005 improvement gate. This diagnostic is not a deployable
+predictor; the absence of a positive validation mixture signal already
+rejects a full run. No trained graph export, integrated CPU resource audit,
+promotion or test scoring followed. The raw run, fixed grid, source hashes
+and task logs are in `../results/stage159-evidence/`.
+
+The result distinguishes feasibility from utility: a ~1-M-parameter
+independent expert fits the spare time/asset budget in input-only tests but
+is too weak at the matched pilot point to supply useful complementary mass
+at the predeclared weights. It does not prove that all compact experts or
+longer schedules fail; those would be new experiments, not this one.
