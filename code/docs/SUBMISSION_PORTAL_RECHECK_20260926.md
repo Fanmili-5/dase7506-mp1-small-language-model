@@ -20,8 +20,15 @@ the operational safety target. Do not infer that the live page silently
 extends the guide's score deadline.
 
 Current project state at this recheck: Stage143 is eligible for freeze only;
-it has **no frozen Stage143 test score**. The GitHub repository is not yet
-verified as a public immutable final code link, and the historical
-`REPORT.pdf` does not match Stage143. The student must provide the Student ID
-and choose the method-freeze timing before the score/issue workflow. No form
-or GitHub issue was created by this recheck.
+it has **no frozen Stage143 test score**. The historical `REPORT.pdf` does not
+match Stage143. The student must provide the Student ID and choose the
+method-freeze timing before the score/issue workflow. No form or GitHub issue
+was created by this recheck.
+
+An authenticated read-only `gh repo view` check at **06:29 HKT** returned
+`visibility=PRIVATE` for
+`Fanmili-5/dase7506-mp1-small-language-model` (default branch `main`). Thus
+the current repository URL is **not yet a public immutable review link**.
+Before final link submission/public review, the owner must choose when to
+make the repository public or provide an equivalent public immutable code
+location. This note does not authorize a visibility change.
