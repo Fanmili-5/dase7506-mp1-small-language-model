@@ -65,3 +65,16 @@ objection.
 
 The current Stage143 checkpoint remains protected. The first action is only
 the input-only feature and memory preflight; no Stage155 BPB is claimed.
+
+## Feasibility result (2026-09-25)
+
+The random-weight OpenVINO graph was 47,960,933 bytes, with 11,978,561
+neural parameters. Its PyTorch/OpenVINO hidden-state error was `4.30e-6`,
+the conservative graph + head/source reserve was 53,160,933 bytes, and the
+eight-pair feature-time median was **1.500597x** Stage143, within the
+prespecified 1.60x screening cap. A separate one-update synthetic GPU probe
+completed at physical/effective batch 32 without accumulation, peaking at
+5,142,695,936 allocated and 5,404,360,704 reserved CUDA bytes. Both screens
+pass, authorizing the fixed 2,400-step quality pilot. They do not establish
+trained quality, complete CPU time or final asset eligibility. Source hashes
+and raw timings are in `../results/stage155-evidence/`.
