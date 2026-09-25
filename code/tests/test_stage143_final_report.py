@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import unittest
 
-from scripts.render_stage143_final_report import SOURCE, compose
+from scripts.render_stage143_final_report import BASELINE_TEST_BPB, SOURCE, compose
 
 
 class Stage143FinalReportTests(unittest.TestCase):
@@ -31,6 +31,15 @@ class Stage143FinalReportTests(unittest.TestCase):
             compose(source, {**metadata, "bpb": float("nan")}, "0" * 40)
         with self.assertRaisesRegex(ValueError, "Invalid verified test score"):
             compose(source, metadata, "not-a-commit")
+
+    def test_baseline_comparison_is_truthful_for_worse_or_equal_score(self) -> None:
+        source = SOURCE.read_text(encoding="utf-8")
+        metadata = {"targets": 428405, "utf8_bytes": 1292013}
+        worse = compose(source, {**metadata, "bpb": 2.2}, "0" * 40)
+        self.assertIn("is **4.66% worse** than the original baseline", worse)
+        self.assertNotIn("improves on the original baseline", worse)
+        equal = compose(source, {**metadata, "bpb": BASELINE_TEST_BPB}, "0" * 40)
+        self.assertIn("matches the original baseline", equal)
 
 
 if __name__ == "__main__":

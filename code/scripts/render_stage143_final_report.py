@@ -47,6 +47,15 @@ def compose(source: str, test: dict, frozen_commit: str) -> str:
     bpb = float(test["bpb"])
     if (not math.isfinite(bpb) or bpb <= 0 or not re.fullmatch(r"[0-9a-f]{40}", frozen_commit)):
         raise ValueError("Invalid verified test score or frozen commit")
+    relative_change = (1 - bpb / BASELINE_TEST_BPB) * 100
+    if bpb < BASELINE_TEST_BPB:
+        baseline_comparison = (
+            f"improves on the original baseline by **{relative_change:.2f}%**")
+    elif bpb > BASELINE_TEST_BPB:
+        baseline_comparison = (
+            f"is **{-relative_change:.2f}% worse** than the original baseline")
+    else:
+        baseline_comparison = "matches the original baseline"
     text = replace_once(
         text, "Full-test BPB: **PENDING FREEZE**.",
         f"Frozen Stage143 complete-test CPU FP32 BPB: **{bpb:.9f}** over "
@@ -59,7 +68,7 @@ def compose(source: str, test: dict, frozen_commit: str) -> str:
         "validation BPB is reported above;\n"
         "test comparison and relative improvement remain pending.",
         "not be presented as Stage143's test score. The frozen Stage143 result above\n"
-        f"improves on the original baseline by **{(1 - bpb / BASELINE_TEST_BPB) * 100:.2f}%** "
+        f"{baseline_comparison} "
         "in BPB on the same complete test split; the development validation score\n"
         "is reported separately.")
     text = replace_once(
