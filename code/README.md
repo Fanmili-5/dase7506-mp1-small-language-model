@@ -141,7 +141,11 @@ The [guide](../GUIDE.md) specifies the deadline and website workflow. Include th
 - **Reproduction instructions**
 
 Your final website submission must link to this code and the matching complete checkpoint bundle. The website generates the Issue JSON automatically. Keep all inference assets downloadable for verification.
-After the explicit method freeze and one matching CPU FP32 full-test run,
+After explicitly freezing and committing the method record, run the one
+matching CPU FP32 full-test score through
+`scripts/run_stage143_frozen_test.py --freeze <committed-freeze.json> --output <new-test-result.json>`.
+The entry point refuses a missing or uncommitted freeze and records its hash
+in the scorer result. Then
 `scripts/package_stage143_final_release.py` can bind the committed freeze
 record, full-test result and replacement `REPORT.pdf` to an exact bundle.
 It refuses to package the historical Stage10 report. See the

@@ -3,11 +3,14 @@ from __future__ import annotations
 
 import copy
 import math
+from pathlib import Path
+import tempfile
 import unittest
 
 from scripts.package_stage143_final_release import (
     FINAL, expected_files, read_json, sha, validate_freeze, validate_test,
 )
+from scripts.run_stage143_frozen_test import preflight
 
 
 class FinalReleaseGateTests(unittest.TestCase):
@@ -26,6 +29,7 @@ class FinalReleaseGateTests(unittest.TestCase):
             "source_commit": "0" * 40,
             "inference_files": expected_files(self.final),
         }
+        self.freeze_sha256 = "f" * 64
         # The value 2.0 is synthetic metadata for gate tests, not an MP1 score.
         self.test_record = {
             "protocol": self.final["protocol"],
@@ -35,13 +39,16 @@ class FinalReleaseGateTests(unittest.TestCase):
             "implementation_sha256": self.final["source_hashes"]["student_stage143_openvino_singlepass.py"],
             "evaluator_sha256": self.final["source_hashes"]["evaluate.py"],
             "tokenizer_sha256": self.final["source_hashes"]["data/tokenizer.json"],
+            "freeze_record_sha256": self.freeze_sha256,
+            "frozen_source_commit": self.freeze["source_commit"],
             "bpb": 2.0,
             "nll_nats": 2.0 * math.log(2) * 1292013,
         }
 
     def test_valid_synthetic_metadata(self) -> None:
         self.assertEqual(len(validate_freeze(self.freeze, self.final, sha(FINAL))), 18)
-        validate_test(self.test_record, self.final)
+        validate_test(self.test_record, self.final, self.freeze_sha256,
+                      self.freeze["source_commit"])
 
     def test_unfrozen_or_changed_assets_rejected(self) -> None:
         for key, value in (("status", "eligible_for_freeze_only"),
@@ -61,12 +68,22 @@ class FinalReleaseGateTests(unittest.TestCase):
         for key, value in (("split", "validation"), ("device", "cuda:0"),
                            ("precision", "bf16"), ("targets", 1),
                            ("utf8_bytes", 1), ("checkpoint_sha256", "0" * 64),
-                           ("evaluator_sha256", "0" * 64), ("bpb", 1.0)):
+                           ("evaluator_sha256", "0" * 64),
+                           ("freeze_record_sha256", "0" * 64),
+                           ("frozen_source_commit", "1" * 40), ("bpb", 1.0)):
             with self.subTest(key=key):
                 bad = dict(self.test_record)
                 bad[key] = value
                 with self.assertRaises(ValueError):
-                    validate_test(bad, self.final)
+                    validate_test(bad, self.final, self.freeze_sha256,
+                                  self.freeze["source_commit"])
+
+    def test_scoring_refuses_without_freeze_record(self) -> None:
+        with tempfile.TemporaryDirectory() as scratch:
+            directory = Path(scratch)
+            with self.assertRaisesRegex(ValueError, "No method freeze record"):
+                preflight(directory / "missing-freeze.json",
+                          directory / "unscored-test.json")
 
 
 if __name__ == "__main__":

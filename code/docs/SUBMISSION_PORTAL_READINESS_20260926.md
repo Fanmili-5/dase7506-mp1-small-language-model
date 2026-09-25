@@ -28,8 +28,15 @@ Do not treat the live site's later date as an extension of the written guide.
    test. Only after the student chooses to freeze should its explicit
    `--confirm --output <new freeze-record path>` mode write the source-commit
    and asset manifest, before any test command is run.
-2. Run the unchanged complete-test CPU FP32 scorer on the frozen predictor;
-   submit **its** BPB, not the 1.399686162 validation BPB or historical Stage10
+2. Commit the freeze JSON before testing, then use
+   `scripts/run_stage143_frozen_test.py --freeze <committed-freeze.json> --output <new-test-result.json>`
+   to invoke the unchanged complete-test CPU FP32 scorer on the frozen
+   predictor. The wrapper requires a clean repository, the committed freeze
+   record and all 18 qualified inference-file hashes before it can invoke
+   the scorer. It attaches the freeze-record SHA-256 to the result; the final
+   packager requires that binding. This enforces the intended sequence for
+   this workflow but does not independently prove a human's chronology.
+   Submit **its** BPB, not the 1.399686162 validation BPB or historical Stage10
    test score. Record test target count, byte count, full score JSON and hashes.
 3. On the portal, enter the student's actual ID and full-test BPB, accept the
    publication/links consent, choose **Prepare score submission**, then confirm

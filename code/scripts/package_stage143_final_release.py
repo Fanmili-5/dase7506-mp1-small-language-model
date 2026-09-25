@@ -76,7 +76,8 @@ def validate_freeze(freeze: dict, final: dict, qualification_sha: str) -> dict:
     return expected
 
 
-def validate_test(test: dict, final: dict) -> None:
+def validate_test(test: dict, final: dict, freeze_sha256: str,
+                  frozen_source_commit: str) -> None:
     if (test.get("protocol") != final["protocol"]
             or test.get("split") != "test"
             or test.get("device") != "cpu"
@@ -88,7 +89,9 @@ def validate_test(test: dict, final: dict) -> None:
             != final["source_hashes"]["student_stage143_openvino_singlepass.py"]
             or test.get("evaluator_sha256") != final["source_hashes"]["evaluate.py"]
             or test.get("tokenizer_sha256")
-            != final["source_hashes"]["data/tokenizer.json"]):
+            != final["source_hashes"]["data/tokenizer.json"]
+            or test.get("freeze_record_sha256") != freeze_sha256
+            or test.get("frozen_source_commit") != frozen_source_commit):
         raise ValueError("Test score does not identify the frozen CPU FP32 predictor")
     bpb, nll = test.get("bpb"), test.get("nll_nats")
     if (not isinstance(bpb, (int, float)) or not math.isfinite(bpb) or bpb <= 0
@@ -133,7 +136,7 @@ def build(freeze_path: Path, test_path: Path, report: Path, output: Path) -> dic
         raise FileExistsError("Refusing to overwrite final bundle")
     final, freeze, test = read_json(FINAL), read_json(freeze_path), read_json(test_path)
     files = validate_freeze(freeze, final, sha(FINAL))
-    validate_test(test, final)
+    validate_test(test, final, sha(freeze_path), freeze["source_commit"])
     commit = validate_repository(freeze, files, report, freeze_path, test_path)
     manifest = {
         "status": "final_stage143_bundle_after_method_freeze",

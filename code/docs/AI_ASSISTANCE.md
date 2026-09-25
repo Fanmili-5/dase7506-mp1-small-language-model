@@ -18,8 +18,9 @@ attention configurations cannot improve the task.
 
 ## Stage143 freeze and final-release tooling (26 September 2026)
 
-Codex implemented and tested a read-only method-freeze preflight and a
-fail-closed final-release packager. They check the recorded inference file
+Codex implemented and tested a read-only method-freeze preflight, a
+freeze-gated full-test entry point and a fail-closed final-release packager.
+They check the recorded inference file
 set and hashes, source identity, test-score metadata, report replacement and
 Git cleanliness; synthetic metadata tests exercise rejection paths. Passing
 these structural gates is not a full-test result, an originality claim or a
