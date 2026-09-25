@@ -1,0 +1,32 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "purpose": "linux_stage143_partial_validation_runtime_profile",
+  "split": "validation",
+  "precision": "fp32",
+  "device": "cpu",
+  "requested_threads": 1,
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "torch_version": "2.7.1+cpu",
+  "checkpoint_sha256": "256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3",
+  "implementation_sha256": "1c31716eccd3bffdd2664b9ba654950a5d64d3ca0ad4e4ded817b1acbf6c9615",
+  "graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "batches": 8,
+  "input_rows": 256,
+  "scored_targets": 65536,
+  "sampled_nll_nats": 189004.97714945837,
+  "inference_seconds": 18.147583713000017,
+  "scorer_check_seconds": 0.5845171019999924,
+  "timed_component_seconds": {
+    "features": 15.255271508999982,
+    "count_collect": 0.5367542830000218,
+    "count_add": 0.41751244800001075
+  },
+  "timed_component_calls": {
+    "features": 8,
+    "count_collect": 8,
+    "count_add": 8
+  },
+  "uninstrumented_inference_seconds": 1.9380454730000025,
+  "no_test_scoring": true,
+  "warning": "Timing instruments only the first validation batches, not the full resource gate"
+}
