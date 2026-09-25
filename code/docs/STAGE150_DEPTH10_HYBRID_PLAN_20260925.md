@@ -48,3 +48,20 @@ FP32 feature timings had medians **1.628874 s** for the candidate and
 against eager PyTorch was **3.94e-6**. All three fixed pilot gates pass.
 This does not establish complete predictor runtime or trained quality.
 Hashes and raw timings are in `../results/stage150-evidence/preflight.json`.
+
+## Matched pilot result and decision
+
+The scheduled Windows job completed all **2,400** updates and **19,660,800**
+primary training targets in **734.508** training seconds. Source hashes,
+pre/post fixed-file checks and the logged learning rates at steps 300, 1,200
+and 2,400 confirm the Stage54 control trajectory was preserved. Complete
+GPU FP32 validation on **376,599** targets at step 2,400 was
+**1.508442880 BPB**, versus Stage54's **1.519950369 BPB**. The gain is
+**0.011507489 BPB**, below the predeclared **0.015** continuation gate.
+The pilot peaked at 6.501 GB allocated and 6.862 GB reserved CUDA memory.
+The complete eight-point curve, checkpoint hash, status and transcript are
+in `../results/stage150-evidence/`.
+
+Decision: no full 7,200-step continuation, MKN rebuilding or CPU qualification.
+This is an exploratory neural pilot, not a replacement for Stage143 and not
+a test score. The sub-1.35 target remains unmet.

@@ -41,6 +41,11 @@ an inference predictor; see `code/docs/STAGE148_SKIP_CONTEXT_DIAGNOSTIC_20260925
 Stage149's distant co-occurrence expert worsened validation BPB at every
 prespecified nonzero mixture weight and was rejected before implementation;
 see `code/docs/STAGE149_DISTANT_COOCCURRENCE_DIAGNOSTIC_20260925.md`.
+Stage150's ten-block alternating Transformer passed an input-only OpenVINO
+resource preflight, but its matched 2,400-step validation result was
+**1.508442880 BPB** versus Stage54's **1.519950369**. The 0.011507 gain missed
+its predeclared 0.015 full-training gate. It was not promoted or test-scored;
+see `code/docs/STAGE150_DEPTH10_HYBRID_PLAN_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
