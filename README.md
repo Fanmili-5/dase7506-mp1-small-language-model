@@ -131,6 +131,11 @@ BPB**, worse than the matched Stage54 control's **1.519950369 BPB**; all
 eight intermediate comparisons were also worse. The predeclared quality
 gate failed, so Stage164 was not extended, exported or test-scored. See
 `code/docs/STAGE164_DILATED_LOCAL_MIXING_PILOT_20260925.md` and its evidence.
+Stage165 then tested training-only 0.05 positionwise input-embedding masking
+against the same matched Stage54 control. Its 2,400-step endpoint was
+**1.535982945 BPB**, worse than **1.519950369 BPB**; all eight paired
+checks were worse. The quality gate failed; no long run, model promotion or
+test scoring followed. See the Stage165 plan and evidence.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -448,9 +453,9 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage164, including the OpenVINO inference
+the validation experiments through Stage165, including the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
-multiscale-convolution pilots, and report drafting. Human review and
+multiscale-convolution/token-masking pilots, and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.

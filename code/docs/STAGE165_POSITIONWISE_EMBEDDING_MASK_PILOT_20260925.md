@@ -49,3 +49,28 @@ The strongest objection is that 0.1 row dropout plus 0.1 elementwise
 dropout may already regularize embeddings sufficiently. Whole-token masking
 could also remove useful local evidence and harm the prefix-copy gate's
 learned query/key alignment, even though the clean copy IDs remain.
+
+## Observed pilot and decision
+
+The scheduled Windows job completed 2,400 updates, presenting 19,660,800
+primary next-token targets in 628.41 training seconds; full-validation
+scoring took 16.23 seconds. The three new structural tests and fixed-file
+checks passed before training, and fixed-file verification passed again
+afterward. Its final checkpoint SHA-256 is
+`51abbbccb6150275b7be10918f4b835ef1c5d5d63c2e3086629e9d407310f7fb`,
+also independently verified on the Windows file. Peak CUDA allocation and
+reservation were 5.648 and 5.985 GB.
+
+The predeclared step-2,400 complete GPU FP32 validation score was
+**1.535982945 BPB** on all 376,599 targets and 1,148,007 raw bytes.
+It is **0.016032576 BPB worse** than the matched Stage54 control's
+1.519950369, not >=0.015 better. All eight 300-step points were worse
+than their corresponding Stage54 points. This rejects the *specified*
+0.05 positionwise masking recipe under the matched schedule, not every
+possible token-level regularizer. The task receipt reports completion
+without error. Raw plans, metrics, progress and transcript are under
+[`../results/stage165-evidence/`](../results/stage165-evidence/).
+
+The quality gate failed. **Do not launch a 7,200-step run, select an
+intermediate checkpoint, calibrate counts, resource-qualify or test-score
+Stage165.** Stage143 remains the development candidate.
