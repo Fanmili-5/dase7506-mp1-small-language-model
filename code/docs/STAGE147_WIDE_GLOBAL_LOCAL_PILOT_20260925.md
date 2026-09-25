@@ -53,3 +53,23 @@ Maximum hidden-feature error versus eager PyTorch was **4.22e-6**. All fixed
 pilot gates pass; this does not measure complete predictor scoring time or
 trained quality. Raw samples and hashes are in
 `../results/stage147-evidence/preflight.json`.
+
+## Matched pilot result and decision
+
+The Windows job completed the fixed **2,400** updates, presenting
+**19,660,800** primary next-token targets in **565.845** training seconds.
+The training log and source hashes show the original Stage54 7,200-step
+learning-rate trajectory was preserved at steps 300, 1,200 and 2,400.
+Complete GPU FP32 validation at step 2,400 was **1.508604645 BPB** on
+**376,599** targets, compared with Stage54's same-seed step-2,400
+**1.519950369 BPB**. The gain of **0.011345724 BPB** misses the predeclared
+**0.015** advancement gate. The eight 300-step comparisons are preserved in
+`../results/stage147-evidence/metrics.json`; run status, progress and console
+transcript are there too. Fixed-file checks passed before and after training.
+
+Decision: **no full 7,200-step continuation and no promotion**. The pilot
+checkpoint is exploratory and has not been converted to a count/neural
+predictor or tested against the complete CPU/RAM/asset gate. Stage143 remains
+the qualified validation candidate at 1.399686162 BPB; the 1.35 target is
+not yet met. Further work must seek a larger quality mechanism than modest
+backbone width or attention allocation changes.

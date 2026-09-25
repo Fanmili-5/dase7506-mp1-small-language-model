@@ -22,11 +22,19 @@ course CPU is not yet established.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history
 coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
-control by only 0.004699 BPB, below its predeclared 0.015 advancement gate.
+control by only 0.004699 BPB, below its predeclared 0.015 advancement gate;
+that pilot also used a shorter learning-rate cycle than the control, so this
+is an exploratory rather than strictly architecture-only difference.
 Neither produced a qualified replacement or a test score. See the Stage144
 triage and Stage145 evidence under `code/docs/` and `code/results/`.
 Stage146's exact train-suffix target-probability diagnostic gained at most
 0.003037 BPB, below its predeclared 0.01 gate, so no suffix index was built.
+Stage147 preserved Stage54's original learning-rate schedule and tested an
+8-layer, width-320 four-attention/four-convolution backbone. Its 2,400-step
+pilot reached **1.508604645 BPB** against Stage54's **1.519950369** at the
+same step; the 0.011346 gain missed its predeclared 0.015 continuation gate.
+No long run, CPU qualification or test scoring followed. The sub-1.35 target
+is still unmet; see `code/docs/STAGE147_WIDE_GLOBAL_LOCAL_PILOT_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
