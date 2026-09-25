@@ -5,7 +5,7 @@ score test before a method freeze.
 
 ## Source discrepancy and conservative deadline
 
-The supplied [assignment guide](../../guide.md) says to submit student ID
+The supplied [assignment guide](../../GUIDE.md) says to submit student ID
 and complete-test BPB **before 29 September 2026** and provide immutable code
 and matching checkpoint links by the end of 30 September. The current
 [course website](https://xudongwu-0.github.io/courses/dase7506/#submit) says
@@ -96,6 +96,10 @@ Do not treat the live site's later date as an extension of the written guide.
 - Student ID and the user's freeze-versus-one-more-day choice are pending.
 - Stage143 has not been frozen or test-scored. The tracked `REPORT.pdf` is an
   earlier Stage10 report; `REPORT_STAGE143_DRAFT.md`/its preview are not final.
+- The pushed tag `stage143-validation-qualified-20260926` resolves to
+  `bb64c58dbe92748ff7ac61005e618d18e32c0847` and protects a clean
+  Windows-qualified validation-only snapshot. Its name/message do **not**
+  constitute the explicit method freeze or authorize test scoring.
 - Windows four-thread resource qualification passes, but a separate Linux
   one-thread host measured 5.502555x baseline CPU time. This portability risk
   remains disclosed; a Windows pass is not a universal CPU guarantee.
