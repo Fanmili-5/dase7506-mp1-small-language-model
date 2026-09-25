@@ -8,6 +8,9 @@ training utilities, model variants, logs, and documentation are additive.
 
 **Current resource-qualified development candidate: Stage143 single-copy
 OpenVINO + train-only order-six MKN, 1.399686162 CPU FP32 validation BPB.**
+The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
+separates qualified predictors from lower but nondeployable diagnostic scores;
+no current qualified candidate is below 1.35 BPB.
 An independent Linux x86-64 one-thread CPU FP32 run reproduced
 1.399686179 validation BPB; it was a score check, not a Linux resource gate.
 Its exact checkpoint passed three alternating fresh-process Windows CPU
@@ -601,7 +604,7 @@ port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, the Stage186 parallel-block pilot,
 the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
-and report drafting. Human review and
+candidate-selection evidence audit, and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.
