@@ -71,3 +71,18 @@ fourth page. Text extraction confirms Stage178/179, the updated search-cost
 figures, `PENDING FREEZE` and three `NOT FOR SUBMISSION` footers. This does
 not turn the preview into the required matching final report; Stage143 remains
 untested and unfrozen.
+
+On 26 September, the report source added the Stage180 optimizer result and
+Stage181's rejected intermediate-layer readout, corrected the training-cost
+wording, and moved the draft-only finalization checklist out of the report
+body (the operational checklist remains in
+`SUBMISSION_PORTAL_READINESS_20260926.md`). The first render put only its
+last checklist item on a nearly empty fourth page; after removing that
+non-report section, the preview returned to **three A4 pages / 76,869 bytes**,
+SHA-256 `c8ff8bf5e2766434e67b8a806775c61a0f38c1406b8c8b79ce64cefb9a4adeb7`.
+All three final page images were inspected at 1,600-pixel scale. Text
+extraction confirms Stage181, `PENDING FREEZE` and three development
+watermarks. No clipping, orphan page, broken table or split command block
+was observed. The tracked historical `REPORT.pdf` remains unchanged at
+SHA-256 `44607086c854236627d2a375f84a1e92fa8dc2f16b65122c9bb17308c0413c9b`.
+This is still a development preview, not a Stage143 test result or submission.

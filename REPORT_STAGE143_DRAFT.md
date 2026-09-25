@@ -69,7 +69,7 @@ totals **255,225,110 documented primary training-target presentations** and
 the count is not FLOPs or unique corpus positions. This is a **lower bound on
 the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
-deduplicated project-wide search-cost ledger is still pending. A separate
+project-wide hardware-time bill remains unavailable. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
 62 distinct metrics files: 60 comparable `train_seconds` fields sum to
 **51,569.31 seconds (14.32 hours)** of reported training, including the
@@ -213,8 +213,11 @@ Stage180's hidden-matrix Muon optimizer pilot scored 1.534018833 at the
 matched 2,400-step endpoint, versus AdamW's 1.519950369; its 0.020-BPB
 advancement gate failed and it cost 1.52x as much training time. Its
 [adapted algorithm and license](code/docs/STAGE180_MUON_OPTIMIZER_PILOT_20260926.md)
-are disclosed. These are not submission scores; Stage162's sparse two-model
-oracle is also non-deployable.
+are disclosed. Stage181's zero-training intermediate-layer readout gave
+only **0.0041 bit per target** improvement on a 32,768-target validation
+prefix, below its predeclared 0.02-bit pilot gate; it was not evaluated on
+the full split or deployed. These are not submission scores; Stage162's
+sparse two-model oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows
@@ -258,16 +261,3 @@ not a substitute for student review.
 The later compact kNN-LM pilot was rejected and is documented in the
 [Stage163 record](code/docs/STAGE163_COMPACT_KNN_LM_PILOT_20260925.md), which
 cites its originating publication. It is not part of the Stage143 predictor.
-
-## 8. Pending finalization checklist
-
-- Decide and record the frozen method using validation only; stop all
-  development decisions before reading Stage143 test results.
-- Audit cumulative training/search cost and verify all report claims/hashes.
-- Run one matching full-test CPU FP32 score after freeze and fill the score,
-  target count, raw byte count and checkpoint SHA here.
-- Render this report to PDF, visually inspect every page, and verify <=10 pages.
-- Submit student ID and full-test BPB through the course website **before
-  29 September 2026 (UTC+8)**; complete the generated GitHub issue.
-- By the end of 30 September, submit immutable matching code and checkpoint
-  links plus the final report; retain public-review reproduction evidence.
