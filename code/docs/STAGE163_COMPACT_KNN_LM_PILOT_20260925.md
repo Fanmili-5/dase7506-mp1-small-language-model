@@ -48,3 +48,23 @@ require a separately verified CPU index with exact independent-window
 causality, full 2,048-way normalization, <=5x time, <=4 GiB RSS and <=64 MiB
 of all uncompressed assets. Avoid using validation labels to select keys,
 PCA, an ANN index or an adaptive retrieval gate.
+
+## Observed pilot and decision
+
+The fixed Windows GPU diagnostic completed over all 376,599 validation
+targets. The top-32 compressed-neighbor list contained the true next token
+on **61.6669%** of positions, but this coverage alone did not make a good
+probability model. The Stage143 zero-mixture control reproduced
+**1.399686162 BPB**. Every nonzero mixture in the predeclared 3x4 grid
+worsened it: the least harmful, temperature 0.05 and weight 0.05, scored
+**1.401071171 BPB**. The best cell over the full grid was weight zero.
+The four saved pilot asset files occupy 6,675,392 bytes, yielding a
+62,485,804-byte Stage143-plus-pilot projection before index overhead;
+this is **not** CPU or asset qualification. The required >=0.020 BPB
+quality gain failed, so no approximate CPU index, full-distribution
+inference integration, or test scoring follows. This rejects the specified
+100k-key/64D/32-neighbor configuration, not all possible retrieval models.
+The complete fixed grid, hashes, timing, GPU memory and job status are in
+`../results/stage163-evidence/`. The source and train-derived array hashes
+permit regenerating the diagnostic; rejected key arrays remain in the
+Windows run directory rather than the final inference bundle.

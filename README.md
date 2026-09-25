@@ -119,6 +119,11 @@ validation labels to choose the best windows, complete BPB was **1.388114**;
 unbounded oracle selection reached only **1.376080**. Since this misses the
 predeclared <=1.33 feasibility gate, no quantized dual-model router was built
 or test-scored. See the Stage162 plan and evidence.
+Stage163 tested a compact train-only hidden-state nearest-neighbor model,
+inspired by kNN-LM, using 100,000 compressed keys. On complete validation,
+every prespecified nonzero retrieval mixture worsened Stage143; the best
+nonzero setting scored **1.401071171 BPB**. Its quality gate failed, so no
+CPU index or test score was produced. See the Stage163 plan and evidence.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

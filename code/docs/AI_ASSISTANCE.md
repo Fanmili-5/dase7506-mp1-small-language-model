@@ -1,5 +1,16 @@
 # AI assistance disclosure
 
+## Stage163 compact train-only kNN-LM pilot (25 September 2026)
+
+Codex adapted the train-only datastore/interpolated-neighbor concept from
+Khandelwal et al., ICLR 2020 (https://arxiv.org/abs/1911.00172), to a
+prespecified 100k-key, 64D-quantized, GPU exact-search validation screen.
+Codex designed, implemented, executed and interpreted the experiment; all
+nonzero mixture weights worsened Stage143, so the route stopped without a
+CPU index or test score. The reused conceptual method and substantive AI
+assistance must remain credited in the student's final report/README if
+discussed. This is a negative diagnostic, not a deployable predictor.
+
 ## Stage162 sparse second-expert oracle (25 September 2026)
 
 Codex designed, preregistered, implemented and audited a validation-only
