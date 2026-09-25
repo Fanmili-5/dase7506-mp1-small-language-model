@@ -30,6 +30,25 @@ jobs:
         run: |
           python scripts/verify_fixed_files.py
           python -m unittest discover -s tests
+      - name: Inspect OpenVINO CPU properties
+        working-directory: code
+        run: |
+          python - <<'PY'
+          import os
+          import openvino as ov
+          print('visible_cpus:', os.cpu_count(), flush=True)
+          core = ov.Core()
+          compiled = core.compile_model(
+              'inference_assets/stage143-stage92-features.onnx', 'CPU', {
+                  'INFERENCE_PRECISION_HINT': ov.Type.f32,
+                  'INFERENCE_NUM_THREADS': 4,
+                  'NUM_STREAMS': 1,
+                  'ENABLE_CPU_PINNING': False,
+              })
+          for key in ('INFERENCE_PRECISION_HINT', 'INFERENCE_NUM_THREADS',
+                      'NUM_STREAMS', 'ENABLE_CPU_PINNING'):
+              print(key, repr(compiled.get_property(key)), flush=True)
+          PY
       - name: Score full validation only
         working-directory: code
         run: |
