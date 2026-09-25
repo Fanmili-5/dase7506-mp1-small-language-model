@@ -318,3 +318,16 @@ knowledge distillation from a fixed teacher probability mixture, not a new
 algorithm claim. The student must review the loss, source-only training rule,
 the two-arm comparison and its failed continuation gate. No new test score
 was generated and Stage143 remains the qualified candidate.
+
+## Stages170–173 cross-host resource and backend assistance
+
+Codex set up an independent Linux same-host baseline/Stage143 resource audit,
+profiled the inference bottleneck, predeclared and ran a paired OpenVINO versus
+ONNX Runtime FP32 feature comparison, and diagnosed why the hosted two-logical-
+CPU runner cannot reproduce the course example's four-thread procedure.
+The one-thread Linux time ratio failed at 5.50255x; ONNX Runtime's 5.31%
+feature-time gain failed the predeclared 12% advancement gate; the attempted
+four-thread Linux run produced no candidate timing. These checks changed no
+model weights, frozen Stage143 inference files, validation selection or test
+score. The student must understand the host-specific limits before reporting
+resource compliance.
