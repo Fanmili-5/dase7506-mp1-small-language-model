@@ -1,5 +1,19 @@
 # AI assistance disclosure
 
+## Stage189 tokenizer-pair support diagnostic (26 September 2026)
+
+Codex used a failure-analysis/composition brainstorming framework to propose
+a fixed-tokenizer BPE-merge support test. It preregistered the incidence and
+0.015-BPB advancement gates, implemented the train/validation-only scripts,
+ran them on the Windows host, and interpreted the complete-validation result.
+The 1,792 direct merge pairs never occurred as true adjacent targets in the
+supplied train or validation token streams. The fixed 0.9 downweight improved
+Stage143 by just 0.000590 BPB, below the gate, so Codex did not deploy a new
+inference rule or score test. This is substantive AI-led experimental work;
+the student should understand why a merge pair need not be universally
+impossible across pre-tokenization boundaries and why empirical zero
+incidence alone is not a proof for unseen text.
+
 ## Stage183 frozen-expert fusion diagnostic (26 September 2026)
 
 Codex proposed, preregistered, implemented and ran a normalized geometric

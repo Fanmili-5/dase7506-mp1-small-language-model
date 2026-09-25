@@ -45,3 +45,32 @@ promote a diagnostic result or authorize test. The 2,048×2,048 byte mask is
 asset headroom, but this estimate is not a resource measurement. A failing
 incidence or score gate closes this fixed direct-merge mask; it does not rule
 out all tokenizer-state models.
+
+## Measured outcome and stop decision
+
+The [first-gate record](../results/stage189-evidence/incidence.json) used the
+unchanged tokenizer and supplied train/validation files. All 1,792 direct
+merge pairs were valid vocabulary pairs. None was an observed true adjacent
+pair among **3,613,342 train** or **376,599 validation** targets; the
+independent-window accounting matched. This passed the incidence gate but
+does not prove an unseen test pair could never cross a ByteLevel
+pre-tokenization boundary. The audit source SHA-256 was
+`beed8a6fb35b7688b8ad7107e3d5612149a5e9a7c0cb8b5e148bc53fbbf4a699`.
+
+The unchanged Windows CPU FP32 four-thread Stage143 run then covered all
+**1,472 validation windows**, 376,599 targets and 1,148,007 raw bytes. Its
+reference score reproduced **1.399686162042141 BPB**. The one fixed
+`alpha=0.9` mask scored **1.3990960017303535 BPB**, a gain of only
+**0.000590160311787491 BPB**. Mean removed probability mass was
+0.0013423/0.0013395 in the fixed halves; both halves gained 235.86/233.76
+nats. No true target was masked and maximum output-normalization error was
+3.34e-6. The [complete result](../results/stage189-evidence/validation.json)
+pins the Stage143 checkpoint/graph/source and all gate fields; the diagnostic
+source SHA-256 was
+`1548c348def4bcca0d7660976295eb8d0f52533024bd10e4941ea62970b74595`.
+Neither script opened or scored test.
+
+The quality gain is about **25× smaller** than the predeclared 0.015-BPB
+advancement threshold. Stop this direct-merge adjustment: do not add a
+deployable mask, CPU/RAM/asset claims, checkpoint promotion or test score.
+The protected Stage143 candidate remains at 1.399686162 validation BPB.
