@@ -18,7 +18,11 @@ The checkpoint and ONNX graph are tracked in this repository with SHA-256
 and `5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4`.
 See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
 `code/results/stage143-evidence/`, and the reproduction instructions in
-`code/README.md`. This is a **validation-only local Windows qualification**;
+`code/README.md`. A concise Chinese
+[implementation explainer and self-check](code/docs/STAGE143_IMPLEMENTATION_EXPLAINER_20260926.md)
+is available for the student's own review; it is not evidence that the student
+has already understood the implementation. This is a **validation-only local
+Windows qualification**;
 the new candidate has not been frozen or scored on test, and passing on the
 course CPU is not yet established.
 An additional Linux x86-64 one-thread, three-repeat same-host benchmark
@@ -576,11 +580,12 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage184,
+the validation experiments through Stage186,
 including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
-multiscale-convolution/token-masking pilots, and report drafting. Human review and
+multiscale-convolution/token-masking pilots, the Stage186 parallel-block pilot,
+and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.

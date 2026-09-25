@@ -487,3 +487,11 @@ stopped without full training, deployment qualification or test scoring.
 The student must understand the added attention branch, zero-start equality,
 the limited early gain and the distinction between feature-level feasibility
 and complete submission compliance.
+
+## Stage143 Chinese implementation explainer (26 September 2026)
+
+Codex drafted a source-linked explanation and self-check covering the
+architecture, causal data flow, training lineage, score/resource evidence and
+non-deployable oracle distinction. This is substantive AI-assisted writing,
+not proof of student understanding. Before submission the student must check
+the claims against code and answer the self-check in their own words.
