@@ -22,3 +22,14 @@ do not replace Stage143 with this backend.
 
 No test split is scored in this preflight. Keep the existing Stage143
 checkpoint and implementation unchanged.
+
+## Result
+
+The [same-host CI comparison](../results/stage172-linux-evidence/stage172-linux-feature-runtime.json)
+completed two paired passes on eight validation batches. Median feature time
+was 13.0441 s for OpenVINO and 12.3512 s for ONNX Runtime, a **5.31%**
+reduction. FP32 hidden outputs were finite with maximum absolute difference
+`7.27e-6`, passing parity. The speed gate **failed**: 5.31% is below the
+predeclared 12%. Therefore ONNX Runtime is not promoted and no full-score or
+resource run is justified for this backend. The current Stage143 files remain
+unchanged. [Workflow run](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36148762257).
