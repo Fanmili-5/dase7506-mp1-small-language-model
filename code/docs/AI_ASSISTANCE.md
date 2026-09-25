@@ -1,5 +1,17 @@
 # AI assistance disclosure
 
+## Stage146–154 mechanism and architecture screens (25 September 2026)
+
+Codex analyzed Stage143's validation errors, tested bounded train-only
+suffix and byte-context diagnostics, implemented and ran matched width,
+depth and shared-trunk architecture pilots, and applied prespecified
+continuation gates. Stage153 failed its input-only timing screen; Stage154
+passed that screen but gained only 0.005998 BPB at the matched 2,400-step
+endpoint and was not continued. These were substantive AI-designed and
+AI-executed experiments. The student must inspect the source, resource
+assumptions, validation evidence and negative decisions before submission.
+No new test score was generated.
+
 ## Stage144–145 target revision (25 September 2026)
 
 After the student lowered the development target to 1.35 validation BPB,

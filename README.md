@@ -53,6 +53,14 @@ See `code/docs/STAGE151_ERROR_ALLOCATION_AND_NEXT_MECHANISM_20260925.md`.
 Stage152's train-only byte-suffix lookup improved the target-only validation
 diagnostic by at most **0.000704 BPB**, far below its 0.010 gate, so it was
 not deployed; see `code/docs/STAGE152_BYTE_SUFFIX_EXPERT_DIAGNOSTIC_20260925.md`.
+Stage153's two-layer upper branch missed its predeclared feature-speed gate
+by a narrow margin and was not trained. Stage154 reduced the extra path to
+one heterogeneous final block and passed the input-only resource preflight,
+but its matched 2,400-step GPU FP32 validation endpoint was **1.513952503
+BPB** versus Stage54's **1.519950369**. The **0.005998** gain missed its
+predeclared 0.015 continuation gate. No Stage154 long run, complete CPU
+qualification or test scoring followed; see the Stage153/154 plans and
+evidence under `code/docs/` and `code/results/`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -370,7 +378,7 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage143, including the OpenVINO inference
+the validation experiments through Stage154, including the OpenVINO inference
 port, compact checkpoint packaging and resource audit. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the

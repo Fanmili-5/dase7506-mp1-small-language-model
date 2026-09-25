@@ -45,3 +45,19 @@ feature-time ratio of **1.196239583x** versus the frozen Stage143 graph.
 This passes the prespecified 1.20x feasibility screen. It does **not**
 establish quality or complete-predictor resource compliance. Exact measurements
 and source hashes are in `../results/stage154-evidence/preflight.json`.
+
+## Matched pilot result and decision
+
+The scheduled Windows run finished all 2,400 seed-17 updates, presenting
+19,660,800 primary next-token targets in 1,217.59 training seconds. Fixed-file
+verification and both structural tests passed. The complete GPU FP32
+validation endpoint was **1.513952503 BPB** on 376,599 targets. The archived
+same-schedule Stage54 endpoint was **1.519950369 BPB**, a gain of only
+**0.005997866 BPB**, below the predeclared **0.015** continuation gate.
+
+Decision: **do not launch a 7,200-step continuation**. The pilot checkpoint
+is exploratory; it has not been combined with train-only MKN, exported as a
+compact complete predictor, or qualified against the official CPU/RAM/asset
+limits. No test score was produced. The entire 300-step curve, source hashes,
+checkpoint SHA-256, task status and console transcript are under
+`../results/stage154-evidence/`. Stage143 remains the qualified fallback.
