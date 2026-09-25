@@ -41,7 +41,7 @@ jobs:
           compiled = core.compile_model(
               'inference_assets/stage143-stage92-features.onnx', 'CPU', {
                   'INFERENCE_PRECISION_HINT': ov.Type.f32,
-                  'INFERENCE_NUM_THREADS': 4,
+                  'INFERENCE_NUM_THREADS': 1,
                   'NUM_STREAMS': 1,
                   'ENABLE_CPU_PINNING': False,
               })
@@ -54,7 +54,7 @@ jobs:
         run: |
           python evaluate.py \
             --checkpoint checkpoints/stage143-openvino-order6.pt \
-            --device cpu --precision fp32 --threads 4 --split validation \
+            --device cpu --precision fp32 --threads 1 --split validation \
             --output results/stage143-linux-x86-validation.json
       - uses: actions/upload-artifact@v4
         if: always()
