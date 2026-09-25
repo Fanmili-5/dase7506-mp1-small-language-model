@@ -73,5 +73,7 @@ Stage105 log-probability difference was **0.0001659393**, fixed-teacher
 normalization error **8.624e-7**, and all 59 inspected gradient tensors were
 finite and nonzero. One backward step used **935,003,648 peak allocated CUDA
 bytes** and **0.50018 seconds** after initialization. The SHA-pinned raw
-record is `../results/stage169-evidence/preflight.json`. This authorizes the
+record is `../results/stage169-evidence/preflight.json` (canonical JSON SHA-256
+`81b1cd227c630e55c1cacca97741b70e302c6ded9ea331b3b584b0de7db7787e`,
+so Windows/Mac line endings do not change the identity). This authorizes the
 two-arm pilot under the fixed rules above; it establishes no validation gain.

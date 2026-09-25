@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -21,7 +22,7 @@ from scripts.preflight_stage157_teacher import STAGE105_SHA, STAGE155_SHA, load_
 from train_experiment import (atomic_json_dump, atomic_torch_save,
                               checkpoint_payload, learning_rate, training_autocast)
 
-PREFLIGHT_SHA = "5e386dcd401c2ed6cd9b4c9e10a4e544a7a92062b2d3e858b5881963e4799063"
+PREFLIGHT_CANONICAL_SHA = "81b1cd227c630e55c1cacca97741b70e302c6ded9ea331b3b584b0de7db7787e"
 INITIAL_BPB = 1.399686162042141
 SEED = 169017
 STEPS = 900
@@ -150,9 +151,10 @@ def main() -> None:
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Use a new pilot run directory")
-    if sha(args.preflight) != PREFLIGHT_SHA:
-        raise ValueError("Stage169 preflight evidence changed")
     preflight = json.loads(args.preflight.read_text(encoding="utf-8-sig"))
+    canonical = json.dumps(preflight, sort_keys=True, separators=(",", ":")).encode()
+    if hashlib.sha256(canonical).hexdigest() != PREFLIGHT_CANONICAL_SHA:
+        raise ValueError("Stage169 preflight evidence changed")
     if (not preflight.get("pilot_authorized")
             or preflight.get("stage105_sha256") != STAGE105_SHA
             or preflight.get("stage155_sha256") != STAGE155_SHA):
@@ -179,7 +181,7 @@ def main() -> None:
         teacher_stage155_sha256=STAGE155_SHA,
         teacher_stage105_module_sha256=old_module_sha,
         teacher_stage155_module_sha256=new_module_sha,
-        preflight_sha256=PREFLIGHT_SHA,
+        preflight_canonical_sha256=PREFLIGHT_CANONICAL_SHA,
         teacher_mixture_weights=[.5, .5], distillation_weight=.75,
         hard_nll_weight=.25, peak_learning_rate=PEAK_LR,
         warmup_steps=50, min_lr_ratio=.1,
