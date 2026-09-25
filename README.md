@@ -56,8 +56,8 @@ It does not document or qualify Stage143 and must not be submitted as
 Stage143's final report. A matching report and full-test score are pending
 candidate freeze. The tracked `REPORT_STAGE143_DRAFT.md` has an ignored,
 visually checked **three-page development PDF preview** covering experiments
-through Stage183; it is explicitly watermarked **NOT FOR SUBMISSION** and
-contains no Stage143 test score.
+through Stage184. The preview is explicitly watermarked **NOT FOR SUBMISSION**
+and contains no Stage143 test score.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history
 coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
@@ -249,6 +249,10 @@ against Stage54 at the fixed 2,400-step endpoint. It scored **1.537355105
 BPB**, worse than the matched **1.519950369**, and missed the predeclared
 0.015-BPB advancement gate. There was no long run or test scoring; see
 `code/docs/STAGE184_DROP_PATH_PILOT_20260926.md`.
+Stage185 ranks remaining architecture/count hypotheses against the measured
+quality gap and the submission deadline; it records a release-readiness
+decision, not a new model or test score. See
+`code/docs/STAGE185_DESIGN_SPACE_TRIAGE_20260926.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

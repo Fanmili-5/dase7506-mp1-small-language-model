@@ -1,13 +1,13 @@
 {
   "purpose": "archived_training_time_record_sum_not_complete_project_search_cost",
-  "metrics_records": 63,
-  "positive_train_seconds_records": 61,
+  "metrics_records": 64,
+  "positive_train_seconds_records": 62,
   "missing_train_seconds_record_paths": [
     "results/stage136-evidence/metrics.json",
     "results/stage169-evidence/metrics.json"
   ],
-  "raw_sum_reported_train_seconds": 52121.36745319943,
-  "raw_sum_reported_train_hours": 14.47815762588873,
+  "raw_sum_reported_train_seconds": 52783.69090809938,
+  "raw_sum_reported_train_hours": 14.662136363360938,
   "records": [
     {
       "metrics_path": "results/stage109-evidence/metrics.json",
@@ -388,6 +388,16 @@
       "train_seconds": 552.0595149998553,
       "other_reported_elapsed_seconds": null,
       "checkpoint_sha256": "ee8decea07ae7a9925fa099521259029e41290ef5c2c359c04c153572f7bf2f9"
+    },
+    {
+      "metrics_path": "results/stage184-evidence/metrics.json",
+      "metrics_sha256": "7f32fe58560a6cf23af0602b9983877523f56e9cbd3ca340181fa6e93ee4d85e",
+      "run_path": "results/stage184-evidence/run.json",
+      "run_sha256": "f3da946ce56c0c900aebbf8c3d33d70ca24bc5a63c92e035253e180d74c6f35d",
+      "reported_device": "cuda:0",
+      "train_seconds": 662.3234548999462,
+      "other_reported_elapsed_seconds": null,
+      "checkpoint_sha256": "534fd4bfafbc15dfc8f194330a33985c005eb86488a6a221f27a7557f1e543e3"
     },
     {
       "metrics_path": "results/stage26-evidence/metrics.json",

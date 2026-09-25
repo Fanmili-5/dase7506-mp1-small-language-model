@@ -465,3 +465,13 @@ result. The Stage184 intervention made the fixed endpoint worse and was
 stopped. These are substantive AI-assisted experiment-design, coding,
 execution and interpretation contributions; none establishes a superior
 submitted model or uses the held-out test set for development selection.
+
+## Stage185 design-space triage and release preparation
+
+Codex rechecked the assignment boundary and existing local experiments,
+organized untested and rejected directions using a structured ideation
+framework, updated the archived training-cost audit and Stage143 report
+draft, and recorded a deadline-aware decision not to launch an unsupported
+GPU sweep. This planning and documentation are substantive AI assistance.
+The student must review both the technical ranking and final submission
+choice; the triage is not a proof that better methods are impossible.

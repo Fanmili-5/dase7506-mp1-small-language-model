@@ -109,3 +109,15 @@ no clipped text, orphaned paragraph, split command block or broken ablation
 table. Text extraction confirms Stage183, the frozen-test-entry reference,
 `PENDING FREEZE`, and all three `NOT FOR SUBMISSION` footers. The tracked
 historical `REPORT.pdf` remains unchanged; this preview is not a final report.
+
+On 26 September, the development draft added Stage184's rejected block
+drop-path control and refreshed the archive training-cost audit to **64**
+metrics records, **62** comparable training-time fields and **52,783.69
+seconds / 14.66 hours** of reported training. The ignored preview regenerated
+to **three A4 pages / 76,732 bytes**, SHA-256
+`8a4e55db71020f8198eeb8d1684761f6bb19229e1aeb47005699feea48e196e5`.
+All three pages were rendered at 1,200 pixels and visually inspected: no
+clipped text, broken table, orphan page or split command block. Extracted
+text confirms Stage184, the new cost total, `PENDING FREEZE` and three
+`NOT FOR SUBMISSION` footers. The tracked historical `REPORT.pdf` remains
+untouched; this development preview is not a final submission.

@@ -71,8 +71,8 @@ the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
 project-wide hardware-time bill remains unavailable. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
-63 distinct metrics files: 61 comparable `train_seconds` fields sum to
-**52,121.37 seconds (14.48 hours)** of reported training, including the
+64 distinct metrics files: 62 comparable `train_seconds` fields sum to
+**52,783.69 seconds (14.66 hours)** of reported training, including the
 accepted lineage and rejected trials. The Stage136 record reports only
 broader elapsed time; the Stage169 aggregate record has no `train_seconds`
 because its two arm-specific metrics records supply those durations. Both
@@ -212,7 +212,10 @@ only **0.0041 bit per target** on a 32,768-target validation prefix, below
 its 0.02-bit gate. Stage182's matched four-head pilot gained **0.001139
 BPB**, below its 0.015 gate. Stage183's normalized geometric expert fusion
 gained only **0.001439 BPB** on complete validation, below its 0.015 gate;
-it was not deployed. These are not submission scores; Stage162's sparse
+it was not deployed. Stage184's training-only 0.10 block drop path scored
+**1.537355105 BPB** at its fixed 2,400-step endpoint, worse than its
+matched Stage54 control **1.519950369 BPB**; it was stopped without a long
+run. These are not submission scores; Stage162's sparse
 two-model oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
