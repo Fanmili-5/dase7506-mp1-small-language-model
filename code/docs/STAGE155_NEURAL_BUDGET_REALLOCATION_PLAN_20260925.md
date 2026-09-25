@@ -95,3 +95,20 @@ Stage54 learning-rate trajectory and fixed last-five averaging window.
 The 2,400-step pilot checkpoint is not treated as a final candidate. The
 full run still must beat Stage143 in complete CPU FP32 validation and satisfy
 all three official resource limits; no test score has been produced.
+
+## Frozen inference qualification route (before full-run result)
+
+First score the full-run endpoint and prespecified last-five (steps
+6000/6300/6600/6900/7200) parameter average on complete validation, selecting
+the lower BPB. If neither beats Stage143's 1.399686162, stop without
+promotion. For a better checkpoint, export its *trained* ten-block feature
+extractor once to an FP32 OpenVINO graph and store only the trained tied
+vocabulary/copy head in the checkpoint. Hash-pin the graph in the compact
+checkpoint; no train-only or validation cache is embedded. Require max
+hidden error <=3e-4, two-batch full-distribution probability error <=3e-6,
+log-probability error <=3e-4, normalization error <=1e-5, and causal/row
+independence errors <=3e-5 against the same source model. Then score all
+376,599 validation targets through the **actual compact CPU FP32 predictor**.
+Three fresh baseline/candidate CPU timing and lifetime-RSS repetitions must
+show <=5x, <=4 GiB; checkpoint + graph + inference sources must be <=64 MiB.
+Only a fully passing result can replace Stage143. Test remains untouched.
