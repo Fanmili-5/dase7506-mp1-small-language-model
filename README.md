@@ -26,6 +26,14 @@ found **5.502555x** baseline CPU time, **above** the 5x limit on that host.
 Its RAM and asset gates passed. This is a portability risk that must be
 resolved or explicitly disclosed; Windows qualification is not a universal
 CPU guarantee. See `code/docs/STAGE170_LINUX_RESOURCE_RECHECK_PLAN_20260925.md`.
+The attempted independent Linux **four-thread** recheck could not be measured
+on that CI host: it exposes two logical CPUs and OpenVINO caps the feature
+model at one reported thread, so Stage143's strict thread check stops before
+candidate timing. This is not a four-thread failure or pass; see
+`code/docs/STAGE173_LINUX_FOUR_THREAD_RESOURCE_PLAN_20260925.md`.
+The fixed-graph ONNX Runtime backend probe improved Linux one-thread feature
+time by only **5.31%**, below its predeclared 12% advancement gate; it was not
+integrated. See `code/docs/STAGE172_LINUX_BACKEND_PREFLIGHT_PLAN_20260925.md`.
 The read-only [pre-test readiness audit](code/results/stage143-evidence/pretest-readiness.json)
 rechecked the checkpoint, graph and all counted source-file hashes, three
 complete-validation score records, and the three-repeat Windows resource
