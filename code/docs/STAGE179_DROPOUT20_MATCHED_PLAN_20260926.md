@@ -38,3 +38,33 @@ positive 0.015 early-family gain would not itself establish `<1.35`.
 The brainstorming failure-boundary/simplicity check selected this as a
 zero-inference-overhead, one-variable control rather than another seed,
 output-head or size sweep. Stage143's files remain protected throughout.
+
+## Completed result and stop decision
+
+The Windows one-off job finished successfully at 7,200 updates. The two new
+equivalence tests, inherited hybrid R-Drop tests and fixed-file checks passed.
+Its 24 scheduled complete-validation calls covered all **376,599 targets**
+and **1,148,007 raw bytes** each. The independent exported-average Windows
+CPU FP32 score was **1.444744044563801 BPB**, versus Stage54's same-budget
+**1.4285940451894024**: the stronger-dropout model is **0.016149999 BPB
+worse**, not 0.015 better. The fixed endpoint GPU FP32 score was
+1.445773063; it was not used for candidate selection.
+
+The job presented **58,982,400 primary training targets** in 1,934.61
+training seconds, with peak CUDA allocated/reserved memory **5.648/5.985 GB**.
+Runtime is host-condition-specific; it is not a quality comparison. The
+training endpoint SHA-256 was
+`3b1d4cf2d3657a7c162385df044400a067faa2ea378421d2a6369d1e133b7936`;
+the exported average SHA-256 was
+`2f050d88339399f22854265bd9b2ed4b830beeffbb83f28cca2f1d757027de17`.
+Both matched fresh Windows file hashes, and the local auditor rechecked all
+16 recorded source hashes, job completion, training target count, validation
+coverage, checkpoint identity and the prespecified gate. Evidence is in
+`../results/stage179-evidence/`; raw PowerShell transcript stays on the
+private Windows machine.
+
+**Stop this route.** No continuation, count rebuild, end-to-end CPU/RAM/asset
+qualification, clean-extract run or test scoring is justified for Stage179.
+This negative result is specific to global dropout 0.20 under this fixed
+schedule; it does not prove all stronger regularization fails. Stage143
+remains the protected 1.399686162-BPB validation candidate.
