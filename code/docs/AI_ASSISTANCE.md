@@ -1,5 +1,19 @@
 # AI assistance disclosure
 
+## Stage168 sharpness-aware optimization pilot (25 September 2026)
+
+Codex used structured failure analysis and idea screening to select one
+fixed, training-only SAM experiment for the retained causal Transformer
+family. It adapted the general optimizer concept and quarter-batch ascent
+from Bahri, Mobahi and Tay (ACL 2022), while writing project-specific code,
+tests and a matched Windows runner. Codex preregistered, executed and
+audited the 2,400-step comparison. The endpoint was 1.522014969 BPB versus
+1.519950369 for the control, so the route stopped without a new inference
+candidate or test score. The published T5 fine-tuning results were not
+treated as evidence of a gain in this from-scratch task. This is substantive
+AI-led design, implementation and interpretation; the student must review
+the optimizer, unequal training compute, evidence and negative conclusion.
+
 ## Stage164–167 pilots and portability checks (25 September 2026)
 
 Codex proposed, implemented, preregistered, ran and interpreted the matched

@@ -163,7 +163,10 @@ Stage160's context-conditioned spelling residual, Stage161's
 medium-frequency loss emphasis, Stage162's impossible sparse two-model
 oracle, Stage163's compact train-only nearest-neighbor expert, Stage164's
 multiscale causal convolutions and Stage165's input-token masking also
-failed their predeclared quality gates. These negative results constrain the
+failed their predeclared quality gates. Stage168's efficient sharpness-aware
+training likewise regressed against its matched Stage54 control at 1.522015
+versus 1.519950 BPB, with about 1.889x training time. These negative
+results constrain the
 chosen method; they are not test scores. Exact details are in the linked
 stage plans and evidence files, including target-only diagnostics that must
 never be used as inference-time gates.

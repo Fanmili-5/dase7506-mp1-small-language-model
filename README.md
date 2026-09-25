@@ -138,6 +138,12 @@ against the same matched Stage54 control. Its 2,400-step endpoint was
 **1.535982945 BPB**, worse than **1.519950369 BPB**; all eight paired
 checks were worse. The quality gate failed; no long run, model promotion or
 test scoring followed. See the Stage165 plan and evidence.
+Stage168 used efficient sharpness-aware optimization on the unchanged
+Stage54 Transformer/R-Drop recipe. Its fixed 2,400-step endpoint was
+**1.522014969 BPB**, worse than the same-budget **1.519950369 BPB** control,
+and training took 1.889x as long. The predeclared gate failed, so no long
+run, inference promotion or test evaluation followed. See the Stage168 plan
+and evidence.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -455,7 +461,7 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage165 and the Stage166–167 portability
+the validation experiments through Stage168 and the Stage166–167 portability
 checks, including the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, and report drafting. Human review and
