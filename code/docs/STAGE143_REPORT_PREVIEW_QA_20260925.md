@@ -41,3 +41,19 @@ contains the Stage174 failed gate, Linux one-thread ratio, updated 60-record
 cost audit and explicit pending-test status. The temporary preview is still
 **not** the final `REPORT.pdf`; later candidate changes or the frozen test
 result require another render and full visual QA.
+
+On 26 September (UTC+8), the source was updated with the Stage175 answer-
+aware oracle, Stage176 failed out-of-half causal gate and Stage177 failed
+input-only resource screen. A first render spilled only two checklist bullets
+onto a nearly empty fourth page; the negative-results prose was shortened
+without changing its evidence claims. The regenerated preview is **three A4
+pages / 77,080 bytes**, SHA-256
+`1b31a8e045a1dcf97eae8a208c26279137715130e0533460ade954cf06481d27`.
+All three latest pages were rendered at 1,200-pixel scale and visually
+inspected: no clipping, orphaned checklist page, broken ablation table or
+split command block remains. Text extraction confirms the three new Stage
+numbers, the `PENDING FREEZE` label and all three `NOT FOR SUBMISSION`
+footers. The tracked historical `REPORT.pdf` hash remains unchanged at
+`44607086c854236627d2a375f84a1e92fa8dc2f16b65122c9bb17308c0413c9b`.
+This is still only a development preview; it has no Stage143 test score,
+release manifest or final link audit.

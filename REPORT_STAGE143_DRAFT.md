@@ -189,29 +189,27 @@ bundle, ONNX graph, dependencies and report. **PENDING FINAL HASH/LINK AUDIT.**
 ## 6. Negative results, limitations and AI disclosure
 
 Stage145/147/150 changed attention allocation, width and depth but missed
-their predeclared continuation gates. Stage155's larger neural model reached
-1.409877 validation BPB and did not replace Stage143. Stages157/158
-distilled an over-budget complementary teacher only to about 1.403 BPB.
-Stage160's context-conditioned spelling residual, Stage161's
-medium-frequency loss emphasis, Stage162's impossible sparse two-model
-oracle, Stage163's compact train-only nearest-neighbor expert, Stage164's
-multiscale causal convolutions and Stage165's input-token masking also
-failed their predeclared quality gates. Stage168's efficient sharpness-aware
-training likewise regressed against its matched Stage54 control at 1.522015
-versus 1.519950 BPB, with about 1.889x training time. These negative
-results constrain the
-chosen method; they are not test scores. Exact details are in the linked
-stage plans and evidence files, including target-only diagnostics that must
-never be used as inference-time gates.
-Stage169's matched strong-student distillation pilot scored 1.399440139
-complete-validation BPB, only 0.000246 better than Stage143, while its
-hard-only control worsened to 1.403915928. It failed the prespecified
-0.005 gain gate and was not resource-qualified or test-scored.
-Stage174's training-only byte-boundary auxiliary objective reached
-1.520019189 BPB at the matched 2,400-step endpoint versus 1.519950369 for
-the Stage54 control. All eight intermediate checks were also worse, so its
-predeclared long-run gate failed. No Stage174 inference model or test score
-was produced.
+their continuation gates. Stage155's larger neural model reached 1.409877
+validation BPB; Stages157/158 distilled a stronger, over-budget teacher only
+to about 1.403. Spelling residuals, frequency-weighted loss, train-only
+nearest-neighbor retrieval, dilated convolution and input masking failed
+their gates (Stages160/161/163-165). Stage168 sharpness-aware training
+regressed versus its matched Stage54 control (1.522015 vs 1.519950 BPB)
+at 1.889x training time. Stage169 teacher transfer improved Stage143 by
+only 0.000246 BPB, below its 0.005 gate. Stage174's byte auxiliary loss
+was slightly worse than its matched control. See the linked stage records
+for exact protocols and failed candidates; none was promoted or test-scored.
+
+Stage175's **answer-aware, non-deployable** neural/MKN oracle reached
+1.300186476 validation BPB. A legal gate would need about half this
+hindsight gain to reach 1.35. Stage176's richer causal-feature gate, fitted
+on one validation half and evaluated on the other in both directions,
+instead scored 1.400044877 BPB; its validation-fitted coefficients were
+not deployed. Stage177's parallel attention/convolution Transformer passed
+input-only parity and asset screens but failed its CPU-feature speed gate
+at 1.438569x the Stage143 graph, so it was not trained. These diagnostics
+are not submission scores; Stage162's sparse two-model oracle is also
+non-deployable.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows
