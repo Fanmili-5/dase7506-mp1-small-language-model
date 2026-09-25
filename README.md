@@ -94,6 +94,13 @@ validation was **1.714011162 BPB** and the fixed 10%/20% mixtures with
 Stage143 both worsened BPB. The quality gate failed, so no integrated
 two-model predictor or test score was produced; see
 `code/docs/STAGE159_COMPACT_COMPLEMENT_PREFLIGHT_20260925.md`.
+Stage160 tested a zero-start, context-conditioned ByteLevel-token spelling
+residual on the frozen Stage143-equivalent backbone. Its fixed 2,400-update
+pilot reproduced **1.399686195 BPB** at step zero but ended at
+**1.402679625 BPB**; every intermediate validation was worse than step zero.
+It failed the predeclared >=0.005 improvement gate, so no CPU export or test
+score followed. See the Stage160 plan and evidence under `code/docs/` and
+`code/results/`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

@@ -1,5 +1,15 @@
 # AI assistance disclosure
 
+## Stage160 context-conditioned morphology residual (25 September 2026)
+
+Codex proposed, implemented, preregistered and ran a zero-start spelling
+residual on a frozen Transformer/count/copy predictor. The synthetic CPU
+preflight passed, but the fixed training pilot regressed from 1.399686195
+to 1.402679625 complete validation BPB. Codex stopped at the prespecified
+quality gate without promoting or test-scoring the candidate. This was
+substantive AI-led design, code, execution and analysis; the student should
+review the frozen-base boundary and negative result.
+
 ## Stage159 compact complementary expert (25 September 2026)
 
 Codex used failure analysis, composition and simplicity checks to propose a

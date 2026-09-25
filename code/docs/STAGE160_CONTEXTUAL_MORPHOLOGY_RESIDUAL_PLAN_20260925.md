@@ -57,3 +57,16 @@ This is a hypothesis, not an observed improvement or a promise of <1.35.
 The strongest objection is that spelling may supply little semantic
 information beyond the already trained token embedding; the validation
 gate is designed to falsify that cheaply. Test stays untouched.
+
+## Pilot result and decision
+
+The fixed Windows RTX 3070 Ti pilot completed all 2,400 updates. Step zero
+reproduced Stage143 at 1.399686195 complete GPU FP32 validation BPB.
+The prespecified endpoint was **1.402679625 BPB**, a **0.002993463 BPB
+regression** versus the qualified Stage143 reference. Every intermediate
+300-step checkpoint was also worse than step zero. Thus the endpoint failed
+the required >=0.005-BPB gain and the morphology route stops here: no
+integrated export, complete CPU/RAM qualification, or test scoring.
+The training loss alone is not evidence of generalization; the observed
+trajectory is consistent with overfitting or a mismatched inductive bias,
+but does not isolate which. See `code/results/stage160-evidence/`.
