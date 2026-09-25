@@ -20,6 +20,12 @@ See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
 the new candidate has not been frozen or scored on test, and passing on the
 course CPU is not yet established.
 
+`REPORT.pdf` is an **eight-page historical report for the earlier Stage10
+checkpoint** (1.605136467 full-test BPB), created before Stage143 existed.
+It does not document or qualify Stage143 and must not be submitted as
+Stage143's final report. A matching report and full-test score are pending
+candidate freeze.
+
 The later Stage144 train-suffix coverage diagnostic found little long-history
 coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
 control by only 0.004699 BPB, below its predeclared 0.015 advancement gate;
