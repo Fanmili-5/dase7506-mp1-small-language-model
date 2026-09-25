@@ -488,7 +488,7 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage173, including the Stage166–173 portability
+the validation experiments through Stage174, including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
 multiscale-convolution/token-masking pilots, and report drafting. Human review and

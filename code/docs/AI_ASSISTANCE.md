@@ -331,3 +331,16 @@ four-thread Linux run produced no candidate timing. These checks changed no
 model weights, frozen Stage143 inference files, validation selection or test
 score. The student must understand the host-specific limits before reporting
 resource compliance.
+
+## Stage174 training-only byte supervision assistance
+
+Codex selected the first/last ByteLevel auxiliary-prediction pilot from a
+failure-analysis shortlist, fixed a same-budget quality gate, and implemented
+the additional training-only heads, exact-inference export helpers, structural
+tests, training runner and Windows task scripts. The concept is generic
+auxiliary multitask supervision applied to the existing Stage54 hybrid model;
+it is not claimed as an original language-model architecture. Only the
+supplied tokenizer and training targets define auxiliary labels. The student
+must understand how the hook captures each causal hidden state and how the
+heads are removed for inference. No validation gain, resource qualification
+or test score is implied by implementation and unit tests alone.
