@@ -9,8 +9,11 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+import numpy as np
+
 from scripts.package_stage143_final_release import (
     FINAL, expected_files, read_json, sha, validate_freeze, validate_test,
+    validate_window_nll,
 )
 from scripts.run_stage143_frozen_test import preflight
 
@@ -102,6 +105,21 @@ class FinalReleaseGateTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "Portable freeze SHA-256"):
                     preflight(freeze_path, output, "0" * 64)
             self.assertFalse(output.exists())
+
+    def test_window_sidecar_must_match_full_test_summary(self) -> None:
+        with tempfile.TemporaryDirectory() as scratch:
+            path = Path(scratch) / "synthetic.window-nll.npy"
+            losses = np.full(1674, self.test_record["nll_nats"] / 1674,
+                             dtype=np.float64)
+            np.save(path, losses)
+            self.assertEqual(validate_window_nll(self.test_record, path), 1674)
+            losses[0] += 1
+            np.save(path, losses)
+            with self.assertRaisesRegex(ValueError, "Window-NLL sum"):
+                validate_window_nll(self.test_record, path)
+            np.save(path, losses[:-1])
+            with self.assertRaisesRegex(ValueError, "coverage"):
+                validate_window_nll(self.test_record, path)
 
 
 if __name__ == "__main__":

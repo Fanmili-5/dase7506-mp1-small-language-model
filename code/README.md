@@ -151,7 +151,8 @@ assets, then pass `--portable-freeze-sha256 <verified-record-sha256>`; this
 checks every frozen file without using Git or network access on Windows.
 Then
 `scripts/package_stage143_final_release.py` can bind the committed freeze
-record, full-test result and replacement `REPORT.pdf` to an exact bundle.
+record, full-test result, local `.window-nll.npy` scoring sidecar and
+replacement `REPORT.pdf` to an exact bundle.
 It refuses to package the historical Stage10 report. See the
 [`submission readiness sequence`](docs/SUBMISSION_PORTAL_READINESS_20260926.md);
 do not use the pre-test candidate ZIP as the final checkpoint link.

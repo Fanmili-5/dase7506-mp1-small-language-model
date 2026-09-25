@@ -34,9 +34,11 @@ freeze-gated full-test entry point and a fail-closed final-release packager.
 The entry point also supports a SHA-pinned Git-less Windows copy after the
 freeze is committed on the Mac. These tools check the recorded inference file
 set and hashes, source identity, test-score metadata, report replacement and
-Git cleanliness where available; synthetic metadata tests exercise rejection
-paths. Passing these structural gates is not a full-test result, an originality
-claim or a substitute for the student's review of the implementation. No Stage143
+Git cleanliness where available. The packager also checks that the fixed
+scorer's per-window loss sidecar sums to its reported full-test NLL; synthetic
+metadata and loss-sidecar tests exercise rejection paths. Passing these
+structural gates is not a full-test result, an originality claim, or a
+substitute for the student's review of the implementation. No Stage143
 method freeze, complete-test score or final submission bundle had been
 created when this disclosure section was written.
 

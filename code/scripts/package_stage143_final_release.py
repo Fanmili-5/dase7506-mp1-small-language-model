@@ -99,6 +99,21 @@ def validate_test(test: dict, final: dict, freeze_sha256: str,
         raise ValueError("Test BPB arithmetic is inconsistent")
 
 
+def validate_window_nll(test: dict, window_nll_path: Path) -> int:
+    """Check the fixed scorer's ignored per-window sidecar against its summary."""
+    import numpy as np
+
+    if not window_nll_path.is_file():
+        raise ValueError("Missing fixed-scorer window-NLL sidecar")
+    losses = np.load(window_nll_path, allow_pickle=False)
+    if (losses.shape != (1674,) or losses.dtype != np.float64
+            or not np.isfinite(losses).all() or (losses < 0).any()):
+        raise ValueError("Invalid complete-test window-NLL coverage")
+    if abs(float(losses.sum(dtype=np.float64)) - test["nll_nats"]) > 1e-5:
+        raise ValueError("Window-NLL sum differs from reported complete-test NLL")
+    return int(losses.size)
+
+
 def validate_repository(freeze: dict, files: dict, report: Path,
                         freeze_path: Path, test_path: Path) -> str:
     if git("status", "--porcelain=v1", "--untracked-files=all"):
@@ -138,6 +153,8 @@ def build(freeze_path: Path, test_path: Path, report: Path, output: Path) -> dic
     final, freeze, test = read_json(FINAL), read_json(freeze_path), read_json(test_path)
     files = validate_freeze(freeze, final, sha(FINAL))
     validate_test(test, final, sha(freeze_path), freeze["source_commit"])
+    window_nll_path = test_path.with_suffix(".window-nll.npy")
+    window_count = validate_window_nll(test, window_nll_path)
     commit = validate_repository(freeze, files, report, freeze_path, test_path)
     manifest = {
         "status": "final_stage143_bundle_after_method_freeze",
@@ -146,6 +163,8 @@ def build(freeze_path: Path, test_path: Path, report: Path, output: Path) -> dic
         "release_code_commit": commit,
         "freeze_record_sha256": sha(freeze_path),
         "full_test_result_sha256": sha(test_path),
+        "full_test_window_nll_sha256": sha(window_nll_path),
+        "full_test_window_count": window_count,
         "full_test_cpu_fp32_bpb": test["bpb"],
         "full_test_targets": test["targets"],
         "full_test_utf8_bytes": test["utf8_bytes"],
@@ -161,8 +180,8 @@ def build(freeze_path: Path, test_path: Path, report: Path, output: Path) -> dic
         "From code/: python evaluate.py --checkpoint "
         "checkpoints/stage143-openvino-order6.pt --device cpu "
         "--precision fp32 --threads 4 --split test --output reproduced-test.json\n"
-        "The manifest binds the freeze record, already-scored full-test JSON "
-        "and matching report by SHA-256.\n"
+        "The manifest binds the freeze record, already-scored full-test JSON, "
+        "local window-loss sidecar and matching report by SHA-256.\n"
     )
     output.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(output, "x", allowZip64=True) as archive:

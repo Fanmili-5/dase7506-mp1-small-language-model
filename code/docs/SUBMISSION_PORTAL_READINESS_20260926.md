@@ -42,6 +42,10 @@ Do not treat the live site's later date as an extension of the written guide.
    binding. This workflow does not independently prove human chronology.
    Submit **its** BPB, not the 1.399686162 validation BPB or historical Stage10
    test score. Record test target count, byte count, full score JSON and hashes.
+   Copy the scorer's ignored `.window-nll.npy` sidecar back from Windows with
+   the JSON; the final packager checks its 1,674 window losses sum to the
+   recorded NLL. This local sidecar is not an inference asset or a substitute
+   for a fresh peer reproduction.
 3. On the portal, enter the student's actual ID and full-test BPB, accept the
    publication/links consent, choose **Prepare score submission**, then confirm
    creation of the generated issue on GitHub. A prepared URL alone is not a
@@ -58,7 +62,8 @@ Do not treat the live site's later date as an extension of the written guide.
    freeze, CPU FP32 full-test JSON, and replacement `REPORT.pdf` have all been
    committed. It requires `--freeze`, `--test-result`, `--report` and a new
    `--output` ZIP path; it checks full-test coverage/BPB arithmetic, exact
-   evaluator/checkpoint/tokenizer hashes, ancestry of the frozen commit,
+   evaluator/checkpoint/tokenizer hashes, the local window-loss sidecar,
+   ancestry of the frozen commit,
    the clean final code commit and all 18 inference-file hashes. It rejects
    the tracked historical Stage10 report. Synthetic metadata unit tests
    cover rejection paths but are not a substitute for a real final bundle
