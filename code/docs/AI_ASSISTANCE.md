@@ -5,8 +5,11 @@
 Codex analyzed the limited measured benefit and resource cost of the count
 expert, proposed a larger single-neural allocation, wrote the prespecified
 feasibility and quality gates, implemented the Windows OpenVINO/GPU screens,
-and ran the matched seed-17 pilot. The 2,400-step validation gain of
-0.022450508 BPB authorized a fresh long run, not promotion or test scoring.
+and ran the matched seed-17 pilot and fresh 7,200-step long run. The 2,400-step
+validation gain of 0.022450508 BPB authorized the long run; the fixed
+last-five average scored 1.409877270 BPB and failed to beat Stage143's
+1.399686162. Codex preserved the negative evidence and did not promote,
+CPU-qualify or test-score Stage155.
 This is substantive AI-led design, code and analysis. The student must
 understand the model, the removal of the count expert, the comparison and the
 remaining CPU/asset risks before submission.

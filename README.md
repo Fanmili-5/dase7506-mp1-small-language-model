@@ -65,8 +65,11 @@ Stage155 reallocates the count-expert asset budget to a single 10-layer,
 width-320 neural model. Input-only OpenVINO and batch-32 GPU memory screens
 passed. Its matched 2,400-step GPU FP32 validation endpoint was **1.497499861
 BPB**, **0.022450508** below Stage54 at the same step, clearing its
-predeclared 0.020 continuation gate. A fresh full run is warranted, but no
-Stage155 complete CPU score, resource qualification or test result exists yet.
+predeclared 0.020 continuation gate. The fresh 7,200-step run completed:
+its endpoint was **1.413182592 BPB**, and the prespecified five-checkpoint
+average was **1.409877270 BPB** on complete GPU FP32 validation. Both are
+worse than Stage143's 1.399686162, so Stage155 was rejected before compact
+export or CPU qualification. No new test result exists.
 See `code/docs/STAGE155_NEURAL_BUDGET_REALLOCATION_PLAN_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated

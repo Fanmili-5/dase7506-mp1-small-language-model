@@ -1,0 +1,19 @@
+{
+  "bpb": 1.409877270416759,
+  "token_ppl": 19.668360003517364,
+  "nll_nats": 1121892.659021002,
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "seconds": 3.278795199934393,
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "precision": "fp32",
+  "checkpoint_sha256": "c2fe32ba15b0f13b11b43247f058971dac5717ac37fd2acda1bbaa173277bce1",
+  "implementation_sha256": "2185db04f5f1ec44ad68005e8f7482e11114b3528528572c4497f6e9c07cbfe1",
+  "evaluator_sha256": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+  "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 0.538120704,
+  "peak_reserved_gb": 0.773849088
+}

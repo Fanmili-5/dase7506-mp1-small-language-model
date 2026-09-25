@@ -112,3 +112,27 @@ independence errors <=3e-5 against the same source model. Then score all
 Three fresh baseline/candidate CPU timing and lifetime-RSS repetitions must
 show <=5x, <=4 GiB; checkpoint + graph + inference sources must be <=64 MiB.
 Only a fully passing result can replace Stage143. Test remains untouched.
+
+## Full-run result and decision (2026-09-25)
+
+The fresh seed-17 job completed all 7,200 steps and 58,982,400 primary
+training-target presentations in 2,029.78 training seconds. Its best and final
+complete GPU FP32 validation score was **1.4131825916 BPB** at step 7,200.
+The prespecified same-trajectory average of steps
+6,000/6,300/6,600/6,900/7,200 independently scored **1.4098772704 BPB**
+on all 376,599 validation targets (SHA-256
+`c2fe32ba15b0f13b11b43247f058971dac5717ac37fd2acda1bbaa173277bce1`).
+This improves the fixed Stage54 average's 1.4285940452 by **0.0187167748
+BPB**, but is **0.0101911084 BPB worse** than the qualified Stage143
+checkpoint's 1.3996861620. It also misses the 1.35 development target by
+0.0598772704 BPB.
+
+Decision: **do not export, CPU-qualify, promote or test-score Stage155** under
+the predeclared quality gate. The larger neural model has a real matched-
+schedule gain over Stage54, but reallocating the whole count-expert budget
+to width and depth alone does not improve the best deployable predictor.
+The unused compact OpenVINO route remains code scaffolding, not a validated
+candidate. Full trajectory, source hashes, task completion and averaging
+score are in `../results/stage155-full-evidence/`; the five source checkpoints
+and resulting average remain on the Windows experiment host, not in the
+inference bundle. Stage143 remains protected. No new test scoring occurred.
