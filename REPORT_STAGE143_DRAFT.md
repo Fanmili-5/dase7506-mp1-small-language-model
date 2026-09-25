@@ -67,7 +67,14 @@ totals **255,225,110 documented primary training-target presentations** and
 the count is not FLOPs or unique corpus positions. This is a **lower bound on
 the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
-deduplicated project-wide search-cost ledger is still pending.
+deduplicated project-wide search-cost ledger is still pending. A separate
+[archive audit](code/results/project-training-cost-audit.json) enumerates
+56 distinct metrics files: 55 comparable `train_seconds` fields sum to
+**47,669.47 seconds (13.24 hours)** of reported training, including the
+accepted lineage and rejected trials. The remaining Stage136 record reports
+only broader elapsed time and is excluded. The sum omits unarchived/failed
+runs, validation, preflights, table construction and system overhead, so it
+must not be mistaken for a complete hardware bill.
 
 Stage143 changes only inference packaging relative to Stage105: it stores
 one 31,805,041-byte ONNX feature graph and a 23,824,895-byte checkpoint
