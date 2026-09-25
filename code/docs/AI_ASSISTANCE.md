@@ -1,5 +1,16 @@
 # AI assistance disclosure
 
+## Stage161 train-only frequency-focus loss (25 September 2026)
+
+Codex used prior error allocation to design, implement, preregister, execute
+and analyze a matched Stage54 pilot that increased training weight for
+medium-frequency targets absent from the current input prefix. Initial
+inference predictions matched the control exactly, but the 2,400-step
+complete validation endpoint was 1.521144191 BPB, worse than the matched
+1.519950369 control. Codex stopped before full training or test scoring.
+This is substantive AI-led experimental work; the student should inspect
+the train-only target mask, normalized loss and negative result.
+
 ## Stage160 context-conditioned morphology residual (25 September 2026)
 
 Codex proposed, implemented, preregistered and ran a zero-start spelling

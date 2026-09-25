@@ -101,6 +101,12 @@ pilot reproduced **1.399686195 BPB** at step zero but ended at
 It failed the predeclared >=0.005 improvement gate, so no CPU export or test
 score followed. See the Stage160 plan and evidence under `code/docs/` and
 `code/results/`.
+Stage161 kept the same Stage54 architecture and compute budget but gave
+training-only extra weight to medium-frequency targets absent from the input
+prefix. Initial model predictions matched exactly. Its matched 2,400-step
+endpoint was **1.521144191 BPB**, worse than the Stage54 control's
+**1.519950369 BPB**, so the predeclared continuation gate failed. No new
+inference candidate or test score resulted; see the Stage161 plan/evidence.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

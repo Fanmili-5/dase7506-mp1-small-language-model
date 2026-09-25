@@ -40,3 +40,19 @@ or regression stops this route without inference export or test scoring.
 The strongest objection is that upweighting target rarity can merely trade
 away common-token accuracy; the full normalized validation BPB, not group
 loss alone, is the decision gate.
+
+## Completed pilot and decision
+
+The same-seed preflight found exactly equal initial weights and predictions,
+the expected toy causal mask `[true,false,true]`, and zero alpha-zero loss
+error. The fixed Windows run completed 2,400 updates and 19,660,800 primary
+training targets. The focus group occupied about 14.1–16.2% of sampled
+positions in the logged batches. The complete GPU FP32 validation endpoint
+was **1.521144191 BPB**, **0.001193823 worse** than Stage54's archived
+1.519950369 matched endpoint. Gains at intermediate steps were small and
+inconsistent; the largest was only 0.003788 BPB at step 600. This is far
+below the predeclared >=0.015 gate. The route stops without full 7,200-step
+training, inference export, CPU qualification, or test scoring. It does not
+show that every data-dependent loss is ineffective, only that this specified
+medium-frequency unseen-prefix weighting did not improve the matched pilot.
+Evidence: `code/results/stage161-evidence/`.
