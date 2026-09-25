@@ -1,5 +1,16 @@
 # AI assistance disclosure
 
+## Stage183 frozen-expert fusion diagnostic (26 September 2026)
+
+Codex proposed, preregistered, implemented and ran a normalized geometric
+fusion screen for the unchanged Stage143 neural and MKN experts. The fixed
+five-cell grid used complete validation targets only to measure NLL, not to
+train an inference parameter. Its best cell improved by 0.001439 BPB,
+below the declared 0.015 gate, so Codex stopped without deployment, new
+resource qualification or test scoring. The student must review the causal
+input-only formula, the zero-count floor, the complete normalization and
+the negative decision. This was substantive AI-led experimental work.
+
 ## Stages181–182 architecture diagnostics (26 September 2026)
 
 Codex designed, implemented, tested and interpreted a validation-only

@@ -237,6 +237,13 @@ claimed. The Muon
 algorithm is adapted from [Keller Jordan's MIT-licensed implementation](https://github.com/KellerJordan/Muon);
 its license is preserved in `code/third_party/Muon-LICENSE.txt`. See the
 prespecified run record and independent auditor under `code/results/stage180-evidence/`.
+Stage181's intermediate-layer readout screen and Stage182's matched four-head
+pilot missed their fixed advancement gates. Stage183 then tested a fully
+normalized geometric correction to the existing neural/MKN mixture, with
+all 376,599 validation targets. Its best fixed cell reached **1.398247514
+BPB**, only **0.001438648** below Stage143 and far short of its 0.015-BPB
+deployment gate. It is a diagnostic, not a resource-qualified model or test
+score; see `code/docs/STAGE183_EXPERT_FUSION_DIAGNOSTIC_20260926.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

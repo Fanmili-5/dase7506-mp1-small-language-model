@@ -34,3 +34,29 @@ Strongest objection: MKN can assign near-zero mass to a correct rare token,
 so geometric fusion may amplify the wrong expert's mistakes. If the fixed
 grid fails the 0.015 gate, stop this route rather than adjust floors or
 search more coefficients on the same validation labels.
+
+## Complete validation result and stop decision
+
+The Windows CPU FP32 run covered all **1,472 independent windows**, **376,599
+targets** and **1,148,007 raw bytes**. Beta zero reconstructed the exact
+Stage143 score at **1.399686162101 BPB**, within `5.9e-11` of the archived
+reference. The largest full-distribution arithmetic reconstruction error was
+`1.19e-7`; maximum expert and geometric row-normalization errors were each
+`3.58e-6`. The source, checkpoint and graph SHA-256 values matched the
+predeclared identities. Both fixed halves contained 736 windows.
+
+| beta | Complete validation BPB | Gain over Stage143 |
+| ---: | ---: | ---: |
+| 0 | 1.399686162 | 0 |
+| 0.1 | 1.399273702 | 0.000412460 |
+| 0.25 | 1.398764568 | 0.000921594 |
+| 0.5 | **1.398247514** | **0.001438648** |
+| 1 | 1.399459656 | 0.000226506 |
+
+The beta-0.5 cell improved both fixed halves by 599.83 and 544.95 nats,
+but its full gain is about **one tenth** of the predeclared 0.015 gate and
+only about **2.9%** of the remaining 0.049686-BPB distance to 1.35. The
+route therefore stops: no deployed geometric branch, new inference asset,
+resource claim or test score. This is a target-readout diagnostic, not a
+qualified 1.398248 submission candidate. The full JSON and source hash are
+in `../results/stage183-expert-fusion.json`.
