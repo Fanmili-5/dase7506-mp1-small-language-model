@@ -43,3 +43,17 @@ Strongest objection: shared lower layers and output head may remove the
 diversity that made the over-budget ensemble work, while dual copy heads
 could make CPU time too slow. The structure and resource preflight reject
 these possibilities before spending GPU time; no improvement is assumed.
+
+## Preflight result (2026-09-25)
+
+The independent-window, causal, normalization and gradient tests passed.
+The random-weight OpenVINO graph agreed with PyTorch within `3.82e-6`, and
+the conservative projected asset size was 64,327,264 bytes (<64 MiB).
+However, its interleaved median feature-call ratio was **1.250910426×**
+Stage143, above the predeclared **1.25×** pilot gate. Stage153 is therefore
+**ineligible for its planned 2,400-step pilot**. No Stage153 training, BPB
+claim, complete-predictor qualification or test evaluation occurred. The
+exact input-only evidence is in
+`../results/stage153-evidence/preflight.json`. A later, materially different
+design must have its own prespecified screen; repeating this timing to get a
+favorable draw would not rescue Stage153.
