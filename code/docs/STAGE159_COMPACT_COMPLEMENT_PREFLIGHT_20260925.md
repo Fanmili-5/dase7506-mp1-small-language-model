@@ -32,3 +32,25 @@ do not train. If they pass, predeclare a 2,400-step matched-schedule pilot
 and use complete validation target probabilities at fixed mixture weights
 0, 0.1 and 0.2 to test whether the small expert actually complements
 Stage143; a full predictor and resource audit would still be required.
+
+## Input-only preflight result and fixed pilot gate
+
+The random-weight graph is **4,068,213 bytes**. Its maximum trained-independent
+eager/OpenVINO hidden discrepancy was **1.43e-6**; eight-pair four-thread
+feature medians were 0.194057 s for the compact expert and 1.254391 s for
+the Stage143 reference, a **0.154702x** ratio. Stage143's measured assets
+plus this graph and the 1.5-MB head/source reserve total **61,378,625 bytes**,
+below 64 MiB. All predeclared input-only gates pass. Raw timings and hashes
+are in `../results/stage159-evidence/preflight.json`. They are not a complete
+predictor or CPU/RAM qualification.
+
+Authorize one seed-17 2,400-update pilot with Stage54's *first 2,400 of 7,200*
+learning rates, sampler, effective batch 32, context 256 and R-Drop/auxiliary
+weights; only the compact architecture changes. At its endpoint, score the
+complete GPU FP32 validation target stream and the three fixed Stage143/
+compact probability weights **0 / 0.1 / 0.2**. Require the best nonzero
+mixture to improve Stage143 by at least **0.005 BPB** on all 376,599 targets
+before paying for a full train or integrated inference path. The diagnostic
+may gather true validation target probabilities only for loss measurement;
+the predictor must never use the true target to choose a mixture or gate.
+If the threshold fails, preserve the negative result and stop. No test scoring.
