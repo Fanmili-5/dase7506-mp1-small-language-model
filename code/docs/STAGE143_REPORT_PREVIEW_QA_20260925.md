@@ -121,3 +121,15 @@ clipped text, broken table, orphan page or split command block. Extracted
 text confirms Stage184, the new cost total, `PENDING FREEZE` and three
 `NOT FOR SUBMISSION` footers. The tracked historical `REPORT.pdf` remains
 untouched; this development preview is not a final submission.
+
+On 26 September, the Markdown draft added Stage186's rejected narrow
+parallel-attention pilot and refreshed the archived cost to **65** metrics
+records, **63** comparable training-time fields and **53,553.04 seconds /
+14.88 hours**. The ignored PDF regenerated to **three A4 pages / 76,808
+bytes**, SHA-256
+`8eea5bf7b0b90ef8adad0f2de5f74869460bd69d006ec51e0163a08989f1067e`.
+All three pages were rendered at 1,200 pixels and visually checked; the
+ablation table, hashes, command block, Stage186 paragraph and references are
+legible, with no clipping or orphan page. Extracted text confirms Stage186,
+the new cost total, `PENDING FREEZE` and all three `NOT FOR SUBMISSION`
+footers. The historical tracked `REPORT.pdf` is still unchanged.

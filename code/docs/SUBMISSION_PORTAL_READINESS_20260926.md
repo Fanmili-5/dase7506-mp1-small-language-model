@@ -12,6 +12,11 @@ and matching checkpoint links by the end of 30 September. The current
 score submissions close at the end of 30 September; its published
 [project configuration](https://xudongwu-0.github.io/courses/dase7506/assets/projects.127dafd8d78d.mjs)
 currently has `score_deadline: 2026-10-01T00:00:00+08:00`.
+The live submit section was rechecked on 26 September: it currently labels
+the action **Prepare submission**, displays Student ID, full-test FP32 BPB,
+original issue number and optional code/checkpoint link fields, and says to
+confirm on GitHub to finish. Student IDs and scores become public; links
+stay encrypted until instructor release.
 Because those sources disagree, use the **earlier guide deadline** for the
 initial score issue unless the instructor explicitly clarifies otherwise.
 Do not treat the live site's later date as an extension of the written guide.
@@ -47,7 +52,7 @@ Do not treat the live site's later date as an extension of the written guide.
    recorded NLL. This local sidecar is not an inference asset or a substitute
    for a fresh peer reproduction.
 3. On the portal, enter the student's actual ID and full-test BPB, accept the
-   publication/links consent, choose **Prepare score submission**, then confirm
+   publication/links consent, choose **Prepare submission**, then confirm
    creation of the generated issue on GitHub. A prepared URL alone is not a
    submitted issue. Use the same GitHub account for later updates.
 4. Prepare a publicly accessible immutable code link (commit or tag) with the
