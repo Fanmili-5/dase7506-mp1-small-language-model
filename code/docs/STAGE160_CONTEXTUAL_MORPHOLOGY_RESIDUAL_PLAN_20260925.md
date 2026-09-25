@@ -35,6 +35,13 @@ and extra CPU cost plausibly within Stage143's ~33-second headroom.
 If feasible, train only the residual head on supplied train targets with one
 fixed seed/schedule; compare complete validation to Stage143, with a
 predeclared >=0.005-BPB gain required before any integrated CPU export.
+Before training, use 32x256 synthetic causal hidden/base rows to require
+zero-start maximum log-probability error <=2e-6, normalization error <=1e-5,
+causal-prefix and independent-row error <=1e-6, eight-repeat four-thread
+head-only median <=0.45 seconds/batch, and Stage143 measured assets plus
+the head's raw FP32 parameters and a 200-kB artifact reserve <=64 MiB.
+These checks establish only a feasibility screen, not the official full
+predictor's CPU/RAM performance.
 This is a hypothesis, not an observed improvement or a promise of <1.35.
 The strongest objection is that spelling may supply little semantic
 information beyond the already trained token embedding; the validation
