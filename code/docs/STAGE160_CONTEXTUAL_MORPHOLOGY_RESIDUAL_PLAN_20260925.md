@@ -42,6 +42,17 @@ head-only median <=0.45 seconds/batch, and Stage143 measured assets plus
 the head's raw FP32 parameters and a 200-kB artifact reserve <=64 MiB.
 These checks establish only a feasibility screen, not the official full
 predictor's CPU/RAM performance.
+
+The synthetic preflight passed: maximum zero-start error 9.54e-7,
+normalization error 4.77e-7, causal/independent-row errors zero,
+four-thread head-only median 0.0250 seconds per 32x256 batch, and
+conservative projected assets 57,799,084 bytes. The fixed pilot is
+seed 160017, 2,400 updates, batch 16, AdamW beta=(0.9,0.999),
+weight decay 0.01, peak LR 1e-3, 50 warmup steps then cosine to 1e-4.
+Only the residual parameters train. Score the complete validation at
+step zero and every 300 updates; use the endpoint at step 2,400 for
+the predeclared >=0.005-BPB go/no-go gate. Intermediate scores are
+diagnostic only and cannot replace the endpoint after inspection.
 This is a hypothesis, not an observed improvement or a promise of <1.35.
 The strongest objection is that spelling may supply little semantic
 information beyond the already trained token embedding; the validation
