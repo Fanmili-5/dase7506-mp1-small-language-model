@@ -59,6 +59,18 @@ Do not treat the live site's later date as an extension of the written guide.
    matching <=10-page report and exact reproduction instructions. The current
    `Fanmili-5/dase7506-mp1-small-language-model` repository is **private** as
    of this check; a private URL does not yet satisfy public review access.
+   After the freeze and matching test JSON plus window-loss sidecar exist,
+   commit the freeze/test JSON and run
+   `scripts/render_stage143_final_report.py --freeze <committed-freeze.json> --test-result <committed-test.json> --output /private/tmp/stage143-final-review.pdf`
+   to generate a review copy. This script checks the frozen inference hashes,
+   test identity/arithmetic, complete-test window-loss coverage and PDF page
+   count before writing. Visually inspect **every** proposed PDF page, then
+   rerun with `--output ../REPORT.pdf --replace-historical-report` to replace
+   the exact historical Stage10 report. That flag is intentionally required;
+   neither command has been run with real Stage143 test evidence yet. Recheck
+   the final PDF visually and commit it. The source remains
+   `REPORT_STAGE143_DRAFT.md`, with fail-closed final-field substitutions;
+   revise it and its renderer together if the template changes.
 5. Provide a matching checkpoint-bundle link that lets peers evaluate without
    retraining. The local pre-test ZIP is explicitly non-final and is not yet a
    publicly downloadable checkpoint link. Audit its replacement against the

@@ -67,6 +67,9 @@ candidate freeze. The tracked `REPORT_STAGE143_DRAFT.md` has an ignored,
 visually checked **three-page development PDF preview** covering experiments
 through Stage186. The preview is explicitly watermarked **NOT FOR SUBMISSION**
 and contains no Stage143 test score.
+The fail-closed `code/scripts/render_stage143_final_report.py` is prepared
+for use only after a committed method freeze and matching CPU FP32 full-test
+record; it has not yet rendered or replaced `REPORT.pdf`.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history
 coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
