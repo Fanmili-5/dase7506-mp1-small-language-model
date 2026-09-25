@@ -145,7 +145,11 @@ After explicitly freezing and committing the method record, run the one
 matching CPU FP32 full-test score through
 `scripts/run_stage143_frozen_test.py --freeze <committed-freeze.json> --output <new-test-result.json>`.
 The entry point refuses a missing or uncommitted freeze and records its hash
-in the scorer result. Then
+in the scorer result. On the Git-less Windows training/evaluation copy, first
+commit and verify the freeze on the Mac, copy that exact record and frozen
+assets, then pass `--portable-freeze-sha256 <verified-record-sha256>`; this
+checks every frozen file without using Git or network access on Windows.
+Then
 `scripts/package_stage143_final_release.py` can bind the committed freeze
 record, full-test result and replacement `REPORT.pdf` to an exact bundle.
 It refuses to package the historical Stage10 report. See the

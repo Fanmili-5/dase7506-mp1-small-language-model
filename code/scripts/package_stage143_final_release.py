@@ -18,7 +18,6 @@ import zipfile
 CODE = Path(__file__).resolve().parents[1]
 REPO = CODE.parent
 sys.path.insert(0, str(CODE))
-from scripts.package_stage143_pretest_candidate import archived_entry
 
 FINAL = CODE / "results/stage143-evidence/final.json"
 CHECKPOINT = "checkpoints/stage143-openvino-order6.pt"
@@ -132,6 +131,8 @@ def validate_repository(freeze: dict, files: dict, report: Path,
 
 
 def build(freeze_path: Path, test_path: Path, report: Path, output: Path) -> dict:
+    from scripts.package_stage143_pretest_candidate import archived_entry
+
     if output.exists():
         raise FileExistsError("Refusing to overwrite final bundle")
     final, freeze, test = read_json(FINAL), read_json(freeze_path), read_json(test_path)

@@ -2,10 +2,12 @@
 from __future__ import annotations
 
 import copy
+import json
 import math
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from scripts.package_stage143_final_release import (
     FINAL, expected_files, read_json, sha, validate_freeze, validate_test,
@@ -84,6 +86,22 @@ class FinalReleaseGateTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "No method freeze record"):
                 preflight(directory / "missing-freeze.json",
                           directory / "unscored-test.json")
+
+    def test_gitless_preflight_binds_exact_freeze_hash(self) -> None:
+        with tempfile.TemporaryDirectory() as scratch:
+            directory = Path(scratch)
+            freeze_path = directory / "freeze.json"
+            freeze_path.write_text(json.dumps(self.freeze), encoding="utf-8")
+            output = directory / "unscored-test.json"
+            with patch("scripts.run_stage143_frozen_test.REPO", directory):
+                final, freeze, frozen_sha = preflight(freeze_path, output,
+                                                       sha(freeze_path))
+                self.assertEqual(final["validation_bpb"], self.final["validation_bpb"])
+                self.assertEqual(freeze, self.freeze)
+                self.assertEqual(frozen_sha, sha(freeze_path))
+                with self.assertRaisesRegex(ValueError, "Portable freeze SHA-256"):
+                    preflight(freeze_path, output, "0" * 64)
+            self.assertFalse(output.exists())
 
 
 if __name__ == "__main__":
