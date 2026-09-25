@@ -1,0 +1,72 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "purpose": "hindsight_only_oracle_not_deployable",
+  "split": "validation",
+  "precision": "fp32",
+  "device": "cuda:0",
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "stage143_checkpoint_sha256": "256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3",
+  "stage143_cached_array_sha256": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3",
+  "stage155_checkpoint_sha256": "c2fe32ba15b0f13b11b43247f058971dac5717ac37fd2acda1bbaa173277bce1",
+  "stage155_implementation_sha256": "2185db04f5f1ec44ad68005e8f7482e11114b3528528572c4497f6e9c07cbfe1",
+  "stage155_target_array_sha256": "0cbe8ee4aec517ba756fc5e167a95aea2b82e088b5f870e29f77337a9a499603",
+  "source_sha256": "c0ea1afa9c60b2f2d471d5251eb4b5b07c1f1bc55adcb26b645ba723ff54aaac",
+  "stage143_bpb": 1.3996861620421412,
+  "stage155_bpb": 1.4098772704183504,
+  "unconditional_half_mixture_bpb": 1.3761826641885053,
+  "total_independent_windows": 1472,
+  "windows_where_mixture_helps": 1435,
+  "window_gain_nats_min": -10.971178464586739,
+  "window_gain_nats_median": 12.199911060101496,
+  "window_gain_nats_max": 38.447214759275035,
+  "oracle_budget_table": {
+    "0.10": {
+      "max_fraction": 0.1,
+      "max_windows": 147,
+      "oracle_selected_windows": 147,
+      "oracle_bpb": 1.394951793511994,
+      "oracle_gain_vs_stage143_bpb": 0.004734368530147279
+    },
+    "0.20": {
+      "max_fraction": 0.2,
+      "max_windows": 294,
+      "oracle_selected_windows": 294,
+      "oracle_bpb": 1.3912885631726462,
+      "oracle_gain_vs_stage143_bpb": 0.008397598869495178
+    },
+    "0.30": {
+      "max_fraction": 0.3,
+      "max_windows": 441,
+      "oracle_selected_windows": 441,
+      "oracle_bpb": 1.38811382461859,
+      "oracle_gain_vs_stage143_bpb": 0.011572337423551304
+    },
+    "0.35": {
+      "max_fraction": 0.35,
+      "max_windows": 515,
+      "oracle_selected_windows": 515,
+      "oracle_bpb": 1.3866723317202345,
+      "oracle_gain_vs_stage143_bpb": 0.013013830321906783
+    },
+    "0.50": {
+      "max_fraction": 0.5,
+      "max_windows": 736,
+      "oracle_selected_windows": 736,
+      "oracle_bpb": 1.3829004602012276,
+      "oracle_gain_vs_stage143_bpb": 0.016785701840913766
+    },
+    "1.00": {
+      "max_fraction": 1.0,
+      "max_windows": 1472,
+      "oracle_selected_windows": 1435,
+      "oracle_bpb": 1.3760799203924132,
+      "oracle_gain_vs_stage143_bpb": 0.02360624164972807
+    }
+  },
+  "primary_oracle_fraction": 0.3,
+  "primary_oracle_required_bpb": 1.33,
+  "primary_oracle_gate_passed": false,
+  "warning": "Validation-label hindsight selection is impossible at inference; first-token-only whole-window routing would be causal but weaker; assets and CPU unqualified",
+  "no_test_scoring": true
+}

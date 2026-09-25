@@ -1,5 +1,16 @@
 # AI assistance disclosure
 
+## Stage162 sparse second-expert oracle (25 September 2026)
+
+Codex designed, preregistered, implemented and audited a validation-only
+hindsight upper bound for calling the rejected Stage155 Transformer on a
+subset of independent windows. At a 30% window budget the impossible oracle
+reached only 1.388114 BPB, and even unbounded selection reached 1.376080.
+The predeclared 1.33 gate failed; Codex stopped without a quantized router,
+CPU claim or test score. The oracle uses validation labels after prediction
+and must never be used as an inference rule. This is substantive AI-led
+diagnostic work.
+
 ## Stage161 train-only frequency-focus loss (25 September 2026)
 
 Codex used prior error allocation to design, implement, preregister, execute

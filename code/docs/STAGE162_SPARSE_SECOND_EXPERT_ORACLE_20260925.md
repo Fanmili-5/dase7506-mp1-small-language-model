@@ -38,3 +38,21 @@ finite log-probs and exact unconditional 50:50 score before computing oracle
 cells. Save the newly computed Stage155 target stream with its source hashes.
 Only validation is read; test remains untouched. No labels or target-derived
 groups may be used by a future predictor.
+
+## Observed hindsight bound and decision
+
+Both frozen streams reproduced the prior complete-validation scores:
+Stage143 **1.399686162**, Stage155 **1.409877270**, and unconditional
+50:50 mixture **1.376182664**. Of 1,472 independent windows, the mixture
+improved 1,435. The impossible hindsight oracle scored **1.388113825 BPB**
+with at most 30% of windows receiving the second expert; 35% scored
+1.386672332, 50% scored 1.382900460, and even unbounded selection scored
+only **1.376079920**. The 30% cell misses the preregistered <=1.33 gate by
+0.058114 BPB and does not approach the actual <1.35 target. This is not an
+inference result: each selected window was picked from its true validation
+loss, which a causal gate cannot know. Because almost every window benefits
+slightly, sparse window routing forfeits most of the ensemble gain. Stop
+this route without quantization, gate training, CPU qualification or test
+scoring. The paired target arrays, frozen hashes and oracle table are under
+`../results/stage162-evidence/`; a separate local NumPy arithmetic check
+reproduced the 30% and unbounded BPBs exactly.

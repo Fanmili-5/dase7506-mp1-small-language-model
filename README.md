@@ -113,6 +113,12 @@ prefix. Initial model predictions matched exactly. Its matched 2,400-step
 endpoint was **1.521144191 BPB**, worse than the Stage54 control's
 **1.519950369 BPB**, so the predeclared continuation gate failed. No new
 inference candidate or test score resulted; see the Stage161 plan/evidence.
+Stage162 then tested an intentionally unattainable hindsight upper bound for
+selectively using Stage155 in only 30% of independent windows. Even with
+validation labels to choose the best windows, complete BPB was **1.388114**;
+unbounded oracle selection reached only **1.376080**. Since this misses the
+predeclared <=1.33 feasibility gate, no quantized dual-model router was built
+or test-scored. See the Stage162 plan and evidence.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
