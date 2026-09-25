@@ -34,3 +34,14 @@ pilot would still need a fresh long-run plan, complete compact CPU validation,
 three-repeat CPU/RAM/assets audit, and clean-extract reproduction to replace
 Stage143. The test split remains untouched. A pilot gain is not a claim that
 the 1.35 target has been reached.
+
+## Feasibility result
+
+The one-update Windows preflight passed. Stage105 GPU teacher target log
+probabilities differed from the Stage143 cache by at most **9.0599e-6**;
+the fixed teacher mixture's maximum log-normalization error was
+**9.5740e-7**. One train-only batch-16 forward/backward took **0.8016 s**
+after initialization and peak CUDA allocation was **1,471,342,080 bytes**.
+All four fixed thresholds pass, authorizing the 900-step pilot. The raw
+hash-pinned record is in `../results/stage157-evidence/preflight.json`.
+These measurements do not establish pilot quality or inference eligibility.
