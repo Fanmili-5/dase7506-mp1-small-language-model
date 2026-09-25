@@ -203,6 +203,18 @@ feature graph was **1.438569x** the Stage143 feature time, beyond the fixed
 1.25x pilot-admission threshold. It was stopped **before training**; there
 is no Stage177 validation BPB or deployable checkpoint. See
 `code/docs/STAGE177_PARALLEL_GLOBAL_LOCAL_MIXER_PLAN_20260926.md`.
+Stage178 reviewed output-layer alternatives before another architecture run:
+the matched two-component softmax mixture, untied output matrix, frozen
+output residual and contextual spelling head had all failed their respective
+quality comparisons. It is a triage record, not a new model or score; see
+`code/docs/STAGE178_OUTPUT_HEAD_TRIAGE_20260926.md`.
+Stage179 kept the Stage54 architecture, seed, data, schedule and 58,982,400
+primary training targets, changing only main dropout from 0.10 to 0.20.
+Its prespecified last-five average scored **1.444744045 CPU FP32 validation
+BPB**, worse than the same-target Stage54 control **1.428594045**. The
+predeclared 0.015 advancement gate failed; no continuation or test score
+followed. The full record and auditor are under `code/docs/`, `code/results/`
+and `code/scripts/` as Stage179. Stage143 remains unchanged.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
@@ -543,7 +555,7 @@ disclosure and pending review responsibilities.
 | `code/docs/EXPERIMENT_PLAN.md` | Development protocol and freeze policy. |
 | `code/docs/WINDOWS_HANDOFF.md` | Exact Mac-to-Windows transfer and CUDA checklist. |
 | `code/docs/AI_ASSISTANCE.md` | Required substantive AI-assistance disclosure. |
-| `REPORT.pdf` | Eight-page final report with methods, ablations, resources, limitations, and reproduction details. |
+| `REPORT.pdf` | Historical Stage10 report; **not** the final Stage143 report. |
 
 ## Windows RTX 3070 Ti quick start
 

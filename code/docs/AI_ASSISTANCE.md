@@ -380,3 +380,16 @@ causal attention and gated convolution within the existing Transformer,
 not an original architecture claim. The student must understand the
 additional branch, its zero-start initialization and the distinction between
 feature-only timing and complete submission resource qualification.
+
+## Stages178–179 output-head triage and dropout control assistance
+
+Codex synthesized the existing output-head comparisons and recorded why they
+did not justify another mixture-of-softmax or head-only training run. It then
+selected, preregistered, implemented, unit-tested, remotely ran and audited one
+Stage54-matched dropout-0.20 control, including fixed seed, train-target count,
+checkpoint averaging, independent CPU FP32 validation and source hashes. The
+candidate regressed and was rejected; no test score or new submission model
+was produced. The student must understand the one-variable comparison,
+training-only versus inference behavior of dropout, and the failed fixed
+advancement gate. This is substantive AI assistance, not evidence that every
+regularization method fails.
