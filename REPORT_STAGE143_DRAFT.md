@@ -158,7 +158,10 @@ Reproduction from `code/`, in an environment installed per
 ```text
 python scripts/verify_fixed_files.py
 python -m unittest discover -s tests -v
-python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output results/stage143-reproduction.json
+python evaluate.py \
+  --checkpoint checkpoints/stage143-openvino-order6.pt \
+  --device cpu --precision fp32 --threads 4 \
+  --split validation --output results/stage143-reproduction.json
 ```
 
 After the final freeze, use the same exact checkpoint/source bundle with
