@@ -19,6 +19,7 @@ is not evidence that any current predictor attains it.
 | Stage175 answer-aware expert oracle | 1.300186476 | Unattainable lower bound for a per-target choice of the frozen experts | Uses the correct target to choose an expert; illegal at inference |
 | Stage188 same-support Witten–Bell count swap | 1.414884002 | Complete Windows CPU FP32 validation of a train-only, frozen-gate alternative | Regressed; no follow-on resource qualification |
 | Stage189 fixed tokenizer-pair support diagnostic | 1.399096002 | Complete Windows CPU FP32 diagnostic with zero masked true train/validation pairs | Gain of only 0.000590160 BPB fails predeclared 0.015 gate; no inference/resource qualification |
+| Stage190 fixed ASCII canonical-pair diagnostic | 1.399105615 | Complete Windows CPU FP32 diagnostic with zero masked true train/validation pairs | Gain of only 0.000580547 BPB fails predeclared 0.015 gate; no inference/resource qualification |
 
 The primary records are [Stage143 qualification](../results/stage143-evidence/final.json),
 [Stage85 qualification](../results/stage85-evidence/final.json),
@@ -28,7 +29,8 @@ The primary records are [Stage143 qualification](../results/stage143-evidence/fi
 [Stage176 cross-fit](../results/stage176-evidence/causal-gate-crossfit.json),
 [Stage183 fusion](../results/stage183-expert-fusion.json), and
 [Stage188 validation](../results/stage188-evidence/validation.json), and
-[Stage189 validation](../results/stage189-evidence/validation.json).
+[Stage189 validation](../results/stage189-evidence/validation.json), and
+[Stage190 validation](../results/stage190-evidence/validation.json).
 The Stage155 standalone score is recorded in Stage156's complementarity
 result. This table is an audit of the listed leading alternatives, **not** an
 exhaustive proof that no untested architecture can beat Stage143.

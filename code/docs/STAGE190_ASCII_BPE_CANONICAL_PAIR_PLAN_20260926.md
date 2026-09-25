@@ -40,3 +40,35 @@ CPU/RAM/asset qualification only if complete validation improves by at least
 masked. Otherwise stop this exact pure-ASCII canonical-pair route; do not
 change alpha, token class or rule after inspecting validation. Stage143's
 checkpoint, graph, tokenizer, scorer and test split stay unchanged throughout.
+
+## Complete result and stop decision
+
+The [incidence audit](../results/stage190-evidence/incidence.json) identified
+773 pure ASCII-letter vocabulary symbols and checked all 597,529 ordered
+pairs. Exactly **35,039** pairs were noncanonical under the fixed tokenizer;
+their sorted-pair SHA-256 was
+`1026fb371e22982b4d77a5d45aee0bbce83588e799f7a555327d15a9565720af`.
+None occurred as a true adjacent pair in **3,613,342 train** or **376,599
+validation** targets. The audit script SHA-256 was
+`230705f1ab39e2abb59bb825ecd1def57a0abcad164983996847964f6b665819`.
+This passes the fixed incidence gate; it is not a universal formal guarantee
+on unseen text.
+
+The unchanged Windows CPU FP32 four-thread Stage143 run then covered all
+**1,472 validation windows**, 376,599 targets and 1,148,007 bytes. Its
+reference score reproduced **1.399686162042141 BPB**. With the sole fixed
+`alpha=0.9` adjustment, the [complete diagnostic](../results/stage190-evidence/validation.json)
+scored **1.3991056149471561 BPB**, a gain of only
+**0.0005805470949848957 BPB**. Both halves improved (217.81 and 244.15
+nats), no true target was suppressed, and maximum normalization error was
+3.34e-6. Mean removed mass was 0.00126065/0.00138579 in the two halves.
+The score script SHA-256 was
+`4eecf05416c0d347628376713fb493a1432614133f8039736cab97736806c4aa`.
+Neither script opened or scored test.
+
+The 0.015-BPB advancement gate fails by about **26×**. Stop this exact route:
+no inference implementation, resource claim, checkpoint replacement or test
+score. Along with Stage189's similarly tiny gain, this is evidence against
+more *nearby tokenizer-pair-mask variants* as a useful deadline-time route;
+it does not prove every tokenizer-state model would fail. Stage143 remains
+the protected, resource-qualified development candidate.

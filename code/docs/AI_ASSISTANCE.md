@@ -1,5 +1,16 @@
 # AI assistance disclosure
 
+## Stage190 canonical ASCII-letter pair diagnostic (26 September 2026)
+
+Codex designed, preregistered, implemented and ran a fixed-tokenizer
+follow-up to Stage189. It constructed a 35,039-pair noncanonical mask from
+all ordered pairs of pure ASCII-letter BPE symbols, checked zero true-pair
+incidence on train/validation, and measured one fixed 0.9 adjustment on
+complete Windows CPU FP32 validation. The 0.000581-BPB gain missed the
+declared 0.015 advancement gate, so Codex stopped without inference
+deployment or test scoring. The student must review the mask's causal
+construction, empirical-not-universal safety status and negative decision.
+
 ## Stage189 tokenizer-pair support diagnostic (26 September 2026)
 
 Codex used a failure-analysis/composition brainstorming framework to propose
