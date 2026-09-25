@@ -1,13 +1,13 @@
 {
   "purpose": "archived_training_time_record_sum_not_complete_project_search_cost",
-  "metrics_records": 60,
-  "positive_train_seconds_records": 58,
+  "metrics_records": 61,
+  "positive_train_seconds_records": 59,
   "missing_train_seconds_record_paths": [
     "results/stage136-evidence/metrics.json",
     "results/stage169-evidence/metrics.json"
   ],
-  "raw_sum_reported_train_seconds": 48662.33819419934,
-  "raw_sum_reported_train_hours": 13.517316165055373,
+  "raw_sum_reported_train_seconds": 50596.95189009953,
+  "raw_sum_reported_train_hours": 14.05470885836098,
   "records": [
     {
       "metrics_path": "results/stage109-evidence/metrics.json",
@@ -338,6 +338,16 @@
       "train_seconds": 643.5981539000059,
       "other_reported_elapsed_seconds": null,
       "checkpoint_sha256": "f2f2b19759410cec8a47854fb59129ca34ced68e66db51ae56cce22ccd6e7a8f"
+    },
+    {
+      "metrics_path": "results/stage179-evidence/metrics.json",
+      "metrics_sha256": "2aa00d62749554b7860317c4b2a5769d4efa63e14098b0070b2cdc5427b0848e",
+      "run_path": "results/stage179-evidence/run.json",
+      "run_sha256": "576d6ed4ee661ed50858075241c2b82b21bc49aa65b6d9f8ef424099361c1020",
+      "reported_device": "cuda:0",
+      "train_seconds": 1934.6136959001888,
+      "other_reported_elapsed_seconds": null,
+      "checkpoint_sha256": "3b1d4cf2d3657a7c162385df044400a067faa2ea378421d2a6369d1e133b7936"
     },
     {
       "metrics_path": "results/stage18-completed-evidence/H-embedding-drop/metrics.json",

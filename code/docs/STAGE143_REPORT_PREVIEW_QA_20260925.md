@@ -57,3 +57,17 @@ footers. The tracked historical `REPORT.pdf` hash remains unchanged at
 `44607086c854236627d2a375f84a1e92fa8dc2f16b65122c9bb17308c0413c9b`.
 This is still only a development preview; it has no Stage143 test score,
 release manifest or final link audit.
+
+On 26 September (UTC+8), the report draft was refreshed with the Stage178
+output-head triage, the completed Stage179 stronger-dropout regression and
+the recalculated archived search-cost audit (**61** distinct metrics files,
+**59** comparable training-time fields, **50,596.95 seconds**). The latest
+ignored PDF is **three A4 pages / 77,118 bytes**, SHA-256
+`3d60e89c24b29b3c89a5200f3352bfa40186848b8453a93363c2930b071e3713`.
+All three pages were rendered to 1,200-pixel PNGs and visually inspected:
+the table, section transitions, hashes, command block, references, page
+numbers and development watermark are legible, with no clipping or orphaned
+fourth page. Text extraction confirms Stage178/179, the updated search-cost
+figures, `PENDING FREEZE` and three `NOT FOR SUBMISSION` footers. This does
+not turn the preview into the required matching final report; Stage143 remains
+untested and unfrozen.

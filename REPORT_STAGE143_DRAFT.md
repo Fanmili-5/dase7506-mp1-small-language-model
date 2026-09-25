@@ -71,8 +71,8 @@ the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
 deduplicated project-wide search-cost ledger is still pending. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
-60 distinct metrics files: 58 comparable `train_seconds` fields sum to
-**48,662.34 seconds (13.52 hours)** of reported training, including the
+61 distinct metrics files: 59 comparable `train_seconds` fields sum to
+**50,596.95 seconds (14.05 hours)** of reported training, including the
 accepted lineage and rejected trials. The Stage136 record reports only
 broader elapsed time; the Stage169 aggregate record has no `train_seconds`
 because its two arm-specific metrics records supply those durations. Both
@@ -194,22 +194,22 @@ validation BPB; Stages157/158 distilled a stronger, over-budget teacher only
 to about 1.403. Spelling residuals, frequency-weighted loss, train-only
 nearest-neighbor retrieval, dilated convolution and input masking failed
 their gates (Stages160/161/163-165). Stage168 sharpness-aware training
-regressed versus its matched Stage54 control (1.522015 vs 1.519950 BPB)
-at 1.889x training time. Stage169 teacher transfer improved Stage143 by
-only 0.000246 BPB, below its 0.005 gate. Stage174's byte auxiliary loss
-was slightly worse than its matched control. See the linked stage records
-for exact protocols and failed candidates; none was promoted or test-scored.
+regressed versus its matched Stage54 control (1.522015 vs 1.519950 BPB).
+Stage169 teacher transfer improved Stage143 by only 0.000246 BPB, below
+its 0.005 gate; Stage174's byte auxiliary loss was slightly worse than
+control. None was promoted or test-scored; protocols are in the records.
 
 Stage175's **answer-aware, non-deployable** neural/MKN oracle reached
 1.300186476 validation BPB. A legal gate would need about half this
 hindsight gain to reach 1.35. Stage176's richer causal-feature gate, fitted
 on one validation half and evaluated on the other in both directions,
 instead scored 1.400044877 BPB; its validation-fitted coefficients were
-not deployed. Stage177's parallel attention/convolution Transformer passed
-input-only parity and asset screens but failed its CPU-feature speed gate
-at 1.438569x the Stage143 graph, so it was not trained. These diagnostics
-are not submission scores; Stage162's sparse two-model oracle is also
-non-deployable.
+not deployed. Stage177's parallel attention/convolution Transformer failed
+its CPU-feature speed gate at 1.438569x the Stage143 graph before training.
+Stage178 reviewed prior negative output-head comparisons. Stage179's fixed
+7,200-step dropout-0.20 control scored 1.444744045 versus the matched
+Stage54's 1.428594045 BPB, so it stopped. These are not submission scores;
+Stage162's sparse two-model oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows
