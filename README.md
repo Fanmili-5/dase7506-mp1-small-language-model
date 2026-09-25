@@ -50,6 +50,9 @@ Stage151 located 57,247 validation targets whose train frequency is 100–999
 and whose ID is absent from the current window prefix; their mean target NLL
 is 4.700063 nats. This is error allocation, not a permitted inference gate.
 See `code/docs/STAGE151_ERROR_ALLOCATION_AND_NEXT_MECHANISM_20260925.md`.
+Stage152's train-only byte-suffix lookup improved the target-only validation
+diagnostic by at most **0.000704 BPB**, far below its 0.010 gate, so it was
+not deployed; see `code/docs/STAGE152_BYTE_SUFFIX_EXPERT_DIAGNOSTIC_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
