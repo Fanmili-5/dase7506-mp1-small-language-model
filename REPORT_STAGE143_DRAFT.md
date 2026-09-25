@@ -71,8 +71,8 @@ the accepted neural lineage**, excluding train-only count construction,
 rejected/failed searches, validation, export and runtime audits. A complete
 deduplicated project-wide search-cost ledger is still pending. A separate
 [archive audit](code/results/project-training-cost-audit.json) enumerates
-61 distinct metrics files: 59 comparable `train_seconds` fields sum to
-**50,596.95 seconds (14.05 hours)** of reported training, including the
+62 distinct metrics files: 60 comparable `train_seconds` fields sum to
+**51,569.31 seconds (14.32 hours)** of reported training, including the
 accepted lineage and rejected trials. The Stage136 record reports only
 broader elapsed time; the Stage169 aggregate record has no `train_seconds`
 because its two arm-specific metrics records supply those durations. Both
@@ -209,7 +209,12 @@ its CPU-feature speed gate at 1.438569x the Stage143 graph before training.
 Stage178 reviewed prior negative output-head comparisons. Stage179's fixed
 7,200-step dropout-0.20 control scored 1.444744045 versus the matched
 Stage54's 1.428594045 BPB, so it stopped. These are not submission scores;
-Stage162's sparse two-model oracle is also non-deployable.
+Stage180's hidden-matrix Muon optimizer pilot scored 1.534018833 at the
+matched 2,400-step endpoint, versus AdamW's 1.519950369; its 0.020-BPB
+advancement gate failed and it cost 1.52x as much training time. Its
+[adapted algorithm and license](code/docs/STAGE180_MUON_OPTIMIZER_PILOT_20260926.md)
+are disclosed. These are not submission scores; Stage162's sparse two-model
+oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows
