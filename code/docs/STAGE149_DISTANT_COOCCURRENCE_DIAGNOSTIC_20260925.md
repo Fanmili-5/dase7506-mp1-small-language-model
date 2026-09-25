@@ -25,3 +25,17 @@ BPB** over Stage143, because the remaining 0.049686 gap demands a much larger
 mechanism than the prior lookup tests. Main risk: the Transformer already
 uses topical context, so pairwise co-occurrence may add little and might
 overweight frequent but uninformative tokens.
+
+## Result and decision
+
+The prespecified complete-validation target-only scan found **no positive
+mixture** in any of its 16 nonzero cells. The least harmful tested cell,
+distance `5..16`, prior strength `100`, weight `0.02`, worsened Stage143 from
+**1.399686162** to **1.404737480 BPB**. The `5..32` variant was slightly
+worse. All four rows, fixed hashes and train-pair counts are under
+`../results/stage149-evidence/distant-cooccurrence-scan.json`.
+
+Decision: reject this topic expert; no inference matrix, CPU qualification or
+test score was produced. The result is specific to this pairwise count model
+and these prespecified smoothing/weight choices, not a proof that every
+contextual-topic model must fail.
