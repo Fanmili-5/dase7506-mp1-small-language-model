@@ -50,6 +50,11 @@ The checkpoint uses the relative, hash-checked feature graph at
 `inference_assets/stage143-stage92-features.onnx`. Keep both files alongside
 the source. On Windows PowerShell, use backslashes in paths if needed. This
 command scores validation only; do not use test to select or tune a candidate.
+Before finalizing Stage143, `python scripts/freeze_stage143_method.py` is a
+read-only preflight of committed inference files and qualification evidence.
+An eligible message is **not** a method freeze; the explicit freeze-record
+step is described in
+[`docs/SUBMISSION_PORTAL_READINESS_20260926.md`](docs/SUBMISSION_PORTAL_READINESS_20260926.md).
 
 ## 2. Train and evaluate
 

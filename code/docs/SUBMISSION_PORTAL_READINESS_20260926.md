@@ -21,7 +21,13 @@ Do not treat the live site's later date as an extension of the written guide.
 1. Freeze the exact method, source commit, checkpoint and inference assets
    using validation-only evidence. Stop development selection before reading
    the Stage143 test result. The [pre-test bundle audit](../results/stage143-pretest-bundle-evidence/audit.json)
-   is a packaging rehearsal, not the freeze.
+   is a packaging rehearsal, not the freeze. The read-only
+   `python scripts/freeze_stage143_method.py` preflight checks the exact 18
+   committed inference files, hashes/sizes, validation/resource evidence
+   and clean Git state. `eligible_for_freeze_only` does **not** freeze or
+   test. Only after the student chooses to freeze should its explicit
+   `--confirm --output <new freeze-record path>` mode write the source-commit
+   and asset manifest, before any test command is run.
 2. Run the unchanged complete-test CPU FP32 scorer on the frozen predictor;
    submit **its** BPB, not the 1.399686162 validation BPB or historical Stage10
    test score. Record test target count, byte count, full score JSON and hashes.
