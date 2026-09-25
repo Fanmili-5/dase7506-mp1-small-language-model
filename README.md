@@ -46,6 +46,10 @@ resource preflight, but its matched 2,400-step validation result was
 **1.508442880 BPB** versus Stage54's **1.519950369**. The 0.011507 gain missed
 its predeclared 0.015 full-training gate. It was not promoted or test-scored;
 see `code/docs/STAGE150_DEPTH10_HYBRID_PLAN_20260925.md`.
+Stage151 located 57,247 validation targets whose train frequency is 100–999
+and whose ID is absent from the current window prefix; their mean target NLL
+is 4.700063 nats. This is error allocation, not a permitted inference gate.
+See `code/docs/STAGE151_ERROR_ALLOCATION_AND_NEXT_MECHANISM_20260925.md`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the
