@@ -171,6 +171,14 @@ while the hard-only control worsened to **1.403915928 BPB**. The prespecified
 0.005 gain gate failed, so no continuation, compact export, resource promotion
 or test score followed. See the Stage169 plan and evidence under `code/docs/`
 and `code/results/`.
+Stage174 tested training-only next-token first/last ByteLevel supervision on
+the matched Stage54 hybrid model. Its fixed 2,400-step complete-validation
+endpoint was **1.520019189 BPB**, slightly worse than the same-target control
+**1.519950369**; all eight interim points were also worse. Its predeclared
+0.020 continuation gate failed, so no long run, inference asset, resource
+promotion or test score followed. See
+`code/docs/STAGE174_BYTE_AUXILIARY_SUPERVISION_PLAN_20260925.md` and the raw
+records under `code/results/stage174-evidence/`.
 
 **Historical resource-qualified development candidate: Stage85 calibrated
 mixture-aware hybrid, 1.403024133 CPU FP32 validation BPB.**  It retains the

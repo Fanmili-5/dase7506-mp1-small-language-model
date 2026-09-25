@@ -76,3 +76,29 @@ objection testable before paying for a long run.
 This is a one-candidate, one-weight pilot, not a grid or seed search. If the
 pilot fails, preserve the negative result and do not extend it. The Stage143
 checkpoint/graph, fixed data, tokenizer and evaluator remain untouched.
+
+## Completed pilot and decision
+
+The Windows RTX 3070 Ti scheduled task completed normally (task result 0),
+with all 2,400 updates and **19,660,800** primary target presentations.
+Training took **643.60 s** excluding complete-validation calls; peak CUDA
+allocated/reserved memory was **5.671/5.989 GB**. The exact remote checkpoint
+SHA-256 matched the metrics record:
+`f2f2b19759410cec8a47854fb59129ca34ced68e66db51ae56cce22ccd6e7a8f`.
+All 17 recorded source hashes match the tracked local files; fixed course
+files passed verification again after the run. The checkpoint remains on the
+Windows host and is not an inference/submission asset.
+
+At the predeclared step 2,400, complete GPU FP32 validation over **376,599
+targets / 1,148,007 bytes** was **1.5200191887 BPB**. The same-budget Stage54
+control was **1.5199503686 BPB**: the new loss was worse by **0.0000688201
+BPB**, rather than better by the required 0.020. All eight prespecified
+300-step validation points were slightly worse than their Stage54 controls.
+This is a bounded negative result for the chosen first/last-byte objective
+and fixed 0.2 weight, not proof that all character-aware supervision fails.
+
+The continuation gate **fails**. Do not run a 7,200-step extension, compact
+export, CPU/RAM/asset qualification or test scoring for Stage174. Stage143
+remains unchanged. The [run, metrics, progress and completion receipt](../results/stage174-evidence/)
+are tracked; the raw PowerShell transcript, which includes the local Windows
+account name, remains on the private training host instead of the repository.
