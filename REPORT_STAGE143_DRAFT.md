@@ -58,9 +58,15 @@ count-aware and distillation stages change the neural expert and gate before
 the exact Stage105 predictor is packaged as Stage143. All checkpoints in the
 lineage inherit their prior training cost. The detailed schedules, seeds,
 target presentations and negative screens are retained in `code/docs/`,
-`code/results/` and the code scripts. Before final submission, tabulate the
-accepted lineage's cumulative processed targets/GPU time and the broader
-search cost without double-counting checkpoints. **PENDING COST AUDIT.**
+`code/results/` and the code scripts. A hash-linked
+[accepted-lineage audit](code/results/stage143-evidence/lineage-cost.json)
+totals **255,225,110 documented primary training-target presentations** and
+**7,754.94 seconds of recorded training time** across Stages54/56/61/63/
+65/67/71/92. R-Drop uses two stochastic passes for many of these targets;
+the count is not FLOPs or unique corpus positions. This is a **lower bound on
+the accepted neural lineage**, excluding train-only count construction,
+rejected/failed searches, validation, export and runtime audits. A complete
+deduplicated project-wide search-cost ledger is still pending.
 
 Stage143 changes only inference packaging relative to Stage105: it stores
 one 31,805,041-byte ONNX feature graph and a 23,824,895-byte checkpoint

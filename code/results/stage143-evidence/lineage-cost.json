@@ -1,0 +1,96 @@
+{
+  "purpose": "accepted_neural_lineage_cost_lower_bound_not_total_search",
+  "stages": [
+    54,
+    56,
+    61,
+    63,
+    65,
+    67,
+    71,
+    92
+  ],
+  "records": [
+    {
+      "stage": 54,
+      "target_field": "primary_targets",
+      "primary_training_target_presentations": 58982400,
+      "train_seconds": 1931.2451414999086,
+      "validation_seconds": 50.48455020005349,
+      "run_sha256": "1feae73435a120082c99a31abd415ce2f2b519bbfaf98c5d4cbb479b666b106b",
+      "metrics_sha256": "6e10497b83f1f3eb60aa5e257013dea664ced775a496ca5cfe33be56a2bb6d03"
+    },
+    {
+      "stage": 56,
+      "target_field": "additional_primary_targets",
+      "primary_training_target_presentations": 39321600,
+      "train_seconds": 1282.554690299963,
+      "validation_seconds": 35.89623890002258,
+      "run_sha256": "a7dceb984e9eef6150b150540d3ba8b3569d734b99e2705a1abe81921829f4d5",
+      "metrics_sha256": "b55b852e37f16f37f9e2565cc487152752aebc96f88642cb6c1210ff5caa87ba"
+    },
+    {
+      "stage": 61,
+      "target_field": "additional_primary_targets",
+      "primary_training_target_presentations": 39321600,
+      "train_seconds": 1276.0074346999754,
+      "validation_seconds": 35.608084800012875,
+      "run_sha256": "dd1a59e8dc5d7efb8984cac5a7ca666f4fd8510d034c5b83e4eee7880c9025b1",
+      "metrics_sha256": "b2cdfd2d6ea3b1726d903710fa7c934d8da026843e652078dd299ef573ee5cfc"
+    },
+    {
+      "stage": 63,
+      "target_field": "additional_primary_targets",
+      "primary_training_target_presentations": 29491200,
+      "train_seconds": 961.1532462000614,
+      "validation_seconds": 27.155473099905066,
+      "run_sha256": "b7a377d4c2c3ff60892d17fb6ceb9a3290521d9041c781696161cb2b3c9a0b45",
+      "metrics_sha256": "3e944dab518ff711542eb6a1f575a008bb17eac75eea6093afafd96af2abf9af"
+    },
+    {
+      "stage": 65,
+      "target_field": "additional_primary_targets",
+      "primary_training_target_presentations": 29491200,
+      "train_seconds": 991.8420971998712,
+      "validation_seconds": 27.56670270016184,
+      "run_sha256": "d7a53b69ebdedadd3f5ddcd005522386b6e9402666f523de566ba59eacbfed76",
+      "metrics_sha256": "a3e07bdc3c575a1665ddfa19f0f3e24471256e16086e5746acce6f9692129bf7"
+    },
+    {
+      "stage": 67,
+      "target_field": "total_train_target_presentations",
+      "primary_training_target_presentations": 18066710,
+      "train_seconds": 80.93058169994038,
+      "validation_seconds": 12.180149200023152,
+      "run_sha256": "a0cdd9a15a5f685f42e047a4d8fba2e56ef9048d57fa62586ef8523615bb5d4e",
+      "metrics_sha256": "88bc629bdd2b9ebd76dec8a80b0f9ff59be62a5844fa383ac7e9273d4b437594"
+    },
+    {
+      "stage": 71,
+      "target_field": "primary_targets",
+      "primary_training_target_presentations": 29491200,
+      "train_seconds": 885.9378481000313,
+      "validation_seconds": 52.628419299959205,
+      "run_sha256": "0a18e9fea11961b34e440935ea67a9ae2b32963f6cc2d7becd7ce6439b7d4615",
+      "metrics_sha256": "3afc42f4e209a94f5b8c991d6a4c6d99c24a0b9b6d066a39676f800dec4376a2"
+    },
+    {
+      "stage": 92,
+      "target_field": "primary_targets",
+      "primary_training_target_presentations": 11059200,
+      "train_seconds": 345.2712033999269,
+      "validation_seconds": 18.883353400044143,
+      "run_sha256": "470998ff34ba5a42eba6e0fc426d34a4c17cc30c674576fc83bff14b58deba09",
+      "metrics_sha256": "7e6bae9fd9a7e44346e5741dd0f44ad0f9a181ac8e69436de2971087506b7d19"
+    }
+  ],
+  "cumulative_primary_training_target_presentations": 255225110,
+  "cumulative_recorded_train_seconds": 7754.942243099678,
+  "cumulative_recorded_validation_seconds": 260.40297160018235,
+  "caveats": [
+    "Stage67 counts each full training pass's labels; other stages report their documented primary targets.",
+    "R-Drop causes two stochastic presentations of many primary targets and raises training compute; the primary count is not a full FLOP measure.",
+    "This excludes count-table construction, rejected/failed search runs, preflights, export, CPU audits and general overhead.",
+    "Stages54/56/61/63/65/67/71/92 are the accepted neural-weight lineage feeding Stage143; do not interpret these sums as total project search cost."
+  ]
+}
