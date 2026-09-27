@@ -220,8 +220,10 @@ run. Stage186's four narrow parallel attention paths passed an input-only
 resource screen but improved the matched 2,400-step endpoint by only
 **0.005196 BPB**, below its 0.020 gate. These are not submission scores;
 Stage188's same-support Witten–Bell count swap regressed to **1.414884002
-BPB** on complete CPU FP32 validation and was rejected. Stage162's sparse
-two-model oracle is also non-deployable.
+BPB** on complete CPU FP32 validation and was rejected. Stage189/190's
+fixed-tokenizer support screens improved by only **0.000590/0.000581 BPB**,
+below their 0.015 gate, and were not deployed. Stage162's sparse two-model
+oracle is also non-deployable.
 
 The validation score reflects many sequential decisions on one development
 split and may be optimistic. The course CPU may differ from the Windows
