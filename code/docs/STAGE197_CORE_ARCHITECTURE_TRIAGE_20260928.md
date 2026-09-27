@@ -67,3 +67,14 @@ three-repeat course time/RAM/assets qualification. A score <=1.35 on full
 validation remains the goal; an improvement smaller than that is not mission
 completion. No test access follows without a new method freeze and explicit
 submission decision. Preserve the protected Stage143 checkpoint throughout.
+
+## Synthetic GPU preflight (before full-run quality)
+
+The existing Stage153 causal/normalization tests passed on Windows. A stricter
+synthetic batch-32, 256-token BF16 preflight with two complete AdamW updates
+also passed: finite loss/gradient, maximum log-probability normalization error
+`4.77e-7`, zero measured future-prefix perturbation, peak allocated
+7,893,157,376 bytes and peak reserved 8,287,944,704 bytes on the 8,589,410,304
+byte RTX 3070 Ti. The 301 MB reserved-to-total margin is narrow, so the full
+run must be monitored for OOM; this preflight is not evidence of BPB or CPU
+resource compliance. Raw result: `code/results/stage197-shared-branch-gpu-preflight-v2.json`.
