@@ -32,14 +32,19 @@ def main() -> None:
     ids = torch.randint(0, 2048, (32, 256), device=device)
     targets = torch.randint(0, 2048, (32, 256), device=device)
     future_targets = torch.randint(0, 2048, (2, 32, 256), device=device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3,
+                                  betas=(.9, .999), weight_decay=.1)
     torch.cuda.synchronize(device)
     torch.cuda.reset_peak_memory_stats(device)
-    with training_autocast(device, precision):
-        loss, parts = model.rdrop_training_loss(ids, targets, future_targets)
-    if not torch.isfinite(loss):
-        raise FloatingPointError("Non-finite one-update synthetic loss")
-    loss.backward()
-    grad_norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0))
+    for _ in range(2):
+        optimizer.zero_grad(set_to_none=True)
+        with training_autocast(device, precision):
+            loss, parts = model.rdrop_training_loss(ids, targets, future_targets)
+        if not torch.isfinite(loss):
+            raise FloatingPointError("Non-finite synthetic optimizer-step loss")
+        loss.backward()
+        grad_norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0))
+        optimizer.step()
     torch.cuda.synchronize(device)
     allocated = torch.cuda.max_memory_allocated(device)
     reserved = torch.cuda.max_memory_reserved(device)
@@ -60,6 +65,7 @@ def main() -> None:
         "preflight_source_sha256": sha(Path(__file__)),
         "device_name": torch.cuda.get_device_name(device),
         "precision": precision, "batch": 32, "context": 256,
+        "synthetic_optimizer_steps": 2,
         "parameters": sum(p.numel() for p in model.parameters()),
         "synthetic_loss": float(loss.detach()), "grad_norm": grad_norm,
         "max_normalization_error": normalization,
