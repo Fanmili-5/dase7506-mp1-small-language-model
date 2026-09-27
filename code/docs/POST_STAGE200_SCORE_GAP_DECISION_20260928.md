@@ -46,6 +46,17 @@ regressive. A new candidate would need a distinct *core predictor* mechanism
 and an explicit same-target quality/resource gate; small post-hoc validation
 grids are not justified by this evidence.
 
+## 28 September Stage202 addendum
+
+One distinct core-layout hypothesis was then predeclared and tested:
+reordering the unchanged four causal-convolution/four attention blocks from
+alternating to local-first/global-later. Its same-seed, same-target 2,400-step
+complete validation endpoint was `1.521048958`, worse than the Stage54
+`1.519950369` control by `0.001098590`. The fixed +0.030 BPB continuation
+gate failed, so no full training, CPU predictor qualification or test followed.
+This rejects this ordering, not every future core architecture. See the
+Stage202 plan, result and raw evidence; Stage143 remains protected.
+
 ## Deadline-aware release boundary
 
 Keep Stage143's frozen checkpoint, source, graph and test record protected.
