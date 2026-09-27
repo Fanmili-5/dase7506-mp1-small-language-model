@@ -29,6 +29,10 @@ It stopped before full training, formal resources or test; Stage143 is unchanged
 The [Stage205 shared low-rank pair variant](code/docs/STAGE205_FACTORIZED_PAIR_RESULT_20260928.md)
 also stopped: its fixed matched-pilot gain was 0.010380 BPB, slightly below
 Stage204 and far below the same 0.030 gate. No new test was run.
+The [Stage206 causal linear-memory core](code/docs/STAGE206_LINEAR_MEMORY_RESULT_20260928.md)
+passed an input-only CPU/GPU feasibility screen but regressed to 1.535373 BPB
+against its same-step Stage54 control at 1.519950 BPB. It stopped at the
+predeclared 2,400-step endpoint; no full training or new test was run.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -637,7 +641,8 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-candidate-selection evidence audit, and report drafting. Human review and
+the later Stage192–206 architecture and objective pilots, candidate-selection
+evidence audit, and report drafting. Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.

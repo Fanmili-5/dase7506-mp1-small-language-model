@@ -555,3 +555,16 @@ the route without deployment or test scoring. This was substantive
 AI-assisted design, coding, execution and interpretation. The student must
 understand that the failure is for this exact frozen-gate swap, not proof
 that every count estimator is inferior.
+
+## Stage206 causal linear-memory pilot (28 September 2026)
+
+Codex selected the distinct within-window linear-memory core hypothesis,
+predeclared the comparison and stop gates, implemented its model, tests,
+export/resource preflight, matched Windows training launcher, and audited
+the complete validation endpoint and source/checkpoint hashes. The fixed
+candidate regressed against its same-step Transformer control and was stopped
+before full training, full CPU/RAM qualification or any new test scoring.
+This is substantive AI assistance in model design, implementation,
+execution and interpretation. The student must review and understand the
+causal prefix-sum computation and the negative quality result before
+submission.
