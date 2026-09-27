@@ -58,6 +58,8 @@ def main() -> None:
     ) + (
         CONFIG.as_posix(), "scripts/preflight_stage202_ordered_hybrid.py",
         "scripts/run_stage202_ordered_hybrid_pilot.py",
+        "scripts/start_stage202_ordered_hybrid_windows.ps1",
+        "scripts/run_stage202_ordered_hybrid_windows.ps1",
         "scripts/train_stage193_fresh_mixture_pilot.py",
         "docs/STAGE202_BOTTOM_LOCAL_TOP_GLOBAL_PLAN_20260928.md",
         "tests/test_stage202_ordered_hybrid.py",
