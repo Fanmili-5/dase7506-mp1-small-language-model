@@ -69,6 +69,49 @@ instruction conservatively until staff clarify the discrepancy. Publishing
 the student's ID/score or making the private repository public requires the
 student's explicit choice; no such choice is recorded here.
 
+## 28 September Stage203 and remaining-mechanism filter
+
+The predeclared 64-class, train-only context correction reproduced the frozen
+Stage143 complete-validation score and then **regressed to 1.426625728 BPB**;
+both fixed validation halves worsened. Its full-distribution causal and
+normalization checks passed, so this is evidence against that correction,
+not a failed measurement. No test run or deployment qualification followed.
+See the [Stage203 result](STAGE203_CLASS_CONTEXT_EXPERT_RESULT_20260928.md).
+
+A problem-first review of the remaining gap must not recycle nearby failures:
+
+- **More of the same training:** Stage155's larger neural model still improved
+  at its final checkpoint, but only 0.000718 BPB from step 6,900 to 7,200;
+  Stage109/120 continuations of related strong students regressed. This does
+  not prove all longer training fails, but it gives no evidence for the
+  roughly 0.05-BPB validation improvement needed from Stage143.
+- **Compress the complementary second neural expert:** The fixed 50:50
+  teacher's 1.376183 validation BPB is a nondeployable reference, still above
+  1.35; Stage157/158/169 single-student transfers ended at or above 1.39944.
+  Merely fitting the resource cap would not establish the target.
+- **Another count/class residual:** Exact suffix, word-prefix, same-support
+  Witten--Bell, and Stage203 class-context tests all failed material quality
+  gates. Changing their hyperparameters after seeing validation is not a
+  fresh mechanism.
+- **A new long-range core mixer:** This remains genuinely unmeasured only if
+  it is architecturally distinct from the prior local/global reorder,
+  dilated convolution, narrow parallel attention and top-1 MoE. It would
+  require a train-only causal implementation, an input-only CPU/asset screen,
+  and a predeclared matched-target pilot before an expensive full run. No
+  score or feasibility is inferred here.
+
+This filter changes the next action: do not launch another late-stage GPU run
+from a minor variation or a validation-tuned correction. Either produce a
+specific new core mechanism that first passes input-only feasibility, or
+prioritize the already frozen, honest fallback for the submission deadline;
+the latter is not acceptance of its 1.415658 BPB as meeting the student's
+1.38 minimum. The live [course form](https://xudongwu-0.github.io/courses/dase7506/#submit)
+read on 28 September states a **30 September 2026 (UTC+8)** score deadline,
+whereas the packaged guide asks for the first ID/score issue **before
+29 September**. Until clarified by staff, preserve the earlier date as a
+conservative operational deadline. No student ID or authorization to publish
+the below-threshold score has been supplied.
+
 Authoritative evidence: Stage143 final/freeze/test/resource JSON, Stage156
 complementarity and Stage175 oracle JSON, and Stage176/195/196/197/198/199/200
 plan/result documents and raw JSON under `code/results/`. This audit is not
