@@ -65,6 +65,15 @@ minor hyperparameter change.
 
 ## Boundary and next decision
 
+Stage200 then tested an independently predeclared, paper-inspired,
+training-only adaptive target margin. Its 2,400-step complete-validation
+endpoint was 1.518770072 BPB, only 0.001180297 better than the matched
+control and below the fixed 0.030 admission gain. It was stopped before full
+training, inference export, resource qualification or test. See the Stage200
+plan, result and raw JSON evidence. This additional rejection does not change
+the acceptance status: the only frozen complete-test score remains 1.415657617
+BPB, above the student's minimum 1.38.
+
 The assignment requires training from supplied training text, validation for
 development/model selection, an unchanged evaluator and a method freeze before
 test. Stage143 has already been frozen and test-scored. Its test result must
