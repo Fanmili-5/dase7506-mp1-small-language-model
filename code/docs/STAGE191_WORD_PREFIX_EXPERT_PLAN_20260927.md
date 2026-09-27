@@ -50,7 +50,9 @@ result cannot isolate a linguistic mechanism; it only tests this fixed expert.
    targets, active/correct coverage, and two fixed 736-window halves.
 5. A positive advancement screen requires the primary 0.10 cell to improve
    complete validation by **at least 0.015 BPB** and each half by at least
-   **0.005 BPB**. A smaller or one-sided gain stops this route. Even passing
+   **2,000 nats** of aggregate NLL. The half threshold avoids inventing a
+   per-half raw-byte denominator at a token-window boundary. A smaller or
+   one-sided gain stops this route. Even passing
    does not make a deployable score: build a causal inference implementation,
    estimate serialized table bytes against the remaining 11.3 MB headroom,
    and remeasure three CPU/RAM/asset runs before promotion. No test scoring.
