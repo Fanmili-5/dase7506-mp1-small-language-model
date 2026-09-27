@@ -88,3 +88,17 @@ the hash expression was rewritten using the exact modular identities
 bucket**, not merely the sampled inputs. A unit test compares the old and
 new expression exactly on 32,768 positions. A new preflight-b run must
 repeat every original gate; no threshold or architecture parameter changed.
+
+## Repaired preflight-b outcome, before training
+
+The new one-off Windows task completed with `admit_matched_training_pilot=true`.
+The maximum OpenVINO/eager hidden error was `3.69549e-6`; the random-weight
+feature graph was 41,229,894 bytes and conservative graph-plus-unchanged-
+assets projection was 65,497,409 bytes, below 67,108,864. Eight interleaved
+four-thread calls gave candidate/reference feature median ratio `0.983568`.
+One batch-32 BF16 synthetic optimizer step completed with 5,551,885,824
+allocated and 5,901,385,728 reserved GPU bytes, below the 8 GiB GPU total.
+All inputs were synthetic; no train/validation/test file was opened by the
+preflight. These numbers qualify only the planned matched training pilot,
+not a final CPU/RAM pass or a new BPB. Raw evidence is in
+[`../results/stage204-evidence/preflight-b.json`](../results/stage204-evidence/preflight-b.json).
