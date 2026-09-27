@@ -41,6 +41,15 @@ class HashedBigramTests(unittest.TestCase):
             self.assertTrue(torch.equal(matched.bigram_ids(ids)[:, 0],
                                         torch.zeros(2, dtype=torch.long)))
 
+    def test_reduced_hash_is_exactly_the_predeclared_hash(self):
+        torch.manual_seed(204017)
+        ids = torch.randint(0, 2048, (128, 256), dtype=torch.long)
+        model = student_stage204_hashed_bigram_rdrop.build_model(self.candidate)
+        old = ((ids[:, :-1] * 1_315_423_911
+                + ids[:, 1:] * 2_654_435_761) % 8192) + 1
+        torch.testing.assert_close(model.bigram_ids(ids)[:, 1:], old,
+                                   atol=0, rtol=0)
+
 
 if __name__ == "__main__":
     unittest.main()

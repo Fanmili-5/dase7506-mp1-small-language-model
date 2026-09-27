@@ -73,3 +73,18 @@ embedding scale, dropout, training objective or checkpoint sweep.
 Report both feasibility and quality failures explicitly. The course's
 existing frozen Stage143 full-test score 1.415657616535609 is not an
 acceptable <1.38 outcome, and this diagnostic cannot be called a submission.
+
+## Preflight-a export correction, before any quality outcome
+
+The first input-only preflight failed the `<=3e-4` OpenVINO/eager hidden-state
+parity gate: max difference 3.88936. ONNX Runtime matched eager within
+3.1e-6, while a minimal exported pair-ID graph showed 8,158/8,192 OpenVINO
+pair-ID mismatches and zero ONNX Runtime mismatches. This isolates an integer
+arithmetic lowering problem, not model quality. The preflight-a failure and
+diagnosis are retained unchanged. Before any training or validation score,
+the hash expression was rewritten using the exact modular identities
+`1315423911 mod 8192 = 1703` and `2654435761 mod 8192 = 6577`, with safe
+32-bit intermediates (<17 million). This preserves **every possible pair
+bucket**, not merely the sampled inputs. A unit test compares the old and
+new expression exactly on 32,768 positions. A new preflight-b run must
+repeat every original gate; no threshold or architecture parameter changed.

@@ -12,8 +12,10 @@ import student_hybrid_conv_rdrop
 
 
 PARENT_SHA = "2185db04f5f1ec44ad68005e8f7482e11114b3528528572c4497f6e9c07cbfe1"
-FIRST_MULTIPLIER = 1_315_423_911
-SECOND_MULTIPLIER = 2_654_435_761
+# Exact modulo-8192 reductions of the predeclared large multipliers.
+# Keeping intermediate arithmetic in int32 avoids an OpenVINO int64 Mod error.
+FIRST_MULTIPLIER = 1_703
+SECOND_MULTIPLIER = 6_577
 
 
 class HashedBigramHybridLM(student_hybrid_conv_rdrop.HybridConvRDropLM):
@@ -32,11 +34,12 @@ class HashedBigramHybridLM(student_hybrid_conv_rdrop.HybridConvRDropLM):
     def bigram_ids(self, ids: torch.Tensor) -> torch.Tensor:
         if ids.ndim != 2 or not 1 <= ids.shape[1] <= self.context:
             raise ValueError("ids must be independent [batch,time<=256] rows")
-        previous = F.pad(ids[:, :-1], (1, 0), value=0)
+        previous = F.pad(ids[:, :-1].int(), (1, 0), value=0)
+        current = ids.int()
         buckets = torch.remainder(previous * FIRST_MULTIPLIER
-                                  + ids * SECOND_MULTIPLIER,
+                                  + current * SECOND_MULTIPLIER,
                                   self.bigram_buckets) + 1
-        return torch.cat((torch.zeros_like(buckets[:, :1]), buckets[:, 1:]), dim=1)
+        return torch.cat((torch.zeros_like(buckets[:, :1]), buckets[:, 1:]), dim=1).long()
 
     def input_embeddings(self, ids: torch.Tensor) -> torch.Tensor:
         token = super().input_embeddings(ids)
