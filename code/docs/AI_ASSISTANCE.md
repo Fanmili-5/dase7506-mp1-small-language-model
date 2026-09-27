@@ -580,3 +580,15 @@ halves and was stopped before full CPU/RAM qualification or test scoring.
 This is substantive AI-assisted design, coding, experimentation and
 interpretation. The student must understand that the retrospective high-loss
 group cannot be detected from the true target at inference.
+
+## Post-Stage207 score-gap audit (28 September 2026)
+
+Codex recomputed the validation-only position distribution of the fixed
+Stage143/Stage155 target-probability mixture, checked source-array hashes,
+and ranked completed architecture, training, count and lexical experiments
+against the student's score and course resource limits. It concluded that
+none of the measured nearby variants justifies another blind local sweep.
+This is substantive AI-assisted analysis and prioritization, not a new
+model score or proof that the target is impossible. The student should
+review the evidence and make the final choice of any high-risk new route
+or below-threshold fallback submission.

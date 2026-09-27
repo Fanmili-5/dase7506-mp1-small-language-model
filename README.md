@@ -37,6 +37,9 @@ The [Stage207 explicit word-prefix residual](code/docs/STAGE207_PREFIX_RESIDUAL_
 also failed its terminal gate: complete validation regressed to 1.401323 BPB
 from the unchanged Stage143 step-zero control near 1.399686. Both fixed
 validation halves worsened; no new test was run.
+The [post-Stage207 score-gap audit](code/docs/POST_STAGE207_SCORE_GAP_AUDIT_20260928.md)
+compares these failed mechanisms with the remaining quality/resource gap;
+it is a decision record, not a new candidate or score.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -645,8 +648,9 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–207 architecture and objective pilots, candidate-selection
-evidence audit, and report drafting. Human review and
+the later Stage192–207 architecture and objective pilots, post-Stage207
+design-space audit, candidate-selection evidence audit, and report drafting.
+Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
 disclosure and pending review responsibilities.
