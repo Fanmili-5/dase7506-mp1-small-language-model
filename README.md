@@ -6,8 +6,13 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
-**Current resource-qualified development candidate: Stage143 single-copy
-OpenVINO + train-only order-six MKN, 1.399686162 CPU FP32 validation BPB.**
+**Frozen Stage143 final candidate:** single-copy OpenVINO + train-only order-six
+MKN. Complete CPU FP32 test BPB is **1.415657616535609** over 428,405 targets
+and 1,292,013 raw UTF-8 bytes. The separate complete validation BPB is
+**1.399686162042141**. The method was frozen and committed before testing;
+see the [freeze record](code/results/stage143-evidence/freeze-stage143-20260927.json),
+[full-test result](code/results/stage143-evidence/test-stage143-20260927.json),
+and [final report](REPORT.pdf). The test score was not used to alter the model.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -24,10 +29,8 @@ See `code/docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md`,
 `code/README.md`. A concise Chinese
 [implementation explainer and self-check](code/docs/STAGE143_IMPLEMENTATION_EXPLAINER_20260926.md)
 is available for the student's own review; it is not evidence that the student
-has already understood the implementation. This is a **validation-only local
-Windows qualification**;
-the new candidate has not been frozen or scored on test, and passing on the
-course CPU is not yet established.
+has already understood the implementation. The resource qualification was
+measured locally on Windows; passing on the course CPU is not yet established.
 An additional Linux x86-64 one-thread, three-repeat same-host benchmark
 found **5.502555x** baseline CPU time, **above** the 5x limit on that host.
 Its RAM and asset gates passed. This is a portability risk that must be
@@ -62,17 +65,10 @@ and packaging script are tracked; the ZIP is a local staging artifact under
 `output/pretest/`, **not a frozen or submitted release**. Its manifest pins
 code commit `898f37b5c31eb65095bc8bb4d84e3c6a3b9cc4e0`.
 
-`REPORT.pdf` is an **eight-page historical report for the earlier Stage10
-checkpoint** (1.605136467 full-test BPB), created before Stage143 existed.
-It does not document or qualify Stage143 and must not be submitted as
-Stage143's final report. A matching report and full-test score are pending
-candidate freeze. The tracked `REPORT_STAGE143_DRAFT.md` has an ignored,
-visually checked **three-page development PDF preview** covering experiments
-through Stage186. The preview is explicitly watermarked **NOT FOR SUBMISSION**
-and contains no Stage143 test score.
-The fail-closed `code/scripts/render_stage143_final_report.py` is prepared
-for use only after a committed method freeze and matching CPU FP32 full-test
-record; it has not yet rendered or replaced `REPORT.pdf`.
+`REPORT.pdf` is now the three-page Stage143 final report, rendered from the
+committed pre-test freeze and full-test result. Its pages were visually checked
+after rendering. The earlier Stage10 report remains recoverable from Git
+history; the tracked `REPORT_STAGE143_DRAFT.md` remains a historical draft.
 
 The later Stage144 train-suffix coverage diagnostic found little long-history
 coverage; Stage145's 2,400-step six-attention pilot beat its matched Stage54
@@ -597,7 +593,9 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 OpenAI Codex substantially assisted with assignment analysis, model and training
 code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage190,
+the validation experiments through Stage191, the final method freeze, the
+single complete-test run, evidence checks, report generation, and release
+packaging,
 including the Stage166–173 portability
 and runtime checks, the OpenVINO inference
 port, compact checkpoint packaging, resource audit, rejected retrieval and
@@ -626,7 +624,7 @@ disclosure and pending review responsibilities.
 | `code/docs/EXPERIMENT_PLAN.md` | Development protocol and freeze policy. |
 | `code/docs/WINDOWS_HANDOFF.md` | Exact Mac-to-Windows transfer and CUDA checklist. |
 | `code/docs/AI_ASSISTANCE.md` | Required substantive AI-assistance disclosure. |
-| `REPORT.pdf` | Historical Stage10 report; **not** the final Stage143 report. |
+| `REPORT.pdf` | Final Stage143 report matching the frozen test result. |
 
 ## Windows RTX 3070 Ti quick start
 
