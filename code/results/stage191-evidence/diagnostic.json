@@ -1,0 +1,75 @@
+{
+  "status": "diagnostic_only_not_deployable",
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "plan_sha256": "528344c0cb41865e1b30c17b6de75b698955a08d52c3d5134ae189fdf166ccf5",
+  "source_sha256": "85bcd3120d9d2150d71f621539cb26228d1a9f2332f748e0f475fc4dce09cc05",
+  "target_cache_sha256": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3",
+  "checkpoint_sha256": "256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3",
+  "train_sha256": "c58d555a94ada0882d1e8c0b3dc7ba68e1c269da5ad9e7a057300245d130c4e8",
+  "validation_sha256": "714a24a5de7459876f7cfdc64837e551dd7cde2a51f95b763ee083fff273e307",
+  "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+  "train_tokens": 3613343,
+  "validation_targets": 376599,
+  "validation_utf8_bytes": 1148007,
+  "train_prefix_observations": 3057014,
+  "distinct_train_prefixes": 118503,
+  "distinct_train_prefix_successor_pairs": 583580,
+  "active_validation_targets": 300020,
+  "correct_target_in_train": 264043,
+  "active_by_half": [
+    149175,
+    150845
+  ],
+  "correct_target_in_train_by_half": [
+    131765,
+    132278
+  ],
+  "baseline_bpb": 1.3996861620421412,
+  "cells": [
+    {
+      "weight": 0.0,
+      "gain_nats": 0.0,
+      "gain_nats_by_half": [
+        0.0,
+        0.0
+      ],
+      "gain_bpb": 0.0,
+      "validation_bpb": 1.3996861620421412
+    },
+    {
+      "weight": 0.05,
+      "gain_nats": 141.32953637495308,
+      "gain_nats_by_half": [
+        1.2788145467750525,
+        140.05072182817804
+      ],
+      "gain_bpb": 0.0001776081689913748,
+      "validation_bpb": 1.3995085538731498
+    },
+    {
+      "weight": 0.1,
+      "gain_nats": -2344.707200739246,
+      "gain_nats_by_half": [
+        -1295.2496451311426,
+        -1049.4575556081036
+      ],
+      "gain_bpb": -0.002946582599969472,
+      "validation_bpb": 1.4026327446421107
+    },
+    {
+      "weight": 0.2,
+      "gain_nats": -10696.353406786511,
+      "gain_nats_by_half": [
+        -5565.642884988843,
+        -5130.710521797669
+      ],
+      "gain_bpb": -0.013442057422617344,
+      "validation_bpb": 1.4131282194647585
+    }
+  ],
+  "primary_gate_passed": false,
+  "method_frozen": false,
+  "test_text_opened_by_this_script": false,
+  "test_scored_by_this_script": false
+}
