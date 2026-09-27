@@ -22,6 +22,10 @@ it does not claim a new qualifying score.
 The later [Stage203 class-context correction](code/docs/STAGE203_CLASS_CONTEXT_EXPERT_RESULT_20260928.md)
 worsened complete validation from 1.399686 to 1.426626 BPB, so it stopped
 before deployment qualification or test and did not replace Stage143.
+The [Stage204 causal pair-input Transformer pilot](code/docs/STAGE204_HASHED_BIGRAM_RESULT_20260928.md)
+passed synthetic/feature feasibility, then gained only 0.010645 BPB versus
+its matched 2,400-step control, below the predeclared 0.030 continuation gate.
+It stopped before full training, formal resources or test; Stage143 is unchanged.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
