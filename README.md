@@ -30,6 +30,12 @@ unchanged architecture under the course's actual resource contract, but
 failed the quality gate before formal resource qualification. None was
 run on test or replaced the frozen candidate. See the Stage193–196 plans,
 raw metrics, and result notes under `code/docs/` and `code/results/`.
+Stage197's from-scratch, equal-target shared-trunk two-path model completed
+7,200 steps. Its fixed last-five average scored **1.426863400** on complete
+validation: only 0.001731 better than the matched Stage54 average, and
+0.027177 worse than the frozen Stage143 candidate. Its predeclared quality
+gate failed, so no inference export, resource qualification or test scoring
+followed. See `code/docs/STAGE197_SHARED_BRANCH_FULL_RESULT_20260928.md`.
 An independent Linux x86-64 one-thread CPU FP32 run reproduced
 1.399686179 validation BPB; it was a score check, not a Linux resource gate.
 Its exact checkpoint passed three alternating fresh-process Windows CPU
