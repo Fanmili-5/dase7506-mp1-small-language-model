@@ -16,6 +16,9 @@ and [final report](REPORT.pdf). The test score was not used to alter the model.
 This frozen candidate **does not meet the student's 1.38 minimum or 1.35
 target**. It is not an accepted final solution; see the
 [post-freeze acceptance/resource audit](code/docs/POST_FREEZE_ACCEPTANCE_AND_RESOURCE_TRIAGE_20260928.md).
+The [post-Stage200 score-gap decision](code/docs/POST_STAGE200_SCORE_GAP_DECISION_20260928.md)
+incorporates later validation-only failures and the remaining resource margin;
+it does not claim a new qualifying score.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
