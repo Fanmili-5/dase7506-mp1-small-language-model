@@ -568,3 +568,15 @@ This is substantive AI assistance in model design, implementation,
 execution and interpretation. The student must review and understand the
 causal prefix-sum computation and the negative quality result before
 submission.
+
+## Stage207 explicit word-prefix residual (28 September 2026)
+
+Codex selected and preregistered a causal current-word-prefix feature
+hypothesis from the measured residual-error group, implemented the feature
+extractor, neural residual, synthetic contracts, resource preflight and
+Windows train-only validation pilot, then checked hashes and the negative
+complete-validation endpoint. The fixed pilot regressed in both validation
+halves and was stopped before full CPU/RAM qualification or test scoring.
+This is substantive AI-assisted design, coding, experimentation and
+interpretation. The student must understand that the retrospective high-loss
+group cannot be detected from the true target at inference.
