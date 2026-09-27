@@ -19,6 +19,9 @@ target**. It is not an accepted final solution; see the
 The [post-Stage200 score-gap decision](code/docs/POST_STAGE200_SCORE_GAP_DECISION_20260928.md)
 incorporates later validation-only failures and the remaining resource margin;
 it does not claim a new qualifying score.
+The later [Stage203 class-context correction](code/docs/STAGE203_CLASS_CONTEXT_EXPERT_RESULT_20260928.md)
+worsened complete validation from 1.399686 to 1.426626 BPB, so it stopped
+before deployment qualification or test and did not replace Stage143.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
