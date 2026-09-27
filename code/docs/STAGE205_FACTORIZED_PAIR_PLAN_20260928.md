@@ -64,3 +64,15 @@ guaranteed to outperform the hashed table. It is a final test of the
    A new full test would require separately committed method freeze and
    authorization. If any gate fails, do not retune the pair rank, scale,
    initialization, training duration or seed after seeing validation.
+
+## Synthetic/input-only preflight outcome, before training
+
+The one-off Windows preflight passed its fixed gates with no corpus split
+opened: max OpenVINO/eager hidden error `3.81470e-6`, conservative projected
+inference assets `57,181,111` bytes (<67,108,864), eight-interleaved
+candidate/reference feature-time ratio `0.949772`, and one complete
+batch-32 BF16 synthetic update at `5,553,883,136` peak allocated GPU
+bytes. This admits only the fixed 2,400-step train/validation pilot. The
+input-only graph is random-weight, so these numbers are not a deployable
+predictor score or formal CPU/RAM qualification. Raw evidence:
+[`../results/stage205-evidence/preflight.json`](../results/stage205-evidence/preflight.json).
