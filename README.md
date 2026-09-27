@@ -26,6 +26,9 @@ The [Stage204 causal pair-input Transformer pilot](code/docs/STAGE204_HASHED_BIG
 passed synthetic/feature feasibility, then gained only 0.010645 BPB versus
 its matched 2,400-step control, below the predeclared 0.030 continuation gate.
 It stopped before full training, formal resources or test; Stage143 is unchanged.
+The [Stage205 shared low-rank pair variant](code/docs/STAGE205_FACTORIZED_PAIR_RESULT_20260928.md)
+also stopped: its fixed matched-pilot gain was 0.010380 BPB, slightly below
+Stage204 and far below the same 0.030 gate. No new test was run.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
