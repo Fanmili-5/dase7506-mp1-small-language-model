@@ -19,6 +19,17 @@ target**. It is not an accepted final solution; see the
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
+Subsequent train/validation-only Stage193, Stage195, and Stage196 controlled
+pilots did not advance: Stage193's fresh mixture-aware objective worsened its
+matched control, while the frozen-base feature and attention residuals gained
+only 0.001194 and 0.001029 BPB respectively on complete validation, far
+short of their predeclared 0.015-BPB advancement gates. Stage194's original
+synthetic CPU screen was stopped at a 1.200574 candidate/base ratio against
+an extra-conservative 1.20 pilot gate; Stage196 separately re-examined its
+unchanged architecture under the course's actual resource contract, but
+failed the quality gate before formal resource qualification. None was
+run on test or replaced the frozen candidate. See the Stage193–196 plans,
+raw metrics, and result notes under `code/docs/` and `code/results/`.
 An independent Linux x86-64 one-thread CPU FP32 run reproduced
 1.399686179 validation BPB; it was a score check, not a Linux resource gate.
 Its exact checkpoint passed three alternating fresh-process Windows CPU
