@@ -626,3 +626,15 @@ substantive AI-assisted experimental design, coding, execution and
 interpretation. The student must review and understand why future-token
 labels are never visible to the causal inference model and why this
 negative pilot does not establish a general impossibility result.
+
+## Stage212 sliding-local-attention feasibility (28 September 2026)
+
+Codex used failure-analysis and architecture-efficiency reasoning to select
+one fixed local-attention replacement for the convolution blocks. It wrote
+the pre-outcome plan, model, causal/export/gradient tests and Windows
+OpenVINO/GPU preflight, fixed an inert config-guard error before measurement,
+then audited the raw CPU/parity/asset result. The fixed CPU feature-speed
+gate failed, so Codex did not train or score this model. This is substantive
+AI-assisted architecture design, implementation, testing and interpretation.
+The student must review the seven-position mask, the resource stop decision,
+and the fact that the failed preflight says nothing about Stage212 BPB.

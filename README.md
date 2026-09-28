@@ -57,6 +57,10 @@ also failed: at the fixed 2,400-step endpoint it scored **1.520322 BPB**
 against the same-step Stage54 control's **1.519950 BPB**. Its synthetic
 feasibility checks passed, but this validation regression stopped the route
 before full training, resource qualification or a new test.
+The [Stage212 causal sliding-attention core](code/docs/STAGE212_SLIDING_LOCAL_ATTENTION_RESULT_20260928.md)
+passed correctness, export parity and projected assets but missed its fixed
+CPU feature-speed preflight gate (**1.499x** versus allowed **1.20x**).
+It stopped before GPU screening or training; it has no BPB result.
 The first launcher stopped before training because one already-committed
 plan file had not been copied to Windows; the b run used a new directory
 and retained that log. There is **still no score-qualified replacement**.
