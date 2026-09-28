@@ -679,3 +679,17 @@ predeclared gate. This is substantive AI-assisted architecture design,
 coding, execution and analysis. The student must understand the PMI/SVD
 construction, the input-only resource screen versus full qualification,
 the matched control and the absence of any new test result.
+
+## Stage216 causal relative-distance attention bias (28 September 2026)
+
+Codex proposed a per-head learned causal distance bias as a distinct
+context-routing mechanism, wrote its fixed pilot/stop plan before training,
+implemented the model and causal/normalization/gradient tests, and ran the
+Windows OpenVINO/CPU/GPU preflight and matched 2,400-step train/validation
+pilot. Codex verified task completion, the checkpoint hash and 26 source
+hashes, then stopped because the complete-validation gain was only 0.002174
+BPB versus the preregistered 0.030 gate. This is substantive AI-assisted
+architecture design, coding, execution and interpretation. The student must
+review the 32-bucket causal mask, why zero initialization gives an exact
+control, the distinction between synthetic feasibility and final resource
+qualification, and the lack of a new test result.

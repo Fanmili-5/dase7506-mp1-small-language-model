@@ -79,6 +79,12 @@ passed synthetic resource screening but ended at **1.503976 BPB** after
 missed the fixed **0.030** continuation gate, so it was not fully trained,
 resource-qualified or test-scored. Stage143 remains unchanged and below the
 student's acceptance threshold.
+The [Stage216 learned relative-distance attention-bias pilot](code/docs/STAGE216_RELATIVE_BIAS_RESULT_20260928.md)
+passed input-only CPU/GPU feasibility but scored **1.517776 BPB** after
+2,400 steps versus the matched **1.519950** control. Its **0.002174** gain
+missed the fixed **0.030** continuation gate; no full training, resource
+qualification or new test followed. Stage143 remains the protected fallback,
+not an accepted <1.38 solution.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
