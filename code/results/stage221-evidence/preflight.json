@@ -1,0 +1,62 @@
+{
+  "status": "synthetic_input_only_preflight",
+  "protocol": "7506-mp1-wt2-v2",
+  "no_validation_or_test_scoring": true,
+  "config_sha256": "6838cee0b9148ddd090e24988abd514ff66c889178fd6359504924f0b47cd785",
+  "control_config_sha256": "27c6c6630882441bfb11290999137b319ff8e0171d38c3edd0240e79304b8037",
+  "source_sha256": "f826d5d64d89091d464f72003c3bcee618028b515100f68b0afd8bb766a42c53",
+  "training_model_sha256": "108d3ece4a4c127eb15b1449a59196bc4e06064aeaf6307f09e61e7a2d357ecd",
+  "inference_model_sha256": "9fe7f1ce38f36a8b5ca8d070eca58d8dd2946e537b40840477587386841200d9",
+  "core_model_sha256": "822ccc62fabd27e5f285bc1137e4d335ea9053b3b17331460e685d6681333bf8",
+  "reference_graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "candidate_graph_sha256": "2116a21aff879a8bbd172b1ff5fd43a258a210e32d7eb779d160319ef0774ea2",
+  "candidate_graph_bytes": 31819689,
+  "projected_conservative_assets_bytes": 57019689,
+  "unique_neural_parameters": 7939009,
+  "max_normalization_error": 4.76837158203125e-07,
+  "max_future_prefix_error": 0.0,
+  "max_independent_row_error": 1.9073486328125e-06,
+  "portable_norm_count": 17,
+  "portable_hidden_max_error": 0.0,
+  "openvino_hidden_max_error": 3.6656856536865234e-06,
+  "timing_seconds": {
+    "reference": [
+      1.2499935000014375,
+      1.2569795999952476,
+      1.2539149000003817,
+      1.2569566000020131,
+      1.2419996000026003,
+      1.2924430999992182,
+      1.2751352999985102,
+      1.2822444000048563
+    ],
+    "candidate": [
+      1.607739599996421,
+      1.6121119999952498,
+      1.5925002000003587,
+      1.5906019000030938,
+      1.5886889999965206,
+      1.611960900001577,
+      1.6091539999979432,
+      1.604684100006125
+    ]
+  },
+  "median_seconds": {
+    "reference": 1.2569680999986304,
+    "candidate": 1.606211850001273
+  },
+  "candidate_to_reference_feature_time": 1.277846152183992,
+  "synthetic_losses": [
+    10.845705032348633,
+    10.477481842041016
+  ],
+  "synthetic_grad_norms": [
+    1.37564218044281,
+    1.763426661491394
+  ],
+  "synthetic_optimizer_steps": 2,
+  "gpu_peak_allocated_bytes": 6447232000,
+  "gpu_peak_reserved_bytes": 6805258240,
+  "gpu_total_bytes": 8589410304,
+  "admit_matched_training_pilot": false
+}
