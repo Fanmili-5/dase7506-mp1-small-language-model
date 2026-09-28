@@ -605,7 +605,10 @@ screen (Stage210) passed parity, timing and projected assets; that result
 does not establish trained-model quality or full runtime qualification.
 Codex prepared the fixed same-target quality pilot. Its first launcher
 failed on a missing Windows copy of a committed plan file before training;
-the separately logged b run is the unchanged experiment. These are
+the separately logged b run completed the unchanged experiment. Its
+complete-validation gain was only 0.002391 BPB versus the same-target
+control, below the prespecified 0.030 gate, so no full continuation,
+deployment qualification or new test followed. These are
 substantive AI-assisted architecture, coding, experiment and interpretation
 steps. The student must understand and review the tree probability formula,
 causal and resource checks, any later quality result, and final code before

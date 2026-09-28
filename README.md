@@ -47,10 +47,14 @@ passed synthetic probability/GPU checks but failed its CPU head-time gate
 reduced that to 0.642773 seconds but missed its fixed 0.50-second gate.
 The [Stage210 FP32 OpenVINO head screen](code/docs/STAGE210_OPENVINO_TREE_HEAD_RESULT_20260928.md)
 passed at 0.298362 seconds with max eager/compiled error 3.81e-6. This
-licenses only a fixed train/validation quality pilot; **no Stage210 BPB or
-qualified replacement has yet been established**. The first pilot launcher
-stopped before training because one already-committed plan file had not been
-copied to Windows; the b run uses a new directory and retains that log.
+licensed only a fixed train/validation quality pilot. That pilot
+[finished](code/docs/STAGE210_TREE_QUALITY_RESULT_20260928.md) at
+**1.517559 BPB** versus its matched 1.519950 control: a **0.002391** gain,
+below the predeclared 0.030 advancement gate. The lexical-tree route is
+stopped without full training, CPU/RAM release qualification or a new test.
+The first launcher stopped before training because one already-committed
+plan file had not been copied to Windows; the b run used a new directory
+and retained that log. There is **still no score-qualified replacement**.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
