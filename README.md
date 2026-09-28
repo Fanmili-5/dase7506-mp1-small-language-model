@@ -70,6 +70,15 @@ followed. The 4.818x CPU figure was only a projection, not a measured pass.
 The first launcher stopped before training because one already-committed
 plan file had not been copied to Windows; the b run used a new directory
 and retained that log. There is **still no score-qualified replacement**.
+The [Stage214 validation-only error audit](code/docs/STAGE214_LEXICAL_ERROR_AUDIT_RESULT_20260928.md)
+found that the larger-backbone complement was spread across target types,
+not concentrated in word-internal spelling errors. The [Stage215 train-derived
+semantic-input pilot](code/docs/STAGE215_TRAIN_SEMANTIC_INPUT_RESULT_20260928.md)
+passed synthetic resource screening but ended at **1.503976 BPB** after
+2,400 steps versus its matched **1.519950** control. Its **0.015975** gain
+missed the fixed **0.030** continuation gate, so it was not fully trained,
+resource-qualified or test-scored. Stage143 remains unchanged and below the
+student's acceptance threshold.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -678,8 +687,8 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–210 architecture, lexical hierarchy, backend and objective
-pilots, post-Stage207
+the later Stage192–215 architecture, lexical hierarchy, backend, objective
+and train-derived semantic-input pilots, post-Stage207
 design-space audit, candidate-selection evidence audit, and report drafting.
 Human review and
 understanding of the implementation are required before submission; they are

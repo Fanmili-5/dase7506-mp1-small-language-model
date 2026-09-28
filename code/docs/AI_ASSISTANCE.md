@@ -665,3 +665,17 @@ rejected another near-duplicate lexical-head pilot. This is substantive
 AI-assisted diagnostic design, coding and interpretation. The student must
 review why the true-target groups are retrospective only, why the over-budget
 mixture is not a submission model, and why no <1.35 score was achieved.
+
+## Stage215 train-derived semantic input (28 September 2026)
+
+Codex used a problem-first/composition research-ideation workflow to choose
+one fixed co-occurrence input mechanism after the Stage214 lexical audit.
+It wrote the pre-outcome contract, implemented the train-only basis and
+zero-start Transformer input stream, structural tests, Windows CPU preflight
+and scheduled same-target GPU pilot. Codex collected and interpreted the
+complete-validation trajectory, independently checked the terminal task,
+checkpoint and source hashes, and stopped after the endpoint missed its
+predeclared gate. This is substantive AI-assisted architecture design,
+coding, execution and analysis. The student must understand the PMI/SVD
+construction, the input-only resource screen versus full qualification,
+the matched control and the absence of any new test result.
