@@ -104,6 +104,10 @@ tested the training-budget confound from the fixed Stage155 average. After
 BPB** on complete validation, a gain of only **0.003748** against its own
 1.409877 start and below the fixed 0.008 continuation gate. It was stopped
 without inference qualification or test access; Stage143 remains unchanged.
+The [Stage220 fixed positional diagnostic](code/docs/STAGE220_POSITIONAL_COMPLEMENT_RESULT_20260928.md)
+found that the first 64 positions account for only 22.4% of the frozen
+two-model mixture's gain. Its short-prefix-only policy scored 1.394425
+validation BPB and missed both predeclared gates, so no helper was built.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -712,7 +716,7 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–219 architecture, lexical hierarchy, backend, objective,
+the later Stage192–220 architecture, lexical hierarchy, backend, objective,
 train-derived semantic-input and continuation experiments, post-Stage207
 design-space audit, candidate-selection evidence audit, and report drafting.
 Human review and

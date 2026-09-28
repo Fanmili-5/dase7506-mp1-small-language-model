@@ -737,3 +737,15 @@ test scoring. This is substantive AI-assisted experimental design, coding,
 execution and interpretation. The student must understand why the old
 comparison was not equal-budget, why the late improvement was insufficient,
 and why this negative result does not prove all larger models fail.
+
+## Stage220 frozen positional-complement diagnostic (28 September 2026)
+
+Codex proposed and committed a fixed validation-only analysis of whether
+the known two-model complement concentrates near independent window
+starts. It implemented the SHA-bound bin and fixed-position calculations,
+verified complete target coverage and gain accounting, and stopped the
+short-context helper path when both prespecified gates failed. This is
+substantive AI-assisted diagnostic design, coding and interpretation. The
+student must distinguish the two-model analysis from a deployable
+resource-qualified predictor, and understand why target probabilities
+cannot become inference features.
