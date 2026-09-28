@@ -22,16 +22,40 @@ claim that the design space is exhausted.
 | Krause et al. (2017), [dynamic evaluation](https://arxiv.org/abs/1709.07432) | Adapts model to recent evaluation history; its main mechanism conflicts with independent windows/no cross-window state and likely adds CPU overhead. | Exclude as published, stateful method. |
 | Dai et al. (2019), [Transformer-XL](https://arxiv.org/abs/1901.02860) | Segment recurrence supplies longer context, unavailable to the fixed independent 256-token evaluator. The relative-position component alone is not the paper's full gain and a nearby Stage216 relative bias missed its gate. | Exclude cross-window recurrence; no nearby positional sweep. |
 | Khandelwal et al. (2020), [kNN-LM](https://arxiv.org/abs/1911.00172) | Requires a train-derived datastore and retrieval; Stage163's compact permitted-version mixtures all worsened full validation, while asset/CPU budgets are tight. | Do not revisit this local route without new independent evidence. |
+| Chen et al. (2026), [training-time augmentation for data-constrained AR pretraining](https://arxiv.org/abs/2606.16246) | Their 150M-parameter, 75M-token experiment found 15% random *input-token replacement* better than masking, while token noise and future-offset training interfered. Stage165 instead masked 5% of neural input embeddings and regressed; Stage54 currently uses future-token auxiliary targets. Dataset, model, epoch schedule, and metric differ from ours. | One genuinely distinct training-view idea to discuss, not an established gain here. Do not append random replacement to Stage54 unchanged or infer a BPB improvement from their loss values. |
+
+The same Chen et al. paper found that right-to-left (R2L) training examples
+combined with future-offset prediction worked better than a plain AR control
+in its setting, while 15% random replacement plus offset largely erased the
+individual gains. Since Stage54 already has train-only +2/+3 prediction,
+R2L is the more coherent *discussion candidate* than immediately adding
+high-rate token replacement. This is an inference from the paper and our
+objective, not a measured result. The published method added direction and
+offset tokens to its tokenizer, which the course does not permit us to copy
+directly. A tokenizer-preserving internal condition would be a new adaptation
+requiring independent legality, causality, equal-target, and CPU/asset checks.
+Also, the paper's benefits emerged over many more repeated-data epochs than
+our usual 2,400-step early pilot. Reusing that early continuation gate would
+not directly test its claimed mechanism. No adaptation is implemented here.
 
 The remaining *research question* is not “which famous architecture has a
 better published score?” but which distinct, causal, train-only mechanism can
 improve this model's distributed out-of-sample errors by enough while fitting
-the CPU/asset envelope. The reviewed papers do not currently identify one.
+the CPU/asset envelope. Chen et al. identify a conditional training-only
+candidate, but their observed interaction with future-offset objectives is a
+specific warning for our current recipe. The paper's reported loss improvement
+is not transferable as a numerical forecast for our BPB.
 Before any further run, require (1) a mechanism not already represented by
 local negative trials, (2) a clear course-legality argument, (3) a quantified
 route to the missing BPB margin, and (4) a predeclared equal-target and
-resource gate. Until then, preserve Stage143 and prioritize the submission
-deadline decision with the student.
+resource gate. The guide's instruction to keep data and tokenizer unchanged
+makes training-time token replacement an interpretation to confirm before
+adoption; it would still use only original training targets and existing
+vocabulary IDs. A fair study would need to isolate replacement from the
+already-present future-offset objective, not treat a combined change as a
+one-factor result. This is a proposal for discussion, not approval to train.
+Until then, preserve Stage143 and prioritize the submission deadline decision
+with the student.
 
 The hypothesis/rival and fixed-endpoint design record used procedural
 guidance from Kassis et al. (2026), [*Scientific Agent Skills: A Library of
