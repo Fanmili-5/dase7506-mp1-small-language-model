@@ -52,6 +52,11 @@ licensed only a fixed train/validation quality pilot. That pilot
 **1.517559 BPB** versus its matched 1.519950 control: a **0.002391** gain,
 below the predeclared 0.030 advancement gate. The lexical-tree route is
 stopped without full training, CPU/RAM release qualification or a new test.
+The [Stage211 train-only long-horizon auxiliary pilot](code/docs/STAGE211_LONG_HORIZON_AUXILIARY_RESULT_20260928.md)
+also failed: at the fixed 2,400-step endpoint it scored **1.520322 BPB**
+against the same-step Stage54 control's **1.519950 BPB**. Its synthetic
+feasibility checks passed, but this validation regression stopped the route
+before full training, resource qualification or a new test.
 The first launcher stopped before training because one already-committed
 plan file had not been copied to Windows; the b run used a new directory
 and retained that log. There is **still no score-qualified replacement**.

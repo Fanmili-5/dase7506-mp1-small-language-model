@@ -613,3 +613,16 @@ substantive AI-assisted architecture, coding, experiment and interpretation
 steps. The student must understand and review the tree probability formula,
 causal and resource checks, any later quality result, and final code before
 submission.
+
+## Stage211 long-horizon train-only auxiliary pilot (28 September 2026)
+
+Codex used a problem-first research-ideation workflow to propose distant
+future-token labels as a training-only mechanism, preregistered the matched
+pilot and stop threshold, implemented the config, exact-start tests,
+synthetic GPU preflight and Windows training launcher, and audited the
+complete-validation result and source hashes. The pilot slightly worsened
+BPB, so no full run, deployment qualification or new test followed. This is
+substantive AI-assisted experimental design, coding, execution and
+interpretation. The student must review and understand why future-token
+labels are never visible to the causal inference model and why this
+negative pilot does not establish a general impossibility result.
