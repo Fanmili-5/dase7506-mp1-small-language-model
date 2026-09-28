@@ -716,9 +716,10 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–220 architecture, lexical hierarchy, backend, objective,
+the later Stage192–223 architecture, lexical hierarchy, backend, objective,
 train-derived semantic-input and continuation experiments, post-Stage207
-design-space audit, candidate-selection evidence audit, and report drafting.
+design-space audit, the post-Stage223 literature triage and prior-work
+correction, candidate-selection evidence audit, and report drafting.
 Human review and
 understanding of the implementation are required before submission; they are
 not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the

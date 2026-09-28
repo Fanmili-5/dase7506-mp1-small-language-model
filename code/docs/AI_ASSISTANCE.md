@@ -749,3 +749,25 @@ substantive AI-assisted diagnostic design, coding and interpretation. The
 student must distinguish the two-model analysis from a deployable
 resource-qualified predictor, and understand why target probabilities
 cannot become inference features.
+
+## Stages221–223 and literature triage (28 September 2026)
+
+Codex designed and screened a shared-depth variant (Stage221), separately
+predeclared and executed its course-aligned equal-target pilot (Stage222),
+and stopped after the fixed endpoint was worse than its control. Codex then
+proposed, implemented and ran a train-derived top-bigram input pilot
+(Stage223). After launching it, Codex discovered and disclosed the prior
+Stage204/205 adjacent-token-input experiments, kept the original gate fixed,
+verified the terminal checkpoint/source evidence, and stopped the whole
+measured pair-input family when the 0.013196-BPB pilot gain missed its 0.030
+gate. Codex searched primary research papers, checked candidate methods
+against the course constraints and local negative evidence, and recommended
+no new experiment without a genuinely distinct, legal hypothesis. This is
+substantive AI-assisted design, coding, execution, literature triage, and
+interpretation. The student must review the late related-work correction,
+the difference between pilot and full-candidate scores, and the course
+legality of any future training-tokenization change. The fixed-hypothesis
+planning process was informed by Kassis et al. (2026), *Scientific Agent
+Skills: A Library of Procedural Knowledge for Research Agents*,
+https://doi.org/10.48550/arXiv.2609.00065. No Stage221–223 run opened test
+or displaced the frozen Stage143 candidate.
