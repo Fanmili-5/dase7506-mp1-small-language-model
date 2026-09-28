@@ -708,3 +708,17 @@ substantive AI-assisted literature triage, experimental design, coding,
 execution and interpretation. The student must review the distinction from
 the cited paper, the causal gate, zero-start control, resource limitations
 and negative quality decision before any submission.
+
+## Stage218 frozen-expert fixed-mixture diagnostic (28 September 2026)
+
+Codex planned and implemented a validation-only diagnostic of three
+previously trained predictor families, preregistered five fixed mixtures,
+cached exact Stage91 target probabilities from SHA-pinned checkpoints and
+supplied development data, and independently verified the result using
+different probability arithmetic. The best fixed cell scored 1.371031
+BPB but was over the resource budget and missed the <1.35 goal, so Codex
+did not promote it, tune nearby weights, or access test. This is substantive
+AI-assisted analysis, coding and interpretation. The student must review
+why true-target arrays are diagnostic only, why fixed cells are not a
+mathematical optimum, and why compression alone cannot be called a score
+improvement.

@@ -92,6 +92,12 @@ gain missed the fixed **0.030** continuation gate; there was no full run,
 formal resource qualification or new test. The method was inspired by
 [Qiu et al. (2025)](https://arxiv.org/abs/2505.06708), adapted with an
 exact-zero-start gate; the paper's results are not claimed as ours.
+The [Stage218 fixed frozen-expert diagnostic](code/docs/STAGE218_FROZEN_EXPERT_CEILING_RESULT_20260928.md)
+reproduced Stage91, Stage143 and Stage155 validation target streams. The
+best of five preregistered combinations was **1.371031 BPB** on complete
+validation, still above the student's <1.35 aim, and the combined models
+are over the inference budget. It is not an inference model or test result;
+no further weight search or compression run followed.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
