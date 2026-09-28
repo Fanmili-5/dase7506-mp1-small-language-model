@@ -36,7 +36,10 @@ directly. A tokenizer-preserving internal condition would be a new adaptation
 requiring independent legality, causality, equal-target, and CPU/asset checks.
 Also, the paper's benefits emerged over many more repeated-data epochs than
 our usual 2,400-step early pilot. Reusing that early continuation gate would
-not directly test its claimed mechanism. No adaptation is implemented here.
+not directly test its claimed mechanism. The code-grounded
+[R2L feasibility review](R2L_TRAINING_VIEW_FEASIBILITY_20260928.md)
+records the resulting legality, training-budget and copy-head issues.
+No adaptation is implemented here.
 
 The remaining *research question* is not “which famous architecture has a
 better published score?” but which distinct, causal, train-only mechanism can
