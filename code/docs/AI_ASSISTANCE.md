@@ -722,3 +722,18 @@ AI-assisted analysis, coding and interpretation. The student must review
 why true-target arrays are diagnostic only, why fixed cells are not a
 mathematical optimum, and why compression alone cannot be called a score
 improvement.
+
+## Stage219 training-budget continuation (28 September 2026)
+
+Codex identified that the larger Stage155 backbone had received far fewer
+training-target presentations than Stage143's accepted neural lineage. It
+wrote and committed a fixed low-learning-rate continuation plan before the
+outcome, adapted the existing Stage56 recipe to a SHA-pinned Stage155
+average, reused a train/validation-only loader, launched and monitored the
+Windows GPU job, and verified the final checkpoint average, source hashes
+and full-validation result. The gain was only 0.003748 BPB, below its
+predeclared 0.008 gate, so Codex stopped the route without deployment or
+test scoring. This is substantive AI-assisted experimental design, coding,
+execution and interpretation. The student must understand why the old
+comparison was not equal-budget, why the late improvement was insufficient,
+and why this negative result does not prove all larger models fail.

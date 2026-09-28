@@ -98,6 +98,12 @@ best of five preregistered combinations was **1.371031 BPB** on complete
 validation, still above the student's <1.35 aim, and the combined models
 are over the inference budget. It is not an inference model or test result;
 no further weight search or compression run followed.
+The [Stage219 Stage155 continuation](code/docs/STAGE219_EQUAL_BUDGET_CONTINUATION_RESULT_20260928.md)
+tested the training-budget confound from the fixed Stage155 average. After
+4,800 additional steps its prespecified averaged model scored **1.406130
+BPB** on complete validation, a gain of only **0.003748** against its own
+1.409877 start and below the fixed 0.008 continuation gate. It was stopped
+without inference qualification or test access; Stage143 remains unchanged.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -706,8 +712,8 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–215 architecture, lexical hierarchy, backend, objective
-and train-derived semantic-input pilots, post-Stage207
+the later Stage192–219 architecture, lexical hierarchy, backend, objective,
+train-derived semantic-input and continuation experiments, post-Stage207
 design-space audit, candidate-selection evidence audit, and report drafting.
 Human review and
 understanding of the implementation are required before submission; they are
