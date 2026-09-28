@@ -40,6 +40,17 @@ validation halves worsened; no new test was run.
 The [post-Stage207 score-gap audit](code/docs/POST_STAGE207_SCORE_GAP_AUDIT_20260928.md)
 compares these failed mechanisms with the remaining quality/resource gap;
 it is a decision record, not a new candidate or score.
+The [Stage208 lexical hierarchy](code/docs/STAGE208_LEXICAL_HIERARCHY_RESULT_20260928.md)
+passed synthetic probability/GPU checks but failed its CPU head-time gate
+(3.103434 seconds per 32x256 batch). The mathematically identical
+[Stage209 tree propagation](code/docs/STAGE209_TREE_PROPAGATION_RESULT_20260928.md)
+reduced that to 0.642773 seconds but missed its fixed 0.50-second gate.
+The [Stage210 FP32 OpenVINO head screen](code/docs/STAGE210_OPENVINO_TREE_HEAD_RESULT_20260928.md)
+passed at 0.298362 seconds with max eager/compiled error 3.81e-6. This
+licenses only a fixed train/validation quality pilot; **no Stage210 BPB or
+qualified replacement has yet been established**. The first pilot launcher
+stopped before training because one already-committed plan file had not been
+copied to Windows; the b run uses a new directory and retains that log.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.
@@ -648,7 +659,8 @@ the Stage187 Linux operation profile,
 the Stage188 train-only count-estimator comparison,
 the Stage189 fixed-tokenizer pair-support diagnostic,
 the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–207 architecture and objective pilots, post-Stage207
+the later Stage192–210 architecture, lexical hierarchy, backend and objective
+pilots, post-Stage207
 design-space audit, candidate-selection evidence audit, and report drafting.
 Human review and
 understanding of the implementation are required before submission; they are

@@ -592,3 +592,21 @@ This is substantive AI-assisted analysis and prioritization, not a new
 model score or proof that the target is impossible. The student should
 review the evidence and make the final choice of any high-risk new route
 or below-threshold fallback submission.
+
+## Stage208–210 lexical hierarchy and backend work (28 September 2026)
+
+Codex selected the jointly trained lexical-tree mechanism, wrote and tested
+its normalized causal probability implementation, set stopping gates before
+results, and ran the Windows input-only CPU/GPU/asset screens. Stage208's
+naive head missed the CPU gate. Codex then implemented an exactly equivalent
+level-wise tree propagation (Stage209), verified equality and found that it
+still missed the preregistered PyTorch CPU gate. An FP32 OpenVINO head-only
+screen (Stage210) passed parity, timing and projected assets; that result
+does not establish trained-model quality or full runtime qualification.
+Codex prepared the fixed same-target quality pilot. Its first launcher
+failed on a missing Windows copy of a committed plan file before training;
+the separately logged b run is the unchanged experiment. These are
+substantive AI-assisted architecture, coding, experiment and interpretation
+steps. The student must understand and review the tree probability formula,
+causal and resource checks, any later quality result, and final code before
+submission.
