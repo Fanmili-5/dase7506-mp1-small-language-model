@@ -61,6 +61,12 @@ The [Stage212 causal sliding-attention core](code/docs/STAGE212_SLIDING_LOCAL_AT
 passed correctness, export parity and projected assets but missed its fixed
 CPU feature-speed preflight gate (**1.499x** versus allowed **1.20x**).
 It stopped before GPU screening or training; it has no BPB result.
+Because that internal gate was stricter than the course's actual complete
+5x CPU rule, a separate [Stage213 course-aligned quality diagnostic](code/docs/STAGE213_SLIDING_QUALITY_RESULT_20260928.md)
+tested the unchanged architecture after a synthetic GPU pass. It **regressed
+to 1.533872 BPB** at the fixed 2,400-step endpoint versus the matched
+**1.519950** control, so no full run, formal CPU qualification or new test
+followed. The 4.818x CPU figure was only a projection, not a measured pass.
 The first launcher stopped before training because one already-committed
 plan file had not been copied to Windows; the b run used a new directory
 and retained that log. There is **still no score-qualified replacement**.

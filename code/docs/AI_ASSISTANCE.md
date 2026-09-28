@@ -638,3 +638,18 @@ gate failed, so Codex did not train or score this model. This is substantive
 AI-assisted architecture design, implementation, testing and interpretation.
 The student must review the seven-position mask, the resource stop decision,
 and the fact that the failed preflight says nothing about Stage212 BPB.
+
+## Stage213 course-aligned sliding-attention pilot (28 September 2026)
+
+Codex noticed that Stage212's 1.20x internal feature-speed gate was
+stricter than the assignment's <=5x complete CPU rule, calculated an
+explicit but unverified 4.818x same-host projection, and documented a
+separate Stage213 validation-only experiment before any quality data.
+It implemented and tested shared-weight initialization, checkpoint identity,
+the matched learning-rate prefix, Windows CUDA screening and the fixed
+2,400-step pilot. After collecting the full validation metrics and matching
+all source hashes, Codex stopped the regressive model without full training,
+formal resource qualification or new test scoring. This is substantive
+AI-assisted design, coding, execution and interpretation. The student must
+understand why a CPU projection is not a course resource pass and why the
+negative pilot cannot be reported as an improved score.
