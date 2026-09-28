@@ -81,6 +81,8 @@ def main() -> None:
         "scripts/run_stage210_tree_quality_pilot.py",
         "scripts/run_stage210_pilot_windows.ps1",
         "scripts/start_stage210_pilot_windows.ps1",
+        "scripts/run_stage210_pilot_windows_b.ps1",
+        "scripts/start_stage210_pilot_windows_b.ps1",
         "scripts/train_stage193_fresh_mixture_pilot.py",
         "docs/STAGE210_OPENVINO_TREE_HEAD_PLAN_20260928.md",
         "tests/test_stage209_tree_propagation.py",
