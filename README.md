@@ -85,6 +85,13 @@ passed input-only CPU/GPU feasibility but scored **1.517776 BPB** after
 missed the fixed **0.030** continuation gate; no full training, resource
 qualification or new test followed. Stage143 remains the protected fallback,
 not an accepted <1.38 solution.
+The [Stage217 headwise post-attention-gate pilot](code/docs/STAGE217_HEADWISE_GATED_ATTENTION_RESULT_20260928.md)
+passed input-only CPU/GPU feasibility but reached only **1.514983 BPB**
+after 2,400 steps versus the matched **1.519950** control. Its **0.004968**
+gain missed the fixed **0.030** continuation gate; there was no full run,
+formal resource qualification or new test. The method was inspired by
+[Qiu et al. (2025)](https://arxiv.org/abs/2505.06708), adapted with an
+exact-zero-start gate; the paper's results are not claimed as ours.
 The [candidate-selection audit](code/docs/FINAL_CANDIDATE_SELECTION_AUDIT_20260926.md)
 separates qualified predictors from lower but nondeployable diagnostic scores;
 no current qualified candidate is below 1.35 BPB.

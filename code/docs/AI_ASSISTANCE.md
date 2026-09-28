@@ -693,3 +693,18 @@ architecture design, coding, execution and interpretation. The student must
 review the 32-bucket causal mask, why zero initialization gives an exact
 control, the distinction between synthetic feasibility and final resource
 qualification, and the lack of a new test result.
+
+## Stage217 query-conditioned headwise attention gate (28 September 2026)
+
+Codex identified and read the primary gated-attention paper, then proposed
+an exact-zero-start headwise post-SDPA gate as a separate small-corpus
+hypothesis rather than claiming reproduction of the paper. It wrote the
+fixed pilot/stop plan before training, implemented the model, structural
+tests and Windows OpenVINO/CPU/GPU preflight, launched a matched 2,400-step
+GPU pilot and audited the terminal task, checkpoint and 26 source hashes.
+The 0.004968-BPB complete-validation gain missed the predeclared 0.030 gate,
+so no full run, deployment qualification or new test followed. This is
+substantive AI-assisted literature triage, experimental design, coding,
+execution and interpretation. The student must review the distinction from
+the cited paper, the causal gate, zero-start control, resource limitations
+and negative quality decision before any submission.
