@@ -69,7 +69,8 @@ def main() -> None:
     control_config = json.loads(CONTROL.read_text(encoding="utf-8"))
     changed = {key for key in config.keys() | control_config.keys()
                if config.get(key) != control_config.get(key)}
-    if (changed != {"conv_layers", "local_attention_layers", "local_attention_window"}
+    if (changed != {"conv_layers", "conv_kernel", "local_attention_layers",
+                    "local_attention_window"}
             or config["local_attention_layers"] != [2, 4, 6, 8]
             or config["local_attention_window"] != 7):
         raise ValueError("Stage212 changed outside the fixed local mixer")
