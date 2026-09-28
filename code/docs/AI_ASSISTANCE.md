@@ -653,3 +653,15 @@ formal resource qualification or new test scoring. This is substantive
 AI-assisted design, coding, execution and interpretation. The student must
 understand why a CPU projection is not a course resource pass and why the
 negative pilot cannot be reported as an improved score.
+
+## Stage214 lexical error allocation (28 September 2026)
+
+Codex used a structured research-ideation workflow to select a fixed,
+validation-only error decomposition before proposing another architecture.
+It implemented and ran the SHA-bound analysis of existing Stage143/155 target
+probabilities by token spelling, train frequency and causal-prefix presence.
+The measured complement was distributed across target types, so Codex
+rejected another near-duplicate lexical-head pilot. This is substantive
+AI-assisted diagnostic design, coding and interpretation. The student must
+review why the true-target groups are retrospective only, why the over-budget
+mixture is not a submission model, and why no <1.35 score was achieved.
