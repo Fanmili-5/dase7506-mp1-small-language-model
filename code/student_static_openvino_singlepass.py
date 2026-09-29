@@ -41,6 +41,8 @@ class StaticGraphNeuralHead(nn.Module):
             'INFERENCE_NUM_THREADS': requested,
             'NUM_STREAMS': 1,
             'ENABLE_CPU_PINNING': False,
+            # Permit logical workers, still capped by the requested budget.
+            'ENABLE_HYPER_THREADING': True,
         })
         used = int(self._compiled.get_property('INFERENCE_NUM_THREADS'))
         if (self._compiled.get_property('INFERENCE_PRECISION_HINT') != ov.Type.f32

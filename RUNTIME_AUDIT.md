@@ -54,7 +54,14 @@ are not substitutes for the complete resource measurement above.
   system GBK default. Explicit UTF-8 handling fixed it; both Windows probes then
   completed. This did not affect the course evaluator or the released model.
 
-The candidate fails the additional one-thread Linux check. A four-thread Linux
-comparison is being checked separately using the course evaluator's default
-budget. Do not replace the frozen release or reuse its qualification records
-for this branch without a completed audit of the exact candidate.
+The first four-thread Linux comparison at commit `403bd83` also exceeded the
+limit: baseline median 7.159222 s, candidate median 37.217258 s, ratio 5.198506,
+peak RSS 2,295,668,736 bytes. Both processes had four available logical CPUs and
+requested four PyTorch threads, but OpenVINO selected only two feature workers.
+The three candidate validation scores were all 1.3996861775854912.
+[Complete measurement](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36564423243).
+
+A follow-up explicitly permits OpenVINO logical workers while retaining the
+same four-thread ceiling. It changes scheduling only, not weights, precision or
+predictions. Do not replace the frozen release or reuse its qualification
+records for this branch without a completed audit of the exact candidate.

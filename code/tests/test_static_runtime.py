@@ -21,20 +21,34 @@ class FakeRequest:
 
 
 class StaticRuntimeTests(TestCase):
-    def head(self):
+    def head(self, used_threads=1, requested_threads=4):
         request = FakeRequest()
         compiled = mock.Mock()
         properties = {'INFERENCE_PRECISION_HINT': runtime.ov.Type.f32,
-                      'INFERENCE_NUM_THREADS': 1, 'NUM_STREAMS': 1,
+                      'INFERENCE_NUM_THREADS': used_threads, 'NUM_STREAMS': 1,
                       'ENABLE_CPU_PINNING': False}
         compiled.get_property.side_effect = properties.__getitem__
         compiled.create_infer_request.return_value = request
         core = mock.Mock()
         core.compile_model.return_value = compiled
-        with mock.patch.object(runtime.ov, 'Core', return_value=core):
+        with mock.patch.object(runtime.ov, 'Core', return_value=core), \
+                mock.patch.object(runtime.torch, 'get_num_threads', return_value=requested_threads):
             head = runtime.StaticGraphNeuralHead(dict(width=288, vocab=2048, copy_dim=64, context=256))
         core.read_model.return_value.reshape.assert_called_once_with({'ids': [8, 256]})
+        options = core.compile_model.call_args.args[2]
+        self.assertEqual(options['INFERENCE_NUM_THREADS'], requested_threads)
+        self.assertTrue(options['ENABLE_HYPER_THREADING'])
         return head, request
+
+    def test_runtime_can_use_logical_workers_within_budget(self):
+        for used in (1, 2, 4):
+            head, _ = self.head(used_threads=used, requested_threads=4)
+            self.assertEqual(head.execution_threads, used)
+
+    def test_runtime_must_not_exceed_requested_budget(self):
+        for used in (0, 5):
+            with self.assertRaises(ValueError):
+                self.head(used_threads=used, requested_threads=4)
 
     def test_arbitrary_rows_short_windows_and_owned_outputs(self):
         head, request = self.head()
