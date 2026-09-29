@@ -69,7 +69,7 @@ Three complete validation repetitions measured baseline median 5.280414 s,
 candidate median 28.303853 s, ratio **5.360158**, and peak RSS 2,292,768,768 bytes.
 The validation BPB remained 1.3996861775854912. The timing limit still fails on
 that host. Do not compare absolute seconds across the two CI hosts as a speedup.
-[Logical-worker measurement](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36565249601).
+[Logical-worker measurement, attempt 1](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36565249601/attempts/1).
 
 This changes scheduling only, not weights or precision. The Windows run also
 passed all 57 tests without skips and the synthetic numerical/causality checks,
@@ -85,3 +85,41 @@ None of these candidate records replaces the released
 model's Windows qualification. No rule requiring Linux single-thread execution
 was found in the supplied course documents; the Linux measurements document
 cross-host risk rather than a separate single-thread submission requirement.
+
+## Same-commit Linux recheck
+
+At the user's request, run `36565249601` was rerun once at the identical commit
+`0d335dce93cfed69ded78bf8d1f44efa1899e387`. This was a repeat of CPU scoring,
+not training. The method and weights were unchanged; neither run scored test.
+Both attempts used the complete validation split, CPU FP32, four requested
+threads, four actual OpenVINO workers and three alternating fresh-process
+repetitions for each predictor.
+
+| Linux attempt | Baseline seconds, repetitions 1 / 2 / 3 | Candidate seconds, repetitions 1 / 2 / 3 | Ratio of medians | Time limit |
+| --- | --- | --- | ---: | --- |
+| 1 | 5.280414 / 5.261645 / 5.330604 | 28.525318 / 28.303853 / 28.225612 | 5.360158 | Exceeded |
+| 2 | 11.242709 / 10.987902 / 10.973218 | 51.150770 / 51.018586 / 50.893668 | 4.643160 | Met on this runner |
+
+Attempt 2 finished on 29 September 2026 at 12:21 UTC. Its baseline median was
+10.987902 s and candidate median was 51.018586 s. Peak candidate RSS was
+2,295,070,720 bytes, below 4 GiB. All three candidate validation scores were
+1.3996861637466336. The suite reported 57 tests, with the two CUDA-only tests
+skipped on this CPU runner; synthetic equivalence and causality checks passed.
+[Attempt 2 logs](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36565249601/attempts/2)
+and [raw JSON artifact](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36565249601/artifacts/11032886588)
+retain the new evidence.
+
+Both attempts have identical baseline/candidate checkpoint, implementation,
+evaluator and tokenizer hashes. In particular, the candidate checkpoint SHA-256
+is `b8c1273f9ae629f7e6667370177ff4312ecf9aead5209abd4319a3bb62aa67a4`.
+The runtime environment was not fully identical: both attempts exposed four
+logical CPUs, but the default PyTorch inter-op count was two in attempt 1 and
+four in attempt 2, matching between baseline and candidate within each attempt.
+CPU model and host contention were not recorded, so these measurements do not
+identify the precise cause of the timing difference.
+
+Thus 5.360158 is a valid observation, not a universal Linux multiplier, and
+4.643160 is a valid pass on the second runner, not a guarantee for every host.
+Both outcomes must be retained. Do not pool seconds across hosts, call the
+rerun an algorithmic speedup, or rerun repeatedly just to select a passing host.
+This recheck does not replace or modify the published coursework bundle.
