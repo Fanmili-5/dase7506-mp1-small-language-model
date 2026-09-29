@@ -12,7 +12,8 @@ from unittest.mock import patch
 import numpy as np
 
 from scripts.package_stage143_final_release import (
-    FINAL, expected_files, read_json, sha, validate_freeze, validate_test,
+    FINAL, expected_files, qualification_hashes, read_json, sha,
+    validate_freeze, validate_test,
     validate_window_nll,
 )
 from scripts.run_stage143_frozen_test import preflight
@@ -54,6 +55,16 @@ class FinalReleaseGateTests(unittest.TestCase):
         self.assertEqual(len(validate_freeze(self.freeze, self.final, sha(FINAL))), 18)
         validate_test(self.test_record, self.final, self.freeze_sha256,
                       self.freeze["source_commit"])
+
+    def test_recorded_windows_qualification_matches_only_line_endings(self) -> None:
+        recorded = read_json(FINAL.parent / "freeze-stage143-20260927.json")
+        accepted = qualification_hashes(FINAL)
+        self.assertIn(recorded["qualification_sha256"], accepted)
+        self.assertEqual(len(validate_freeze(recorded, self.final, accepted)), 18)
+        changed = copy.deepcopy(recorded)
+        changed["qualification_sha256"] = "0" * 64
+        with self.assertRaises(ValueError):
+            validate_freeze(changed, self.final, accepted)
 
     def test_unfrozen_or_changed_assets_rejected(self) -> None:
         for key, value in (("status", "eligible_for_freeze_only"),

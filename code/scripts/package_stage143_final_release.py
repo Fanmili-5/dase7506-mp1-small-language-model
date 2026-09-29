@@ -11,6 +11,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import subprocess
 import sys
 import zipfile
@@ -26,6 +27,15 @@ HISTORICAL_STAGE10_REPORT_SHA = "44607086c854236627d2a375f84a1e92fa8dc2f16b65122
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def qualification_hashes(path: Path) -> set[str]:
+    """Accept the recorded Windows CRLF bytes or Git's LF checkout of this JSON."""
+    data = path.read_bytes()
+    hashes = {hashlib.sha256(data).hexdigest()}
+    if b"\r\n" not in data:
+        hashes.add(hashlib.sha256(data.replace(b"\n", b"\r\n")).hexdigest())
+    return hashes
 
 
 def read_json(path: Path) -> dict:
@@ -54,12 +64,15 @@ def expected_files(final: dict) -> dict:
     return files
 
 
-def validate_freeze(freeze: dict, final: dict, qualification_sha: str) -> dict:
+def validate_freeze(freeze: dict, final: dict,
+                    qualification_sha: str | set[str]) -> dict:
+    accepted_hashes = ({qualification_sha} if isinstance(qualification_sha, str)
+                       else qualification_sha)
     if (freeze.get("status") != "method_frozen_before_test"
             or freeze.get("method_frozen") is not True
             or freeze.get("protocol") != final["protocol"]
             or freeze.get("candidate") != "stage143-openvino-order6"
-            or freeze.get("qualification_sha256") != qualification_sha
+            or freeze.get("qualification_sha256") not in accepted_hashes
             or freeze.get("validation_bpb") != final["validation_bpb"]
             or freeze.get("conservative_inference_asset_bytes")
             != final["conservative_asset_bytes"]
@@ -115,12 +128,23 @@ def validate_window_nll(test: dict, window_nll_path: Path) -> int:
 
 
 def validate_repository(freeze: dict, files: dict, report: Path,
-                        freeze_path: Path, test_path: Path) -> str:
+                        freeze_path: Path, test_path: Path,
+                        source_history_commit: str | None = None) -> tuple[str, str | None]:
     if git("status", "--porcelain=v1", "--untracked-files=all"):
         raise ValueError("Final release requires a clean committed worktree")
     commit = git("rev-parse", "HEAD")
-    subprocess.run(["git", "merge-base", "--is-ancestor", freeze["source_commit"],
-                    commit], cwd=REPO, check=True)
+    ancestry = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", freeze["source_commit"], commit],
+        cwd=REPO, check=False)
+    original_history_commit = None
+    if ancestry.returncode != 0:
+        if (not source_history_commit
+                or not re.fullmatch(r"[0-9a-f]{40}", source_history_commit)):
+            raise ValueError("Snapshot branch needs an exact original-history commit")
+        subprocess.run(
+            ["git", "merge-base", "--is-ancestor", freeze["source_commit"],
+             source_history_commit], cwd=REPO, check=True)
+        original_history_commit = source_history_commit
     if report.resolve() != (REPO / "REPORT.pdf").resolve():
         raise ValueError("Final report must be the tracked repository REPORT.pdf")
     if not report.read_bytes().startswith(b"%PDF-"):
@@ -142,25 +166,28 @@ def validate_repository(freeze: dict, files: dict, report: Path,
             raise ValueError(f"Frozen inference file changed: {relative}")
         if int(git("cat-file", "-s", f"HEAD:code/{relative}")) != row["bytes"]:
             raise ValueError(f"Inference file missing from final commit: {relative}")
-    return commit
+    return commit, original_history_commit
 
 
-def build(freeze_path: Path, test_path: Path, report: Path, output: Path) -> dict:
+def build(freeze_path: Path, test_path: Path, report: Path, output: Path,
+          source_history_commit: str | None = None) -> dict:
     from scripts.package_stage143_pretest_candidate import archived_entry
 
     if output.exists():
         raise FileExistsError("Refusing to overwrite final bundle")
     final, freeze, test = read_json(FINAL), read_json(freeze_path), read_json(test_path)
-    files = validate_freeze(freeze, final, sha(FINAL))
+    files = validate_freeze(freeze, final, qualification_hashes(FINAL))
     validate_test(test, final, sha(freeze_path), freeze["source_commit"])
     window_nll_path = test_path.with_suffix(".window-nll.npy")
     window_count = validate_window_nll(test, window_nll_path)
-    commit = validate_repository(freeze, files, report, freeze_path, test_path)
+    commit, original_history_commit = validate_repository(
+        freeze, files, report, freeze_path, test_path, source_history_commit)
     manifest = {
         "status": "final_stage143_bundle_after_method_freeze",
         "protocol": final["protocol"],
         "frozen_source_commit": freeze["source_commit"],
         "release_code_commit": commit,
+        "original_history_commit": original_history_commit,
         "freeze_record_sha256": sha(freeze_path),
         "full_test_result_sha256": sha(test_path),
         "full_test_window_nll_sha256": sha(window_nll_path),
@@ -218,8 +245,11 @@ def main() -> None:
     parser.add_argument("--test-result", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--source-history-commit", type=str,
+                        help="Exact original commit retaining frozen-source ancestry for a squashed snapshot")
     args = parser.parse_args()
-    manifest = build(args.freeze, args.test_result, args.report, args.output)
+    manifest = build(args.freeze, args.test_result, args.report, args.output,
+                     args.source_history_commit)
     print(json.dumps({
         "status": manifest["status"],
         "release_code_commit": manifest["release_code_commit"],
