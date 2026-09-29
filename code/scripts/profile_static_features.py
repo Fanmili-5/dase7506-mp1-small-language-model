@@ -17,8 +17,11 @@ p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--code', type=Path, required=True)
 p.add_argument('--threads', type=int, default=1)
 p.add_argument('--output', type=Path, required=True)
+p.add_argument('--batches', type=int, nargs='+', default=[32, 8],
+               help='Independent-row block sizes; each must divide 32')
 args = p.parse_args()
 assert not args.output.exists()
+assert all(size > 0 and 32 % size == 0 for size in args.batches)
 sys.path.insert(0, str(args.code.resolve()))
 from common import windows, setup
 setup('cpu', 'fp32', args.threads)
@@ -38,7 +41,7 @@ options = {'INFERENCE_PRECISION_HINT': ov.Type.f32,
            'PERF_COUNT': True}
 core = ov.Core()
 requests = {}
-for name, batch in [('dynamic', None), ('static32', 32), ('static8', 8)]:
+for name, batch in [('dynamic', None)] + [(f'static{size}', size) for size in dict.fromkeys(args.batches)]:
     model = core.read_model(str(graph))
     if batch is not None:
         model.reshape({'ids': [batch, 256]})
@@ -49,7 +52,7 @@ for name, batch in [('dynamic', None), ('static32', 32), ('static8', 8)]:
 
 def infer(name, ids):
     request = requests[name]
-    chunk = 8 if name == 'static8' else 32
+    chunk = int(name.removeprefix('static')) if name.startswith('static') else 32
     outputs = []
     for offset in range(0, len(ids), chunk):
         outputs.append(next(iter(request.infer({'ids': ids[offset:offset+chunk]}).values())).copy())

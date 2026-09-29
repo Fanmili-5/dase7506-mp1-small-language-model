@@ -25,7 +25,7 @@ payload = torch.load(args.checkpoint, map_location='cpu', weights_only=True)
 model, _ = make_model(payload['implementation'], payload['config'], device)
 model.load_state_dict(payload['model']); model.eval()
 tokenizer = Tokenizer.from_file(str(CODE/'data/tokenizer.json'))
-tokens = torch.tensor(tokenizer.encode((CODE/'data/wikitext_validation.txt').read_text()).ids)
+tokens = torch.tensor(tokenizer.encode((CODE/'data/wikitext_validation.txt').read_text(encoding='utf-8')).ids)
 inputs = [ids for ids, _ in itertools.islice(windows(tokens), 4)]
 component_times = {name: defaultdict(float) for name in ('features_only', 'whole_pipeline')}
 active = 'features_only'
@@ -78,7 +78,7 @@ report = dict(platform=platform.platform(), threads=1, seconds=dict(seconds),
               normalization_errors=dict(normalization_errors),
               scored_test=False, scored_targets=0)
 args.output.parent.mkdir(parents=True, exist_ok=True)
-args.output.write_text(json.dumps(report, indent=2)+'\n')
+args.output.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
 print(json.dumps(report, indent=2))
 assert max_error <= 1e-5
 assert max_probability_error <= 3e-6
