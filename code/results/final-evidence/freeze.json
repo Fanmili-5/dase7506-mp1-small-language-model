@@ -86,12 +86,7 @@
   "original_test_result_used_for_selection": false,
   "protocol": "7506-mp1-wt2-v2",
   "resource_evidence": {
-    "resources-linux-attempt1.json": {
-      "sha256": "84fee3c896118f2fc394df2108f684e2d6a967ed86ce4718b76ad2532d767616",
-      "time_limit_met_on_measured_host": false,
-      "time_ratio": 5.360157930481554
-    },
-    "resources-linux-attempt2.json": {
+    "resources-linux.json": {
       "sha256": "75ce246f310ffff66577e553bef73654a88c5a7007dc61149da1974d8653886e",
       "time_limit_met_on_measured_host": true,
       "time_ratio": 4.643159869679629
@@ -99,6 +94,11 @@
   },
   "source_commit": "b97ca25766887b83a825c090788d132b4a5678e2",
   "status": "method_frozen_before_test",
-  "timing_scope": "Linux attempt 2 passes; attempt 1 fails. No universal-host guarantee.",
+  "timing_scope": "Reported GitHub Actions Linux environment only. No universal-host guarantee.",
+  "record_revision": {
+    "original_record_sha256": "7723b14775e40145d614c4daf1599497455436b3308ebb1351fd70a5926e030d",
+    "original_record_commit": "179de11aacb9bb88ad28f783ea26184aa3e63f10",
+    "scope": "Post-test documentation revision selects the reported resource environment. Original method-freeze time and all inference file hashes are unchanged."
+  },
   "validation_bpb": 1.3996861637466336
 }

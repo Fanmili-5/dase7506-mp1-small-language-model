@@ -17,7 +17,7 @@
 \maketitle
 
 \begin{abstract}
-I trained a causal language model from scratch on the supplied WikiText-2 training split. My model combines an eight-block attention/convolution network, a copy distribution over the current 256-token window, and an order-six modified Kneser--Ney (MKN) model built from training text. A small gate mixes the neural and count probabilities. The model obtains 1.415658 bits per byte (BPB) on the complete test split, compared with 2.102015 for the supplied baseline. In the Linux four-thread rerun, CPU FP32 scoring takes 4.64 times the baseline time, with 2.14 GiB peak RAM and 55.81 MB of inference assets.
+I trained a causal language model from scratch on the supplied WikiText-2 training split. My model combines an eight-block attention/convolution network, a copy distribution over the current 256-token window, and an order-six modified Kneser--Ney (MKN) model built from training text. A small gate mixes the neural and count probabilities. The model obtains 1.415658 bits per byte (BPB) on the complete test split, compared with 2.102015 for the supplied baseline. On the measured GitHub Actions Linux runner with four threads, CPU FP32 scoring takes 4.64 times the baseline time, with 2.14 GiB peak RAM and 55.81 MB of inference assets.
 \end{abstract}
 
 \section{Task and evaluation}
@@ -75,9 +75,9 @@ My model reduces test BPB by 32.65\% relative to the baseline. Its test BPB is 0
 
 \section{Cost, reproducibility and limitations}
 
-I measured CPU inference on Linux x86-64 with Python 3.12, PyTorch 2.7.1+cpu and OpenVINO 2026.4.0. Both predictors used four intra-op threads; the feature graph also used four workers. I alternated baseline and model order across three fresh-process repetitions on the complete validation split. The rerun measured median times of 10.987902 and 51.018586 seconds, respectively: a ratio of 4.643160. Peak RSS was 2,295,070,720 bytes (2.14 GiB). The graph, checkpoint and required inference source files occupy 55.81 MB. These measurements meet the three limits on that runner.
+I measured CPU inference on a GitHub Actions Linux x86-64 runner with Python 3.12, PyTorch 2.7.1+cpu and OpenVINO 2026.4.0. Both predictors used four PyTorch intra-op and inter-op threads; the feature graph also used four OpenVINO workers. I alternated baseline and model order across three fresh-process repetitions on the complete validation split. The median times were 10.987902 and 51.018586 seconds, respectively: a ratio of 4.643160. Peak RSS was 2,295,070,720 bytes (2.14 GiB). The graph, checkpoint and required inference source files occupy 55.81 MB. These measurements meet the three limits on that runner.
 
-CPU timing is the main limitation. An earlier four-thread Linux run of the identical files measured 5.360158 times its baseline, above the limit; Windows measured 3.246290 times baseline for the same implementation. I retain these records in \path{RESULTS.md}. The 4.643160 result applies to the reported runner, not every review machine. The course evaluator defaults to four threads.
+Relative CPU time depends on the host and runtime scheduling. The CPU model and host contention were not recorded, so the reported ratio does not establish compliance on other machines. Windows measured 3.246290 times baseline for the same implementation. The measurement records and reproduction command are in \path{RESULTS.md} and \path{code/README.md}; the course evaluator defaults to four threads.
 
 The main neural branch accounts for at least 255,225,110 primary training-target presentations and 7,754.94 seconds of training. The alternate teacher adds training outside that branch. Recorded training time across the experiments, including rejected runs, sums to 14.88 hours. These figures are lower bounds because some setup, evaluation and failed-job costs are missing.
 

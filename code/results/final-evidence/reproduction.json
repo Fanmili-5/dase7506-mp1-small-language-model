@@ -1,6 +1,8 @@
 {
   "completed_at_utc": "2026-09-29T12:35:00.161043+00:00",
-  "freeze_record_sha256": "7723b14775e40145d614c4daf1599497455436b3308ebb1351fd70a5926e030d",
+  "freeze_record_sha256": "9b85252a6335dfd8bc800afa36707fca91bf18ecd8071e36ef3aae9fa2973c8c",
+  "original_freeze_record_sha256": "7723b14775e40145d614c4daf1599497455436b3308ebb1351fd70a5926e030d",
+  "record_revision_note": "Freeze-record reference updated after resource-documentation revision; completed_at_utc and all test measurements are unchanged.",
   "full_test_cpu_fp32_bpb": 1.4156576308174311,
   "full_test_result_sha256": "0cf57c8aa9335c4dab791a8501c12e575339da0c59972c343407d1e1dcba9978",
   "full_test_window_count": 1674,

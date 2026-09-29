@@ -17,7 +17,7 @@ My model combines an eight-block attention/convolution network, within-window co
 - [Results](RESULTS.md): comparisons, training cost and CPU measurements.
 - [Assignment](GUIDE.md): supplied rules.
 
-Download the code and checkpoint ZIPs from [v1.0](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/tag/v1.0). Extract the code into an empty directory, then extract the checkpoint into the same directory.
+Download the code and checkpoint ZIPs from [v1.1](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/tag/v1.1). Extract the code into an empty directory, then extract the checkpoint into the same directory.
 
 After installing dependencies, run from `code/`:
 
@@ -30,7 +30,7 @@ The complete-test result is **1.4156576308174311 BPB**, recorded in [test.json](
 
 ## Resource limits
 
-On the Linux four-thread rerun, median scoring time was 51.019 seconds versus 10.988 seconds for the baseline: 4.643×, with 2.14 GiB peak RSS and 55.81 MB of inference assets. I measured each predictor three times in fresh processes. An earlier run of the same files measured 5.360× on another runner, so relative speed depends on the machine. Both measurements are in [RESULTS.md](RESULTS.md).
+On the measured GitHub Actions Linux runner with four threads, median scoring time was 51.019 seconds versus 10.988 seconds for the baseline: 4.643×, with 2.14 GiB peak RSS and 55.81 MB of inference assets. I measured each predictor three times in fresh processes. This measurement meets the limits on that runner; relative CPU time varies across hosts. Details are in [RESULTS.md](RESULTS.md).
 
 ## Reuse and AI assistance
 

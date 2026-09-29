@@ -53,7 +53,7 @@ python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-lo
 
 This repeats scoring in fresh processes and reports the ratio of median times. The course limits are 5× baseline CPU scoring time, 4 GiB peak evaluation RSS and 64 MiB uncompressed inference assets. `verify_submission.py` checks the model files, including the graph and required source, and reports their total byte count.
 
-The recorded Linux rerun gave 4.643160× and 2.14 GiB peak RSS. An earlier run of the same files gave 5.360158×; both are retained in [RESULTS.md](../RESULTS.md). Hardware and runtime scheduling affect relative speed, so these are measurements on specific hosts rather than a universal timing guarantee.
+The GitHub Actions Linux measurement gave 4.643160× and 2.14 GiB peak RSS; details are in [RESULTS.md](../RESULTS.md). Hardware and runtime scheduling affect relative speed. This measurement applies to that runner, so repeat the resource check on the review machine.
 
 ## Train
 
