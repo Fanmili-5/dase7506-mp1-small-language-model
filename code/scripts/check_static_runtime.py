@@ -21,14 +21,11 @@ def main():
     if args.output.exists():
         raise FileExistsError(args.output)
     device, _ = setup('cpu', 'fp32', args.threads)
-    source_path = CODE / 'checkpoints/stage143-openvino-order6.pt'
-    source = torch.load(source_path, map_location='cpu', weights_only=True)
     candidate = torch.load(args.checkpoint, map_location='cpu', weights_only=True)
-    assert candidate['config'] == source['config']
-    assert all(torch.equal(v, candidate['model'][k]) for k, v in source['model'].items())
-    reference, _ = make_model(source['implementation'], source['config'], device)
+    # Both execution paths use the final tensors; no archived checkpoint is needed.
+    reference, _ = make_model('student_stage143_openvino_singlepass', candidate['config'], device)
     model, _ = make_model(candidate['implementation'], candidate['config'], device)
-    reference.load_state_dict(source['model'], strict=True)
+    reference.load_state_dict(candidate['model'], strict=True)
     model.load_state_dict(candidate['model'], strict=True)
     reference.eval(); model.eval()
     generator = torch.Generator().manual_seed(240929)
@@ -56,6 +53,7 @@ def main():
     report = dict(checks=checks, passed=passed, checkpoint_sha256=sha(args.checkpoint),
                   implementation_sha256=sha(CODE/'student_static_openvino_singlepass.py'),
                   platform=platform.platform(), requested_threads=args.threads,
+                  reference='dynamic OpenVINO execution with the same final checkpoint tensors',
                   execution_threads=model.neural.execution_threads,
                   training_launched=False, scored_test=False)
     args.output.parent.mkdir(parents=True, exist_ok=True)

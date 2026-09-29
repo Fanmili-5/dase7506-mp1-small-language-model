@@ -14,10 +14,10 @@ My model combines an eight-block attention/convolution network, within-window co
 - [Report](REPORT.pdf): model, controlled comparisons, results and limitations.
 - [Installation and evaluation](code/README.md): reproduce the frozen score without training.
 - [Training recipe](TRAINING.md): neural lineage, count construction and gate fitting.
-- [Results and evidence](RESULTS.md): experiment table and original measurement records.
+- [Results](RESULTS.md): required comparisons, training cost and final measurements.
 - [Assignment](GUIDE.md): supplied rules.
 
-Download the checkpoint ZIP from the [final release](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/tag/mp1-final-20260929) and use the code snapshot attached to the same release. Extract the checkpoint ZIP at the repository root. Its manifest identifies the code commit, report and inference files.
+Download the code and checkpoint ZIPs from the [submission release](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/tag/mp1-submission-20260929). Extract the code ZIP into an empty directory, then extract the checkpoint ZIP into that directory. Its manifest identifies the code commit, report and inference files.
 
 After installing dependencies, run from `code/`:
 
@@ -26,7 +26,7 @@ python scripts/verify_submission.py
 python evaluate.py --checkpoint checkpoints/final-model.pt --device cpu --precision fp32 --threads 4 --split test --output reproduced-test.json
 ```
 
-The complete-test result is **1.4156576308174311 BPB**, recorded in [test.json](code/results/final-evidence/test.json). This is the submission score; validation BPB is only for model selection. Stage numbers in supporting filenames identify earlier experiments.
+The complete-test result is **1.4156576308174311 BPB**, recorded in [test.json](code/results/final-evidence/test.json). This is the submission score; validation BPB is only for model selection.
 
 ## Resource limits
 
@@ -36,4 +36,4 @@ On the recorded Linux four-thread rerun, median scoring time was 51.019 seconds 
 
 The course supplied the baseline, data, tokenizer and evaluator. I cite the methods in the report and retain the data attribution in the code README. I used OpenAI Codex for substantial assistance with coding, experiments and writing. I am responsible for the submitted work.
 
-The default branch contains the final coursework and its supporting evidence. The [original development history](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/tree/671261f374bd54b28fe6ec3ce6ab890c0b6c72c8) is retained separately; it is not needed to run the submission.
+The default branch contains the submitted model, training and evaluation code, tests, report and supporting measurements. Some training modules retain numbered filenames because later steps import them. Older checkpoints and search logs are kept in the [development history](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/tree/671261f374bd54b28fe6ec3ce6ab890c0b6c72c8), outside the submission package.

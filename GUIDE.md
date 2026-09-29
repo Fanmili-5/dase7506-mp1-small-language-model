@@ -8,7 +8,7 @@ Train a language model from scratch, improve its architecture or training, and a
 ## 1. What we provide
 
 - **guide:** this assignment guide.
-- **code:** a complete baseline GPT, training and evaluation code, data, tokenizer and correctness tests. The [code README](../code/README.md) explains installation, commands and measurement procedures. No pretrained checkpoint is supplied; training starts from random initialization.
+- **code:** a complete baseline GPT, training and evaluation code, data, tokenizer and correctness tests. The [code README](code/README.md) explains installation, commands and measurement procedures. No pretrained checkpoint is supplied; training starts from random initialization.
 
 ## 2. Ranking and assessment
 

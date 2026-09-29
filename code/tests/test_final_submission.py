@@ -1,8 +1,14 @@
 """Reject score, split and file mismatches in the final handoff."""
 import copy
+from pathlib import Path
+import tempfile
 import unittest
+from unittest.mock import patch
 
-from scripts.final_submission import EVIDENCE, read, validate_test, verify
+import numpy as np
+
+from scripts import final_submission as final
+from scripts.final_submission import EVIDENCE, read, validate_test, validate_window_nll, verify
 
 
 class FinalSubmissionTests(unittest.TestCase):
@@ -41,6 +47,44 @@ class FinalSubmissionTests(unittest.TestCase):
                 self.test['bpb'] = value
                 with self.assertRaises(ValueError):
                     validate_test(self.test, self.freeze)
+
+    def test_rejects_missing_inference_file(self):
+        with tempfile.TemporaryDirectory() as scratch:
+            with patch.object(final, 'CODE', Path(scratch)):
+                with self.assertRaisesRegex(FileNotFoundError, 'Missing frozen file'):
+                    final.measured_files(Path(scratch) / 'missing.pt')
+
+    def test_rejects_changed_file_identity_or_size(self):
+        for key, value in (('sha256', '0' * 64), ('bytes', 0)):
+            changed = copy.deepcopy(self.freeze)
+            changed['inference_files'][final.CHECKPOINT][key] = value
+            with self.subTest(key=key), patch.object(final, 'read', return_value=changed):
+                with self.assertRaisesRegex(ValueError, 'Changed frozen inference file'):
+                    final.measured_files(final.CODE / final.CHECKPOINT)
+
+    def test_rejects_unsafe_manifest_paths(self):
+        for name in ('../outside.py', '/absolute.py', 'folder\\outside.py'):
+            changed = copy.deepcopy(self.freeze)
+            changed['inference_files'] = {name: {'bytes': 0, 'sha256': '0' * 64}}
+            with self.subTest(name=name), patch.object(final, 'read', return_value=changed):
+                with self.assertRaisesRegex(ValueError, 'Unsafe inference path'):
+                    final.measured_files(final.CODE / final.CHECKPOINT)
+
+    def test_window_sidecar_must_match_full_test_summary(self):
+        with tempfile.TemporaryDirectory() as scratch:
+            path = Path(scratch) / 'window-nll.npy'
+            losses = np.full(1674, self.test['nll_nats'] / 1674, dtype=np.float64)
+            np.save(path, losses)
+            self.assertEqual(validate_window_nll(self.test, path), 1674)
+            losses[0] += 1
+            np.save(path, losses)
+            with self.assertRaisesRegex(ValueError, 'Window-NLL sum'):
+                validate_window_nll(self.test, path)
+            for invalid in (losses[:-1], losses.astype(np.float32),
+                            np.full(1674, np.nan), np.full(1674, -1.0)):
+                np.save(path, invalid)
+                with self.assertRaisesRegex(ValueError, 'coverage'):
+                    validate_window_nll(self.test, path)
 
 
 if __name__ == '__main__':

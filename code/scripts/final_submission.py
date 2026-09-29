@@ -1,12 +1,12 @@
-"""Freeze, verify and package the final execution of the unchanged Stage143 model."""
+"""Verify and package the frozen final coursework submission without scoring."""
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime
 import hashlib
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import subprocess
 import sys
 import zipfile
@@ -29,91 +29,54 @@ def read(path: Path) -> dict:
     return json.loads(path.read_text(encoding='utf-8-sig'))
 
 
-def write(path: Path, value: dict) -> None:
-    with path.open('x', encoding='utf-8') as stream:
-        stream.write(json.dumps(value, indent=2, sort_keys=True) + '\n')
-
-
 def commit() -> str:
     return subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=REPO, text=True).strip()
 
 
 def measured_files(checkpoint: Path) -> dict:
-    previous = read(CODE / 'results/stage143-evidence/final.json')
+    freeze = read(EVIDENCE / 'freeze.json')
     files = {}
-    for name in previous['inference_files']:
-        path = CODE / name
-        if sha(path) != previous['source_hashes'][name]:
-            raise ValueError(f'Changed original inference dependency: {name}')
-        files[name] = {'sha256': sha(path), 'bytes': path.stat().st_size}
-    if sha(CODE / IMPLEMENTATION) != EXPECTED_IMPLEMENTATION:
+    for name, expected in freeze['inference_files'].items():
+        relative = PurePosixPath(name)
+        if relative.is_absolute() or '..' in relative.parts or '\\' in name:
+            raise ValueError(f'Unsafe inference path: {name}')
+        path = checkpoint if name == CHECKPOINT else CODE / name
+        if not path.is_file():
+            raise FileNotFoundError(f'Missing frozen file: {name}')
+        actual = {'sha256': sha(path), 'bytes': path.stat().st_size}
+        if actual != expected:
+            raise ValueError(f'Changed frozen inference file: {name}')
+        files[name] = actual
+    if files[IMPLEMENTATION]['sha256'] != EXPECTED_IMPLEMENTATION:
         raise ValueError('Execution implementation differs from measured candidate')
-    if sha(checkpoint) != EXPECTED_CHECKPOINT:
+    if files[CHECKPOINT]['sha256'] != EXPECTED_CHECKPOINT:
         raise ValueError('Checkpoint differs from the Linux timing evidence')
-    files[IMPLEMENTATION] = {'sha256': sha(CODE / IMPLEMENTATION),
-                             'bytes': (CODE / IMPLEMENTATION).stat().st_size}
-    files[CHECKPOINT] = {'sha256': sha(checkpoint), 'bytes': checkpoint.stat().st_size}
-    if sum(row['bytes'] for row in files.values()) > 64 * 1024**2:
-        raise ValueError('Inference assets exceed 64 MiB')
+    total = sum(row['bytes'] for row in files.values())
+    if total != freeze['conservative_inference_asset_bytes'] or total > 64 * 1024**2:
+        raise ValueError('Incorrect inference byte count or assets exceed 64 MiB')
     return files
 
 
-def freeze_and_score(output: Path) -> None:
-    """One frozen full-test reproduction; no training or post-test selection."""
-    from scripts.export_static_runtime import export
-    from scripts.package_stage143_final_release import validate_window_nll
+def validate_window_nll(test: dict, window_nll_path: Path) -> int:
+    """Check the fixed scorer's ignored per-window sidecar against its summary."""
+    import numpy as np
 
-    if output.exists():
-        raise FileExistsError('Use a new output directory')
-    output.mkdir(parents=True)
-    checkpoint = output / 'checkpoint.pt'
-    export(checkpoint)
-    files = measured_files(checkpoint)
-    resources = {}
-    for name in ('resources-linux-attempt1.json', 'resources-linux-attempt2.json'):
-        path = EVIDENCE / name
-        result = read(path)
-        if (result['candidate']['checkpoint_sha256'] != EXPECTED_CHECKPOINT
-                or result['candidate']['implementation_sha256'] != EXPECTED_IMPLEMENTATION
-                or result['threads'] != 4 or result['repeats'] != 3):
-            raise ValueError('Timing evidence does not match this predictor')
-        resources[name] = {'sha256': sha(path),
-                           'time_ratio': result['candidate_to_baseline_time_ratio'],
-                           'time_limit_met_on_measured_host': result['within_five_x_time_limit']}
-    selected = read(EVIDENCE / 'resources-linux-attempt2.json')
-    if not (selected['within_five_x_time_limit'] and selected['within_four_gib_peak_rss_limit']):
-        raise ValueError('Selected measurement does not meet resource limits')
-    freeze = {
-        'status': 'method_frozen_before_test', 'protocol': '7506-mp1-wt2-v2',
-        'frozen_at_utc': datetime.now(timezone.utc).isoformat(),
-        'source_commit': commit(), 'checkpoint': CHECKPOINT,
-        'implementation': IMPLEMENTATION, 'inference_files': files,
-        'conservative_inference_asset_bytes': sum(row['bytes'] for row in files.values()),
-        'validation_bpb': selected['candidate']['bpb_runs'][0],
-        'resource_evidence': resources,
-        'timing_scope': 'Linux attempt 2 passes; attempt 1 fails. No universal-host guarantee.',
-        'algorithm_changes': False, 'new_training_targets': 0,
-        'original_test_result_used_for_selection': False,
-    }
-    freeze_path = output / 'freeze.json'
-    write(freeze_path, freeze)
-    print('Freeze saved before starting the unchanged course scorer.', flush=True)
-    subprocess.run([sys.executable, str(CODE / 'evaluate.py'),
-                    '--checkpoint', str(checkpoint), '--device', 'cpu',
-                    '--precision', 'fp32', '--threads', '4', '--split', 'test',
-                    '--output', str(output / 'test.json')], cwd=CODE, check=True)
-    test = read(output / 'test.json')
-    validate_test(test, freeze)
-    validate_window_nll(test, output / 'test.window-nll.npy')
-    write(output / 'reproduction.json', {
-        'freeze_record_sha256': sha(freeze_path),
-        'full_test_result_sha256': sha(output / 'test.json'),
-        'full_test_window_nll_sha256': sha(output / 'test.window-nll.npy'),
-        'full_test_window_count': 1674,
-        'completed_at_utc': datetime.now(timezone.utc).isoformat(),
-        'full_test_cpu_fp32_bpb': test['bpb'],
-        'source_commit': commit(), 'training_launched': False,
-    })
+    if not window_nll_path.is_file():
+        raise ValueError("Missing fixed-scorer window-NLL sidecar")
+    losses = np.load(window_nll_path, allow_pickle=False)
+    if (losses.shape != (1674,) or losses.dtype != np.float64
+            or not np.isfinite(losses).all() or (losses < 0).any()):
+        raise ValueError("Invalid complete-test window-NLL coverage")
+    if abs(float(losses.sum(dtype=np.float64)) - test["nll_nats"]) > 1e-5:
+        raise ValueError("Window-NLL sum differs from reported complete-test NLL")
+    return int(losses.size)
+
+
+def archived_entry(archive: zipfile.ZipFile, name: str, data: bytes) -> None:
+    info = zipfile.ZipInfo(name, date_time=(2026, 9, 26, 0, 0, 0))
+    info.compress_type = zipfile.ZIP_STORED
+    info.external_attr = 0o644 << 16
+    archive.writestr(info, data)
 
 
 def validate_test(test: dict, freeze: dict) -> None:
@@ -133,8 +96,6 @@ def validate_test(test: dict, freeze: dict) -> None:
 
 
 def verify() -> dict:
-    from scripts.package_stage143_final_release import validate_window_nll
-
     freeze, test = read(EVIDENCE / 'freeze.json'), read(EVIDENCE / 'test.json')
     reproduction = read(EVIDENCE / 'reproduction.json')
     if (freeze['status'] != 'method_frozen_before_test'
@@ -171,8 +132,6 @@ def verify() -> dict:
 
 
 def package(output: Path) -> dict:
-    from scripts.package_stage143_pretest_candidate import archived_entry
-
     verify()
     if subprocess.check_output(['git', 'status', '--porcelain'], cwd=REPO):
         raise ValueError('Commit the final code and report before packaging')
@@ -215,12 +174,9 @@ def package(output: Path) -> dict:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('freeze-and-score', 'verify', 'package'))
+    parser.add_argument('action', choices=('verify', 'package'))
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     if args.action != 'verify' and args.output is None:
         parser.error('--output is required')
-    if args.action == 'freeze-and-score':
-        freeze_and_score(args.output.resolve())
-    else:
-        print(json.dumps(verify() if args.action == 'verify' else package(args.output), indent=2))
+    print(json.dumps(verify() if args.action == 'verify' else package(args.output), indent=2))

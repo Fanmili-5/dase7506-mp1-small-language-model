@@ -1,0 +1,173 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "purpose": "Measurements used in the report; full search records are retained at the linked immutable revision.",
+  "records": [
+    {
+      "name": "Auxiliary objectives, without R-Drop",
+      "stage": 26,
+      "primary_training_targets": 58982400,
+      "seed": 17,
+      "measurement": {
+        "bpb": 1.4649939082596202,
+        "token_ppl": 22.097630515612593,
+        "nll_nats": 1165751.0520054826,
+        "targets": 376599,
+        "utf8_bytes": 1148007,
+        "seconds": 63.04681889998028,
+        "protocol": "7506-mp1-wt2-v2",
+        "split": "validation",
+        "precision": "fp32",
+        "checkpoint_sha256": "7e1187c61684be0b8e913c63ce30e03c24c52388460fd997fcce00b4dbdaa629",
+        "implementation_sha256": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+        "evaluator_sha256": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+        "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+        "device": "cpu",
+        "device_name": "CPU",
+        "peak_allocated_gb": 0.0,
+        "peak_reserved_gb": 0.0
+      },
+      "source": {
+        "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage26-evidence/average-validation-cpu-fp32.json",
+        "sha256": "18f940b5425867a72fbc7eef207011b3958e4f833470e721cd17fd2e2cdcfccd"
+      },
+      "training_sources": [
+        {
+          "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage26-evidence/run.json",
+          "sha256": "53b55ff8cfdd69aa0350103363e778bbf1a80c804cc2ac601d54159e62eab6d3"
+        },
+        {
+          "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage26-evidence/metrics.json",
+          "sha256": "3de97d3504653b0b7d4391ffe67f9d75a1bb73a4065cd613cc9a660a1187d612"
+        }
+      ]
+    },
+    {
+      "name": "Same network and primary targets, with R-Drop",
+      "stage": 47,
+      "primary_training_targets": 58982400,
+      "seed": 17,
+      "measurement": {
+        "bpb": 1.4506130031808826,
+        "token_ppl": 21.436265557324766,
+        "nll_nats": 1154307.622015903,
+        "targets": 376599,
+        "utf8_bytes": 1148007,
+        "seconds": 64.20631849998608,
+        "protocol": "7506-mp1-wt2-v2",
+        "split": "validation",
+        "precision": "fp32",
+        "checkpoint_sha256": "4266b9c559da7ce62703c8762ea3b7deb5d0feaa4fc0eff234a3fa6c123f01c4",
+        "implementation_sha256": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+        "evaluator_sha256": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+        "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+        "device": "cpu",
+        "device_name": "CPU",
+        "peak_allocated_gb": 0.0,
+        "peak_reserved_gb": 0.0
+      },
+      "source": {
+        "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage47-evidence/average-validation-cpu-fp32.json",
+        "sha256": "bd15a1447cbd4cc0c65291b65cb48f4e113bd6a3e74362f09b42b511c661a1e3"
+      },
+      "training_sources": [
+        {
+          "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage47-evidence/run.json",
+          "sha256": "794210e741ceebb9def1a2d514a33ea088a07de3e2b9db3d7ca69f5fa5828221"
+        },
+        {
+          "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage47-evidence/metrics.json",
+          "sha256": "86a9f6abf1b9651486676857966c1142929b1de4101d87467e46e260652d44e2"
+        }
+      ]
+    },
+    {
+      "name": "Attention/convolution backbone",
+      "stage": 54,
+      "primary_training_targets": 58982400,
+      "seed": 17,
+      "measurement": {
+        "bpb": 1.4285940451894024,
+        "token_ppl": 20.461785195718203,
+        "nll_nats": 1136786.304488292,
+        "targets": 376599,
+        "utf8_bytes": 1148007,
+        "seconds": 64.19114760000957,
+        "protocol": "7506-mp1-wt2-v2",
+        "split": "validation",
+        "precision": "fp32",
+        "checkpoint_sha256": "689101810f2165091647366ebaaa11e3c693edc9a80155a009237cc131a25d51",
+        "implementation_sha256": "81e61cc36bc6aec3711de27c9860c7ac6b80238b8b5481c5bfa7710a04d9c34e",
+        "evaluator_sha256": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+        "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+        "device": "cpu",
+        "device_name": "CPU",
+        "peak_allocated_gb": 0.0,
+        "peak_reserved_gb": 0.0
+      },
+      "source": {
+        "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage54-evidence/average-validation-cpu-fp32.json",
+        "sha256": "da4c8011340f6a04ab0c017273e31e71eb981562b014c14df125aadc1cf44a7b"
+      },
+      "training_sources": [
+        {
+          "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage54-evidence/run.json",
+          "sha256": "c5f0fb7547ab430eaea1332fdc7ee4f86c3dc887884f1d2569fbabeb99ca4b00"
+        },
+        {
+          "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage54-evidence/metrics.json",
+          "sha256": "c9c257a8d990a29ef2ab4c9779f8e3e4f9156b759c6042584f838097a000018a"
+        }
+      ]
+    },
+    {
+      "name": "Hybrid plus fixed-weight MKN",
+      "best": {
+        "weight": 0.075,
+        "nll_nats": 1132499.1975474583,
+        "bpb": 1.4232064578982955
+      },
+      "selection": "Validation-selected count weight; same neural model as stage54.",
+      "source": {
+        "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage55-evidence/scan.json",
+        "sha256": "578eaf086feb756bfc3e824252ffe04092456ee846697cb4af0b78a522a18f41"
+      }
+    },
+    {
+      "name": "Distilled neural model plus fixed-weight order-six MKN",
+      "bpb": 1.4012884354583464,
+      "neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+      "extended_counts_sha256": "b901f11766c005733f769fa5582e82f586db31a41edaefe93122aae1ed471953",
+      "source": {
+        "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage100-evidence/result.json",
+        "sha256": "cdcfca95ea012cf3e60eb564999e1fd1eb172afb2607a146dfb48f5f36972aab"
+      }
+    },
+    {
+      "name": "Same distilled experts, selected confidence gate",
+      "best": {
+        "variant": "neural_backoff_mass",
+        "active_features": [
+          "neural_max_logp",
+          "neural_margin",
+          "highest_backoff",
+          "highest_max_mass"
+        ],
+        "slope_scale": 0.5,
+        "mean_count_weight": 0.09349056541736162,
+        "nll_nats": 1113783.2095972882,
+        "bpb": 1.399686163160504
+      },
+      "candidate_count": 54,
+      "selection": "Gate coefficients fitted on training segments; features and slope chosen on validation. No test scoring in this search.",
+      "neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+      "counts_sha256": "b901f11766c005733f769fa5582e82f586db31a41edaefe93122aae1ed471953",
+      "source": {
+        "url": "https://github.com/Fanmili-5/dase7506-mp1-small-language-model/blob/cd6014e2e2f3fa80ca82e2cf9ea9327168d1ff6e/code/results/stage102-evidence/result.json",
+        "sha256": "f3127ce66307df47e3b327081dad1831353f56b478fa6797b4b40f8282b6aed4"
+      }
+    }
+  ]
+}
