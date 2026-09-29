@@ -1,6 +1,6 @@
-# Training recipe
+# Training procedure
 
-Use the release bundle to reproduce the submitted score without training. Retraining reproduces the procedure, not necessarily identical serialized weights or BPB.
+The downloadable checkpoint can be evaluated without retraining. The commands below repeat the training procedure; they may produce different weights and BPB.
 
 ## Run
 
@@ -13,11 +13,11 @@ python scripts/reproduce_training.py --run-dir runs/retrained
 
 The first command prints the sequence without training. The second trains both neural branches, averages prescribed checkpoints, builds training-only counts, fits the gate and exports `runs/retrained/predictor.pt`. It never scores test. Subprocesses record their configurations, training targets and input hashes.
 
-The runner stops on a failed subprocess and refuses an existing run directory. An interrupted run can be continued manually from its printed plan and surviving outputs; there is no automatic cross-stage resume. A new end-to-end GPU rerun was not completed during submission cleanup; unit tests and plan checks do not replace that rerun.
+The runner stops on a failed subprocess and refuses an existing run directory. An interrupted run can be continued manually from its printed plan and surviving outputs; there is no automatic cross-stage resume. The combined entry point has passed plan and unit checks, but I have not rerun the full training sequence through it.
 
-## Neural lineage
+## Training schedule
 
-Stage numbers map scripts to original evidence. Continuations use fresh AdamW optimizers, weight decay 0.1 and gradient clipping at 1.0. Exact schedules, auxiliary coefficients and sampling streams are in the scripts/configs.
+Each continuation starts a fresh AdamW optimizer with weight decay 0.1 and gradient clipping at 1.0. The scripts and configs specify the learning-rate schedules, auxiliary-loss coefficients and sampling streams.
 
 | Step | Script in `code/scripts/` | Updates × batch | Checkpoint average |
 | --- | --- | --- | --- |
@@ -34,19 +34,19 @@ Stage numbers map scripts to original evidence. Continuations use fresh AdamW op
 
 Each window presents 256 primary targets. Deep-supervision, future-token and R-Drop losses add work beyond those primary counts. Byte features are folded into tied embeddings before output-bias fitting. The teacher mixes primary/alternate branches at 0.55/0.45; distillation uses 0.75 soft-target and 0.25 hard-target loss. Only the resulting student is deployed.
 
-The runner passes `--fresh-run` to continuation/count/gate scripts. It replaces historical input-hash and exact-BPB regression pins with actual new input hashes. Protocol, configuration, state-shape, data-integrity and coverage checks remain. Without this flag, original historical-input checks remain active.
+The runner passes `--fresh-run` to continuation, count and gate scripts so they accept newly trained inputs instead of requiring the original checkpoint hashes and BPB. They still check the data, configuration, state shapes and target coverage.
 
 ## Counts, gate and export
 
 `build_kneser_ney.py` builds pruned order-five MKN from training text; `build_stage73_order6.py` adds order-six counts (minimum count 2). Gate fitting uses a proxy count model from the first 90% of training tokens, the next 5% for fitting and the last 5% for fitting-hyperparameter selection. The neural model has seen these segments; they are not an independent neural holdout. No validation/test labels fit gate coefficients.
 
-Fixed final settings, previously selected on validation:
+Settings selected on validation:
 
 - vocabulary temperature 1.125, training unigram prior weight 0.0625, copy-logit shift 0.25;
 - features: neural maximum log-probability, neural top-two margin, highest-order MKN backoff and maximum continuation mass;
 - count-weight anchor 0.0625, gate slope scale 0.5, bounds 0.0001–0.9999.
 
-`export_retrained.py` exports the same single-pass PyTorch prediction rule and checks normalization/equivalence with its unfused reference on synthetic inputs. This fresh export is **not** the hash-pinned OpenVINO release: it has no inherited score or resource qualification. Evaluate validation and remeasure CPU/asset costs before considering a new submission. The supplied frozen OpenVINO graph/checkpoint remains the coursework artifact.
+`export_retrained.py` exports a single-pass PyTorch predictor and checks normalization and equivalence with its unfused reference on synthetic inputs. This output differs from the downloadable OpenVINO checkpoint. Measure its validation BPB, CPU time and memory use separately; the reported measurements apply to the downloadable model.
 
 ## Controlled comparisons
 
