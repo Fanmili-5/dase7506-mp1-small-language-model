@@ -34,6 +34,8 @@ python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device
 
 Expected validation BPB: 1.399686162042141. Recorded test BPB: 1.415657616535609. Floating-point differences may depend on runtime and CPU. Do not use test to select or tune a model.
 
+The frozen runtime checks that OpenVINO actually uses the requested FP32/thread settings. On CPU-limited hosts, a four-thread request can be reduced by the runtime and fail this check. Use `--threads 1` on those hosts, including the Linux CI runner. When benchmarking, use the same thread count for both models. One-thread score reproduction does not establish four-thread timing compliance.
+
 | Split | Scored targets | Raw UTF-8 bytes |
 | --- | ---: | ---: |
 | Validation | 376,599 | 1,148,007 |

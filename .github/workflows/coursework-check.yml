@@ -32,7 +32,8 @@ jobs:
           python scripts/reproduce_training.py --run-dir runs/ci-plan --plan
       - name: Score the complete validation split
         run: |
-          python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output reproduced-validation.json
+          python -c "import os; print('Logical CPUs:', os.cpu_count())"
+          python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 1 --split validation --output reproduced-validation.json
           python -c "import json; r=json.load(open('reproduced-validation.json')); assert r['targets']==376599; assert r['utf8_bytes']==1148007; assert abs(r['bpb']-1.399686162042141)<2e-5"
       - uses: actions/upload-artifact@v4
         with:
