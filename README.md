@@ -17,7 +17,7 @@ My model combines an eight-block attention/convolution network, within-window co
 - [Results](RESULTS.md): comparisons, training cost and CPU measurements.
 - [Assignment](GUIDE.md): supplied rules.
 
-Download the code and checkpoint ZIPs from [v1.1](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/tag/v1.1). Extract the code into an empty directory, then extract the checkpoint into the same directory.
+Download the [code ZIP](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/download/project-1/mp1-code.zip) and [checkpoint ZIP](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/download/project-1/mp1-checkpoint.zip). Extract the code into an empty directory, then extract the checkpoint into the same directory.
 
 After installing dependencies, run from `code/`:
 
