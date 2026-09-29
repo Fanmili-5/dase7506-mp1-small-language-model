@@ -31,9 +31,9 @@ jobs:
           python -m unittest discover -s tests -v
           python scripts/export_static_runtime.py --output runs/static-runtime/checkpoint.pt
           python scripts/check_static_runtime.py --checkpoint runs/static-runtime/checkpoint.pt --threads 1 --output results/runtime-audit/equivalence-linux.json
-      - name: Profile cache-sized feature execution without scoring test
+      - name: Compare original neural kernels without scoring test
         run: |
-          python scripts/profile_static_features.py --code . --threads 1 --batches 8 4 1 --output results/runtime-audit/cache-tiles-linux.json
+          python scripts/profile_torch_features.py --threads 1 --output results/runtime-audit/torch-kernels-linux.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
