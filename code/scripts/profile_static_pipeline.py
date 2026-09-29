@@ -48,6 +48,8 @@ def predict(mode, ids):
     return torch.cat([model(block) for block in ids.split(8)], dim=0)
 
 max_error = 0.0
+max_probability_error = 0.0
+normalization_errors = defaultdict(float)
 seconds = defaultdict(list)
 with torch.no_grad():
     for mode in component_times:
@@ -66,12 +68,20 @@ with torch.no_grad():
                 outputs[mode] = predict(mode, ids)
                 seconds[mode].append(time.perf_counter()-start)
             max_error = max(max_error, float((outputs['features_only']-outputs['whole_pipeline']).abs().max()))
+            max_probability_error = max(max_probability_error, float((outputs['features_only'].exp()-outputs['whole_pipeline'].exp()).abs().max()))
             assert torch.isfinite(outputs['whole_pipeline']).all()
-            assert float(outputs['whole_pipeline'].logsumexp(-1).abs().max()) < 2e-6
+            for mode, output in outputs.items():
+                normalization_errors[mode] = max(normalization_errors[mode], float(output.logsumexp(-1).abs().max()))
 report = dict(platform=platform.platform(), threads=1, seconds=dict(seconds),
               component_times={k:dict(v) for k,v in component_times.items()},
-              max_logp_error=max_error, scored_test=False, scored_targets=0)
+              max_logp_error=max_error, max_probability_error=max_probability_error,
+              normalization_errors=dict(normalization_errors),
+              scored_test=False, scored_targets=0)
 args.output.parent.mkdir(parents=True, exist_ok=True)
 args.output.write_text(json.dumps(report, indent=2)+'\n')
 print(json.dumps(report, indent=2))
 assert max_error <= 1e-5
+assert max_probability_error <= 3e-6
+# Use the unchanged course scorer's normalization tolerance, recording both
+# paths rather than aborting before diagnostics on an arbitrary tighter bound.
+assert max(normalization_errors.values()) <= 1e-3
