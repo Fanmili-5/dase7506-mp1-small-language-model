@@ -20,7 +20,7 @@ For NVIDIA training, replace the CPU PyTorch command with:
 python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 ```
 
-Extract the matching checkpoint ZIP at the repository root. It supplies `checkpoints/stage143-openvino-order6.pt`, `inference_assets/stage143-stage92-features.onnx` and their exact inference source files. The supplied data are included in the repository. After installing dependencies and obtaining the bundle, scoring works offline.
+Extract the matching checkpoint ZIP at the repository root. It supplies `code/checkpoints/final-model.pt`, `code/inference_assets/stage143-stage92-features.onnx` and their exact inference source files. The repository includes the supplied data. After installation and download, scoring works offline.
 
 ## Verify and score
 
@@ -28,13 +28,13 @@ Extract the matching checkpoint ZIP at the repository root. It supplies `checkpo
 python scripts/verify_fixed_files.py
 python scripts/verify_submission.py
 python -m unittest discover -s tests -v
-python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output reproduced-validation.json
-python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split test --output reproduced-test.json
+python evaluate.py --checkpoint checkpoints/final-model.pt --device cpu --precision fp32 --threads 4 --split validation --output reproduced-validation.json
+python evaluate.py --checkpoint checkpoints/final-model.pt --device cpu --precision fp32 --threads 4 --split test --output reproduced-test.json
 ```
 
-Expected validation BPB: 1.399686162042141. Recorded test BPB: 1.415657616535609. Floating-point differences may depend on runtime and CPU. Do not use test to select or tune a model.
+Expected validation BPB: 1.3996861637466336. Recorded test BPB: 1.4156576308174311 ([full-test JSON](results/final-evidence/test.json)). Small floating-point differences can depend on runtime and CPU. The course website requires **full-test FP32 BPB**, not validation BPB or token perplexity. Do not use test to select or tune a model.
 
-The frozen runtime checks that OpenVINO actually uses the requested FP32/thread settings. On CPU-limited hosts, a four-thread request can be reduced by the runtime and fail this check. Use `--threads 1` on those hosts, including the Linux CI runner. When benchmarking, use the same thread count for both models. One-thread score reproduction does not establish four-thread timing compliance.
+The final runtime checks FP32 execution and the requested thread ceiling. It permits logical CPU workers and accepts a runtime worker count below the requested ceiling on limited hosts. The official evaluator defaults to four threads, which is also the recorded final measurement setting. Use the same host, thread count and workload for both models when timing them. Thread count is not a way to compare a constrained baseline against an unconstrained candidate.
 
 | Split | Scored targets | Raw UTF-8 bytes |
 | --- | ---: | ---: |
@@ -48,10 +48,12 @@ The evaluator scores independent 256-token causal windows, including the final s
 The retained timing-control checkpoint has the supplied baseline architecture. Its longer training duration distinguishes it from the initial 1,200-update accuracy baseline but does not change its inference graph.
 
 ```bash
-python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-long-s17.pt --candidate checkpoints/stage143-openvino-order6.pt --threads 4 --repeats 3 --output resource-reproduction.json
+python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-long-s17.pt --candidate checkpoints/final-model.pt --threads 4 --repeats 3 --output resource-reproduction.json
 ```
 
-This repeats scoring of the already-frozen model in fresh processes. Limits are 5× baseline median scoring time, 4 GiB peak whole-process RSS and 64 MiB uncompressed inference assets. `verify_submission.py` checks the complete 55,810,412-byte inference file set, including graph and source.
+This repeats scoring of the frozen model in fresh processes and reports the ratio of median times. The course limits are 5× baseline CPU scoring time, 4 GiB peak evaluation RSS and 64 MiB uncompressed inference assets. `verify_submission.py` checks the final file set, including graph and required source, and reports its exact byte count.
+
+The recorded Linux rerun gave 4.643160× and 2.14 GiB peak RSS. An earlier run of the same files gave 5.360158×; both are retained in [RESULTS.md](../RESULTS.md). Hardware and runtime scheduling affect relative speed, so these are measurements on specific hosts rather than a universal timing guarantee.
 
 ## Train
 
