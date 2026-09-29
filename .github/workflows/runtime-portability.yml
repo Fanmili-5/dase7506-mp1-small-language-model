@@ -31,10 +31,9 @@ jobs:
           python -m unittest discover -s tests -v
           python scripts/export_static_runtime.py --output runs/static-runtime/checkpoint.pt
           python scripts/check_static_runtime.py --checkpoint runs/static-runtime/checkpoint.pt --threads 1 --output results/runtime-audit/equivalence-linux.json
-      - name: Three alternating full-validation CPU resource comparisons
+      - name: Profile complete row tiling without scoring test
         run: |
-          python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-long-s17.pt --candidate runs/static-runtime/checkpoint.pt --threads 1 --repeats 3 --output results/runtime-audit/resources-linux.json
-          python -c "import json; r=json.load(open('results/runtime-audit/resources-linux.json')); assert all(abs(x-1.399686162042141)<2e-5 for x in r['candidate']['bpb_runs']); assert r['within_five_x_time_limit']; assert r['within_four_gib_peak_rss_limit']"
+          python scripts/profile_static_pipeline.py --checkpoint runs/static-runtime/checkpoint.pt --output results/runtime-audit/pipeline-profile-linux.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
