@@ -1,0 +1,32 @@
+{
+  "status": "synthetic_input_only_preflight",
+  "protocol": "7506-mp1-wt2-v2",
+  "no_data_split_opened": true,
+  "test_scored": false,
+  "config_sha256": "152482398cdd46478364c7d323122be55bee201073c139615cc7194401b7bedc",
+  "control_config_sha256": "87aeec0297b7f8b015276cdd51a5e3289de1ba0fef59f6c9845e69967d93fc39",
+  "source_sha256": "cae88815fd4c6bf349a60cd433babbb8a3acfe4c06b89d3614c687b2e1b58a8a",
+  "implementation_sha256": "2185db04f5f1ec44ad68005e8f7482e11114b3528528572c4497f6e9c07cbfe1",
+  "future_prediction_offsets": [
+    2,
+    3,
+    8,
+    16,
+    32,
+    64
+  ],
+  "max_initial_inference_logp_error": 0.0,
+  "max_normalization_error": 4.76837158203125e-07,
+  "max_future_prefix_error": 0.0,
+  "max_independent_row_error": 4.76837158203125e-07,
+  "export_config_equal": true,
+  "export_keys_equal": true,
+  "max_export_state_error": 0.0,
+  "synthetic_loss": 10.852485656738281,
+  "synthetic_grad_norm": 1.1291784048080444,
+  "synthetic_long_head_grad_norm": 0.0017224744660779834,
+  "gpu_peak_allocated_bytes": 6311428096,
+  "gpu_peak_reserved_bytes": 6618611712,
+  "gpu_total_bytes": 8589410304,
+  "admit_matched_training_pilot": true
+}

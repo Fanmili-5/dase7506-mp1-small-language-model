@@ -1,0 +1,106 @@
+{
+  "purpose": "validation_only_frozen_positional_complement_diagnostic",
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "context": 256,
+  "source_array_sha256": {
+    "stage143": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3",
+    "stage155": "0cbe8ee4aec517ba756fc5e167a95aea2b82e088b5f870e29f77337a9a499603"
+  },
+  "stage143_bpb": 1.3996861620421412,
+  "stage155_bpb": 1.4098772704183506,
+  "all_positions_half_mixture_bpb": 1.3761826641885053,
+  "total_gain_nats": 18702.622034267904,
+  "bins": [
+    {
+      "start": 0,
+      "end": 32,
+      "targets": 47095,
+      "gain_nats": 1942.9772005053119,
+      "gain_fraction_of_total": 0.10388795736476358,
+      "gain_nats_per_target": 0.04125654953828033
+    },
+    {
+      "start": 32,
+      "end": 64,
+      "targets": 47072,
+      "gain_nats": 2243.8765640079505,
+      "gain_fraction_of_total": 0.11997657654079757,
+      "gain_nats_per_target": 0.04766902965686502
+    },
+    {
+      "start": 64,
+      "end": 96,
+      "targets": 47072,
+      "gain_nats": 2183.111441391048,
+      "gain_fraction_of_total": 0.11672756030630568,
+      "gain_nats_per_target": 0.04637813225252906
+    },
+    {
+      "start": 96,
+      "end": 128,
+      "targets": 47072,
+      "gain_nats": 2451.9456774109753,
+      "gain_fraction_of_total": 0.13110170717872577,
+      "gain_nats_per_target": 0.05208926065200067
+    },
+    {
+      "start": 128,
+      "end": 160,
+      "targets": 47072,
+      "gain_nats": 2458.747906563761,
+      "gain_fraction_of_total": 0.13146541175128904,
+      "gain_nats_per_target": 0.052233767559563236
+    },
+    {
+      "start": 160,
+      "end": 192,
+      "targets": 47072,
+      "gain_nats": 2461.9370488593536,
+      "gain_fraction_of_total": 0.13163593021066597,
+      "gain_nats_per_target": 0.05230151786325955
+    },
+    {
+      "start": 192,
+      "end": 224,
+      "targets": 47072,
+      "gain_nats": 2505.530616308138,
+      "gain_fraction_of_total": 0.1339668102000552,
+      "gain_nats_per_target": 0.05322762186242646
+    },
+    {
+      "start": 224,
+      "end": 256,
+      "targets": 47072,
+      "gain_nats": 2454.495579221366,
+      "gain_fraction_of_total": 0.13123804644739723,
+      "gain_nats_per_target": 0.05214343089780264
+    }
+  ],
+  "fixed_first_position_policies": {
+    "32": {
+      "first_positions": 32,
+      "targets_with_second_expert": 47095,
+      "validation_bpb": 1.3972444316591999,
+      "gain_vs_stage143_bpb": 0.002441730382941376
+    },
+    "64": {
+      "first_positions": 64,
+      "targets_with_second_expert": 94167,
+      "validation_bpb": 1.394424562449987,
+      "gain_vs_stage143_bpb": 0.005261599592154331
+    },
+    "128": {
+      "first_positions": 128,
+      "targets_with_second_expert": 188311,
+      "validation_bpb": 1.3885997077935843,
+      "gain_vs_stage143_bpb": 0.01108645424855692
+    }
+  },
+  "first64_gain_fraction": 0.22386453390556116,
+  "first64_gate_passed": false,
+  "no_test_scoring": true,
+  "warning": "Target probabilities are analysis artifacts; frozen two-model policies exceed inference budget"
+}

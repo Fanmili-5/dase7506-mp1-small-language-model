@@ -1,0 +1,106 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+
+\title{A small hybrid language model under a CPU inference budget}
+\author{DASE7506 Project 1}
+\date{29 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+I trained a causal language model from scratch on the supplied WikiText-2 training split. The final predictor combines an eight-block attention/convolution network, a copy distribution over the current 256-token window, and an order-six modified Kneser--Ney (MKN) model built only from training text. A small gate mixes the neural and count probabilities. On the complete test split, the frozen model obtains 1.415658 bits per byte (BPB), compared with 2.102015 for the supplied baseline. Local Windows CPU evaluation takes 3.62 times the baseline time and uses 55.81 MB of inference assets. A separate Linux one-thread measurement exceeds the 5-times time limit, so portability to the course machine is a remaining risk.
+\end{abstract}
+
+\section{Task and evaluation}
+
+The assignment fixes a 2,048-token BPE tokenizer and an evaluator that scores independent causal windows of 256 tokens. At position $t$, the model predicts $x_{t+1}$ from the observed prefix $x_{\leq t}$, without carrying state between windows. The score is
+\[
+\mathrm{BPB}=\frac{-\sum_t \log_2 p(x_{t+1}\mid x_{\leq t})}{\text{number of raw UTF-8 bytes in the split}}.
+\]
+All model selection used the supplied validation split. I kept the data, tokenizer and evaluator unchanged, used no external training text or pretrained weights, and froze the method before the complete-test evaluation. The course limits are five times baseline CPU scoring time, 4 GiB peak evaluation RAM, and 64 MiB of uncompressed inference assets.
+
+\section{Model}
+
+The neural backbone has width 288 and eight causal blocks. Blocks 1, 3, 5 and 7 use global self-attention; blocks 2, 4, 6 and 8 use gated causal depthwise convolution with kernel width seven. The model also uses rotary positions, RMSNorm, SwiGLU feed-forward layers, and tied token/output embeddings. This layout keeps some global context mixing while replacing half of the attention blocks with cheaper local mixing.
+
+The output head first forms a 2,048-way vocabulary distribution. A separate pointer attends only to input tokens at or before the current position and adds probability to their token IDs. Its triangular mask rules out later input positions. A sparse order-six MKN model supplies another normalized distribution using within-window token history and count tables built from the training split. The final gate uses four input-derived confidence features: the neural/copy top log-probability, its top-two margin, the MKN backoff at the highest matched order, and that order's largest continuation mass. If $w_t$ is its bounded sigmoid output, the final distribution is
+\[
+p_t=(1-w_t)p_{\mathrm{neural+copy},t}+w_t p_{\mathrm{MKN},t}.
+\]
+Neither the gate nor the count model sees the target token during inference. Gate coefficients and feature normalization came from training text; the final feature subset and slope were selected on validation and are not independent test evidence.
+
+The neural lineage used R-Drop during training and later checkpoint averaging, continuation, output calibration, count-aware training and distillation. These auxiliary objectives are absent at inference. The Stage143 release itself did not retrain the model: it stores one OpenVINO FP32 feature graph plus a PyTorch head and sparse count tables, avoiding a duplicate backbone in the checkpoint.
+
+\section{Experiments and interpretation}
+
+The clearest equal-target comparison uses seed 17, 7,200 updates, batch size 32, the same sampled-window stream, and 58,982,400 primary next-token presentations per run. R-Drop performs two stochastic forward passes, so equal target counts do not mean equal training FLOPs.
+
+\begin{center}
+\begin{tabular}{p{0.36\linewidth}p{0.21\linewidth}p{0.34\linewidth}}
+\toprule
+Model & Validation BPB & Interpretation \\
+\midrule
+Stage26: ordinary training & 1.464994 & Reference \\
+Stage47: add R-Drop & 1.450613 & Same network as Stage26 \\
+Stage54: hybrid backbone & 1.428594 & Width also changes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Stage47--Stage26 contrast isolates the training objective. Stage54 also changes width and feed-forward capacity, so its gain cannot be attributed to convolution alone. Adding a fixed-weight train-only MKN expert to Stage54 reduced complete validation BPB from 1.428594 to 1.423206. Later steps were not equal-budget single-factor controls: a stronger neural checkpoint, order-six counts, calibration and the causal gate together reached 1.399686 validation BPB. With the later Stage92 neural model held fixed, the order-six count model with a fixed mixture weight scored 1.401288; the selected dynamic gate reached 1.399686. This small gate gain was chosen on validation and should not be described as a fresh replication.
+
+Several plausible alternatives failed their predeclared gates. A larger standalone neural model scored 1.409877 on validation; a two-model mixture reached 1.376183 but exceeded the asset and projected CPU budgets. Distillation and small residual experts did not transfer enough of that gain into one deployable model. These negative results matter: the lowest diagnostic validation number is not a legal submission score.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Complete test split & BPB & Scored targets \\
+\midrule
+Supplied baseline & 2.102015 & 428,405 \\
+Frozen Stage143 predictor & 1.415658 & 428,405 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Stage143 reduces test BPB by 32.65\% relative to the baseline. Its test BPB is 0.015971 higher than its selected validation BPB. The two splits may differ in difficulty, and repeated development on one validation split can also make that split optimistic; this single comparison cannot separate those explanations. The final test result was not used to change the frozen predictor.
+
+\section{Cost, reproducibility and limitations}
+
+Three fresh-process Windows CPU FP32 comparisons gave a 3.617702 median-time ratio (86.0511 versus 23.7861 seconds), 2,176,729,088 bytes of maximum peak RSS, and 55,810,412 bytes of conservatively counted inference assets. All three pass on that machine. On a separate two-logical-CPU Linux host, one-thread scoring reproduced the validation BPB but took 5.502555 times its local baseline; a four-thread run could not be measured there. The Windows result therefore does not establish that the course's CPU will pass the time gate.
+
+The accepted neural lineage records at least 255,225,110 primary training-target presentations and 7,754.94 seconds of training. The archived experiment metrics contain 14.88 hours of comparable recorded training, including rejected runs. Both figures omit some setup, evaluation and failed-job costs and are lower bounds, not a total hardware bill.
+
+The hashes are recorded in the qualification, freeze and test JSON files under \path{code/results/stage143-evidence/}. From \path{code/}, install \path{requirements_stage143.txt} after the base requirements and run:
+\begingroup\footnotesize
+\begin{verbatim}
+python evaluate.py \
+  --checkpoint checkpoints/stage143-openvino-order6.pt \
+  --device cpu --precision fp32 --threads 4 \
+  --split test --output reproduced-test.json
+\end{verbatim}
+\endgroup
+The matching checkpoint and ONNX graph are required; the ZIP manifest records their SHA-256 hashes and the exact release-code commit. No retraining is needed to reproduce the score.
+
+\section{Reuse and AI assistance}
+
+The course baseline, data, tokenizer and evaluation pipeline were supplied. The implementation adapts published ideas including RoPE, RMSNorm, SwiGLU, R-Drop, modified Kneser--Ney smoothing and within-context copying; no external pretrained weights or training text were reused. I used OpenAI Codex extensively for experiment design, coding, debugging, execution, analysis and drafting this report. The repository README and \path{code/docs/AI_ASSISTANCE.md} give a fuller account of that assistance.
+
+\begin{thebibliography}{9}
+\bibitem{rope} J. Su et al. RoFormer: Enhanced Transformer with Rotary Position Embedding. 2021.
+\bibitem{rmsnorm} B. Zhang and R. Sennrich. Root Mean Square Layer Normalization. 2019.
+\bibitem{swiglu} N. Shazeer. GLU Variants Improve Transformer. 2020.
+\bibitem{rdrop} X. Liang et al. R-Drop: Regularized Dropout for Neural Networks. 2021.
+\bibitem{mkn} S. Chen and J. Goodman. An Empirical Study of Smoothing Techniques for Language Modeling. 1999.
+\bibitem{pointer} S. Merity et al. Pointer Sentinel Mixture Models. 2016.
+\end{thebibliography}
+
+\end{document}

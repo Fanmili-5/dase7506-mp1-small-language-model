@@ -1,0 +1,19 @@
+{
+  "stage": 199,
+  "status": "rejected_below_predeclared_quality_gate",
+  "matched_control_stage54_step2400_bpb": 1.5199503686120217,
+  "pilot_step2400_bpb": 1.5143411209861553,
+  "improvement_bpb": 0.005609247625866454,
+  "required_improvement_bpb": 0.03,
+  "full_validation_targets": 376599,
+  "full_validation_utf8_bytes": 1148007,
+  "primary_train_targets": 19660800,
+  "train_seconds": 785.7038739000018,
+  "peak_cuda_allocated_gb": 6.505901568,
+  "peak_cuda_reserved_gb": 6.828326912,
+  "checkpoint_sha256_remote": "0bd7493e4e569366ea9ffbcae1bb16c5551acfa6062ec94eaf27f88ae578002e",
+  "metrics_sha256": "483a8469b9d8b606f74a0c6ad7cba35ac4cfc97760162b7e0315dfde5cf2df60",
+  "preflight_sha256": "98faa036c0719554ce07e3233ab0e407718dc7e3a261e6af4a676023d9b0c901",
+  "no_test_scoring": true,
+  "note": "GPU pilot is not a complete CPU predictor or submission score."
+}

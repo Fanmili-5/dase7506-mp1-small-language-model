@@ -7,8 +7,10 @@ code/__pycache__/
 code/tests/__pycache__/
 code/runs/
 code/job-logs/
+code/results/stage206-evidence/console.log
 dist/
 tmp/pdfs/
 output/pdf/STAGE143_REPORT_PREVIEW_NOT_FOR_SUBMISSION.pdf
 output/pretest/
+output/final/
 *.pyc

@@ -1,0 +1,126 @@
+{
+  "purpose": "retrospective_validation_error_allocation_not_inference_gate",
+  "split": "validation",
+  "no_test_scoring": true,
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "stage143_bpb": 1.3996861620421412,
+  "equal_mixture_bpb": 1.3761826641885053,
+  "equal_mixture_gain_bpb": 0.023503497853635875,
+  "marginals": {
+    "ascii_word_start": {
+      "targets": 174023,
+      "stage143_nll_nats": 731652.4275236903,
+      "stage143_mean_nll_nats": 4.204343262233672,
+      "mixture_gain_nats": 9138.255908701161,
+      "mixture_gain_bpb": 0.01148400356605616
+    },
+    "ascii_word_continuation": {
+      "targets": 149628,
+      "stage143_nll_nats": 268518.5985774825,
+      "stage143_mean_nll_nats": 1.7945745353642535,
+      "mixture_gain_nats": 7241.793091836944,
+      "mixture_gain_bpb": 0.009100727592024363
+    },
+    "other": {
+      "targets": 52948,
+      "stage143_nll_nats": 113612.18260619199,
+      "stage143_mean_nll_nats": 2.1457313327451835,
+      "mixture_gain_nats": 2322.573033729799,
+      "mixture_gain_bpb": 0.002918766695555355
+    }
+  },
+  "groups": {
+    "ascii_word_start/mid_frequency_100_999/seen_in_prefix": {
+      "targets": 7296,
+      "stage143_nll_nats": 29349.030696482863,
+      "stage143_mean_nll_nats": 4.022619338881971,
+      "mixture_gain_nats": 538.59656766943,
+      "mixture_gain_bpb": 0.0006768517937752154
+    },
+    "ascii_word_start/mid_frequency_100_999/unseen_in_prefix": {
+      "targets": 33714,
+      "stage143_nll_nats": 206278.79658986488,
+      "stage143_mean_nll_nats": 6.118490733519158,
+      "mixture_gain_nats": 2077.6517355138935,
+      "mixture_gain_bpb": 0.0026109752427644103
+    },
+    "ascii_word_start/other_frequency/seen_in_prefix": {
+      "targets": 59200,
+      "stage143_nll_nats": 162019.78104835097,
+      "stage143_mean_nll_nats": 2.736820625816739,
+      "mixture_gain_nats": 2816.5788573863965,
+      "mixture_gain_bpb": 0.003539581509367153
+    },
+    "ascii_word_start/other_frequency/unseen_in_prefix": {
+      "targets": 73813,
+      "stage143_nll_nats": 334004.81918899156,
+      "stage143_mean_nll_nats": 4.525013469022958,
+      "mixture_gain_nats": 3705.4287481314404,
+      "mixture_gain_bpb": 0.00465659502014938
+    },
+    "ascii_word_continuation/mid_frequency_100_999/seen_in_prefix": {
+      "targets": 4982,
+      "stage143_nll_nats": 3848.634866921755,
+      "stage143_mean_nll_nats": 0.772508002192243,
+      "mixture_gain_nats": 166.34276443148948,
+      "mixture_gain_bpb": 0.00020904217599114895
+    },
+    "ascii_word_continuation/mid_frequency_100_999/unseen_in_prefix": {
+      "targets": 21025,
+      "stage143_nll_nats": 50507.02872987103,
+      "stage143_mean_nll_nats": 2.40223680046949,
+      "mixture_gain_nats": 1039.6764663893855,
+      "mixture_gain_bpb": 0.0013065565647151346
+    },
+    "ascii_word_continuation/other_frequency/seen_in_prefix": {
+      "targets": 44843,
+      "stage143_nll_nats": 49314.97623835481,
+      "stage143_mean_nll_nats": 1.09972517981301,
+      "mixture_gain_nats": 1833.8033105192903,
+      "mixture_gain_bpb": 0.002304532064745201
+    },
+    "ascii_word_continuation/other_frequency/unseen_in_prefix": {
+      "targets": 78778,
+      "stage143_nll_nats": 164847.95874233494,
+      "stage143_mean_nll_nats": 2.0925633900623897,
+      "mixture_gain_nats": 4201.970550496779,
+      "mixture_gain_bpb": 0.005280596786572878
+    },
+    "other/mid_frequency_100_999/seen_in_prefix": {
+      "targets": 932,
+      "stage143_nll_nats": 1870.6870686281472,
+      "stage143_mean_nll_nats": 2.007174966339214,
+      "mixture_gain_nats": 25.327435104230226,
+      "mixture_gain_bpb": 3.18288695306823e-05
+    },
+    "other/mid_frequency_100_999/unseen_in_prefix": {
+      "targets": 2508,
+      "stage143_nll_nats": 12278.653126244433,
+      "stage143_mean_nll_nats": 4.895794707433985,
+      "mixture_gain_nats": 153.82569082995974,
+      "mixture_gain_bpb": 0.00019331202799434307
+    },
+    "other/other_frequency/seen_in_prefix": {
+      "targets": 30943,
+      "stage143_nll_nats": 47944.699794299166,
+      "stage143_mean_nll_nats": 1.549452211947748,
+      "mixture_gain_nats": 1362.4321301305176,
+      "mixture_gain_bpb": 0.0017121621015264582
+    },
+    "other/other_frequency/unseen_in_prefix": {
+      "targets": 18565,
+      "stage143_nll_nats": 51518.14261702023,
+      "stage143_mean_nll_nats": 2.7750144151370986,
+      "mixture_gain_nats": 780.987777665092,
+      "mixture_gain_bpb": 0.000981463696503872
+    }
+  },
+  "warning": "True-target groups and Stage155 teacher gains cannot be used at inference.",
+  "source_sha256": "7efee6a8494be90b9768346ece59f82cd3181a7e39fb562180e14d8db16d8d88",
+  "old_cache_sha256": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3",
+  "new_cache_sha256": "0cbe8ee4aec517ba756fc5e167a95aea2b82e088b5f870e29f77337a9a499603",
+  "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+  "train_sha256": "c58d555a94ada0882d1e8c0b3dc7ba68e1c269da5ad9e7a057300245d130c4e8",
+  "validation_sha256": "714a24a5de7459876f7cfdc64837e551dd7cde2a51f95b763ee083fff273e307"
+}

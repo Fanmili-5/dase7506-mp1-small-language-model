@@ -1,0 +1,52 @@
+{
+  "status": "synthetic_input_only_preflight",
+  "protocol": "7506-mp1-wt2-v2",
+  "no_data_split_opened": true,
+  "test_scored": false,
+  "config_sha256": "c9b02e090d000b0dbb2e7df68caa8975b6cea8974c4976eede2f7a77f8198d7a",
+  "control_config_sha256": "87aeec0297b7f8b015276cdd51a5e3289de1ba0fef59f6c9845e69967d93fc39",
+  "source_sha256": "b9ad57746a24990015cc5061cc6ab6a267cdbe9ffa6155c8c5ae5f7117245740",
+  "model_source_sha256": "c682b1270f7c2586b8489267993401e66ffafa2382d0850e431b1cbd41aca077",
+  "reference_graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "candidate_graph_sha256": "2ad09ca80e2105e7c7160eaa08409ad4fbecaa8c6e3bfc41acad40dfa0c55b9e",
+  "candidate_graph_bytes": 41229894,
+  "projected_conservative_assets_bytes": 65497409,
+  "asset_limit_bytes": 67108864,
+  "portable_norm_count": 21,
+  "portable_hidden_max_error": 0.0,
+  "openvino_hidden_max_error": 3.6954879760742188e-06,
+  "timing_seconds": {
+    "reference": [
+      0.5147096000000602,
+      0.5109749999974156,
+      0.5498301999978139,
+      0.5336375999977463,
+      0.5249707999973907,
+      0.5246379000018351,
+      0.5807174999936251,
+      0.5516306999998051
+    ],
+    "candidate": [
+      0.5008352000004379,
+      0.5114422999977251,
+      0.5288564000002225,
+      0.5229204999996,
+      0.497609600002761,
+      0.5348281999977189,
+      0.6422492999990936,
+      0.5182930999944801
+    ]
+  },
+  "median_seconds": {
+    "reference": 0.5293041999975685,
+    "candidate": 0.5206067999970401
+  },
+  "candidate_to_reference_feature_time": 0.9835682392080615,
+  "synthetic_loss": 10.853890419006348,
+  "synthetic_grad_norm": 0.9585260152816772,
+  "synthetic_optimizer_steps": 1,
+  "gpu_peak_allocated_bytes": 5551885824,
+  "gpu_peak_reserved_bytes": 5901385728,
+  "gpu_total_bytes": 8589410304,
+  "admit_matched_training_pilot": true
+}

@@ -36,9 +36,12 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
-Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. The Stage143 candidate was separately measured on Windows; its timing is machine-specific.
+Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. The
+frozen Stage143 predictor was separately measured on Windows; its timing is
+machine-specific. Its complete CPU FP32 test score is 1.415657616535609 BPB,
+recorded in `results/stage143-evidence/test-stage143-20260927.json`.
 
-For the Stage143 development candidate, additionally install the pinned
+For the frozen Stage143 candidate, additionally install the pinned
 OpenVINO CPU runtime after the base requirements:
 
 ```bash
@@ -50,10 +53,10 @@ The checkpoint uses the relative, hash-checked feature graph at
 `inference_assets/stage143-stage92-features.onnx`. Keep both files alongside
 the source. On Windows PowerShell, use backslashes in paths if needed. This
 command scores validation only; do not use test to select or tune a candidate.
-Before finalizing Stage143, `python scripts/freeze_stage143_method.py` is a
-read-only preflight of committed inference files and qualification evidence.
-An eligible message is **not** a method freeze; the explicit freeze-record
-step is described in
+Stage143 was explicitly frozen before its complete test run; the committed
+record is `results/stage143-evidence/freeze-stage143-20260927.json`.
+For future reproduction of the release workflow, the read-only freeze
+preflight and its explicit confirmation step are described in
 [`docs/SUBMISSION_PORTAL_READINESS_20260926.md`](docs/SUBMISSION_PORTAL_READINESS_20260926.md).
 
 ## 2. Train and evaluate

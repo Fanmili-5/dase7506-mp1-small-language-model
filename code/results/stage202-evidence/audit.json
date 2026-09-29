@@ -1,0 +1,54 @@
+{
+  "stage": 202,
+  "status": "rejected_below_predeclared_quality_gate",
+  "matched_control_step2400_bpb": 1.5199503686120217,
+  "pilot_step2400_bpb": 1.5210489581170556,
+  "gain_bpb": -0.0010985895050339423,
+  "required_gain_bpb": 0.03,
+  "validation_targets": 376599,
+  "validation_utf8_bytes": 1148007,
+  "primary_train_targets": 19660800,
+  "pilot_minus_control_bpb_by_step": [
+    {
+      "step": 300,
+      "difference": -0.0225703747288577
+    },
+    {
+      "step": 600,
+      "difference": -0.010063167765745895
+    },
+    {
+      "step": 900,
+      "difference": -0.005700418418128184
+    },
+    {
+      "step": 1200,
+      "difference": 0.00012488848754155235
+    },
+    {
+      "step": 1500,
+      "difference": 0.0018733153758345722
+    },
+    {
+      "step": 1800,
+      "difference": 0.001994259681214583
+    },
+    {
+      "step": 2100,
+      "difference": 0.0008730350479204674
+    },
+    {
+      "step": 2400,
+      "difference": 0.0010985895050339423
+    }
+  ],
+  "train_seconds": 595.6109560999976,
+  "peak_cuda_allocated_gb": 5.651131904,
+  "peak_cuda_reserved_gb": 5.989466112,
+  "checkpoint_sha256_remote": "cf388d9341fdd9c13b349007fd95a6961ffe3ffe5a6ed3ea756a24a49103a135",
+  "metrics_sha256": "2a844d538f3d08f3b1c2b1b30c770a104723d3bbf6f88d32d8ac2cb7cac3739e",
+  "scheduled_task_status": "completed",
+  "test_scored": false,
+  "fixed_file_checker_hashed_test_file_without_tokenizing_or_scoring": true,
+  "note": "A GPU development pilot is not an inference resource qualification or submission score."
+}
