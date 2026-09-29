@@ -771,3 +771,14 @@ planning process was informed by Kassis et al. (2026), *Scientific Agent
 Skills: A Library of Procedural Knowledge for Research Agents*,
 https://doi.org/10.48550/arXiv.2609.00065. No Stage221–223 run opened test
 or displaced the frozen Stage143 candidate.
+
+## Submission documentation (29 September 2026)
+
+Codex reorganized the repository README into a short front page while
+preserving the full experiment history, and drafted and typeset a three-page
+LaTeX report from the frozen Stage143 evidence. It checked the rendered pages
+and retained the explicit score, portability limitation, reused-method
+citations, and AI-assistance disclosure. This was documentation work: no
+model, tokenizer, evaluator, inference asset, or frozen test score changed.
+The student must review the final prose and reproducibility instructions
+before publishing them.
