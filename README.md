@@ -9,7 +9,7 @@ This repository contains the course baseline, my experiments, and the model I fr
 | Course baseline | 2.072081 | 2.102015 |
 | Frozen Stage143 model | 1.399686 | 1.415658 |
 
-The test score comes from one CPU FP32 run after the model and inference files were frozen. It is an improvement over the baseline, but it does not reach my hoped-for score below 1.40. The [report](REPORT.pdf) explains the experiments and their limits. The [test result](code/results/stage143-evidence/test-stage143-20260927.json) and [freeze record](code/results/stage143-evidence/freeze-stage143-20260927.json) identify the exact model.
+The test score comes from one CPU FP32 run after the model and inference files were frozen. The [report](REPORT.pdf) explains the experiments and their limits. The [test result](code/results/stage143-evidence/test-stage143-20260927.json) and [freeze record](code/results/stage143-evidence/freeze-stage143-20260927.json) identify the exact model.
 
 ## Model
 
@@ -39,4 +39,4 @@ The repository also records unsuccessful experiments. A two-model combination ga
 
 ## Reuse and AI assistance
 
-The course supplied the baseline, data, tokenizer and evaluation pipeline. The implementation draws on published work on RoPE, RMSNorm, SwiGLU, R-Drop, modified Kneser--Ney smoothing and prefix copying; the report cites the relevant papers. OpenAI Codex substantially assisted with experiment planning, code, debugging, execution, analysis and writing. [The detailed record](code/docs/AI_ASSISTANCE.md) distinguishes those contributions from the supplied code and published ideas. I remain responsible for understanding and checking the submitted implementation and results.
+The course supplied the baseline, data, tokenizer and evaluator. The report cites the published methods used in the model. OpenAI Codex substantially assisted with implementation, experiments, debugging, analysis and report writing. I am responsible for understanding and checking the submission; the [assistance note](code/docs/AI_ASSISTANCE.md) records its scope.

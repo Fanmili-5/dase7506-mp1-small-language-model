@@ -703,27 +703,10 @@ in `outputs/final-candidate-20260919/` in the project workspace.
 
 ## AI assistance
 
-OpenAI Codex substantially assisted with assignment analysis, model and training
-code, tests, experiment planning, Windows deployment, and execution/analysis of
-the validation experiments through Stage191, the final method freeze, the
-single complete-test run, evidence checks, report generation, and release
-packaging,
-including the Stage166–173 portability
-and runtime checks, the OpenVINO inference
-port, compact checkpoint packaging, resource audit, rejected retrieval and
-multiscale-convolution/token-masking pilots, the Stage186 parallel-block pilot,
-the Stage187 Linux operation profile,
-the Stage188 train-only count-estimator comparison,
-the Stage189 fixed-tokenizer pair-support diagnostic,
-the Stage190 canonical ASCII-letter pair diagnostic,
-the later Stage192–223 architecture, lexical hierarchy, backend, objective,
-train-derived semantic-input and continuation experiments, post-Stage207
-design-space audit, the post-Stage223 literature triage and prior-work
-correction, candidate-selection evidence audit, and report drafting.
-Human review and
-understanding of the implementation are required before submission; they are
-not implied by passing automated tests. See `code/docs/AI_ASSISTANCE.md` for the
-disclosure and pending review responsibilities.
+OpenAI Codex substantially assisted with implementation, experiment planning
+and execution, debugging, analysis, resource checks, and writing. This applies
+to both the submitted model and rejected alternatives. The scope is summarized
+in `code/docs/AI_ASSISTANCE.md`; the experimental evidence is recorded above.
 
 ## Repository map
 
