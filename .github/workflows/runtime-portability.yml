@@ -1,8 +1,9 @@
-name: Frozen-model CPU runtime check
+name: Frozen final predictor reproduction
 
 on:
   push:
     branches: [codex/runtime-portability]
+    paths: ['.github/workflows/runtime-portability.yml', 'code/scripts/final_submission.py']
   workflow_dispatch:
 
 permissions:
@@ -31,13 +32,14 @@ jobs:
           python -m unittest discover -s tests -v
           python scripts/export_static_runtime.py --output runs/static-runtime/checkpoint.pt
           python scripts/check_static_runtime.py --checkpoint runs/static-runtime/checkpoint.pt --threads 1 --output results/runtime-audit/equivalence-linux.json
-      - name: Measure complete validation with the course default thread budget
+      - name: Freeze the measured execution and reproduce the complete test
         run: |
-          python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-long-s17.pt --candidate runs/static-runtime/checkpoint.pt --threads 4 --repeats 3 --output results/runtime-audit/resources-linux-four-threads.json
-          python -c "import json; p=json.load(open('results/runtime-audit/resources-linux-four-threads.json')); assert p['within_five_x_time_limit'] and p['within_four_gib_peak_rss_limit'], 'Resource limit exceeded on this host'"
+          python scripts/final_submission.py freeze-and-score --output runs/static-final
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: runtime-portability
-          path: code/results/runtime-audit/
+          name: frozen-final-predictor
+          path: |
+            code/runs/static-final/
+            code/results/runtime-audit/
           if-no-files-found: error
