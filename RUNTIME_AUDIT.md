@@ -4,6 +4,17 @@ This branch is an execution-only investigation, not the coursework release.
 The default submission branch and the published model bundle remain unchanged.
 No model was trained and no test score was selected during this audit.
 
+## Thread-count interpretation
+
+The original course `evaluate.py` defaults to four threads, and the supplied
+README describes a four-thread reference CPU. Neither supplied document imposes
+a separate Linux-only, single-thread requirement. One-thread Linux timing is an
+additional portability check, not a mandated submission configuration. Its
+failure must not be presented as proof that all permitted configurations fail.
+Fair timing comparisons use the same machine, CPU FP32 scorer, workload and
+requested thread budget for both predictors. Hardware availability and any
+runtime reduction in actual worker count should be recorded explicitly.
+
 ## Complete validation measurement
 
 The candidate executes the original hash-pinned FP32 feature graph in blocks of
@@ -43,5 +54,7 @@ are not substitutes for the complete resource measurement above.
   system GBK default. Explicit UTF-8 handling fixed it; both Windows probes then
   completed. This did not affect the course evaluator or the released model.
 
-The candidate remains unqualified for the measured Linux time limit. Do not
-replace the frozen release or reuse its qualification records for this branch.
+The candidate fails the additional one-thread Linux check. A four-thread Linux
+comparison is being checked separately using the course evaluator's default
+budget. Do not replace the frozen release or reuse its qualification records
+for this branch without a completed audit of the exact candidate.

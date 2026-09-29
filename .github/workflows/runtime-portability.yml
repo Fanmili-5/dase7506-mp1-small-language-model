@@ -31,9 +31,10 @@ jobs:
           python -m unittest discover -s tests -v
           python scripts/export_static_runtime.py --output runs/static-runtime/checkpoint.pt
           python scripts/check_static_runtime.py --checkpoint runs/static-runtime/checkpoint.pt --threads 1 --output results/runtime-audit/equivalence-linux.json
-      - name: Compare original neural kernels without scoring test
+      - name: Measure complete validation with the course default thread budget
         run: |
-          python scripts/profile_torch_features.py --threads 1 --output results/runtime-audit/torch-kernels-linux.json
+          python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-long-s17.pt --candidate runs/static-runtime/checkpoint.pt --threads 4 --repeats 3 --output results/runtime-audit/resources-linux-four-threads.json
+          python -c "import json; p=json.load(open('results/runtime-audit/resources-linux-four-threads.json')); assert p['within_five_x_time_limit'] and p['within_four_gib_peak_rss_limit'], 'Resource limit exceeded on this host'"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

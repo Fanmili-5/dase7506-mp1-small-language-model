@@ -1,6 +1,7 @@
 """Score one checkpoint on validation in a fresh CPU process with peak RAM."""
 import argparse
 import json
+import os
 from pathlib import Path
 import platform
 import sys
@@ -31,6 +32,10 @@ def main():
     data = load_data()
     result = score(model, *data["validation"], device, precision)
     result.pop("window_nll_nats")
+    neural = getattr(model, 'neural', None)
+    compiled = getattr(neural, '_compiled', None)
+    runtime_threads = (int(compiled.get_property('INFERENCE_NUM_THREADS'))
+                       if compiled is not None else None)
     result.update(
         protocol=PROTOCOL, split="validation", precision=precision, threads=args.threads,
         checkpoint=str(args.checkpoint), checkpoint_sha256=sha(args.checkpoint),
@@ -39,6 +44,14 @@ def main():
         tokenizer_sha256=sha(ROOT / "data/tokenizer.json"),
         parameters=sum(parameter.numel() for parameter in model.parameters()),
         platform=platform.platform(), torch_version=str(torch.__version__),
+        cpu_environment={
+            'logical_cpus': os.cpu_count(),
+            'process_available_cpus': (len(os.sched_getaffinity(0))
+                                       if hasattr(os, 'sched_getaffinity') else None),
+            'torch_intraop_threads': torch.get_num_threads(),
+            'torch_interop_threads': torch.get_num_interop_threads(),
+            'openvino_inference_threads': runtime_threads,
+        },
         **peak_process_memory(),
     )
     print(json.dumps(result, allow_nan=False))
