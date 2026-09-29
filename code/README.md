@@ -1,175 +1,69 @@
-# MP1 code — installation and usage
+# Installation and evaluation
 
-Read [the project guide](../GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules.
+Commands run from this `code/` directory. Use Python 3.12 and an x86-64 Windows or Linux CPU for the submitted OpenVINO predictor. The measurements are recorded in [RESULTS.md](../RESULTS.md); timing is machine-dependent. The submitted runtime has not been validated on Apple Silicon.
 
-All commands below run from **code/**. Data and the tokenizer are included. No API key, pretrained weights or additional dataset download is needed; after installing dependencies, training and evaluation work offline.
-
-## 1. Install
-
-Use **Python 3.12**. From the extracted package directory:
+## Install
 
 ```bash
-cd code
 python -m venv .venv
+# Linux:
 source .venv/bin/activate
-```
-
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead.
-
-Install PyTorch for **one** device:
-
-```bash
-# Linux/Windows CPU: recommended; no GPU needed
+# Windows PowerShell instead:
+# .venv\Scripts\Activate.ps1
 python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -r requirements.txt -r requirements_stage143.txt
 ```
 
-For an NVIDIA GPU with a compatible driver, use this command **instead**:
+For NVIDIA training, replace the CPU PyTorch command with:
 
 ```bash
 python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126
 ```
 
-For macOS, install `torch==2.7.1` from the default PyPI index and run on CPU. After installing PyTorch, install the remaining dependencies and check the model:
+Extract the matching checkpoint ZIP at the repository root. It supplies `checkpoints/stage143-openvino-order6.pt`, `inference_assets/stage143-stage92-features.onnx` and their exact inference source files. The supplied data are included in the repository. After installing dependencies and obtaining the bundle, scoring works offline.
+
+## Verify and score
 
 ```bash
-python -m pip install -r requirements.txt
+python scripts/verify_fixed_files.py
+python scripts/verify_submission.py
 python -m unittest discover -s tests -v
+python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output reproduced-validation.json
+python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split test --output reproduced-test.json
 ```
 
-Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. The
-frozen Stage143 predictor was separately measured on Windows; its timing is
-machine-specific. Its complete CPU FP32 test score is 1.415657616535609 BPB,
-recorded in `results/stage143-evidence/test-stage143-20260927.json`.
+Expected validation BPB: 1.399686162042141. Recorded test BPB: 1.415657616535609. Floating-point differences may depend on runtime and CPU. Do not use test to select or tune a model.
 
-For the frozen Stage143 candidate, additionally install the pinned
-OpenVINO CPU runtime after the base requirements:
-
-```bash
-python -m pip install -r requirements_stage143.txt
-python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output results/stage143-reproduction.json
-```
-
-The checkpoint uses the relative, hash-checked feature graph at
-`inference_assets/stage143-stage92-features.onnx`. Keep both files alongside
-the source. On Windows PowerShell, use backslashes in paths if needed. This
-command scores validation only; do not use test to select or tune a candidate.
-Stage143 was explicitly frozen before its complete test run; the committed
-record is `results/stage143-evidence/freeze-stage143-20260927.json`.
-For future reproduction of the release workflow, the read-only freeze
-preflight and its explicit confirmation step are described in
-[`docs/SUBMISSION_PORTAL_READINESS_20260926.md`](docs/SUBMISSION_PORTAL_READINESS_20260926.md).
-
-## 2. Train and evaluate
-
-**Quick installation check** — 10 training steps, then validation evaluation:
-
-```bash
-python train.py --implementation model --steps 10 --run-dir runs/smoke
-python evaluate.py --checkpoint runs/smoke/checkpoint.pt --split validation
-```
-
-This checks that the pipeline works; its score is **not** the full baseline. Each training run needs a new output directory.
-
-**Full baseline** — 1,200 training updates, then evaluation:
-
-```bash
-python train.py --implementation model --device cpu --threads 4 --seed 17 --run-dir runs/baseline
-python evaluate.py --checkpoint runs/baseline/checkpoint.pt --device cpu --precision fp32 --split test
-```
-
-The baseline has four GPT blocks, width 128, four attention heads and **1,088,256 parameters**, and achieves approximately **2.10 test BPB**. On the reference four-thread Xeon Platinum 8457C, measured training took about **311 seconds** and scoring **5.92 seconds**, excluding installation and loading. These are reference measurements, not laptop guarantees or a fixed time allowance.
-
-**Your model** — edit `student.py` and supporting files, then:
-
-```bash
-python train.py --implementation student --seed 17 --eval-every 300 --run-dir runs/my-model
-python evaluate.py --checkpoint runs/my-model/checkpoint.pt --split validation
-# Freeze the final method before testing:
-python evaluate.py --checkpoint runs/my-model/checkpoint.pt --split test
-```
-
-Training writes `checkpoint.pt` and `metrics.json`. Evaluation writes `test_cpu_fp32.json` (or the corresponding device/split name) and per-window losses. Submit the **bpb** value from the complete-test JSON, not token perplexity or validation BPB. Default evaluation is FP32. Add `--device cuda` for GPU runs; training can use BF16, but ranked evaluation must use FP32 and remain reproducible on CPU. The supplied CUDA runner caps PyTorch allocation at 20 GB; driver overhead is additional.
-
-## 3. Files and model interface
-
-| Files | Use |
-|---|---|
-| `model.py`, `configs/baseline.json` | Runnable baseline; preserve for comparisons. |
-| `student.py`, `train.py` | Your model factory and training recipe; add supporting code as needed. |
-| `common.py`, `evaluate.py` | Fixed data checks, windows and scorer; keep unchanged. |
-| `data/` | Supplied splits, tokenizer and dataset hashes; keep unchanged. |
-| `tests/test_contract.py` | Checks your model's causality, normalization, independence and gradients. |
-| `RUN_LOG_TEMPLATE.csv` | Optional experiment-log template. |
-| `PACKAGE_MANIFEST.json` | Release hashes; paths are relative to the package root containing code/ and guide/. |
-
-- `build_model(config)` returns a PyTorch model with `context=256`.
-- The supplied trainer calls `forward(ids)` for unnormalized logits; the scorer calls `predict_log_probs(ids)` for finite, normalized natural-log probabilities. Both outputs have shape `[batch, time, 2048]`.
-- A prediction at position t may use only the observed prefix through t. Reset temporary state between independent windows, examples and scoring passes. Compact training-derived assets may be reused across windows; evaluation-prefix state may not.
-- Checkpoints record the implementation module and configuration. Include that module and every required asset so the evaluator can reconstruct the submitted predictor. No optimizer state is required for direct evaluation.
-- Training length, architecture, optimizer, regularization, self-trained weight averaging and ensembles may change within the guide's constraints. Log all seeds, processed training targets, checkpoint ancestry and search costs; reusing a checkpoint does not erase its training cost. No particular seed or score improvement is mandated.
-
-## 4. Benchmark and resource measurements
-
-**Fixed score.** Protocol `7506-mp1-wt2-v2`: WikiText-2 raw text, train-fitted BPE-2048, independent windows of 256 targets, including the final short window. Every target except the first token of each split is scored once. Input windows share a boundary token but carry no state. BPB is summed negative log-base-2 next-token probability divided by the split's entire raw UTF-8 byte length, including the first token's bytes.
-
-| Split | Scored targets | UTF-8 bytes |
-|---|---:|---:|
+| Split | Scored targets | Raw UTF-8 bytes |
+| --- | ---: | ---: |
 | Validation | 376,599 | 1,148,007 |
 | Test | 428,405 | 1,292,013 |
 
-Use validation for all development and checkpoint/mixture selection. Weights, statistics and retrieval entries must derive only from training text. The public test text enables reproduction; it must not be used to tune the method. Once frozen, the same predictor may be evaluated repeatedly for timing or reproduction. Token perplexity is not directly comparable with published word-level perplexity.
+The evaluator scores independent 256-token causal windows, including the final short window. BPB is total negative log-base-2 probability divided by all raw UTF-8 bytes in the split. It is not token perplexity.
 
-Measure all three limits for the same frozen predictor. First train the supplied
-baseline using the command above; then run three alternating fresh-process
-comparisons from `code/`:
+## Resource check
 
-```bash
-python scripts/benchmark_cpu.py --baseline runs/baseline/checkpoint.pt --candidate checkpoints/stage143-openvino-order6.pt --threads 4 --repeats 3 --output results/stage143-resource-recheck.json
-```
-
-- **CPU time ≤5× baseline:** compare the medians in the benchmark JSON.
-- **Peak RAM ≤4 GiB:** use the candidate's maximum whole-process RSS.
-- **Inference assets ≤64 MiB uncompressed:** count the checkpoint, ONNX graph,
-  and every student-authored file required to run the model, not only the
-  checkpoint bytes printed by the benchmark script. The [Stage143 qualification
-  record](docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md) gives
-  the current local asset count and its scope. Recheck the count if the bundle
-  changes.
-
-## 5. Prepare your submission and reproduce a peer
-
-The [guide](../GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
-
-- **Report, at most 10 pages including figures, tables and references** 
-- **Reproduction instructions**
-
-Your final website submission must link to this code and the matching complete checkpoint bundle. The website generates the Issue JSON automatically. Keep all inference assets downloadable for verification.
-After explicitly freezing and committing the method record, run the one
-matching CPU FP32 full-test score through
-`scripts/run_stage143_frozen_test.py --freeze <committed-freeze.json> --output <new-test-result.json>`.
-The entry point refuses a missing or uncommitted freeze and records its hash
-in the scorer result. On the Git-less Windows training/evaluation copy, first
-commit and verify the freeze on the Mac, copy that exact record and frozen
-assets, then pass `--portable-freeze-sha256 <verified-record-sha256>`; this
-checks every frozen file without using Git or network access on Windows.
-Then
-`scripts/package_stage143_final_release.py` can bind the committed freeze
-record, full-test result, local `.window-nll.npy` scoring sidecar and
-replacement `REPORT.pdf` to an exact bundle.
-It refuses to package the historical Stage10 report. See the
-[`submission readiness sequence`](docs/SUBMISSION_PORTAL_READINESS_20260926.md);
-do not use the pre-test candidate ZIP as the final checkpoint link.
-
-To check a peer, obtain their exact code version and checkpoint, follow their installation instructions, and run their frozen model with the supplied evaluator:
+The retained timing-control checkpoint has the supplied baseline architecture. Its longer training duration distinguishes it from the initial 1,200-update accuracy baseline but does not change its inference graph.
 
 ```bash
-python evaluate.py --checkpoint /path/to/peer-checkpoint.pt --device cpu --precision fp32 --split test --output peer-test.json
+python scripts/benchmark_cpu.py --baseline benchmark_controls/baseline-stage3-long-s17.pt --candidate checkpoints/stage143-openvino-order6.pt --threads 4 --repeats 3 --output resource-reproduction.json
 ```
 
-Compare reproduced BPB with the reported score. Submit **Peer Review Report** with the reproduced score; optionally include the command, environment, difference and evidence/log link.  The instructor adjudicates discrepancies. Confirmed discrepancies during the seven-day review earn bonus credit under the announced marking policy.
+This repeats scoring of the already-frozen model in fresh processes. Limits are 5× baseline median scoring time, 4 GiB peak whole-process RSS and 64 MiB uncompressed inference assets. `verify_submission.py` checks the complete 55,810,412-byte inference file set, including graph and source.
 
-## 6. Data attribution
+## Train
+
+See [TRAINING.md](../TRAINING.md) for the final recipe and controlled comparisons. For the original course baseline:
+
+```bash
+python train.py --implementation model --device cpu --threads 4 --seed 17 --steps 1200 --run-dir runs/baseline
+python evaluate.py --checkpoint runs/baseline/checkpoint.pt --device cpu --precision fp32 --threads 4 --split validation --output runs/baseline/validation.json
+```
+
+Run directories must be new. Fresh training/export stays separate from the frozen release.
+
+## Data attribution
 
 WikiText-2 was introduced by Stephen Merity, Caiming Xiong, James Bradbury and Richard Socher in [Pointer Sentinel Mixture Models](https://arxiv.org/abs/1609.07843). The text is by Wikipedia contributors. The [upstream dataset](https://huggingface.co/datasets/Salesforce/wikitext) identifies [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and the [GNU Free Documentation License](https://www.gnu.org/licenses/fdl-1.3.html); retain these notices when redistributing the data.
 
-The supplied `wikitext-2-raw-v1` splits preserve revision `b08601e04326c79dfdd32d625aee71d232d685c3`. Rows are joined with newlines and encoded as UTF-8; the tokenizer is fitted only to training text. Dataset hashes are in `data/manifest.json`. These dataset notices do not assign a new license to the surrounding classroom code.
+The supplied splits preserve revision `b08601e04326c79dfdd32d625aee71d232d685c3`. Rows are joined with newlines and encoded as UTF-8. The tokenizer is fitted only to training text; hashes are in `data/manifest.json`. These notices do not assign a new license to the classroom code.

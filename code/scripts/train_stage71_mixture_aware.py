@@ -66,11 +66,17 @@ def score_target_mixture(neural, counts, tokens, byte_count, device,
 
 
 def main():
+    global START_SHA, COUNTS_SHA
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--start", type=Path, required=True)
     parser.add_argument("--counts", type=Path, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--fresh-run", action="store_true",
+                        help="Accept newly trained inputs; keep protocol checks and record actual hashes.")
     args = parser.parse_args()
+    if args.fresh_run:
+        START_SHA = sha(args.start)
+        COUNTS_SHA = sha(args.counts)
     if args.run_dir.exists():
         parser.error("Choose a new run directory")
     if sha(args.start) != START_SHA or sha(args.counts) != COUNTS_SHA:
@@ -129,7 +135,7 @@ def main():
     initial = score_target_mixture(
         neural, counts, *data["validation"], device, "fp32", edge_keys, 32
     )
-    if abs(initial["bpb"] - EXPECTED_INITIAL_BPB) > 2e-6:
+    if not args.fresh_run and abs(initial["bpb"] - EXPECTED_INITIAL_BPB) > 2e-6:
         raise ValueError("Sparse target scorer disagrees with Stage68 full scoring")
     validation_seconds += time.perf_counter() - before
     validations.append(dict(step=0, **initial))

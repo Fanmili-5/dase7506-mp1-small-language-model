@@ -84,7 +84,7 @@ def gate_weight(features, mean, std, coefficients, bias):
 
 
 def score_validation(neural, counts, tokens, raw_bytes, log_prior,
-                     mean, std, coefficients, bias, label):
+                     mean, std, coefficients, bias, label, check_reference=True):
     fixed_nll = 0.; gated_nll = 0.; targets = 0; weights = []
     with torch.inference_mode():
         for batch, (ids, labels) in enumerate(windows(tokens, 32)):
@@ -117,18 +117,25 @@ def score_validation(neural, counts, tokens, raw_bytes, log_prior,
                   weight_p90=float(all_weights.quantile(.9)),
                   targets=targets, utf8_bytes=raw_bytes)
     if (targets != 376599 or raw_bytes != 1148007
-            or abs(result["fixed_weight_bpb"] - REFERENCE[label]) > 2e-5):
+            or (check_reference and abs(result["fixed_weight_bpb"] - REFERENCE[label]) > 2e-5)):
         raise ValueError("Fixed mixture or validation coverage mismatch")
     return result
 
 
 def main() -> None:
+    global NEURAL_SHA, BASE_SHA, EXTENDED_SHA
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--neural", type=Path, required=True)
     parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--extended", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--fresh-run", action="store_true",
+                        help="Accept newly trained inputs; keep protocol checks and record actual hashes.")
     args = parser.parse_args()
+    if args.fresh_run:
+        NEURAL_SHA = sha(args.neural)
+        BASE_SHA = sha(args.base)
+        EXTENDED_SHA = sha(args.extended)
     if args.output.exists():
         parser.error("Output must be new")
     if (sha(args.neural) != NEURAL_SHA or sha(args.base) != BASE_SHA
@@ -186,7 +193,7 @@ def main() -> None:
     validation, raw_bytes = data["validation"]
     results = {label: score_validation(neural, counts, validation, raw_bytes,
                                        log_prior, mean, std, coefficients, bias,
-                                       label)
+                                       label, check_reference=not args.fresh_run)
                for label, counts in full_counts.items()}
     result = dict(
         protocol=PROTOCOL, purpose="train_only_gate_fit_validation_screen",

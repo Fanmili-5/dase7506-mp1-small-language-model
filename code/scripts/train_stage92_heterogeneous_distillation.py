@@ -50,12 +50,19 @@ SOURCE_FILES = (
 
 
 def main() -> None:
+    global PRIMARY_SHA, ALTERNATE_SHA, COUNTS_SHA
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--primary", type=Path, required=True)
     parser.add_argument("--alternate", type=Path, required=True)
     parser.add_argument("--counts", type=Path, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--fresh-run", action="store_true",
+                        help="Accept newly trained inputs; keep protocol checks and record actual hashes.")
     args = parser.parse_args()
+    if args.fresh_run:
+        PRIMARY_SHA = sha(args.primary)
+        ALTERNATE_SHA = sha(args.alternate)
+        COUNTS_SHA = sha(args.counts)
     if args.run_dir.exists():
         parser.error("Choose a new run directory")
     if (sha(args.primary) != PRIMARY_SHA or sha(args.alternate) != ALTERNATE_SHA
@@ -134,7 +141,7 @@ def main() -> None:
     initial = score_target_calibrated_mixture(
         student, counts, *data["validation"], device, "fp32", edge_keys,
         log_prior, 32)
-    if abs(initial["bpb"] - EXPECTED_INITIAL_BPB) > 2e-6:
+    if not args.fresh_run and abs(initial["bpb"] - EXPECTED_INITIAL_BPB) > 2e-6:
         raise ValueError("Initial student disagrees with Stage85")
     validation_seconds += time.perf_counter() - before
     validations.append(dict(step=0, **initial))

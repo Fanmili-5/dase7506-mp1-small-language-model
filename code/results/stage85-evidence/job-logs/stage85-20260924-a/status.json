@@ -1,9 +1,0 @@
-﻿{
-    "exit_code":  1,
-    "run_id":  "stage85-20260924-a",
-    "error":  "Stage85 qualification failed\r\n所在位置 C:\\Users\\23223\\mp1-challenge-20260919\\repo\\code\\scripts\\run_stage85_windows.ps1:15 字符: 28\r\n+ if ($LASTEXITCODE -ne 0) { throw \"Stage85 qualification failed\" }\r\n+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Stage85 qualification failed:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Stage85 qualification failed\r\n \r\n",
-    "updated_utc":  "2026-09-24T08:04:33.1612825Z",
-    "started_utc":  "2026-09-24T08:04:17.4676010Z",
-    "status":  "failed",
-    "job":  "stage85"
-}

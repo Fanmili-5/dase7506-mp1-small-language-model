@@ -203,7 +203,7 @@ def build(freeze_path: Path, test_path: Path, report: Path, output: Path,
     readme = (
         "Stage143 frozen checkpoint and inference assets.\n"
         "Use release_code_commit in BUNDLE_MANIFEST.json for the exact code/report.\n"
-        "Install per code/README.md; extract this ZIP over its code/ directory.\n"
+        "Install per code/README.md; extract this ZIP at the repository root.\n"
         "From code/: python evaluate.py --checkpoint "
         "checkpoints/stage143-openvino-order6.pt --device cpu "
         "--precision fp32 --threads 4 --split test --output reproduced-test.json\n"

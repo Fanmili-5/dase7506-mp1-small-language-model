@@ -97,10 +97,15 @@ def extend_model(base_payload, ids, min_count=2):
 
 
 def main():
+    global BASE_SHA
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--fresh-run", action="store_true",
+                        help="Accept newly trained inputs; keep protocol checks and record actual hashes.")
     args = parser.parse_args()
+    if args.fresh_run:
+        BASE_SHA = sha(args.base)
     if args.output_dir.exists():
         parser.error("Use a new output directory")
     if sha(args.base) != BASE_SHA:

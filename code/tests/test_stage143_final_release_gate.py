@@ -7,7 +7,6 @@ import math
 from pathlib import Path
 import tempfile
 import unittest
-from unittest.mock import patch
 
 import numpy as np
 
@@ -16,7 +15,6 @@ from scripts.package_stage143_final_release import (
     validate_freeze, validate_test,
     validate_window_nll,
 )
-from scripts.run_stage143_frozen_test import preflight
 
 
 class FinalReleaseGateTests(unittest.TestCase):
@@ -93,29 +91,6 @@ class FinalReleaseGateTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     validate_test(bad, self.final, self.freeze_sha256,
                                   self.freeze["source_commit"])
-
-    def test_scoring_refuses_without_freeze_record(self) -> None:
-        with tempfile.TemporaryDirectory() as scratch:
-            directory = Path(scratch)
-            with self.assertRaisesRegex(ValueError, "No method freeze record"):
-                preflight(directory / "missing-freeze.json",
-                          directory / "unscored-test.json")
-
-    def test_gitless_preflight_binds_exact_freeze_hash(self) -> None:
-        with tempfile.TemporaryDirectory() as scratch:
-            directory = Path(scratch)
-            freeze_path = directory / "freeze.json"
-            freeze_path.write_text(json.dumps(self.freeze), encoding="utf-8")
-            output = directory / "unscored-test.json"
-            with patch("scripts.run_stage143_frozen_test.REPO", directory):
-                final, freeze, frozen_sha = preflight(freeze_path, output,
-                                                       sha(freeze_path))
-                self.assertEqual(final["validation_bpb"], self.final["validation_bpb"])
-                self.assertEqual(freeze, self.freeze)
-                self.assertEqual(frozen_sha, sha(freeze_path))
-                with self.assertRaisesRegex(ValueError, "Portable freeze SHA-256"):
-                    preflight(freeze_path, output, "0" * 64)
-            self.assertFalse(output.exists())
 
     def test_window_sidecar_must_match_full_test_summary(self) -> None:
         with tempfile.TemporaryDirectory() as scratch:

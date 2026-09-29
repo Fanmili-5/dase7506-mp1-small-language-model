@@ -37,10 +37,15 @@ SOURCE_FILES = (
 
 
 def main():
+    global START_SHA
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--start", type=Path, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--fresh-run", action="store_true",
+                        help="Accept newly trained inputs; keep protocol checks and record actual hashes.")
     args = parser.parse_args()
+    if args.fresh_run:
+        START_SHA = sha(args.start)
     if args.run_dir.exists():
         parser.error("Choose a new run directory")
     if sha(args.start) != START_SHA:
