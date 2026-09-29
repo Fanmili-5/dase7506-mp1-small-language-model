@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "max_probability_error": 1.1622905731201172e-06,
+    "max_logp_error": 1.9073486328125e-05,
+    "max_log_normalization_error": 1.043081283569336e-06,
+    "max_causal_prefix_error": 0.0,
+    "max_independent_row_error": 0.0,
+    "max_short_window_error": 1.9073486328125e-06,
+    "max_cross_call_state_error": 0.0
+  },
+  "passed": true,
+  "checkpoint_sha256": "b8c1273f9ae629f7e6667370177ff4312ecf9aead5209abd4319a3bb62aa67a4",
+  "implementation_sha256": "111e34302cf1095a18c57fc4d01f880ce1cc11e58316eac381d8ba38776c8c12",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "requested_threads": 1,
+  "execution_threads": 1,
+  "training_launched": false,
+  "scored_test": false
+}

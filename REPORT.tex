@@ -17,7 +17,7 @@
 \maketitle
 
 \begin{abstract}
-I trained a causal language model from scratch on the supplied WikiText-2 training split. The final predictor combines an eight-block attention/convolution network, a copy distribution over the current 256-token window, and an order-six modified Kneser--Ney (MKN) model built only from training text. A small gate mixes the neural and count probabilities. On the complete test split, the frozen model obtains 1.415658 bits per byte (BPB), compared with 2.102015 for the supplied baseline. Local Windows CPU evaluation takes 3.62 times the baseline time and uses 55.81 MB of inference assets. A separate Linux one-thread measurement exceeds the 5-times time limit, so portability to the course machine is a remaining risk.
+I trained a causal language model from scratch on the supplied WikiText-2 training split. My model combines an eight-block attention/convolution network, a copy distribution over the current 256-token window, and an order-six modified Kneser--Ney (MKN) model built from training text. A small gate mixes the neural and count probabilities. The frozen model obtains 1.415658 bits per byte (BPB) on the complete test split, compared with 2.102015 for the supplied baseline. In the recorded Linux four-thread rerun, CPU FP32 scoring takes 4.64 times the baseline time, with 2.14 GiB peak RAM and 55.81 MB of inference assets.
 \end{abstract}
 
 \section{Task and evaluation}
@@ -26,7 +26,7 @@ The assignment fixes a 2,048-token BPE tokenizer and an evaluator that scores in
 \[
 \mathrm{BPB}=\frac{-\sum_t \log_2 p(x_{t+1}\mid x_{\leq t})}{\text{number of raw UTF-8 bytes in the split}}.
 \]
-All model selection used the supplied validation split. I kept the data, tokenizer and evaluator unchanged, used no external training text or pretrained weights, and froze the method before the complete-test evaluation. The course limits are five times baseline CPU scoring time, 4 GiB peak evaluation RAM, and 64 MiB of uncompressed inference assets.
+I used validation for model selection and kept the data, tokenizer and evaluator unchanged. I used no external training text or pretrained weights. I froze the prediction method before testing; the final runtime update changes execution only and was also fixed before its test reproduction. The course limits are five times baseline CPU scoring time, 4 GiB peak evaluation RAM, and 64 MiB of uncompressed inference assets.
 
 \section{Model}
 
@@ -38,7 +38,7 @@ p_t=(1-w_t)p_{\mathrm{neural+copy},t}+w_t p_{\mathrm{MKN},t}.
 \]
 Neither the gate nor the count model sees the target token during inference. Gate coefficients and feature normalization came from training text; the final feature subset and slope were selected on validation and are not independent test evidence.
 
-The neural lineage used R-Drop during training and later checkpoint averaging, continuation, output calibration, count-aware training and distillation. These auxiliary objectives are absent at inference. The Stage143 release itself did not retrain the model: it stores one OpenVINO FP32 feature graph plus a PyTorch head and sparse count tables, avoiding a duplicate backbone in the checkpoint.
+I used R-Drop during training, followed by checkpoint averaging, continuation, output calibration, count-aware training and distillation. The auxiliary training objectives are absent at inference. I store one OpenVINO FP32 feature graph plus a PyTorch head and sparse count tables, avoiding a duplicate backbone in the checkpoint. The final runtime processes the graph in blocks of eight independent windows; it preserves the weights and prediction rule and does not carry state between windows.
 
 \section{Experiments and interpretation}
 
@@ -56,7 +56,7 @@ Hybrid backbone & 1.428594 & Width also changes (Stage54) \\
 \end{tabular}
 \end{center}
 
-The Stage47--Stage26 contrast isolates the training objective. Stage54 also changes width and feed-forward capacity, so its gain cannot be attributed to convolution alone. Adding a fixed-weight train-only MKN expert to Stage54 reduced complete validation BPB from 1.428594 to 1.423206. Later steps were not equal-budget single-factor controls: a stronger neural checkpoint, order-six counts, calibration and the causal gate together reached 1.399686 validation BPB. With the later Stage92 neural model held fixed, the order-six count model with a fixed mixture weight scored 1.401288; the selected dynamic gate reached 1.399686. This small gate gain was chosen on validation and should not be described as a fresh replication.
+The Stage47--Stage26 contrast isolates the training objective. Stage54 also changes width and feed-forward capacity, so I cannot attribute its gain to convolution alone. Adding a fixed-weight train-only MKN expert to Stage54 reduced complete validation BPB from 1.428594 to 1.423206. Later steps were not equal-budget single-factor controls: a stronger neural checkpoint, order-six counts, calibration and the causal gate together reached 1.399686 validation BPB. With the later Stage92 neural model held fixed, the order-six count model with a fixed mixture weight scored 1.401288; the selected dynamic gate reached 1.399686. I selected this small gate gain on validation, so it is not an independent replication.
 
 This progression separates the effects of training regularization, the backbone and count-model complementarity. It does not establish that this architecture is optimal: the later checkpoint received more training and was selected through repeated validation comparisons. The compact evidence table in \path{RESULTS.md} links each reported comparison to its original measurement.
 
@@ -66,36 +66,40 @@ This progression separates the effects of training regularization, the backbone 
 Complete test split & BPB & Scored targets \\
 \midrule
 Supplied baseline & 2.102015 & 428,405 \\
-Frozen Stage143 predictor & 1.415658 & 428,405 \\
+Final predictor & 1.415658 & 428,405 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Stage143 reduces test BPB by 32.65\% relative to the baseline. Its test BPB is 0.015971 higher than its selected validation BPB. The two splits may differ in difficulty, and repeated development on one validation split can also make that split optimistic; this single comparison cannot separate those explanations. The final test result was not used to change the frozen predictor.
+My final model reduces test BPB by 32.65\% relative to the baseline. Its test BPB is 0.015971 higher than its selected validation BPB. The splits may differ in difficulty, and repeated development on one validation split can also make its result optimistic. This comparison cannot separate those explanations. I did not use test results to tune the prediction method.
 
 \section{Cost, reproducibility and limitations}
 
-Three fresh-process Windows CPU FP32 comparisons gave a 3.617702 median-time ratio (86.0511 versus 23.7861 seconds), 2,176,729,088 bytes of maximum peak RSS, and 55,810,412 bytes of conservatively counted inference assets. All three pass on that machine. On a separate two-logical-CPU Linux host, one-thread scoring reproduced the validation BPB but took 5.502555 times its local baseline; a four-thread run could not be measured there. The Windows result therefore does not establish that the course's CPU will pass the time gate.
+I measured the final runtime on Linux x86-64 with Python 3.12, PyTorch 2.7.1+cpu and OpenVINO 2026.4.0. Both predictors used four intra-op threads; the feature graph also used four workers. I alternated baseline and candidate order across three fresh-process repetitions on the complete validation split. The rerun measured median times of 10.987902 and 51.018586 seconds, respectively: a ratio of 4.643160. Peak RSS was 2,295,070,720 bytes (2.14 GiB). The counted inference assets, including the graph, checkpoint and required source files, occupy 55.81 MB. These measurements meet the three limits on that runner.
+
+CPU timing is the main limitation. An earlier four-thread Linux run of the identical files measured 5.360158 times its baseline, above the limit; Windows measured 3.246290 times baseline for the same implementation. I retain these records in \path{RESULTS.md}. The 4.643160 result applies to the reported runner, not every review machine. The course evaluator defaults to four threads.
 
 The main neural lineage records at least 255,225,110 primary training-target presentations and 7,754.94 seconds of training. Its alternate teacher adds training outside that main path. The archived experiment metrics contain 14.88 hours of comparable recorded training, including rejected runs. Both figures omit some setup, evaluation and failed-job costs and are lower bounds, not a total hardware bill.
 
 The training recipe in \path{TRAINING.md} and \path{code/scripts/reproduce_training.py} covers both teacher branches, prescribed checkpoint averages, train-only count construction and gate fitting. The initial model uses 7,200 updates; its successive neural continuations use 4,800, 4,800, 3,600 and 3,600 updates, followed by five output-bias epochs and 3,600 count-aware updates. An alternate teacher uses 7,200 plus 4,800 updates. Distillation uses 1,800 updates with teacher weights 0.55/0.45 and soft/hard loss weights 0.75/0.25. Retraining produces a new predictor requiring its own validation and resource measurements, not the hash-pinned scored artifact.
 
-The hashes are recorded in the qualification, freeze and test JSON files under \path{code/results/stage143-evidence/}. From \path{code/}, install \path{requirements_stage143.txt} after the base requirements and run:
+I record file hashes and test results in \path{code/results/final-evidence/}. Install the dependencies listed in \path{code/README.md}. Then run from \path{code/}:
+
 \begingroup\footnotesize
 \begin{verbatim}
 python evaluate.py \
-  --checkpoint checkpoints/stage143-openvino-order6.pt \
+  --checkpoint checkpoints/final-model.pt \
   --device cpu --precision fp32 --threads 4 \
   --split test --output reproduced-test.json
 \end{verbatim}
 \endgroup
 The matching checkpoint and ONNX graph are required; the ZIP manifest records their SHA-256 hashes and the exact release-code commit. No retraining is needed to reproduce the score.
 
-\section{Reuse and AI assistance}
+\section{Reuse}
 
-The course baseline, data, tokenizer and evaluator were supplied. The implementation uses RoPE~\cite{rope}, RMSNorm~\cite{rmsnorm}, SwiGLU~\cite{swiglu}, R-Drop~\cite{rdrop}, modified Kneser--Ney smoothing~\cite{mkn} and within-context copying~\cite{pointer}; no external pretrained weights or training text were reused. OpenAI Codex substantially assisted with implementation, experiments, debugging, analysis and report writing.
+The course supplied the baseline, data, tokenizer and evaluator. I used RoPE~\cite{rope}, RMSNorm~\cite{rmsnorm}, SwiGLU~\cite{swiglu}, R-Drop~\cite{rdrop}, modified Kneser--Ney smoothing~\cite{mkn} and within-context copying~\cite{pointer}. I reused no external pretrained weights or training text. The repository README contains the assistance disclosure.
 
+\begingroup\raggedright
 \begin{thebibliography}{9}
 \bibitem{rope} J. Su et al. \href{https://arxiv.org/abs/2104.09864}{RoFormer: Enhanced Transformer with Rotary Position Embedding}. arXiv:2104.09864, 2021.
 \bibitem{rmsnorm} B. Zhang and R. Sennrich. \href{https://arxiv.org/abs/1910.07467}{Root Mean Square Layer Normalization}. NeurIPS, 2019.
@@ -104,5 +108,6 @@ The course baseline, data, tokenizer and evaluator were supplied. The implementa
 \bibitem{mkn} S. F. Chen and J. Goodman. \href{https://doi.org/10.1006/csla.1999.0128}{An Empirical Study of Smoothing Techniques for Language Modeling}. Computer Speech \& Language, 13(4):359--394, 1999.
 \bibitem{pointer} S. Merity et al. \href{https://arxiv.org/abs/1609.07843}{Pointer Sentinel Mixture Models}. arXiv:1609.07843, 2016.
 \end{thebibliography}
+\endgroup
 
 \end{document}

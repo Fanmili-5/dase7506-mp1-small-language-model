@@ -1,0 +1,10 @@
+{
+  "completed_at_utc": "2026-09-29T12:35:00.161043+00:00",
+  "freeze_record_sha256": "7723b14775e40145d614c4daf1599497455436b3308ebb1351fd70a5926e030d",
+  "full_test_cpu_fp32_bpb": 1.4156576308174311,
+  "full_test_result_sha256": "0cf57c8aa9335c4dab791a8501c12e575339da0c59972c343407d1e1dcba9978",
+  "full_test_window_count": 1674,
+  "full_test_window_nll_sha256": "ea9805d28d43865d4c75bd47686115779f88a1195c2eb455340af4afd7458a65",
+  "source_commit": "b97ca25766887b83a825c090788d132b4a5678e2",
+  "training_launched": false
+}
