@@ -1,0 +1,21 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "status": "preflight_completed",
+  "seed": 17,
+  "architecture": "8x256 Transformer, every FFN is two-expert top-1 SwiGLU512",
+  "config_sha256": "fde7142892cdf3bcd3a13d510f5db0417580a6b902242f8134a8c9ec7b2f50be",
+  "neural_parameters": 8954369,
+  "candidate_checkpoint_sha256": "530c67e73053be4e7ab7ffe477bc941a269b8361eb99a8e48e24ddc145a8e4b0",
+  "count_checkpoint_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "baseline_checkpoint_sha256": "2e4b9e749796dc1d6d8a2e5aedc9482d961dcabd9740760e905f7ae117ba647d",
+  "conservative_asset_bytes": 52622669,
+  "cpu_ratio": 4.872452227042446,
+  "peak_rss_bytes": 2052231168,
+  "within_five_x_time_limit": true,
+  "within_four_gib_peak_rss_limit": true,
+  "within_64mib_asset_limit": true,
+  "no_quality_claim": true,
+  "new_gradient_targets": 0,
+  "no_test_scoring": true,
+  "pass": true
+}

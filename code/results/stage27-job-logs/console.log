@@ -1,0 +1,56 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922182538
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage27 -RunId stage27-20260922-a
+进程 ID: 48896
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage27-20260922-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+endence_empty_and_short_windows) ... ok
+test_extreme_gate_and_logits_have_positive_normalized_support (tests.test_ngram_collapsed.CollapsedNgramTests.test_extre
+me_gate_and_logits_have_positive_normalized_support) ... ok
+test_full_context_equality_and_no_buffer_mutation (tests.test_ngram_collapsed.CollapsedNgramTests.test_full_context_equa
+lity_and_no_buffer_mutation) ... ok
+test_invalid_and_underflowing_statistics_are_rejected (tests.test_ngram_collapsed.CollapsedNgramTests.test_invalid_and_u
+nderflowing_statistics_are_rejected) ... ok
+test_rejects_noncontiguous_output (tests.test_ngram_collapsed.CollapsedNgramTests.test_rejects_noncontiguous_output) ...
+ ok
+test_sparse_expansion_on_existing_distribution_and_repeated_ids (tests.test_ngram_collapsed.CollapsedNgramTests.test_spa
+rse_expansion_on_existing_distribution_and_repeated_ids) ... ok
+test_training_path_preserved_and_floor_guard (tests.test_ngram_collapsed.CollapsedNgramTests.test_training_path_preserve
+d_and_floor_guard) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.317s
+
+OK
+
+
+
+
+Stage27 complete: inspect modified-KN exact resources; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922183443
+**********************

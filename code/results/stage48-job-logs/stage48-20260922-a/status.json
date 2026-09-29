@@ -1,0 +1,9 @@
+﻿{
+    "exit_code":  1,
+    "run_id":  "stage48-20260922-a",
+    "error":  "Stage48 training failed\r\n所在位置 C:\\Users\\23223\\mp1-challenge-20260919\\repo\\code\\scripts\\run_stage48_windows.ps1:16 字符: 28\r\n+ if ($LASTEXITCODE -ne 0) { throw \"Stage48 training failed\" }\r\n+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Stage48 training failed:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Stage48 training failed\r\n \r\n",
+    "updated_utc":  "2026-09-22T14:29:29.0773810Z",
+    "started_utc":  "2026-09-22T14:28:59.3538626Z",
+    "status":  "failed",
+    "job":  "stage48"
+}

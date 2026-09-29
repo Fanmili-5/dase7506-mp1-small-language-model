@@ -1,0 +1,98 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "purpose": "diagnostic_ceiling_only",
+  "neural_sha256": "2be8f4f4ac195593835aaa74f042b0b5d0f5473a46eb6d09fba99b3c11d263f7",
+  "counts_sha256": "b1898559c73ccf62e6e945c1a9269e6fe2b0ee4499b5a1d88e7e30020c194230",
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "fixed_grid": [
+    {
+      "weight": 0.0,
+      "bpb": 1.4823790097586405
+    },
+    {
+      "weight": 0.025,
+      "bpb": 1.4764738870275573
+    },
+    {
+      "weight": 0.05,
+      "bpb": 1.4742627175225713
+    },
+    {
+      "weight": 0.075,
+      "bpb": 1.473372868735672
+    },
+    {
+      "weight": 0.1,
+      "bpb": 1.473335055169354
+    },
+    {
+      "weight": 0.125,
+      "bpb": 1.473937445731082
+    },
+    {
+      "weight": 0.15,
+      "bpb": 1.475061750731256
+    },
+    {
+      "weight": 0.175,
+      "bpb": 1.4766344354206187
+    },
+    {
+      "weight": 0.2,
+      "bpb": 1.4786069501789778
+    },
+    {
+      "weight": 0.225,
+      "bpb": 1.4809462166407588
+    },
+    {
+      "weight": 0.25,
+      "bpb": 1.4836295118743748
+    },
+    {
+      "weight": 0.275,
+      "bpb": 1.4866415001374405
+    },
+    {
+      "weight": 0.3,
+      "bpb": 1.4899724187900398
+    },
+    {
+      "weight": 0.325,
+      "bpb": 1.4936169337257887
+    },
+    {
+      "weight": 0.35,
+      "bpb": 1.4975734096907778
+    },
+    {
+      "weight": 0.375,
+      "bpb": 1.5018434543101502
+    },
+    {
+      "weight": 0.4,
+      "bpb": 1.506431654867436
+    }
+  ],
+  "best_fixed": {
+    "weight": 0.1,
+    "bpb": 1.473335055169354
+  },
+  "target_oracle_grid_bpb": 1.4097420268880039,
+  "target_oracle_is_illegal": true,
+  "neural_target_wins": 251327,
+  "count_target_wins": 125272,
+  "requested_threshold": 1.4,
+  "seconds": 98.47584991698386,
+  "interpretation": "Oracle uses answers and can never be deployed. It is only an upper bound on gates restricted to these two unchanged experts.",
+  "source_hashes": {
+    "scripts/analyze_stage22_gate_ceiling.py": "4c191457f7aacbfcca0a5b9aeaacc8e8188513ab03efe05b32b5cf7151f0a5bc",
+    "student_ngram.py": "0b04b2a8c2869679a770176e71b45b970a9dcccd2a941b39f9d04655e538ebf2",
+    "student_structured.py": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+    "student.py": "e5dc885178e1ebcc4b89215ca719ecd83687709db879cd5eafc4e504b0c67dec",
+    "common.py": "d40dc1fe6578b5993a563bdb4d9e5317ddc9fae8afe48822b66571c7042e84db",
+    "data/tokenizer.json": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e"
+  }
+}

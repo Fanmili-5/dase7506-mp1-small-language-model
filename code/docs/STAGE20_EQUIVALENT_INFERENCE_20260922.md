@@ -1,0 +1,128 @@
+# Stage20: preserve the predictor, remove inference overhead
+
+Fixed input: Stage19 .10 hybrid SHA256
+77031d3c570e4f4ba9882442ae0189968b5c46783035f9a6d83802b0d8e69046.
+CPU validation BPB1.473335164; three-repeat Windows time ratio5.437347 failed.
+Qualified fallback H remains1.482379119 at4.802831x. No new training, data,
+statistics, mixture weights or architecture search in this stage.
+
+## Implementation
+
+New additive `student_ngram_fast.py`; all old inference sources stay unchanged.
+Count-query recurrence is unchanged, but multiplies a call-local dense result
+in place and adds only existing sparse edges rather than allocating another
+full-vocabulary increment tensor at each order. Buffers are never mutated.
+CSR next-token IDs are unique within each row, so sparse writes do not collide.
+
+Eval uses one fused distribution:
+`(1-w)*sigmoid(-g)*softmax(logits) + (1-w)*sigmoid(g)*copy + w*ngram`.
+It takes a single final log rather than computing neural log-mixture followed
+by another log-mixture. This is the same mathematical predictor, not bit-exact
+floating-point arithmetic. The positive train-count probability floor is
+certified at checkpoint load, including finite nonnegative masses and positive
+backoffs, with a conservative bound above16*FP32 tiny. This prevents log(0)
+without clipping; unsupported statistics are rejected. Training retains the
+original log-space neural computation. No cross-window or target-dependent cache.
+
+## Fixed acceptance procedure
+
+1. Synthetic full-context equality, normalization, extreme gates/logits,
+   causality, window/batch independence, unchanged buffers and training-gradient
+   tests. Check all official fixed-file hashes.
+2. Compare every full-vocabulary output on every validation window, four-thread
+   CPU FP32: max absolute log-prob difference<=2e-5, normalization error<=2e-6,
+   BPB difference<=1e-6. No tolerance tuning after observing results.
+3. Export without changing any tensor; verify serialized tensor equality and
+   preserve ancestry/source hashes. Independent official validation scorer.
+4. Three fresh-process baseline/candidate resource comparisons on Windows,
+   unchanged course limits5x/4GiB/64MiB. Record failure if still too slow.
+5. Archive evidence and exact predictor; do not call test or claim deployment
+   qualification from Mac timings. No automatic fallback training.
+
+AI assistance: implementation, tests, mathematical equivalence reasoning,
+orchestration and evidence audit. This optimizes the existing custom model; it
+does not claim a new architecture or a new learned-quality improvement.
+
+Initial local real-checkpoint verification stopped at the first batch: max
+log-prob difference3.814697e-6 passed, but normalization error4.289672e-6
+exceeded the fixed2e-6 threshold. Added explicit row-sum normalization of the
+fused FP32 mixture to correct summation drift. Thresholds remain unchanged.
+The initial output directory is retained; retry uses a new directory. This
+normalization is mathematically an identity for the ideal normalized mixture,
+but its FP32 effect must also pass the same full-output and BPB parity checks.
+
+Local full-validation check passed on the original Stage19 checkpoint:
+376599 targets, max absolute log-prob error7.629395e-6, normalization error
+7.832423e-7. Old BPB1.4733350659, optimized1.4733352398 (difference1.739e-7).
+These Mac results are numerical-equivalence evidence, NOT Windows resource
+qualification or learned-quality improvement. Certified positive count floor:
+8.301483e-26. All serialized tensors remain identical. Local exported checkpoint
+SHA256:6ec4807789009f42ea1d49babc53e0fb6be99ae1f12686cd35b557c200f2fe49.
+Local receipt: `runs/stage20-local-equivalence-b/equivalence.json`.
+
+Deployment tar SHA256:f0c53270fc8ea5c0926efdb6eed4214566e8945c33b746a591957e0f6c6ce6e7.
+Windows performs its own full-output parity/export, then independent official
+scoring and three-repeat resources; no fixed evaluator or historical predictor
+source was modified. The recovered private SSH forward uses localhost62267.
+
+Windows one-off job `MP1-stage20-20260922-a` started2026-09-22 04:56:18 UTC
+(12:56 Hong Kong). Its four synthetic tests passed before the full parity pass.
+Local full suite88:83 passed,5 CUDA skipped; all10 official fixed-file hashes
+unchanged. Windows resource/official-score outcome still pending at launch.
+
+Windows full-validation parity subsequently passed: old BPB1.4733351642965178,
+optimized1.4733352401741464, max absolute log-prob error5.722046e-6 and
+normalization error8.344650e-7. Exported Windows checkpoint SHA256:
+6c4be27c4b0863d8cd044fde907dde5638fb0661c48dba82349aca0d219b3a37.
+This is a separately serialized file from the Mac copy; qualification must use
+the Windows receipt's exact checkpoint, with unchanged tensor contents audited.
+An additional local test rejects invalid/underflowing count statistics; five
+new tests pass locally, while four ran at Windows job startup.
+
+## Completed outcome
+
+Windows job completed successfully at2026-09-22 05:06:04 UTC. Successful job
+completion does not imply resource qualification. Independent official CPU
+validation and all three resource runs produced BPB1.4733352401741464.
+
+| Measurement | Result | Course gate |
+|---|---:|---|
+| Baseline seconds, three fresh processes | 12.2158342 / 12.2967602 / 12.2989462 | paired control |
+| Candidate seconds, three fresh processes | 61.8275734 / 62.0502763 / 62.0517202 | median62.0502763 |
+| Ratio of medians | 5.0460670364 | FAIL: maximum5 |
+| Peak process RSS | 2,022,481,920 bytes | PASS: maximum4GiB |
+| Uncompressed inference assets | 38,147,998 bytes | PASS: maximum64MiB |
+
+The previous hybrid's measured ratio was5.4373469283. Cross-stage timings are
+not simultaneous paired speedup estimates, but this stage's fresh paired gate
+still fails unambiguously. It exceeds5x by0.9213%; at this measured baseline,
+the candidate would need at least0.913% less time just to touch the limit.
+Do not round5.046 to5 or repeatedly benchmark unchanged code seeking a pass.
+The qualified fallback remains Stage18 H:1.4823791185117505 validation BPB.
+
+Exact Windows checkpoint was copied to the project output directory
+`outputs/windows-stage20-20260922/fast-hybrid.pt`; SHA256 matches the receipt
+above. Raw archive SHA256:
+447d7109d465f024e751dcb5959ecd7356d80c215d78650dfc8a8bac718d2e11.
+Receipts are checked in at `results/stage20-evidence/`. Local audit
+`results/stage20-audit.json` verified every source hash, score arithmetic and
+coverage, unchanged serialized tensors/config/ancestry, actual asset bytes,
+count floor, and three-repeat resource aggregation. No test scoring or new
+gradient targets. Final local suite:89 tests,84 passed and5 CUDA skipped;
+all10 official fixed files unchanged.
+
+## Next mechanism to investigate, not implemented
+
+A small Mac diagnostic processed the first validation batch in chunks of32,
+16,8 and4. Full outputs matched exactly; measured times were approximately
+.766/.762/.783/.764 seconds. This provides no useful speed signal and is not
+a Windows resource gate; no batch-tiling change was deployed.
+
+The remaining count recurrence still scans a dense full-vocabulary tensor once
+per order. A candidate follow-up is to expand the same backoff recurrence into
+one dense unigram term plus sparse per-order contributions, and accumulate it
+directly into the neural/copy mixture. This could reduce memory traffic without
+changing the predictor, but is only a hypothesis. It requires an additive
+implementation, the same full-output/normalization/BPB tolerances, followed by
+fresh paired Windows resource measurements with comfortable timing margin.
+No such follow-up has been launched; Stage20 sources and evidence are retained.

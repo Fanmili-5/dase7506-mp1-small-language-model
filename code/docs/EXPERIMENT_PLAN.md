@@ -356,6 +356,103 @@ Only after choosing the mechanism:
 The equal-target evidence from Stages 1–2 remains the mechanism comparison even
 if the final leaderboard model is trained longer.
 
+### Stage 11 ensemble screen — 2026-09-21
+
+The frozen v1 predictor leaves limited CPU and asset headroom. Screen a
+two-member probability mixture on validation using the seed-17 width-256/depth-6
+dropout-0.10 checkpoint as the primary member and a 1.05M-parameter long-modern
+checkpoint as the auxiliary member. Predeclare primary weights 0.70, 0.75, 0.80,
+0.85, 0.90, 0.925, 0.95, 0.975, and 1.0. Compare one alternative auxiliary,
+RoPE+SwiGLU, on the same grid. Do not tune on test.
+
+The modern auxiliary reaches 1.559980116 validation BPB at primary weight 0.80,
+versus 1.575605774 for the primary alone. RoPE+SwiGLU reaches 1.560451122 at the
+same weight and is not retained. A standard packed ensemble independently
+reproduces 1.559980123 BPB and occupies 25,214,901 checkpoint bytes. One Mac
+fresh-process resource probe measures 7.046x baseline time and therefore fails
+the time gate on that machine, while peak RSS passes. Treat the ensemble as a
+quality-positive but resource-unconfirmed candidate. It may advance only if a
+three-repeat alternating Windows CPU benchmark is at most 5x baseline; otherwise
+discard it without a test call.
+
+Windows recheck: all three CPU FP32 repetitions score 1.559980226523 BPB.
+Baseline times are 12.2677, 12.6689, and 12.2779 seconds; candidate times are
+56.8243, 57.8228, and 57.0146 seconds. The median ratio is 4.643681049, with
+maximum process peak RSS 1,985,134,592 bytes. Thus the Windows gate passes, but
+time headroom is only about seven percent of the 5x allowance. The Mac failure
+is retained, and the candidate is not described as universally resource-safe.
+The matching Windows checkpoint SHA-256 is
+`aadb6718a42323e392310e9c2b92f0ff6bb32abba87faec5c02c768a4ffd088c`.
+Both members trained for 39,321,600 targets; combined ancestry is 78,643,200
+targets, excluding the separately reported historical search cost. No new
+training or test scoring was performed for the Stage-11 gate.
+
+### Stage 12 long schedule and trajectory averaging preregistration — 2026-09-21
+
+Independently of the ensemble gate, train one fresh seed-17 width-256/depth-6,
+dropout-0.10 model for 7,200 updates. Fix the cosine plan to 7,200 updates from
+initialization; do not resume the 4,800-step run. Keep the optimizer, effective
+batch 32, learning rate 0.001, weight decay 0.1, and 300-step validation cadence.
+This run processes 58,982,400 targets. Preserve periodic checkpoints so the
+following same-trajectory uniform parameter averages can be evaluated:
+
+1. steps 6,900 and 7,200;
+2. steps 6,600, 6,900, and 7,200;
+3. steps 6,000, 6,300, 6,600, 6,900, and 7,200.
+
+CPU FP32-score the validation-selected single checkpoint, endpoint, and all
+three averages. Select only among these predeclared candidates using validation.
+An average does not add inference cost or assets beyond one ordinary checkpoint.
+Advance only if the winner improves on 1.575605774 by at least 0.003 BPB; an
+improvement below 0.002 is treated as noise. Replication and a fresh resource
+gate are required before any new freeze. No test call is allowed in Stage 12.
+
+### Stage 12 result — 2026-09-21
+
+The fresh seed-17 run completed all 7,200 updates and 58,982,400 training
+targets. Accounted training time is 621.709 seconds, including snapshot-writing
+overhead; total trainer process time is 683.479 seconds. Every periodic
+validation observation improves and the selected raw checkpoint is the endpoint.
+Complete Windows CPU FP32 validation results are:
+
+| Candidate | Validation BPB |
+|---|---:|
+| v1 selected checkpoint (Windows control) | 1.575605888394 |
+| 7,200-step endpoint / best single checkpoint | 1.551211926880 |
+| Average of last 2 checkpoints | 1.549185857066 |
+| Average of last 3 checkpoints | 1.548281604970 |
+| Average of last 5 checkpoints | 1.547832503085 |
+
+Select the predeclared last-5 average. It improves on the Windows v1 control by
+0.027773385 BPB, and on the new endpoint by 0.003379424 BPB. This is a
+single-seed validation result with five candidate comparisons, not a replicated
+or test-set improvement. The selected checkpoint is 23,101,756 bytes with SHA-256
+`c2c4b02ff9da41d09a9b152ecac46af5ccc9b6d4e3d3e43df6a547ba7d441114`.
+All five downloaded checkpoint hashes match their official CPU evaluation JSONs.
+The full audit is `results/stage12_summary.json`; original metrics, recipe, and
+all five scores are retained in `results/stage12-evidence/`.
+
+### Stage 13 replication preregistration — not yet executed
+
+**Deferred on 2026-09-21 following the user's architecture-first direction.**
+The original preregistration below is preserved as history, not an active job.
+See `ARCHITECTURE_REDESIGN_20260921.md` for the discussion-only candidate plan.
+No new architecture run or seed replication is authorized by this note alone.
+
+The Stage-12 advance threshold passes. Freeze the candidate recipe before
+replication: seed 23 and seed 42, each trained from random initialization for
+7,200 updates with precisely the Stage-12 architecture, optimizer, dropout,
+batch size, and cosine schedule. Select the uniform average of steps 6,000,
+6,300, 6,600, 6,900, and 7,200 for each seed. Do not reselect the averaging window
+for these seeds. Additional training cost will be 117,964,800 targets.
+
+Report all three seeds and mean/sample standard deviation; compare the new
+recipe against the corresponding v1 seed controls. Prospective submission
+selection is the lowest CPU FP32 validation BPB among the three last-5 averages,
+explicitly disclosing seed selection. Require a resource gate for that exact
+selected artifact and an immutable source/checkpoint freeze before considering
+any final test evaluation. Stage 13 itself uses validation only.
+
 ### Score-first follow-up agreed on 2026-09-19
 
 Keep the first equal-target screen small. Use its learning curves to decide

@@ -23,6 +23,7 @@ class TrainingResumeTests(unittest.TestCase):
             min_lr_ratio=0.1, warmup_steps=1, schedule="baseline",
             weight_decay=0.1, beta1=0.9, beta2=0.999, grad_clip=1.0,
             log_every=1, eval_every=2, eval_batch_size=1, save_every=2,
+            keep_eval_checkpoints=False,
             resume=False, stop_after_step=0,
         )
         values.update(overrides)
@@ -75,6 +76,23 @@ class TrainingResumeTests(unittest.TestCase):
             expected = 0.001 * min(1.0, (step + 1) / 100) * (
                 0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * step / 1200)))
             self.assertAlmostEqual(trainer.learning_rate(step, 1200, 0.001, 100, 0.1, "baseline"), expected)
+
+    def test_periodic_checkpoints_can_be_preserved_for_averaging(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            config = root / "tiny.json"
+            config.write_text(json.dumps(dict(
+                vocab=2048, context=256, width=8, heads=1, depth=1,
+            )), encoding="utf-8")
+            run = root / "snapshots"
+            self.run_training(self.arguments(
+                run, config, steps=2, eval_every=1, save_every=2,
+                keep_eval_checkpoints=True,
+            ))
+            first = torch.load(run / "checkpoints/step-000001.pt", weights_only=True)
+            second = torch.load(run / "checkpoints/step-000002.pt", weights_only=True)
+            self.assertEqual(first["train_tokens"], 256)
+            self.assertEqual(second["train_tokens"], 512)
 
     def test_control_training_matches_supplied_trainer(self):
         # Test-only synthetic input; no resulting weights enter real experiments.

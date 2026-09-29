@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922221812
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage46 -RunId stage46-20260922-a
+进程 ID: 67032
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage46-20260922-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_capacity_and_active_hidden_budget (tests.test_moe.MoETests.test_capacity_and_active_hidden_budget) ... ok
+test_causality (tests.test_moe.MoETests.test_causality) ... ok
+test_training_gradients_and_export_equivalence (tests.test_moe.MoETests.test_training_gradients_and_export_equivalence)
+... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.637s
+
+OK
+  "peak_rss_bytes": 2052231168,
+  "within_five_x_time_limit": true,
+  "within_four_gib_peak_rss_limit": true,
+  "within_64mib_asset_limit": true,
+  "no_quality_claim": true,
+  "new_gradient_targets": 0,
+  "no_test_scoring": true,
+  "pass": true
+}
+
+Stage46 complete: top-1 MoE resource preflight; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922222353
+**********************

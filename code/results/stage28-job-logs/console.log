@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922183712
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage28 -RunId stage28-20260922-a
+进程 ID: 31516
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage28-20260922-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_eval_export_state_and_output_are_exact (tests.test_deep_supervision.DeepSupervisionTests.test_eval_export_state_and
+_output_are_exact) ... ok
+test_invalid_configs_rejected (tests.test_deep_supervision.DeepSupervisionTests.test_invalid_configs_rejected) ... ok
+test_training_loss_is_causal_finite_and_updates_auxiliary_norms (tests.test_deep_supervision.DeepSupervisionTests.test_t
+raining_loss_is_causal_finite_and_updates_auxiliary_norms) ... ok
+test_rejects_independent_seeds (tests.test_checkpoint_average.CheckpointAverageTests.test_rejects_independent_seeds) ...
+ ok
+test_same_trajectory_average_and_accounting (tests.test_checkpoint_average.CheckpointAverageTests.test_same_trajectory_a
+verage_and_accounting) ... ok
+test_incompatible_sources_rejected (tests.test_weight_average.WeightAverageTests.test_incompatible_sources_rejected) ...
+ ok
+test_interpolation_and_metadata (tests.test_weight_average.WeightAverageTests.test_interpolation_and_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.092s
+
+OK
+}
+
+Stage28 complete: averaging/soup validation screen; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922183913
+**********************

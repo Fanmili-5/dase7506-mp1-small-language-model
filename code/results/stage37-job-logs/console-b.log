@@ -1,0 +1,55 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260922202738
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage37 -RunId stage37-20260922-b
+进程 ID: 70688
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage37-20260922-b\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_matches_direct_probability_formula_and_normalizes (tests.test_calibrated_collapsed.CalibratedCollapsedTests.test_ma
+tches_direct_probability_formula_and_normalizes) ... ok
+test_training_path_has_finite_neural_gradients (tests.test_calibrated_collapsed.CalibratedCollapsedTests.test_training_p
+ath_has_finite_neural_gradients) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.089s
+
+OK
+  "checkpoint_sha256": "ed29352b1fca4c325beec7fcb30ab2b4a019a3f264b256945d119534c2380e43",
+  "implementation_sha256": "64a20eeffb4457f4a0bd3b1b8d13be7576e877e6b1f8a8898a7cc0a151f7f546",
+  "evaluator_sha256": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+  "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+  "device": "cpu",
+  "device_name": "CPU",
+  "peak_allocated_gb": 0.0,
+  "peak_reserved_gb": 0.0
+}
+
+
+
+Stage37 complete: inspect calibrated qualification; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260922203441
+**********************

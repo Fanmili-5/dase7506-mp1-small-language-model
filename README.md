@@ -6,6 +6,102 @@ training utilities, model variants, logs, and documentation are additive.
 
 ## Current status
 
+**Current resource-qualified development candidate: Stage27 collapsed
+modified-Kneser-Ney hybrid, 1.454390432 CPU FP32 validation BPB.** It combines
+the Stage22 deep-supervised Transformer with a train-only order-5 modified
+Kneser-Ney expert at fixed validation-selected weight 0.125. Stage27 preserved
+all learned tensors/statistics and verified full-validation equivalence after
+collapsing the sparse recurrence. Three-repeat Windows CPU ratio **4.970076x**
+passes the 5x limit; peak RSS is 2,044,981,248 bytes and conservative inference
+assets are 44,210,786 bytes, within 4 GiB/64 MiB. The time margin is only 0.60%
+on this machine and is not a portability guarantee. No test scoring occurred.
+See `code/results/stage27-evidence/` and
+`code/docs/STAGE27_MKN_QUALIFICATION_20260922.md`.
+
+Stage24 is the previous qualified candidate at 1.461804908 BPB, 4.920595x CPU,
+2,024,538,112-byte peak RSS and 38,153,954-byte assets. It uses the older
+absolute-discount count expert at weight 0.075 and remains the safer timing
+fallback. See `code/results/stage24-evidence/` and
+`code/docs/STAGE24_STAGE22_QUALIFICATION_20260922.md`.
+
+Stage21 is the previous qualified candidate: collapsed-backoff hybrid,
+1.473335240 CPU FP32 validation BPB. Its three-repeat Windows CPU ratio was
+4.866243x, peak RSS 2,025,037,824 bytes and total inference assets 38,153,250
+bytes. The Stage19 hybrid's weights, count tables, .10 mixture ratio and
+training ancestry were unchanged. See `code/results/stage21-audit.json`,
+`code/docs/STAGE21_COLLAPSED_BACKOFF_20260922.md` and the Chinese explanation
+`code/docs/HYBRID_INFERENCE_EXPLAINED_ZH.md`.
+
+**Qualified fallback: Stage18 H, 1.482379119 CPU FP32 validation BPB**;
+three-repeat Windows CPU ratio4.802831x, peak RSS1,989,242,880 bytes and total
+inference assets29,678,074 bytes. Its unchanged train-count mixture improves
+validation to **1.473335164**, but that original implementation fails CPU time
+at **5.437347x** (RAM and assets pass). Stage21 above is the qualified optimized
+implementation, not a retroactive change to this result. No new gradient training or test
+evaluation. Audit checks raw scoring/resource records, source hashes and exact
+equality of all hybrid tensors to H plus the original train-only count tables.
+Both checkpoint files are backed up locally with matching SHA256 receipts.
+See `code/results/stage19-audit.json` and `code/docs/STAGE19_COMPLEMENTARITY_20260922.md`.
+
+Stage20 preserves that hybrid's tensors, counts and .10 mixture weight while
+fusing inference operations. Full-validation numerical equivalence passed;
+official CPU FP32 BPB **1.473335240**. Three-repeat Windows CPU ratio improved
+to **5.046067x**, but still **fails** the unchanged 5x cap. Peak RSS2,022,481,920
+bytes and total inference assets38,147,998 bytes pass. This is an inference
+speed improvement, not a learned-quality gain or qualified replacement. Exact
+Windows checkpoint and raw evidence are collected and audited; no new training
+or test scoring. See `code/results/stage20-audit.json` and
+`code/docs/STAGE20_EQUIVALENT_INFERENCE_20260922.md`.
+
+Stage15 completed and passed its full Windows artifact audit (2026-09-21).
+**Previous qualified reference: eight-layer prefix-copy F**, which achieved
+**1.485094298 CPU FP32 validation BPB**, with a final three-repeat CPU ratio
+**4.877905x**, peak RSS **1,988,993,024 bytes**, and conservative inference assets
+**29,681,660 bytes**. Timing margin below the 5x cap is narrow. The audit checked
+raw scores/resources, source hashes and recomputed the exact last-five weight
+averages on Windows. Its real averaged checkpoint is also collected locally.
+See `code/results/stage15-audit.json` and `code/results/stage15-evidence/`.
+
+The precision-matched no-copy D averaged 1.547137283. Dual-copy E failed its
+resource preflight (6.1833x) and was not trained. Stage14 B remains the archived
+qualified 1.499334244 reference. The six-layer 3x-duration G averaged 1.496658491:
+only .002676 better than B, below the preregistered .003 resource-retest trigger
+and worse than F. Stage15 consumed 294,912,000 new gradient targets. F was the
+selected follow-up at Stage15 completion, later superseded as described above.
+
+Stage17 finished on 2026-09-21 at 14:24 UTC. The large teacher **failed** its
+fixed quality gate: average CPU validation BPB **1.665982500**. Its best periodic
+GPU FP32 validation was 1.521367639 at step4200, then deteriorated while training
+loss fell. No CE/KD students were trained. Search cost:117,964,800 gradient targets.
+See `code/results/stage17-completed-evidence/`; this rejects the teacher recipe,
+not distillation in general. At Stage17 completion the qualified validation
+reference remained F's1.485094298; it has now been superseded by H after Stage19.
+
+Stage18 tests two training-only regularizers independently on F: input embedding
+row dropout .10 and SwiGLU hidden dropout .20. Same 7200-update target budget,
+seed and original trainer as F. Export restores the identical original inference
+graph with unchanged weights. Plan: `code/docs/STAGE18_GENERALIZATION_20260921.md`.
+Windows job `MP1-stage18-20260921-a` completed at 15:39 UTC on September21.
+H average CPU validation BPB **1.482379119**, I **1.482562139**; each used
+58,982,400 gradient targets. Both gains fall below the original .003 resource
+retest trigger, so neither was resource-qualified by Stage18. H was Stage18's
+lowest measured validation score; Stage19 subsequently qualified it. These are small
+single-seed gains, not evidence of robust improvement or test performance.
+Stage19 separately checked H's resources and a fixed train-count mixture grid
+(0/.05/.10), with CPU component profiling and no new training or test scoring.
+Plan: `code/docs/STAGE19_COMPLEMENTARITY_20260922.md`.
+LSTM/CNN prototypes are untrained and paused. The completed train-count/B hybrid
+scored 1.487889082 on validation but has not passed a resource gate; it is a
+reserve experiment, not a qualified replacement.
+
+No replacement candidate has received a final test evaluation. The final
+course submission will identify one immutable code version and its matching
+predictor checkpoint bundle. Historical freezes remain reproducibility records,
+not a restriction on replacing the submission candidate. Do not use historical
+test results to tune or select a replacement.
+
+### Earlier development milestones
+
 - Framework and configurable student model: implemented.
 - Course contract tests and fixed-file verification: implemented.
 - Mac CPU and Windows CUDA smoke tests: passed.
@@ -24,12 +120,62 @@ training utilities, model variants, logs, and documentation are additive.
   validation BPB; the curve selected its 4,800-step endpoint.
 - Frozen 4,800-step recipe replication at seeds 23 and 42: completed; three-seed
   CPU FP32 validation mean 1.579745 and sample standard deviation 0.003591.
-- Final method and checkpoint: seed-17 4,800-step checkpoint selected by the
+- Historical v1 method and checkpoint: seed-17 4,800-step checkpoint selected by the
   preregistered validation rule and frozen by hashes before test evaluation.
 - Formal resource gate: passed at 3.485x baseline CPU time, 1.972 GB peak RSS,
   and 21.14 MB of core inference assets.
-- Frozen full-test result: 1.605136467 BPB versus 2.102014912 for the initial
-  baseline. No post-test tuning or model reselection is permitted.
+- Historical v1 full-test result: 1.605136467 BPB versus 2.102014912 for the initial
+  baseline. This v1 predictor remains immutable; subsequent development uses
+  validation only and requires a separate freeze before any new test call.
+
+Post-v1 development continues on validation only. A two-model probability
+mixture reaches 1.559980227 validation BPB on Windows (1.559980123 on Mac),
+compared with 1.575605774 for v1. Three fresh Windows CPU runs measure a 4.644x
+median-time ratio, 1.985 GB maximum peak RSS, and a 25.21 MB checkpoint. This
+passes the measured Windows limits with limited time headroom. The one-repeat
+Mac probe failed at 7.046x and remains recorded; passing on Windows does not
+establish portability to every CPU. The ensemble is a development candidate.
+Stage 12 has now completed one fresh 7,200-step run and all three predeclared
+checkpoint averages. Its best candidate averages the last five checkpoints and
+reaches **1.547832503 CPU FP32 validation BPB**, compared with 1.551211927 for
+the new single endpoint and 1.575605888 for the Windows v1 control. This keeps
+single-model inference and improves validation by 0.027773385 BPB. All candidate
+checkpoint hashes have been checked against their evaluation JSONs. This is
+single-seed development evidence. Its exact last-5 checkpoint passes a fresh
+three-repeat Windows resource gate: 3.643x CPU time, 1.979 GB maximum RSS, and
+23.24 MB total inference assets. Fixed-recipe seed-23/42 replication was
+preregistered but is now deferred in favor of mechanism-led architecture
+screening; see `code/docs/ARCHITECTURE_REDESIGN_20260921.md`.
+No new test evaluation has been performed.
+
+Stage 14 implements three mechanism-led candidates: 4-layer/320-wide backbone,
+causal within-window prefix copy, and a two-component mixture-of-softmax output.
+The heads are in `code/student_structured.py`, with a hash-pinned dependency on
+the unchanged `student.py`; both source files must accompany their checkpoints.
+Resource-gated training is orchestrated by `scripts/run_architecture_screen.py`.
+The single-seed screen is now complete. With the same 7,200 updates and fixed
+last-five averaging rule, CPU FP32 validation BPB is **1.557700785 (A)**,
+**1.499334244 (B)**, and **1.596398956 (C)**, versus the Stage-12 control
+**1.547832503**. B is the new validation leader, improving by 0.048498259 BPB;
+A and C are not advanced under this recipe. B's exact averaged checkpoint passes
+three final CPU repetitions at 3.831x baseline time, 1.976 GB peak RSS and
+23.38 MB inference assets. This is single-seed validation evidence, not a new
+test score or a frozen submission. Replication and a precision-matched copy
+ablation remain pending. The structured heads train in FP32 inside a BF16
+backbone, while the historical control also autocasts its output projection;
+therefore the gain is for the full variant, not yet an isolated copy-only effect.
+See the architecture plan and `code/results/stage14-audit.json` for evidence.
+
+All three random-initialization resource preflights have passed on Windows:
+3.255x CPU time for A (wide/shallow), 3.904x for B (prefix copy), and 4.098x for
+C (two-component output); each uses about 1.98 GB peak process RSS. Raw evidence
+is in `code/results/stage14-preflight/`. These measurements do not establish
+trained-model quality or replace the final exact-checkpoint resource gate.
+The bounded job completed on 21 September. A completed screen can be audited with
+`python scripts/audit_architecture_screen.py --run-dir runs/stage14-architecture-s17
+--output results/stage14-audit.json` (one command, run inside `code/`). The audit
+requires the original checkpoints and averaging snapshots and rejects partial
+results, mismatched scores, changed sources, or incompatible training budgets.
 
 The first CPU FP32 validation results are baseline 2.072081282, RoPE-only
 1.922025745, SwiGLU-only 2.011474415, and modern bundle 1.835656528 BPB. Every run

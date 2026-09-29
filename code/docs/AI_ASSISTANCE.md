@@ -70,3 +70,72 @@ review has happened.
 
 This disclosure must be updated before submission to name any additional AI tools
 and to describe material changes made after the initial framework was created.
+
+On 21 September, Codex implemented and tested a resource-aware two-model
+probability ensemble, validation-only weight scanner, checkpoint packager,
+periodic checkpoint preservation, and same-trajectory parameter averaging. It
+ran the bounded ensemble screen on validation and recorded both the quality gain
+and a provisional Mac CPU time-gate failure. It then preregistered the Windows
+resource recheck and a fresh 7,200-step, validation-only trajectory-averaging
+experiment. These post-v1 experiments must not use the already observed v1 test
+score for model or hyperparameter selection.
+
+Codex subsequently restored the private Windows tunnel, backed up deployed
+source, ran all 25 tests and the fixed-file verification on Windows, and executed
+the three-repeat ensemble resource gate. It recorded the Windows pass alongside
+the Mac failure and launched the preregistered Stage-12 training recipe. It also
+added an audit script that checks every candidate checkpoint against the
+corresponding complete CPU FP32 validation result before selecting a candidate.
+
+Codex completed the Stage-12 seed-17 run, generated the three predeclared weight
+averages, CPU-scored all five candidates, backed up the artifacts, and verified
+each checkpoint hash against its score. It selected the last-5 average on
+validation, retained every candidate result, and preregistered seed-23/42
+replication with the averaging window fixed. No new test score was used or
+generated in this stage.
+
+Codex subsequently verified the exact Stage-12 average with three fresh Windows
+CPU measurements (3.643x baseline time), collected training/validation error
+diagnostics with dropout disabled, and drafted an architecture-first plan.
+The student requested mechanism-driven optimization rather than seed screening;
+the Stage-13 replication proposal is deferred. Diagnostic group labels are used
+only for analysis and are never available as model inputs. No new test was run.
+
+For Stage 14, Codex implemented additive prefix-copy and two-component
+mixture-of-softmax heads, a wider/shallower control configuration, contract tests,
+and a bounded validation-only runner with CPU resource gates. Designs adapt
+ideas from Merity et al. (Pointer Sentinel Mixture Models, arXiv:1609.07843) and
+Yang et al. (Breaking the Softmax Bottleneck, arXiv:1711.03953); they are not
+claimed as original algorithms or reproductions of those papers' benchmark
+scores. The unchanged backbone is hash-pinned. Training and evaluation outcomes
+must be recorded separately from implementation and test success.
+
+Codex verified all three Stage-14 CPU preflights from their raw repetitions and
+implemented a post-run auditor for checkpoint identities, fixed evaluation
+coverage, training budgets, averaging ancestry and resource evidence. The new
+auditor was checked with synthetic negative cases and real preflight JSONs; a
+complete trained-screen audit remains pending until training finishes. It does
+not change any source hash pinned by the running job or invoke test evaluation.
+
+After Stage 14 completed, Codex audited all three runs on the Windows machine,
+including final weights, exact training budgets, fixed last-five ancestry and
+raw CPU resource repetitions. It identified prefix copy as the single-seed
+validation winner (1.499334244 BPB), retained negative A/C results, and prepared
+a transfer archive with checksums, endpoint/average weights, scores and logs.
+It explicitly recorded that FP32 output-head training also differs from the
+historical control, so a precision-matched ablation is needed before isolating
+the causal contribution of copy. No further training or test run was launched
+while collecting these results.
+
+## Stage 15 optimization assistance
+
+AI assisted a validation/train-only B diagnostic, structured candidate selection,
+the FP32 matched no-copy control, a causal dual-copy implementation, its unit tests,
+and a resource-gated Windows experiment runner. The new route maps h_j to x_(j+1)
+with j<t, so accessible values are already observed inputs. The design draws on
+continuous neural cache and pointer-mixture ideas, with sources and adaptation
+boundaries in `STAGE15_PLAN_20260921.md`. No paper performance claims are transferred
+to this task. Proposed gains are unverified until actual CPU FP32 scores arrive.
+The long schedule is separately accounted as extra training, not an equal-budget
+architecture comparison. Substantive AI assistance must remain disclosed in the
+final README/report, and the student must be able to explain the implementation.
