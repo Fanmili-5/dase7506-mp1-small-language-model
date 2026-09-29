@@ -25,20 +25,15 @@ class StructuredTests(unittest.TestCase):
                     mlp_ratio=2.6666667, bias=False, dropout=0.1,
                     output_kind=kind, copy_dim=8, mos_components=2)
 
-    def test_actual_configs_counts_and_full_context(self):
-        cases = [("architecture_a_w320_d4", "student", 5572160),
-                 ("architecture_b_copy64", "student_structured", 5280769),
-                 ("architecture_c_mos2", "student_structured", 5379842)]
-        for name, implementation, count in cases:
-            with self.subTest(name=name):
-                config = json.loads((ROOT / "configs" / f"{name}.json").read_text())
-                model, _ = make_model(implementation, config, torch.device("cpu"))
-                model.eval()
-                self.assertEqual(sum(p.numel() for p in model.parameters()), count)
-                with torch.no_grad():
-                    p = model.predict_log_probs(torch.randint(2048, (1, 256)))
-                self.assertTrue(torch.isfinite(p).all())
-                torch.testing.assert_close(p.logsumexp(-1), torch.zeros(1, 256), atol=2e-6, rtol=0)
+    def test_selected_neural_head_full_context(self):
+        config = json.loads((ROOT / "configs/stage67_hybrid_conv_output_bias.json").read_text())
+        model, _ = make_model("student_hybrid_conv_output_bias", config, torch.device("cpu"))
+        model.eval()
+        with torch.no_grad():
+            p = model.predict_log_probs(torch.randint(2048, (1, 256)))
+        self.assertEqual(p.shape, (1, 256, 2048))
+        self.assertTrue(torch.isfinite(p).all())
+        torch.testing.assert_close(p.logsumexp(-1), torch.zeros(1, 256), atol=2e-6, rtol=0)
 
     def test_causality_short_windows_and_independence(self):
         for kind in ("prefix_copy", "mos"):

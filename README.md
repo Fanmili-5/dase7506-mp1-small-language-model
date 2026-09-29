@@ -15,7 +15,6 @@ My model combines an eight-block attention/convolution network, within-window co
 - [Installation and evaluation](code/README.md): run the model without retraining.
 - [Training procedure](TRAINING.md): schedules, count construction and gate fitting.
 - [Results](RESULTS.md): comparisons, training cost and CPU measurements.
-- [Assignment](GUIDE.md): supplied rules.
 
 Download the [code ZIP](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/download/project-1/mp1-code.zip) and [checkpoint ZIP](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/releases/download/project-1/mp1-checkpoint.zip). Extract the code into an empty directory, then extract the checkpoint into the same directory.
 
