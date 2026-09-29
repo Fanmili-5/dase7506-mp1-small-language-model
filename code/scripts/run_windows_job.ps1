@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19", "stage20", "stage21", "stage22", "stage23", "stage24", "stage25", "stage26", "stage27", "stage28", "stage30", "stage31", "stage32", "stage33", "stage34", "stage35", "stage36", "stage37", "stage38", "stage39", "stage40", "stage41", "stage42", "stage43", "stage44", "stage45", "stage46", "stage47", "stage48", "stage49", "stage50", "stage51", "stage52", "stage53", "stage54", "stage55", "stage56")]
+    [ValidateSet("smoke", "stage1", "stage2", "stage3", "stage4", "stage4b", "stage5", "stage5b", "stage5c", "stage6", "stage7", "stage8", "stage9", "stage10", "stage11", "stage12", "stage14", "stage15", "stage17", "stage18", "stage19", "stage20", "stage21", "stage22", "stage23", "stage24", "stage25", "stage26", "stage27", "stage28", "stage30", "stage31", "stage32", "stage33", "stage34", "stage35", "stage36", "stage37", "stage38", "stage39", "stage40", "stage41", "stage42", "stage43", "stage44", "stage45", "stage46", "stage47", "stage48", "stage49", "stage50", "stage51", "stage52", "stage53", "stage54", "stage55", "stage56", "stage57", "stage58", "stage59", "stage60", "stage61", "stage62", "stage63", "stage64", "stage65", "stage66", "stage67", "stage68", "stage69", "stage70", "stage71", "stage72", "stage73", "stage74", "stage75", "stage76", "stage77", "stage78", "stage79", "stage80", "stage81", "stage82", "stage83", "stage84", "stage85", "stage86", "stage87", "stage88", "stage89", "stage90", "stage91", "stage92", "stage93", "stage94", "stage95", "stage96", "stage97", "stage98")]
     [string]$Job,
     [Parameter(Mandatory = $true)]
     [ValidatePattern('^[A-Za-z0-9_-]+$')]
@@ -146,8 +146,92 @@ try {
         & "$PSScriptRoot\run_stage54_windows.ps1"
     } elseif ($Job -eq "stage55") {
         & "$PSScriptRoot\run_stage55_windows.ps1"
-    } else {
+    } elseif ($Job -eq "stage56") {
         & "$PSScriptRoot\run_stage56_windows.ps1"
+    } elseif ($Job -eq "stage57") {
+        & "$PSScriptRoot\run_stage57_windows.ps1"
+    } elseif ($Job -eq "stage58") {
+        & "$PSScriptRoot\run_stage58_windows.ps1"
+    } elseif ($Job -eq "stage59") {
+        & "$PSScriptRoot\run_stage59_windows.ps1"
+    } elseif ($Job -eq "stage60") {
+        & "$PSScriptRoot\run_stage60_windows.ps1"
+    } elseif ($Job -eq "stage61") {
+        & "$PSScriptRoot\run_stage61_windows.ps1"
+    } elseif ($Job -eq "stage62") {
+        & "$PSScriptRoot\run_stage62_windows.ps1"
+    } elseif ($Job -eq "stage63") {
+        & "$PSScriptRoot\run_stage63_windows.ps1"
+    } elseif ($Job -eq "stage64") {
+        & "$PSScriptRoot\run_stage64_windows.ps1"
+    } elseif ($Job -eq "stage65") {
+        & "$PSScriptRoot\run_stage65_windows.ps1"
+    } elseif ($Job -eq "stage66") {
+        & "$PSScriptRoot\run_stage66_windows.ps1"
+    } elseif ($Job -eq "stage67") {
+        & "$PSScriptRoot\run_stage67_windows.ps1"
+    } elseif ($Job -eq "stage68") {
+        & "$PSScriptRoot\run_stage68_windows.ps1"
+    } elseif ($Job -eq "stage69") {
+        & "$PSScriptRoot\run_stage69_windows.ps1"
+    } elseif ($Job -eq "stage70") {
+        & "$PSScriptRoot\run_stage70_windows.ps1"
+    } elseif ($Job -eq "stage71") {
+        & "$PSScriptRoot\run_stage71_windows.ps1"
+    } elseif ($Job -eq "stage72") {
+        & "$PSScriptRoot\run_stage72_windows.ps1"
+    } elseif ($Job -eq "stage73") {
+        & "$PSScriptRoot\run_stage73_windows.ps1"
+    } elseif ($Job -eq "stage74") {
+        & "$PSScriptRoot\run_stage74_windows.ps1"
+    } elseif ($Job -eq "stage75") {
+        & "$PSScriptRoot\run_stage75_windows.ps1"
+    } elseif ($Job -eq "stage76") {
+        & "$PSScriptRoot\run_stage76_windows.ps1"
+    } elseif ($Job -eq "stage77") {
+        & "$PSScriptRoot\run_stage77_windows.ps1"
+    } elseif ($Job -eq "stage78") {
+        & "$PSScriptRoot\run_stage78_windows.ps1"
+    } elseif ($Job -eq "stage79") {
+        & "$PSScriptRoot\run_stage79_windows.ps1"
+    } elseif ($Job -eq "stage80") {
+        & "$PSScriptRoot\run_stage80_windows.ps1"
+    } elseif ($Job -eq "stage81") {
+        & "$PSScriptRoot\run_stage81_windows.ps1"
+    } elseif ($Job -eq "stage82") {
+        & "$PSScriptRoot\run_stage82_windows.ps1"
+    } elseif ($Job -eq "stage83") {
+        & "$PSScriptRoot\run_stage83_windows.ps1"
+    } elseif ($Job -eq "stage84") {
+        & "$PSScriptRoot\run_stage84_windows.ps1"
+    } elseif ($Job -eq "stage85") {
+        & "$PSScriptRoot\run_stage85_windows.ps1"
+    } elseif ($Job -eq "stage86") {
+        & "$PSScriptRoot\run_stage86_windows.ps1"
+    } elseif ($Job -eq "stage87") {
+        & "$PSScriptRoot\run_stage87_windows.ps1"
+    } elseif ($Job -eq "stage88") {
+        & "$PSScriptRoot\run_stage88_windows.ps1"
+    } elseif ($Job -eq "stage89") {
+        & "$PSScriptRoot\run_stage89_windows.ps1"
+    } elseif ($Job -eq "stage90") {
+        & "$PSScriptRoot\run_stage90_windows.ps1"
+    } elseif ($Job -eq "stage91") {
+        & "$PSScriptRoot\run_stage91_windows.ps1"
+    } elseif ($Job -eq "stage92") {
+        & "$PSScriptRoot\run_stage92_windows.ps1"
+    } elseif ($Job -eq "stage93") {
+        & "$PSScriptRoot\run_stage93_windows.ps1"
+    } elseif ($Job -eq "stage94") {
+        & "$PSScriptRoot\run_stage94_windows.ps1"
+    } elseif ($Job -eq "stage95") {
+        & "$PSScriptRoot\run_stage95_windows.ps1"
+    } elseif ($Job -eq "stage96") {
+        & "$PSScriptRoot\run_stage96_windows.ps1"
+    } elseif ($Job -eq "stage97") {
+        & "$PSScriptRoot\run_stage97_windows.ps1"
+    } else {
+        & "$PSScriptRoot\run_stage98_windows.ps1"
     }
     Write-JobStatus "completed" 0 ""
     $ResultCode = 0

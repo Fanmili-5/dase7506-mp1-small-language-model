@@ -1,0 +1,11 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "stage": "stage126_initial_export",
+  "status": "export_failed_before_timing",
+  "source_sha256": "da1498165fa80009d27c670bbe2954e483db22ab537674e6b33d66078a350c6b",
+  "error_type": "torch.onnx.errors.UnsupportedOperatorError",
+  "error": "Exporting aten::rms_norm to ONNX opset version 17 is not supported",
+  "onnx_graph_completed": false,
+  "speed_measured": false,
+  "no_test_scoring": true
+}

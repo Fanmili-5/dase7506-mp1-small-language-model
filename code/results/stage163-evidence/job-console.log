@@ -1,0 +1,52 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260925191108
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_stage163_pilot_windows.ps1
+进程 ID: 88580
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+    },
+    "projection-mean.npy": {
+      "bytes": 1280,
+      "sha256": "30877634646461b44526e4bb551bb087b72902c06411a577b6a448b3c9076c67"
+    },
+    "projection-basis.npy": {
+      "bytes": 73856,
+      "sha256": "9d9f5c3c8e722000f532a59ff22fce6ffb9ce745205a7fb7981b3f8b71eb9f81"
+    }
+  },
+  "pilot_asset_bytes": 6675392,
+  "conservative_stage143_plus_pilot_assets_bytes": 62485804,
+  "warning": "GPU exact-search validation diagnostic only; no CPU ANN index, full-distribution predictor or resource qua
+lification",
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 0.492432384,
+  "peak_reserved_gb": 0.543162368
+}
+
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260925191149
+**********************

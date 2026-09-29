@@ -1,0 +1,87 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "config": {
+    "context": 256,
+    "vocab": 2048,
+    "kind": "ngram",
+    "max_order": 6,
+    "min_count": 2,
+    "estimator": "pruned_interpolated_modified_kneser_ney",
+    "unigram": "left_context_continuation_additive_0.1",
+    "order_shapes": [
+      [
+        1930,
+        137762
+      ],
+      [
+        79799,
+        297225
+      ],
+      [
+        148128,
+        238691
+      ],
+      [
+        222244,
+        270363
+      ],
+      [
+        161903,
+        180562
+      ]
+    ],
+    "discounts": [
+      [
+        0.6204971348923649,
+        1.1409845210435394,
+        1.5849504674032273
+      ],
+      [
+        0.7822455423782224,
+        1.1969570730345311,
+        1.4067035558003986
+      ],
+      [
+        0.88065526005953,
+        1.2723465530025826,
+        1.432149814136793
+      ],
+      [
+        0.886472125125662,
+        1.315435351667877,
+        1.4710154364829884
+      ],
+      [
+        0.9244773474097083,
+        1.4005996690375822,
+        1.4954194575781792
+      ]
+    ],
+    "order6_extension_min_count": 2
+  },
+  "order6": {
+    "order": 6,
+    "count_kind": "raw_extension",
+    "contexts": 161903,
+    "retained_edges": 180562,
+    "distinct_unpruned": 3236151,
+    "discounts": [
+      0.9244773474097083,
+      1.4005996690375822,
+      1.4954194575781792
+    ],
+    "counts_of_counts": {
+      "n1": 3055589,
+      "n2": 124809,
+      "n3": 26974,
+      "n4": 10975,
+      "y": 0.9244773474097083,
+      "fallback": false
+    }
+  },
+  "base_checkpoint_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "checkpoint_sha256": "b901f11766c005733f769fa5582e82f586db31a41edaefe93122aae1ed471953",
+  "checkpoint_bytes": 21295445,
+  "build_seconds": 16.09763740003109,
+  "no_test_scoring": true
+}

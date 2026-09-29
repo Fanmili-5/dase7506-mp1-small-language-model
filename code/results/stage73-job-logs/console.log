@@ -1,0 +1,54 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260923201838
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage73 -RunId stage73-20260923-b
+进程 ID: 70276
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage73-20260923-b\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+test_extension_preserves_lower_tables_and_normalizes (tests.test_stage73_order6.Order6ExtensionTests.test_extension_pres
+erves_lower_tables_and_normalizes) ... ok
+test_order6_target_lookup_avoids_66_bit_pair_overflow (tests.test_stage73_order6.Order6ExtensionTests.test_order6_target
+_lookup_avoids_66_bit_pair_overflow) ... ok
+test_normalized_mixture_has_neural_gradient (tests.test_mixture_aware.MixtureAwareTests.test_normalized_mixture_has_neur
+al_gradient) ... ok
+test_sparse_target_query_matches_complete_count_distribution (tests.test_mixture_aware.MixtureAwareTests.test_sparse_tar
+get_query_matches_complete_count_distribution) ... ok
+test_symmetric_kl_is_zero_only_for_equal_distributions (tests.test_mixture_aware.MixtureAwareTests.test_symmetric_kl_is_
+zero_only_for_equal_distributions) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.073s
+
+OK
+  "build_seconds": 16.09763740003109,
+  "no_test_scoring": true
+}
+
+
+Stage73 complete: inspect order-6 quality screen; no resource or test claim.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260923202003
+**********************

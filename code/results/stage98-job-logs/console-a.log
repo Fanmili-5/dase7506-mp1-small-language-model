@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260924180838
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称:
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage98 -RunId stage98-20260924-a
+进程 ID: 40644
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage98-20260924-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+          "order_5": 0.06687490637858091
+        },
+        "bias": -2.7378835492749296
+      }
+    ],
+    "crossfit_bpb": 1.400016285541991,
+    "deployability": "low_overhead_candidate"
+  },
+  "low_overhead_gain": 0.0016913767564170623,
+  "train_unigram_tokens": 3613343,
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "seconds": 88.55251690000296,
+  "validation_fit_diagnostic_only": true,
+  "exported_checkpoint": false,
+  "no_test_scoring": true,
+  "source_sha256": "ef03de519f59c61e8033179b67f1ec14093ebac9301f60d7771dd4a2bbe272f0"
+}
+
+Stage98 complete: validation-only cross-fit; no export or test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260924181043
+**********************

@@ -1,6 +1,6 @@
 # MP1 code — installation and usage
 
-Read [the project guide](../guide/GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules. The package has only these two documents.
+Read [the project guide](../GUIDE.md) for the assignment, assessment, deadlines and peer review. This README contains the running instructions and technical rules.
 
 All commands below run from **code/**. Data and the tokenizer are included. No API key, pretrained weights or additional dataset download is needed; after installing dependencies, training and evaluation work offline.
 
@@ -36,15 +36,33 @@ python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
 ```
 
-Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. Windows/macOS timings have not been measured.
+Linux CPU commands were verified with Python 3.12 and PyTorch 2.7.1+cpu. The Stage143 candidate was separately measured on Windows; its timing is machine-specific.
+
+For the Stage143 development candidate, additionally install the pinned
+OpenVINO CPU runtime after the base requirements:
+
+```bash
+python -m pip install -r requirements_stage143.txt
+python evaluate.py --checkpoint checkpoints/stage143-openvino-order6.pt --device cpu --precision fp32 --threads 4 --split validation --output results/stage143-reproduction.json
+```
+
+The checkpoint uses the relative, hash-checked feature graph at
+`inference_assets/stage143-stage92-features.onnx`. Keep both files alongside
+the source. On Windows PowerShell, use backslashes in paths if needed. This
+command scores validation only; do not use test to select or tune a candidate.
+Before finalizing Stage143, `python scripts/freeze_stage143_method.py` is a
+read-only preflight of committed inference files and qualification evidence.
+An eligible message is **not** a method freeze; the explicit freeze-record
+step is described in
+[`docs/SUBMISSION_PORTAL_READINESS_20260926.md`](docs/SUBMISSION_PORTAL_READINESS_20260926.md).
 
 ## 2. Train and evaluate
 
-**Quick installation check** — 10 training steps, then full-test evaluation:
+**Quick installation check** — 10 training steps, then validation evaluation:
 
 ```bash
 python train.py --implementation model --steps 10 --run-dir runs/smoke
-python evaluate.py --checkpoint runs/smoke/checkpoint.pt --split test
+python evaluate.py --checkpoint runs/smoke/checkpoint.pt --split validation
 ```
 
 This checks that the pipeline works; its score is **not** the full baseline. Each training run needs a new output directory.
@@ -98,20 +116,46 @@ Training writes `checkpoint.pt` and `metrics.json`. Evaluation writes `test_cpu_
 
 Use validation for all development and checkpoint/mixture selection. Weights, statistics and retrieval entries must derive only from training text. The public test text enables reproduction; it must not be used to tune the method. Once frozen, the same predictor may be evaluated repeatedly for timing or reproduction. Token perplexity is not directly comparable with published word-level perplexity.
 
-Measure all three limits for the same frozen predictor:
+Measure all three limits for the same frozen predictor. First train the supplied
+baseline using the command above; then run three alternating fresh-process
+comparisons from `code/`:
 
-- **CPU time ≤5× baseline:**
-- **Peak RAM ≤4 GiB:**
-- **Inference assets ≤64 MiB uncompressed:** 
+```bash
+python scripts/benchmark_cpu.py --baseline runs/baseline/checkpoint.pt --candidate checkpoints/stage143-openvino-order6.pt --threads 4 --repeats 3 --output results/stage143-resource-recheck.json
+```
+
+- **CPU time ≤5× baseline:** compare the medians in the benchmark JSON.
+- **Peak RAM ≤4 GiB:** use the candidate's maximum whole-process RSS.
+- **Inference assets ≤64 MiB uncompressed:** count the checkpoint, ONNX graph,
+  and every student-authored file required to run the model, not only the
+  checkpoint bytes printed by the benchmark script. The [Stage143 qualification
+  record](docs/STAGE143_COMPACT_OPENVINO_QUALIFICATION_PLAN_20260925.md) gives
+  the current local asset count and its scope. Recheck the count if the bundle
+  changes.
 
 ## 5. Prepare your submission and reproduce a peer
 
-The [guide](../guide/GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
+The [guide](../GUIDE.md) specifies the deadline and website workflow. Include the following in your immutable code repository:
 
 - **Report, at most 10 pages including figures, tables and references** 
 - **Reproduction instructions**
 
 Your final website submission must link to this code and the matching complete checkpoint bundle. The website generates the Issue JSON automatically. Keep all inference assets downloadable for verification.
+After explicitly freezing and committing the method record, run the one
+matching CPU FP32 full-test score through
+`scripts/run_stage143_frozen_test.py --freeze <committed-freeze.json> --output <new-test-result.json>`.
+The entry point refuses a missing or uncommitted freeze and records its hash
+in the scorer result. On the Git-less Windows training/evaluation copy, first
+commit and verify the freeze on the Mac, copy that exact record and frozen
+assets, then pass `--portable-freeze-sha256 <verified-record-sha256>`; this
+checks every frozen file without using Git or network access on Windows.
+Then
+`scripts/package_stage143_final_release.py` can bind the committed freeze
+record, full-test result, local `.window-nll.npy` scoring sidecar and
+replacement `REPORT.pdf` to an exact bundle.
+It refuses to package the historical Stage10 report. See the
+[`submission readiness sequence`](docs/SUBMISSION_PORTAL_READINESS_20260926.md);
+do not use the pre-test candidate ZIP as the final checkpoint link.
 
 To check a peer, obtain their exact code version and checkpoint, follow their installation instructions, and run their frozen model with the supplied evaluator:
 

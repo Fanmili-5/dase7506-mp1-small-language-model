@@ -20,8 +20,8 @@ COUNTS_SHA = "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2"
 BASELINE_SHA = "2e4b9e749796dc1d6d8a2e5aedc9482d961dcabd9740760e905f7ae117ba647d"
 NEURAL_SHA = "689101810f2165091647366ebaaa11e3c693edc9a80155a009237cc131a25d51"
 WEIGHTS = tuple(i / 80 for i in range(17))  # 0.0000 through 0.2000
-INFERENCE_FILES = (
-    "student_ngram_hybrid_conv_collapsed.py", "student_hybrid_conv_structured.py",
+BASE_INFERENCE_FILES = (
+    "student_hybrid_conv_structured.py",
     "student_ngram_collapsed.py", "student_ngram_fast.py", "student_ngram.py",
     "student_structured.py", "student.py", "common.py", "evaluate.py",
     "data/tokenizer.json", "requirements.txt",
@@ -34,24 +34,46 @@ def main():
     parser.add_argument("--counts", type=Path, required=True)
     parser.add_argument("--baseline", type=Path, required=True)
     parser.add_argument("--run-dir", type=Path, required=True)
+    parser.add_argument("--expected-neural-sha", default=NEURAL_SHA)
+    parser.add_argument("--source-stage", default="Stage55")
     args = parser.parse_args()
     if args.run_dir.exists():
         parser.error("Use a new run directory")
-    if (sha(args.neural) != NEURAL_SHA or sha(args.counts) != COUNTS_SHA
+    if (sha(args.neural) != args.expected_neural_sha or sha(args.counts) != COUNTS_SHA
             or sha(args.baseline) != BASELINE_SHA):
         raise ValueError("Unexpected frozen neural, count, or baseline checkpoint")
     neural_payload = torch.load(args.neural, map_location="cpu", weights_only=True)
     count_payload = torch.load(args.counts, map_location="cpu", weights_only=True)
+    neural_implementation = neural_payload.get("implementation")
+    supported_neural = {
+        "student_hybrid_conv_structured": (
+            "student_ngram_hybrid_conv_collapsed",
+            ("student_ngram_hybrid_conv_collapsed.py",),
+        ),
+        "student_hybrid_conv_output_bias": (
+            "student_ngram_hybrid_conv_bias_collapsed",
+            ("student_ngram_hybrid_conv_bias_collapsed.py",
+             "student_hybrid_conv_output_bias.py"),
+        ),
+    }
+    training_provenance = (
+        "training_rdrop" in neural_payload
+        or "training_byte_rdrop" in neural_payload
+        or neural_implementation == "student_hybrid_conv_output_bias"
+    )
     if (neural_payload.get("protocol") != PROTOCOL
-            or neural_payload.get("implementation") != "student_hybrid_conv_structured"
-            or "training_rdrop" not in neural_payload
+            or neural_implementation not in supported_neural
+            or not training_provenance
             or count_payload.get("protocol") != PROTOCOL
             or count_payload.get("implementation") != "student_ngram"):
-        raise ValueError("Expected Stage54 R-Drop hybrid-conv and Stage25 MKN experts")
+        raise ValueError("Expected an R-Drop hybrid-conv neural and Stage25 MKN experts")
 
     device, _ = setup("cpu", "fp32", 4)
-    neural, _ = make_model("student_hybrid_conv_structured",
-                           neural_payload["config"], device)
+    candidate_implementation, implementation_files = supported_neural[
+        neural_implementation
+    ]
+    inference_files = implementation_files + BASE_INFERENCE_FILES
+    neural, _ = make_model(neural_implementation, neural_payload["config"], device)
     counts, _ = make_model("student_ngram", count_payload["config"], device)
     neural.load_state_dict(neural_payload["model"]); neural.eval()
     counts.load_state_dict(count_payload["model"]); counts.eval()
@@ -91,7 +113,7 @@ def main():
         raise ValueError("Coverage mismatch or MKN did not improve the neural expert")
     args.run_dir.mkdir(parents=True)
     scan = dict(
-        protocol=PROTOCOL, split="validation", neural_sha256=NEURAL_SHA,
+        protocol=PROTOCOL, split="validation", neural_sha256=args.expected_neural_sha,
         counts_sha256=COUNTS_SHA, weights=rows, best=best, targets=targets,
         utf8_bytes=len(raw), seconds=time.perf_counter() - started,
         method="fixed_scalar_grid_before_export", no_test_scoring=True,
@@ -102,7 +124,7 @@ def main():
     config = dict(count_payload["config"], kind="hybrid",
                   neural_config=neural_payload["config"],
                   mixture_weight=best["weight"])
-    candidate, _ = make_model("student_ngram_hybrid_conv_collapsed", config, device)
+    candidate, _ = make_model(candidate_implementation, config, device)
     candidate.neural.load_state_dict(neural_payload["model"])
     candidate.ngram.load_state_dict(count_payload["model"])
     candidate.eval()
@@ -115,10 +137,11 @@ def main():
     max_error = float((actual - expected).abs().max())
     if not torch.isfinite(actual).all() or max_error > 2e-5:
         raise ValueError(f"Collapsed mixture equivalence failed: {max_error}")
-    exported = dict(neural_payload, implementation="student_ngram_hybrid_conv_collapsed",
+    exported = dict(neural_payload, implementation=candidate_implementation,
                     config=config, model=candidate.state_dict())
     exported["fixed_mixture"] = dict(
-        source="Stage55 fixed validation grid", neural_sha256=NEURAL_SHA,
+        source=f"{args.source_stage} fixed validation grid",
+        neural_sha256=args.expected_neural_sha,
         counts_sha256=COUNTS_SHA, mixture_weight=best["weight"],
         selected_validation_bpb=best["bpb"], no_new_gradient_targets=True,
         smoke_max_abs_logp_error=max_error,
@@ -143,10 +166,10 @@ def main():
     ], cwd=ROOT, check=True)
     resources = json.loads(resources_path.read_text(encoding="utf-8"))
     assets = checkpoint.stat().st_size + sum((ROOT / name).stat().st_size
-                                             for name in INFERENCE_FILES)
+                                             for name in inference_files)
     result = dict(
         protocol=PROTOCOL, status="fixed_mixture_resource_audited",
-        checkpoint_sha256=sha(checkpoint), neural_sha256=NEURAL_SHA,
+        checkpoint_sha256=sha(checkpoint), neural_sha256=args.expected_neural_sha,
         count_checkpoint_sha256=COUNTS_SHA, baseline_checkpoint_sha256=BASELINE_SHA,
         validation_bpb=validation["bpb"], cpu_ratio=resources[
             "candidate_to_baseline_time_ratio"],
@@ -157,7 +180,7 @@ def main():
         within_64mib_asset_limit=assets <= 64 * 1024 ** 2,
         fixed_mixture=exported["fixed_mixture"], split="validation",
         precision="fp32", no_test_scoring=True,
-        source_hashes={name: sha(ROOT / name) for name in INFERENCE_FILES},
+        source_hashes={name: sha(ROOT / name) for name in inference_files},
     )
     result["qualified"] = all((result["within_five_x_time_limit"],
                                 result["within_four_gib_peak_rss_limit"],

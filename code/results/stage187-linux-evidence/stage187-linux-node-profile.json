@@ -1,0 +1,413 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "purpose": "stage187_linux_openvino_node_profile",
+  "split": "validation_inputs_only",
+  "scored_targets": 0,
+  "no_test_scoring": true,
+  "precision": "fp32",
+  "threads": 1,
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "openvino_version": "2026.4.0-22959-99c81491cc3-releases/2026/4",
+  "checkpoint_sha256": "256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3",
+  "graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "source_sha256": "1c31716eccd3bffdd2664b9ba654950a5d64d3ca0ad4e4ded817b1acbf6c9615",
+  "script_sha256": "a2ba66d35a578c9013ae097a59ab246df7d93e5931657faf11c9616bf00ad55f",
+  "batches": 8,
+  "input_rows": 256,
+  "max_profiled_reference_hidden_diff": 0.0,
+  "wall_seconds_by_batch": {
+    "reference": [
+      1.8411670250000043,
+      1.844068832000005,
+      1.8891147279999956,
+      1.840057693999995,
+      1.842969017999991,
+      1.839419387999996,
+      1.8385649310000076,
+      1.8548754480000014
+    ],
+    "profiled": [
+      1.8504502739999964,
+      1.846806369999996,
+      1.8392119210000004,
+      1.8399289529999976,
+      1.8440844520000041,
+      1.8375911310000106,
+      1.838300916999998,
+      1.8461353249999917
+    ]
+  },
+  "wall_seconds_total": {
+    "reference": 14.790237063999996,
+    "profiled": 14.742509342999995
+  },
+  "profiled_node_real_seconds_by_batch": [
+    1.795606,
+    1.7932949999999988,
+    1.7902089999999993,
+    1.788156999999999,
+    1.7876690000000004,
+    1.7864759999999988,
+    1.7857319999999999,
+    1.785846
+  ],
+  "top_nodes": [
+    {
+      "name": "/blocks.1/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.56206,
+      "cpu_seconds": 0.56206,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.0/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.5617869999999999,
+      "cpu_seconds": 0.5617869999999999,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.5/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.561402,
+      "cpu_seconds": 0.561402,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.6/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.560615,
+      "cpu_seconds": 0.560615,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.2/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.558505,
+      "cpu_seconds": 0.558505,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.4/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.558157,
+      "cpu_seconds": 0.558157,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.3/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.557572,
+      "cpu_seconds": 0.557572,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.7/mlp/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.557379,
+      "cpu_seconds": 0.557379,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.4/qkv/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.34347399999999995,
+      "cpu_seconds": 0.34347399999999995,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.2/qkv/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.341866,
+      "cpu_seconds": 0.341866,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.6/qkv/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.341489,
+      "cpu_seconds": 0.341489,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.0/qkv/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.34017099999999995,
+      "cpu_seconds": 0.34017099999999995,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.0/Transpose_2",
+      "type": "Subgraph",
+      "exec_type": "jit_avx2_f32",
+      "real_seconds": 0.338612,
+      "cpu_seconds": 0.338612,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.2/Transpose_2",
+      "type": "Subgraph",
+      "exec_type": "jit_avx2_f32",
+      "real_seconds": 0.337263,
+      "cpu_seconds": 0.337263,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.6/Transpose_2",
+      "type": "Subgraph",
+      "exec_type": "jit_avx2_f32",
+      "real_seconds": 0.33599500000000004,
+      "cpu_seconds": 0.33599500000000004,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.4/Transpose_2",
+      "type": "Subgraph",
+      "exec_type": "jit_avx2_f32",
+      "real_seconds": 0.33524,
+      "cpu_seconds": 0.33524,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.6/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.27979000000000004,
+      "cpu_seconds": 0.27979000000000004,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.0/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.279288,
+      "cpu_seconds": 0.279288,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.2/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.27863799999999994,
+      "cpu_seconds": 0.27863799999999994,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.3/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.278464,
+      "cpu_seconds": 0.278464,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.1/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.278427,
+      "cpu_seconds": 0.278427,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.4/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.27825099999999997,
+      "cpu_seconds": 0.27825099999999997,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.5/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.27818999999999994,
+      "cpu_seconds": 0.27818999999999994,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.7/mlp/output/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.278186,
+      "cpu_seconds": 0.278186,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.3/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.228848,
+      "cpu_seconds": 0.228848,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.5/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.22846600000000003,
+      "cpu_seconds": 0.22846600000000003,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.1/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.228012,
+      "cpu_seconds": 0.228012,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.7/input/MatMul",
+      "type": "FullyConnected",
+      "exec_type": "gemm_mlas_f32",
+      "real_seconds": 0.227691,
+      "cpu_seconds": 0.227691,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.2/rope/Concat",
+      "type": "Concat",
+      "exec_type": "ref_f32",
+      "real_seconds": 0.128169,
+      "cpu_seconds": 0.128169,
+      "calls": 8
+    },
+    {
+      "name": "/blocks.0/rope/Concat",
+      "type": "Concat",
+      "exec_type": "ref_f32",
+      "real_seconds": 0.127183,
+      "cpu_seconds": 0.127183,
+      "calls": 8
+    }
+  ],
+  "node_types": [
+    {
+      "type": "FullyConnected",
+      "real_seconds": 9.883999999999999,
+      "cpu_seconds": 9.883999999999999,
+      "calls": 256
+    },
+    {
+      "type": "Subgraph",
+      "real_seconds": 1.3472419999999998,
+      "cpu_seconds": 1.3472419999999998,
+      "calls": 64
+    },
+    {
+      "type": "Concat",
+      "real_seconds": 1.012093,
+      "cpu_seconds": 1.012093,
+      "calls": 64
+    },
+    {
+      "type": "Slice",
+      "real_seconds": 0.44372999999999957,
+      "cpu_seconds": 0.44372999999999957,
+      "calls": 160
+    },
+    {
+      "type": "SwishCPU",
+      "real_seconds": 0.40337599999999996,
+      "cpu_seconds": 0.40337599999999996,
+      "calls": 96
+    },
+    {
+      "type": "Transpose",
+      "real_seconds": 0.359512,
+      "cpu_seconds": 0.359512,
+      "calls": 128
+    },
+    {
+      "type": "Multiply",
+      "real_seconds": 0.303313,
+      "cpu_seconds": 0.303313,
+      "calls": 288
+    },
+    {
+      "type": "VariadicSplit",
+      "real_seconds": 0.27100700000000005,
+      "cpu_seconds": 0.27100700000000005,
+      "calls": 128
+    },
+    {
+      "type": "Add",
+      "real_seconds": 0.08530799999999997,
+      "cpu_seconds": 0.08530799999999997,
+      "calls": 192
+    },
+    {
+      "type": "RMS",
+      "real_seconds": 0.08351999999999998,
+      "cpu_seconds": 0.08351999999999998,
+      "calls": 136
+    },
+    {
+      "type": "PowerStatic",
+      "real_seconds": 0.04938399999999999,
+      "cpu_seconds": 0.04938399999999999,
+      "calls": 64
+    },
+    {
+      "type": "Reorder",
+      "real_seconds": 0.04321400000000001,
+      "cpu_seconds": 0.04321400000000001,
+      "calls": 64
+    },
+    {
+      "type": "GroupConvolution",
+      "real_seconds": 0.020949000000000002,
+      "cpu_seconds": 0.020949000000000002,
+      "calls": 32
+    },
+    {
+      "type": "Gather",
+      "real_seconds": 0.005448,
+      "cpu_seconds": 0.005448,
+      "calls": 8
+    },
+    {
+      "type": "Convert",
+      "real_seconds": 0.0004640000000000002,
+      "cpu_seconds": 0.0004640000000000002,
+      "calls": 40
+    },
+    {
+      "type": "Reshape",
+      "real_seconds": 0.0003560000000000012,
+      "cpu_seconds": 0.0003560000000000012,
+      "calls": 352
+    },
+    {
+      "type": "ShapeOf",
+      "real_seconds": 7.399999999999997e-05,
+      "cpu_seconds": 7.399999999999997e-05,
+      "calls": 32
+    },
+    {
+      "type": "Parameter",
+      "real_seconds": 0.0,
+      "cpu_seconds": 0.0,
+      "calls": 8
+    },
+    {
+      "type": "Result",
+      "real_seconds": 0.0,
+      "cpu_seconds": 0.0,
+      "calls": 8
+    }
+  ],
+  "caution": "Profiled node times may overlap or differ from unprofiled wall time; this is not a resource gate."
+}

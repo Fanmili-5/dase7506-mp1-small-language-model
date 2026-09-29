@@ -10,6 +10,11 @@ Raw run directories are intentionally excluded from Git because they contain
 large checkpoints and resumable optimizer state. Before final submission, retain
 the frozen run metadata and publish the matching checkpoint bundle separately.
 
+`stage71-evidence/` contains the current qualified validation leader's
+training metadata, fixed MKN grid, independent CPU-FP32 score, three-repeat
+resource measurement and final qualification receipt.  The matching checkpoint
+is excluded from Git but pinned by SHA-256 in `final.json`.
+
 No score should be entered manually into this directory without a corresponding
 metrics file and checkpoint hash.
 

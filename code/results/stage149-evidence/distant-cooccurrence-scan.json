@@ -1,0 +1,159 @@
+{
+  "purpose": "target_only_train_distant_cooccurrence_diagnostic",
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "test_scored": false,
+  "source_sha256": "6f486bfa0e11a77ca74692c4acab1f2fa5439759c6d2ed4504ae0990a1ba151a",
+  "target_cache_sha256": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3",
+  "train_sha256": "c58d555a94ada0882d1e8c0b3dc7ba68e1c269da5ad9e7a057300245d130c4e8",
+  "validation_sha256": "714a24a5de7459876f7cfdc64837e551dd7cde2a51f95b763ee083fff273e307",
+  "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+  "baseline_bpb": 1.3996861620421412,
+  "rows": [
+    {
+      "distance_range": [
+        5,
+        16
+      ],
+      "prior_strength": 100,
+      "active_targets": 369239,
+      "train_pair_occurrences": 43359978,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": -4019.524981567869,
+          "validation_bpb": 1.4047374803334385
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": -11124.623713974841,
+          "validation_bpb": 1.4136664247617128
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": -24471.4867342785,
+          "validation_bpb": 1.4304393652497207
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": -55338.08884410886,
+          "validation_bpb": 1.4692292801134323
+        }
+      ]
+    },
+    {
+      "distance_range": [
+        5,
+        16
+      ],
+      "prior_strength": 1000,
+      "active_targets": 369239,
+      "train_pair_occurrences": 43359978,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": -4022.4534602286294,
+          "validation_bpb": 1.4047411605389086
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": -11131.198721182533,
+          "validation_bpb": 1.4136746875425952
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": -24483.379980857484,
+          "validation_bpb": 1.4304543114372088
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": -55359.67966785398,
+          "validation_bpb": 1.4692564132009012
+        }
+      ]
+    },
+    {
+      "distance_range": [
+        5,
+        32
+      ],
+      "prior_strength": 100,
+      "active_targets": 369239,
+      "train_pair_occurrences": 101173058,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": -4030.709982334636,
+          "validation_bpb": 1.4047515364717187
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": -11151.074943501037,
+          "validation_bpb": 1.4136996658984506
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": -24521.68801383581,
+          "validation_bpb": 1.430502452963527
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": -55435.53261787235,
+          "validation_bpb": 1.4693517372492984
+        }
+      ]
+    },
+    {
+      "distance_range": [
+        5,
+        32
+      ],
+      "prior_strength": 1000,
+      "active_targets": 369239,
+      "train_pair_occurrences": 101173058,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": -4031.810900024604,
+          "validation_bpb": 1.4047529199898432
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": -11153.682801712072,
+          "validation_bpb": 1.4137029431816974
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": -24526.60094005335,
+          "validation_bpb": 1.4305086270149834
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": -55444.82879596646,
+          "validation_bpb": 1.4693634197129382
+        }
+      ]
+    }
+  ],
+  "deployment_note": "Target-only diagnostic; no full-vocabulary predictor or resource qualification"
+}

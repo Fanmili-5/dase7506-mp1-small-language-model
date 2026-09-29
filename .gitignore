@@ -8,4 +8,7 @@ code/tests/__pycache__/
 code/runs/
 code/job-logs/
 dist/
+tmp/pdfs/
+output/pdf/STAGE143_REPORT_PREVIEW_NOT_FOR_SUBMISSION.pdf
+output/pretest/
 *.pyc

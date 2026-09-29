@@ -1,0 +1,7068 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "purpose": "post_distillation_bounded_scalar_recalibration",
+  "device": "cuda:0",
+  "precision": "fp32",
+  "neural_sha256": "5e4ca423aeca652f5193f6b6b93eafe2a940ba6bab08689cb56b09c5c0b4c417",
+  "counts_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "grid": {
+    "temperatures": [
+      1.05,
+      1.075,
+      1.1,
+      1.125,
+      1.15
+    ],
+    "unigram_prior_weights": [
+      0.025,
+      0.0375,
+      0.05,
+      0.0625,
+      0.075
+    ],
+    "copy_gate_shifts": [
+      0.0625,
+      0.125,
+      0.1875,
+      0.25,
+      0.3125
+    ],
+    "mixture_weights": [
+      0.0375,
+      0.05,
+      0.0625,
+      0.075,
+      0.0875,
+      0.1,
+      0.1125
+    ]
+  },
+  "candidates": [
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117904.9390365612,
+      "bpb": 1.4048659213169656
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117345.7221986316,
+      "bpb": 1.4041631561257581
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117022.216395948,
+      "bpb": 1.4037566078928376
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116887.285023857,
+      "bpb": 1.4035870402670512
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116910.0647832528,
+      "bpb": 1.4036156674844054
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117068.930070892,
+      "bpb": 1.4038153127501976
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117347.8962030448,
+      "bpb": 1.4041658881869614
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117823.3024140466,
+      "bpb": 1.404763328954326
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117252.102409348,
+      "bpb": 1.404045504573347
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116917.8449858166,
+      "bpb": 1.403625444828669
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116773.0819660313,
+      "bpb": 1.4034435218170946
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116786.7532587796,
+      "bpb": 1.4034607024669081
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116937.098904878,
+      "bpb": 1.4036496411389243
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117208.0369741693,
+      "bpb": 1.403990127746545
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117782.097566506,
+      "bpb": 1.4047115470146625
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117198.0804147776,
+      "bpb": 1.4039776153848096
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116852.31307609,
+      "bpb": 1.4035430911834537
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116697.0161680207,
+      "bpb": 1.4033479302836187
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116700.920401059,
+      "bpb": 1.4033528367150627
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116842.1229190752,
+      "bpb": 1.4035302852606752
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117104.438543342,
+      "bpb": 1.4038599360818613
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117783.1487847976,
+      "bpb": 1.4047128680757852
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117185.4419173393,
+      "bpb": 1.4039617326440437
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116827.3707160018,
+      "bpb": 1.4035117462358992
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116660.804777369,
+      "bpb": 1.4033024235979301
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116654.2528891638,
+      "bpb": 1.4032941898705906
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116785.6603509448,
+      "bpb": 1.403459329014731
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117038.732096061,
+      "bpb": 1.403777363096116
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117828.3224189673,
+      "bpb": 1.4047696375710892
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117216.0114298258,
+      "bpb": 1.4040001492077636
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116844.8058995642,
+      "bpb": 1.4035336569497383
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116666.202084832,
+      "bpb": 1.403309206369038
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116648.473209042,
+      "bpb": 1.4032869265735466
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116769.403460808,
+      "bpb": 1.4034388990567426
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117012.582040973,
+      "bpb": 1.4037445004438895
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118008.4655990992,
+      "bpb": 1.4049960226651055
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117445.9878115915,
+      "bpb": 1.404289159453777
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117120.1628016569,
+      "bpb": 1.4038796966839242
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116983.5811171383,
+      "bpb": 1.4037080551182097
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117005.2148888223,
+      "bpb": 1.403735242178153
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117163.3296015486,
+      "bpb": 1.403933944199954
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117441.8642209284,
+      "bpb": 1.4042839773566291
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117929.3664401155,
+      "bpb": 1.4048966191210466
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117354.8311527148,
+      "bpb": 1.4041746033058566
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117018.1864099912,
+      "bpb": 1.4037515434282877
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116871.7097371519,
+      "bpb": 1.4035674668769151
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116884.1753731854,
+      "bpb": 1.4035831323835604
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117033.7136592232,
+      "bpb": 1.403771056449955
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117304.165725816,
+      "bpb": 1.4041109323002519
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117890.8207278661,
+      "bpb": 1.4048481789042975
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117303.3911727704,
+      "bpb": 1.4041099589230532
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116955.1657921597,
+      "bpb": 1.4036723457118805
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116798.0893481784,
+      "bpb": 1.4034749484775673
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116800.7257382572,
+      "bpb": 1.403478261616679
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116941.061867483,
+      "bpb": 1.403654621375541
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117202.835000448,
+      "bpb": 1.4039835904504392
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117894.6550194975,
+      "bpb": 1.4048529974407016
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117293.4550437983,
+      "bpb": 1.4040974722361308
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116932.8525161408,
+      "bpb": 1.40364430472201
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116764.438634947,
+      "bpb": 1.4034326597832463
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116756.5544241145,
+      "bpb": 1.4034227517322768
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116887.0338424258,
+      "bpb": 1.4035867246085185
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117139.5047197118,
+      "bpb": 1.4039040035821044
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117942.7375993412,
+      "bpb": 1.4049134225944626
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117326.8502998836,
+      "bpb": 1.4041394398986482
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116953.0366075523,
+      "bpb": 1.403669669975518
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116772.513838023,
+      "bpb": 1.403442807853277
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116753.3853819594,
+      "bpb": 1.4034187692117854
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116873.3241501749,
+      "bpb": 1.403569495702229
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117115.8406869099,
+      "bpb": 1.4038742651024865
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118179.3183651883,
+      "bpb": 1.4052107325391383
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117611.847934315,
+      "bpb": 1.4044975950961855
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117282.1147612445,
+      "bpb": 1.4040832209559535
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117142.4033585563,
+      "bpb": 1.4039076462880167
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117161.499479685,
+      "bpb": 1.4039316442943466
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117317.54428887,
+      "bpb": 1.4041277450780243
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117594.3889932968,
+      "bpb": 1.4044756545264623
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118102.54310764,
+      "bpb": 1.4051142494311715
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117522.9417334031,
+      "bpb": 1.4043858670882903
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117182.322012525,
+      "bpb": 1.4039578118742193
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117032.6540186182,
+      "bpb": 1.4037697248045506
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117042.5236432105,
+      "bpb": 1.4037821279157292
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117189.9369118325,
+      "bpb": 1.4039673814826519
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117458.6464152858,
+      "bpb": 1.404305067461981
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118066.4385083932,
+      "bpb": 1.4050688769497435
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117473.8664442245,
+      "bpb": 1.4043241944013394
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117121.596393723,
+      "bpb": 1.4038814982723853
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116961.2641260773,
+      "bpb": 1.403680009459663
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116961.2440976948,
+      "bpb": 1.403679984290088
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117099.3977383636,
+      "bpb": 1.4038536013257628
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117359.3737139255,
+      "bpb": 1.404180311921337
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118072.833493365,
+      "bpb": 1.4050769134975216
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117466.4116935413,
+      "bpb": 1.4043148260509362
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117101.691917833,
+      "bpb": 1.4038564844103985
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116929.9549249,
+      "bpb": 1.4036406633326162
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116919.3510751799,
+      "bpb": 1.403627337524145
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117047.5884710252,
+      "bpb": 1.403788492861214
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117298.204900138,
+      "bpb": 1.4041034413584326
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118123.5983141921,
+      "bpb": 1.4051407094110127
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117502.405977996,
+      "bpb": 1.4043600599002795
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117124.399990216,
+      "bpb": 1.4038850215390177
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116940.4841874614,
+      "bpb": 1.403653895407753
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116918.5706872828,
+      "bpb": 1.4036263568143157
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117036.2051704973,
+      "bpb": 1.4037741875205492
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117276.8080462255,
+      "bpb": 1.4040765520319474
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118417.235096613,
+      "bpb": 1.4055097213855223
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117843.039763797,
+      "bpb": 1.4047881327896734
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117507.8103046492,
+      "bpb": 1.4043668514923706
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117363.4916096628,
+      "bpb": 1.404185486861698
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117378.660040874,
+      "bpb": 1.4042045489584332
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117531.3178601936,
+      "bpb": 1.404396393327749
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117805.21700475,
+      "bpb": 1.4047406011048402
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118342.5731320176,
+      "bpb": 1.40541589404295
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117756.1744020358,
+      "bpb": 1.404678969494817
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117409.9927268513,
+      "bpb": 1.4042439245987186
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117255.6565935202,
+      "bpb": 1.4040499711000145
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117261.5421356782,
+      "bpb": 1.4040573674333856
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117405.514856115,
+      "bpb": 1.4042382972794556
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117671.2279081307,
+      "bpb": 1.4045722176322433
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118308.6947313566,
+      "bpb": 1.4053733192148983
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117709.2495478112,
+      "bpb": 1.4046199992494404
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117351.3491446562,
+      "bpb": 1.4041702274825747
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117186.2856220864,
+      "bpb": 1.403962792923863
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117182.222167261,
+      "bpb": 1.4039576863991419
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117316.879581049,
+      "bpb": 1.404126909742807
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117573.8058433905,
+      "bpb": 1.4044497877780056
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118317.431350233,
+      "bpb": 1.4053842984830798
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117704.057058772,
+      "bpb": 1.4046134738726903
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117333.6354676336,
+      "bpb": 1.4041479667873036
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117157.101255279,
+      "bpb": 1.4039261170662556
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117142.392525535,
+      "bpb": 1.4039076326742095
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117267.075382553,
+      "bpb": 1.4040643210389179
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117514.5867569335,
+      "bpb": 1.4043753674283408
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118370.654709421,
+      "bpb": 1.4054511840302586
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1117742.4273996968,
+      "bpb": 1.404661693701114
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117358.645083081,
+      "bpb": 1.4041793962543543
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117169.8632661775,
+      "bpb": 1.4039421550258104
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117143.7806064524,
+      "bpb": 1.403909377069022
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117257.799949497,
+      "bpb": 1.4040526646454707
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117495.240250934,
+      "bpb": 1.4043510547645122
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118721.9316790365,
+      "bpb": 1.4058926321590963
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1118139.2779119946,
+      "bpb": 1.405160413888418
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117796.9640921429,
+      "bpb": 1.4047302297080708
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117646.5612366758,
+      "bpb": 1.4045412191413078
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117656.4137356393,
+      "bpb": 1.4045536007307886
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117804.3697425388,
+      "bpb": 1.4047395363543724
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1118074.069822345,
+      "bpb": 1.4050784671863827
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118649.1753168404,
+      "bpb": 1.4058011995781683
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1118054.2462015897,
+      "bpb": 1.4050535549346665
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117700.9156333543,
+      "bpb": 1.404609526058024
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117540.4359617457,
+      "bpb": 1.404407852003429
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117540.9502933472,
+      "bpb": 1.4044084983615532
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117680.1690025255,
+      "bpb": 1.4045834538638544
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117941.6338008791,
+      "bpb": 1.4049120354560851
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118617.3117057197,
+      "bpb": 1.4057611567267323
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1118009.2607274726,
+      "bpb": 1.4049970218992227
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117644.1437508464,
+      "bpb": 1.4045381810981448
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117472.8744705543,
+      "bpb": 1.4043229477926562
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117463.3821555786,
+      "bpb": 1.4043110188447123
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117593.2308934256,
+      "bpb": 1.4044741991477574
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117845.8575240783,
+      "bpb": 1.4047916738558723
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118628.173437465,
+      "bpb": 1.4057748066143412
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1118006.114880547,
+      "bpb": 1.404993068528068
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117628.4058433697,
+      "bpb": 1.4045184033432438
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117445.6011255607,
+      "bpb": 1.4042886735072462
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117425.4030221067,
+      "bpb": 1.4042632906448695
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117545.2205989659,
+      "bpb": 1.404413864834701
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117788.3782006167,
+      "bpb": 1.4047194398582472
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1118683.6349335033,
+      "bpb": 1.4058445048176578
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1118046.6411486156,
+      "bpb": 1.4050439977000753
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1117655.4975728728,
+      "bpb": 1.4045524493933141
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1117460.3773323558,
+      "bpb": 1.4043072426973875
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117428.7422055043,
+      "bpb": 1.4042674869810663
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117537.8369223066,
+      "bpb": 1.404404585802692
+    },
+    {
+      "temperature": 1.05,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117770.867206324,
+      "bpb": 1.4046974338734168
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116715.3202306814,
+      "bpb": 1.403370932913767
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116282.0142175667,
+      "bpb": 1.402826399268669
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116067.0472020246,
+      "bpb": 1.4025562512231629
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116027.8152751997,
+      "bpb": 1.402506948643758
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116136.3019256927,
+      "bpb": 1.4026432833112896
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116372.8120683394,
+      "bpb": 1.402940504504119
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116722.7464948148,
+      "bpb": 1.4033802654652563
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116633.9169454202,
+      "bpb": 1.4032686337849651
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116188.6796005052,
+      "bpb": 1.402709106090859
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115962.983054746,
+      "bpb": 1.4024254742947877
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115913.9222389013,
+      "bpb": 1.4023638197964083
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116013.2901898474,
+      "bpb": 1.4024886950367623
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116241.260565035,
+      "bpb": 1.402775184343668
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116583.139888242,
+      "bpb": 1.403204822494109
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116592.8277811185,
+      "bpb": 1.403216997223888
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116134.8353873082,
+      "bpb": 1.402641440319344
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115897.6586107276,
+      "bpb": 1.4023433813707602
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115838.0728610866,
+      "bpb": 1.4022685002371826
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115927.6677909456,
+      "bpb": 1.4023810937675327
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116146.4790302925,
+      "bpb": 1.402656072831159
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116479.7121863998,
+      "bpb": 1.4030748453837445
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116593.8754353225,
+      "bpb": 1.4032183138060386
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116122.2654320896,
+      "bpb": 1.4026256437152655
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115872.8223169632,
+      "bpb": 1.40231216971626
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115801.9824357182,
+      "bpb": 1.4022231455680019
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115881.1206258796,
+      "bpb": 1.4023225981623595
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116090.1245205067,
+      "bpb": 1.4025852523816325
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116414.0935658962,
+      "bpb": 1.4029923827695001
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116638.9239944555,
+      "bpb": 1.4032749261201274
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116152.7927550394,
+      "bpb": 1.402664007259592
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115890.2608182877,
+      "bpb": 1.4023340845995151
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115807.4043198563,
+      "bpb": 1.4022299592245024
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115875.369860366,
+      "bpb": 1.4023153712021685
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116073.889040742,
+      "bpb": 1.4025648493299587
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116387.947576899,
+      "bpb": 1.4029595252271114
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116725.1106991284,
+      "bpb": 1.403383236549787
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116290.9870317243,
+      "bpb": 1.4028376753623584
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116075.9359840974,
+      "bpb": 1.4025674217141233
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116037.1335072182,
+      "bpb": 1.4025186588224616
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116146.4300772138,
+      "bpb": 1.4026560113120534
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116384.0448820405,
+      "bpb": 1.4029546207286905
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116735.3180483058,
+      "bpb": 1.403396064077876
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116646.5664082728,
+      "bpb": 1.403284530305916
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116200.4373224024,
+      "bpb": 1.402723881965112
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115974.5880879834,
+      "bpb": 1.402440058285914
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115925.891860906,
+      "bpb": 1.4023788619645374
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116026.0081964657,
+      "bpb": 1.402504677696344
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116255.0244532302,
+      "bpb": 1.4027924813577477
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116598.1857036501,
+      "bpb": 1.4032237305001363
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116608.4663262032,
+      "bpb": 1.4032366501105347
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116149.5051175784,
+      "bpb": 1.4026598757009332
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115912.1042058282,
+      "bpb": 1.4023615350827272
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115852.8157970272,
+      "bpb": 1.4022870276159962
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115943.0956242122,
+      "bpb": 1.4024004818536204
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116162.8914573006,
+      "bpb": 1.4026766982516083
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116497.347976029,
+      "bpb": 1.4030970081982916
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116612.6355443336,
+      "bpb": 1.4032418895475076
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116139.976417046,
+      "bpb": 1.4026479010274302
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115890.235272646,
+      "bpb": 1.4023340524964265
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115819.6231762543,
+      "bpb": 1.402245314604331
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115899.3798580207,
+      "bpb": 1.402345544454203
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116109.3052738756,
+      "bpb": 1.4026093567449036
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116434.4365683943,
+      "bpb": 1.4030179477258298
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116660.9402529858,
+      "bpb": 1.4033025938495058
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116173.67682207,
+      "bpb": 1.4026902521691949
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115910.7699217722,
+      "bpb": 1.4023598582941792
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115828.0690625012,
+      "bpb": 1.402255928510173
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115896.584681049,
+      "bpb": 1.4023420317683435
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116095.9593910351,
+      "bpb": 1.402592585036203
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116411.1172894612,
+      "bpb": 1.4029886424967901
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116803.9164701793,
+      "bpb": 1.4034822713945994
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116367.2432931121,
+      "bpb": 1.402933506250272
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116150.5128100812,
+      "bpb": 1.4026611420634
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116110.6486554518,
+      "bpb": 1.4026110449662628
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116219.3493938558,
+      "bpb": 1.4027476486770734
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116456.7328109741,
+      "bpb": 1.4030459673098568
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116808.0686590038,
+      "bpb": 1.4034874894309233
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116728.0097889733,
+      "bpb": 1.4033868798224693
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116279.25778535,
+      "bpb": 1.4028229352731625
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116051.6616303734,
+      "bpb": 1.40253691624705
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116001.8410205208,
+      "bpb": 1.4024743069190857
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116101.3016213514,
+      "bpb": 1.4025992985921174
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116330.0295410417,
+      "bpb": 1.4028867399016651
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116673.1986357644,
+      "bpb": 1.4033179989019524
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116692.6729606837,
+      "bpb": 1.4033424721952212
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116231.0127323568,
+      "bpb": 1.4027623059401524
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115991.7948125452,
+      "bpb": 1.402461681896393
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115931.316281505,
+      "bpb": 1.4023856788085967
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116020.8782509342,
+      "bpb": 1.4024982309177283
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116240.3267569728,
+      "bpb": 1.4027740108314328
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116574.7339343652,
+      "bpb": 1.40319425877109
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116699.7333847731,
+      "bpb": 1.4033513449972344
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116224.2959192786,
+      "bpb": 1.4027538649524942
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115972.6647534594,
+      "bpb": 1.402437641240391
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115900.794532083,
+      "bpb": 1.4023473222684968
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115979.7689462155,
+      "bpb": 1.4024465690462833
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116189.2853025459,
+      "bpb": 1.4027098672737877
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116514.3082989193,
+      "bpb": 1.40311832215694
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116751.0591113493,
+      "bpb": 1.403415845798363
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116260.934863722,
+      "bpb": 1.4027999089430379
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115996.0624924824,
+      "bpb": 1.4024670450698593
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115912.032666549,
+      "bpb": 1.4023614451796491
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115979.6989632212,
+      "bpb": 1.4024464810989807
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116178.6007857136,
+      "bpb": 1.402696440091333
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116493.5890135318,
+      "bpb": 1.403092284327659
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116951.516448658,
+      "bpb": 1.4036677595989278
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116510.5625891965,
+      "bpb": 1.4031136149410068
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116290.5588192567,
+      "bpb": 1.4028371372297481
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116248.1449455656,
+      "bpb": 1.4027838359125617
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116354.8465009406,
+      "bpb": 1.402917927259387
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116590.665746849,
+      "bpb": 1.4032142802055085
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116940.7906799763,
+      "bpb": 1.4036542805754666
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116878.029022364,
+      "bpb": 1.4035754082931586
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116424.9238865115,
+      "bpb": 1.4030059931828889
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116193.9881299958,
+      "bpb": 1.402715777295103
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116141.5563388467,
+      "bpb": 1.4026498865077859
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116238.9595989771,
+      "bpb": 1.402772292730358
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116466.0680398345,
+      "bpb": 1.4030576988484125
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116807.97339724,
+      "bpb": 1.4034873697159091
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116845.2325439304,
+      "bpb": 1.403534193111723
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116379.1435414795,
+      "bpb": 1.4029484612368746
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116136.5172859505,
+      "bpb": 1.402643553953521
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116073.3634476103,
+      "bpb": 1.4025641888195222
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116160.807377927,
+      "bpb": 1.4026740791987826
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116378.578763675,
+      "bpb": 1.4029477514832427
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116711.667294059,
+      "bpb": 1.4033663422853562
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116854.956634583,
+      "bpb": 1.4035464133310782
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116375.012054557,
+      "bpb": 1.4029432692165347
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116119.9007173441,
+      "bpb": 1.4026226719892776
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116045.2881014794,
+      "bpb": 1.4025289066630247
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116122.0816758275,
+      "bpb": 1.4026254127896285
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116329.8610270768,
+      "bpb": 1.4028865281309517
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116653.507647574,
+      "bpb": 1.4032932533289615
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116909.07172844,
+      "bpb": 1.4036144195170552
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116414.3587813657,
+      "bpb": 1.4029927160645435
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116145.931352593,
+      "bpb": 1.4026553845671492
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116059.0895266235,
+      "bpb": 1.402546250849613
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116124.5093423612,
+      "bpb": 1.4026284636268351
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116321.61181207,
+      "bpb": 1.4028761613809393
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116635.1641906016,
+      "bpb": 1.4032702011921654
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117167.664505735,
+      "bpb": 1.4039393918538208
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116720.6985189263,
+      "bpb": 1.403377691783512
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116495.8286436796,
+      "bpb": 1.4030950988604167
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116449.3787784688,
+      "bpb": 1.4030367255315177
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116552.6797466725,
+      "bpb": 1.4031665433763099
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116785.6044175625,
+      "bpb": 1.4034592587235104
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117133.247908026,
+      "bpb": 1.40389614067605
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117096.3806532938,
+      "bpb": 1.4038498097690317
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116637.1921064667,
+      "bpb": 1.403272749664572
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116401.3250194937,
+      "bpb": 1.4029763365968078
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116344.7966810986,
+      "bpb": 1.402905297697679
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116438.7428691126,
+      "bpb": 1.4030233594338515
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116662.9029674456,
+      "bpb": 1.4033050603836106
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117002.2756415568,
+      "bpb": 1.4037315484398274
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117065.904893808,
+      "bpb": 1.4038115110242704
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116593.6576574333,
+      "bpb": 1.4032180401255812
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116346.0319636092,
+      "bpb": 1.4029068500714468
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116278.7186932936,
+      "bpb": 1.4028222577986902
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116362.646508973,
+      "bpb": 1.4029277294930904
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116577.4135107733,
+      "bpb": 1.4031976261822605
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116907.9158899784,
+      "bpb": 1.403612966980253
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117078.0687768813,
+      "bpb": 1.4038267973193779
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116591.8877230044,
+      "bpb": 1.4032158158572419
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116331.7060969546,
+      "bpb": 1.4028888468216592
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116252.8686211556,
+      "bpb": 1.4027897721336375
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116326.0840264708,
+      "bpb": 1.4028817815919117
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116530.8007270806,
+      "bpb": 1.4031390481144648
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116851.8059157059,
+      "bpb": 1.403542453837365
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1117134.7444968484,
+      "bpb": 1.4038980214322407
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116633.7137521598,
+      "bpb": 1.403268378432943
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116360.1422280706,
+      "bpb": 1.402924582374964
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116269.006811604,
+      "bpb": 1.4028100529222813
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116330.784454167,
+      "bpb": 1.4028876885974677
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116524.76346419,
+      "bpb": 1.4031314611143573
+    },
+    {
+      "temperature": 1.075,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116835.6160148233,
+      "bpb": 1.4035221080644598
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116150.5845312122,
+      "bpb": 1.4026612321950107
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115821.6509384923,
+      "bpb": 1.4022478628836748
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115696.3144397512,
+      "bpb": 1.4020903530904625
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115735.7728431188,
+      "bpb": 1.402139940281882
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115914.4084093347,
+      "bpb": 1.4023644307645238
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116214.158351317,
+      "bpb": 1.4027411251181336
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116621.598671548,
+      "bpb": 1.4032531534676609
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116067.875268476,
+      "bpb": 1.4025572918504092
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115727.0682461914,
+      "bpb": 1.4021290012555345
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115591.033195801,
+      "bpb": 1.4019580466423787
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115620.6766471453,
+      "bpb": 1.4019952994293818
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115790.1949155107,
+      "bpb": 1.4022083322463514
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116081.398548182,
+      "bpb": 1.402574286492923
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116480.7703330256,
+      "bpb": 1.4030761751516723
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116025.3387432806,
+      "bpb": 1.4025038363976494
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115671.8430061247,
+      "bpb": 1.4020595999539953
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115524.3657737598,
+      "bpb": 1.4018742660041352
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115543.503083758,
+      "bpb": 1.4018983157723255
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115703.254833717,
+      "bpb": 1.402099075051179
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115985.2957065403,
+      "bpb": 1.4024535145001984
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116376.011482887,
+      "bpb": 1.402944525193454
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116024.7950365636,
+      "bpb": 1.4025031531239551
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115657.75706904,
+      "bpb": 1.4020418982225789
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115498.0581623577,
+      "bpb": 1.401841205351624
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115505.9659753852,
+      "bpb": 1.401851143063362
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115655.2715491727,
+      "bpb": 1.4020387746813576
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115927.5058689862,
+      "bpb": 1.4023808902809618
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116308.9502714016,
+      "bpb": 1.4028602496818534
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116068.1056817323,
+      "bpb": 1.4025575814096731
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115686.631275557,
+      "bpb": 1.4020781843031964
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115513.8954161666,
+      "bpb": 1.4018611079545973
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115509.8169286512,
+      "bpb": 1.4018559825383647
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115647.9650439955,
+      "bpb": 1.4020295926303898
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115909.7187618613,
+      "bpb": 1.4023585373064233
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116281.2491940968,
+      "bpb": 1.4028254378672436
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116065.4646227155,
+      "bpb": 1.4025542624031286
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115738.0743597578,
+      "bpb": 1.4021428325871046
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115614.8295780122,
+      "bpb": 1.4019879514448819
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115656.7523772828,
+      "bpb": 1.4020406356311348
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115838.1210383251,
+      "bpb": 1.4022685607812937
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116140.8062066361,
+      "bpb": 1.4026489438201366
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116551.337693464,
+      "bpb": 1.4031648568243043
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115985.9442281667,
+      "bpb": 1.4024543294943004
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115646.605636591,
+      "bpb": 1.402027884269447
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115512.5927264057,
+      "bpb": 1.4018594708704526
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115544.6340611652,
+      "bpb": 1.4018997370663564
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115716.8221991956,
+      "bpb": 1.4021161250960776
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116010.8997972198,
+      "bpb": 1.4024856910414998
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116413.304060854,
+      "bpb": 1.4029913906021971
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115946.7354072984,
+      "bpb": 1.4024050559520436
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115594.6307117585,
+      "bpb": 1.401962567623898
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115449.1028722376,
+      "bpb": 1.4017796834669305
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115470.5694629252,
+      "bpb": 1.4018066604312953
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115632.9252683595,
+      "bpb": 1.4020106922145161
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115917.7771029174,
+      "bpb": 1.4023686641860327
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116311.463888064,
+      "bpb": 1.4028634085321858
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115949.659943644,
+      "bpb": 1.4024087312032247
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115583.9327881485,
+      "bpb": 1.4019491235932087
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115426.1084156595,
+      "bpb": 1.4017507864406291
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115436.2747207247,
+      "bpb": 1.4017635623887736
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115588.1159850918,
+      "bpb": 1.4019543805972905
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115863.0957881398,
+      "bpb": 1.4022999464328665
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116247.44777691,
+      "bpb": 1.4027829597839647
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115996.582120441,
+      "bpb": 1.4024676980838906
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115616.3355969116,
+      "bpb": 1.4019898440518064
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115445.3966423534,
+      "bpb": 1.4017750258651263
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115443.5030870587,
+      "bpb": 1.4017726462430218
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115584.1165992245,
+      "bpb": 1.4019493545877302
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115848.5478035696,
+      "bpb": 1.4022816640485305
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116222.9203836806,
+      "bpb": 1.4027521363233257
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116050.9333736598,
+      "bpb": 1.4025360010502357
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115723.350480115,
+      "bpb": 1.4021243291562515
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115600.5925268978,
+      "bpb": 1.401970059809169
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115643.4760745354,
+      "bpb": 1.4020239513634125
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115826.1561691016,
+      "bpb": 1.4022535245859624
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116130.4234556928,
+      "bpb": 1.4026358958654668
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116542.751696255,
+      "bpb": 1.4031540668416693
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115974.372571867,
+      "bpb": 1.402439787447816
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115634.7678930536,
+      "bpb": 1.4020130078323723
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115501.1733028442,
+      "bpb": 1.40184512013414
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115534.111037638,
+      "bpb": 1.4018865128317848
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115707.5490042493,
+      "bpb": 1.4021044715152526
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116003.1496009342,
+      "bpb": 1.402475951405986
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116407.2933786996,
+      "bpb": 1.4029838370059766
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115938.257044118,
+      "bpb": 1.4023944012325904
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115585.8101155348,
+      "bpb": 1.4019514828217763
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115440.6295530796,
+      "bpb": 1.4017690350862768
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115462.925485365,
+      "bpb": 1.4017970542803586
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115626.467451211,
+      "bpb": 1.4020025767058344
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115912.7811429016,
+      "bpb": 1.4023623857863892
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116308.1483197138,
+      "bpb": 1.402859241872909
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115944.4114718083,
+      "bpb": 1.4024021354731555
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115578.262675196,
+      "bpb": 1.4019419979887149
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115420.7123008557,
+      "bpb": 1.4017440051683305
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115431.638346307,
+      "bpb": 1.401757735878674
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115584.5997713618,
+      "bpb": 1.4019499617879008
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115860.9776091836,
+      "bpb": 1.4022972845272546
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116246.9486092106,
+      "bpb": 1.402782332482246
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115994.7018701956,
+      "bpb": 1.4024653351821796
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115613.9515015874,
+      "bpb": 1.4019868479703352
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115443.2101633959,
+      "bpb": 1.4017722781272213
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115442.0043444745,
+      "bpb": 1.4017707627802085
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115583.6694038734,
+      "bpb": 1.4019487925994187
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115849.4329604544,
+      "bpb": 1.402282776421058
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116225.3606676944,
+      "bpb": 1.4027552030168606
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116106.8124391362,
+      "bpb": 1.4026062240111168
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115777.3034772463,
+      "bpb": 1.4021921316360295
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115653.430181589,
+      "bpb": 1.402036460643306
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115695.773924876,
+      "bpb": 1.4020896738279407
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115878.3475539684,
+      "bpb": 1.4023191132558264
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116182.8472638428,
+      "bpb": 1.4027017766205863
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116595.680746708,
+      "bpb": 1.4032205825324342
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116032.9849416204,
+      "bpb": 1.40251344533943
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115691.3817859925,
+      "bpb": 1.4020841542474973
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115556.6045551263,
+      "bpb": 1.401914780330269
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115588.9396857321,
+      "bpb": 1.4019554157380423
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115762.211522065,
+      "bpb": 1.4021731656463645
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116057.987400081,
+      "bpb": 1.4025448658123287
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116462.581399411,
+      "bpb": 1.403053317203659
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115999.7318394221,
+      "bpb": 1.4024716563210393
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115645.2110370845,
+      "bpb": 1.4020261316827536
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115498.7783862501,
+      "bpb": 1.4018421104536296
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115520.4065501764,
+      "bpb": 1.40186929046633
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115683.7200280726,
+      "bpb": 1.402074525752065
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115970.149610594,
+      "bpb": 1.4024344804720863
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116365.9095746614,
+      "bpb": 1.4029318301725173
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116008.8804931734,
+      "bpb": 1.4024831533915256
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115640.579602396,
+      "bpb": 1.4020203113803884
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115481.704758212,
+      "bpb": 1.4018206541049307
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115491.8948860131,
+      "bpb": 1.4018334599909965
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115644.5633473173,
+      "bpb": 1.402025317734045
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115920.9953259937,
+      "bpb": 1.402372708511958
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116307.299833689,
+      "bpb": 1.40285817558448
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116062.2993251327,
+      "bpb": 1.4025502845884241
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115679.3155909441,
+      "bpb": 1.4020689907164745
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115507.1745995395,
+      "bpb": 1.4018526619356977
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115505.1621667258,
+      "bpb": 1.4018501329207698
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115646.4673295468,
+      "bpb": 1.4020277104596297
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1115912.22079584,
+      "bpb": 1.4023616816008513
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116288.4201000407,
+      "bpb": 1.4028344495112877
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116232.8955649883,
+      "bpb": 1.402764672087136
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115899.7285582907,
+      "bpb": 1.4023459826642055
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115773.1399125122,
+      "bpb": 1.402186899303653
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115813.4463998638,
+      "bpb": 1.4022375522782586
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115994.4981680438,
+      "bpb": 1.4024650791906357
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116297.8840071335,
+      "bpb": 1.4028463427591775
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116709.9344760813,
+      "bpb": 1.4033641646610882
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116161.5781466812,
+      "bpb": 1.40267504782028
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115816.245309107,
+      "bpb": 1.402241069654446
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115678.6871469505,
+      "bpb": 1.4020682009538399
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115708.923346635,
+      "bpb": 1.4021061986449168
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115880.615353305,
+      "bpb": 1.402321963188672
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116175.2217623442,
+      "bpb": 1.4026921936884298
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116578.9794151671,
+      "bpb": 1.4031995940470063
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116130.960030783,
+      "bpb": 1.402636570176879
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115772.6349319592,
+      "bpb": 1.402186264696948
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115623.3530197218,
+      "bpb": 1.4019986628143122
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115642.8182144277,
+      "bpb": 1.4020231246336845
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115804.4912485145,
+      "bpb": 1.402226298381338
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116089.6934261546,
+      "bpb": 1.4025847106273714
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116484.5616287366,
+      "bpb": 1.403080939655304
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116142.8709127437,
+      "bpb": 1.4026515385266691
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115770.6882036235,
+      "bpb": 1.402183818252531
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115608.8925663158,
+      "bpb": 1.401980490429982
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115616.8530866243,
+      "bpb": 1.4019904943787138
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115767.8180189654,
+      "bpb": 1.402180211304862
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116042.9624467976,
+      "bpb": 1.4025259840236364
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116428.3174771406,
+      "bpb": 1.4030102578923995
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116199.1813771669,
+      "bpb": 1.4027223036245942
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115812.2348379195,
+      "bpb": 1.4022360297140157
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115637.0987652056,
+      "bpb": 1.402015937028531
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115632.787505567,
+      "bpb": 1.4020105190886574
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115772.3232941292,
+      "bpb": 1.4021858730631411
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116036.7269079015,
+      "bpb": 1.4025181478509972
+    },
+    {
+      "temperature": 1.1,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116411.9167005457,
+      "bpb": 1.4029896471129704
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116178.4874212146,
+      "bpb": 1.4026962976266961
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115934.4299844634,
+      "bpb": 1.4023895917845774
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115881.4945013747,
+      "bpb": 1.4023230680099497
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115984.0614159144,
+      "bpb": 1.4024519633729273
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116218.5302997828,
+      "bpb": 1.4027466193253733
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116568.2155144438,
+      "bpb": 1.4031860671031862
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117020.6865561046,
+      "bpb": 1.4037546853502438
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116093.02291679,
+      "bpb": 1.4025888947827194
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115837.1539818663,
+      "bpb": 1.4022673454859538
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115773.5583378524,
+      "bpb": 1.402187425136826
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115866.3332846984,
+      "bpb": 1.402304014979687
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116091.6974434927,
+      "bpb": 1.4025872290666104
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116432.8411763944,
+      "bpb": 1.4030159428041467
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116877.243374277,
+      "bpb": 1.4035744209728733
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116047.5676743928,
+      "bpb": 1.4025317713916694
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115779.0795763098,
+      "bpb": 1.402194363651436
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115704.0858371258,
+      "bpb": 1.402100119369286
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115786.3827000894,
+      "bpb": 1.4022035414530174
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116001.9966965355,
+      "bpb": 1.402474502556407
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116333.9858634956,
+      "bpb": 1.4028917117936348
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116769.7340566963,
+      "bpb": 1.4034393145150528
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116043.9383907523,
+      "bpb": 1.402527210487851
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115761.9853563402,
+      "bpb": 1.4021728814249532
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115674.8203860559,
+      "bpb": 1.4020633416134638
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115745.9205244742,
+      "bpb": 1.4021526928256975
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115951.1085146703,
+      "bpb": 1.402410551615675
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116273.302717913,
+      "bpb": 1.4028154515676976
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116699.7847096696,
+      "bpb": 1.403351409496992
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116083.993781073,
+      "bpb": 1.4025775479099891
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115787.6897447295,
+      "bpb": 1.4022051840099188
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115687.544564806,
+      "bpb": 1.4020793320295346
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115746.6960098855,
+      "bpb": 1.402153667374596
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115940.7511659563,
+      "bpb": 1.4023975355838683
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116252.479829248,
+      "bpb": 1.4027892835406612
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116669.0553170927,
+      "bpb": 1.4033127920127082
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115997.6015181225,
+      "bpb": 1.402468979156201
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115757.3785378728,
+      "bpb": 1.4021670920576783
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115708.6596331336,
+      "bpb": 1.4021058672373898
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115815.6881430037,
+      "bpb": 1.4022403694664036
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116054.784737885,
+      "bpb": 1.402540841041689
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116409.2147939429,
+      "bpb": 1.4029862516395484
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116866.5143734515,
+      "bpb": 1.4035609378875917
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115915.6636569332,
+      "bpb": 1.4023660082283245
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115663.5533080082,
+      "bpb": 1.402049182329048
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115604.102822151,
+      "bpb": 1.4019744711808364
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115701.2713625245,
+      "bpb": 1.4020965824321854
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115931.1976981536,
+      "bpb": 1.4023855297854522
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116277.02246942,
+      "bpb": 1.402820126162062
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116726.1913721971,
+      "bpb": 1.4033845946265906
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115873.8817569911,
+      "bpb": 1.4023135011096002
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115609.0742547382,
+      "bpb": 1.4019807187569746
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115538.1518427432,
+      "bpb": 1.401891590892708
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115624.7716316842,
+      "bpb": 1.4020004455773467
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115844.879841853,
+      "bpb": 1.402277054538154
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116181.484734647,
+      "bpb": 1.4027000643365028
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116621.9356801175,
+      "bpb": 1.4032535769847576
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115874.0752659887,
+      "bpb": 1.4023137442914546
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115595.7220006194,
+      "bpb": 1.4019639390415184
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115512.5522273183,
+      "bpb": 1.4018594199754382
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115587.9024502821,
+      "bpb": 1.4019541122490915
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115797.5148364902,
+      "bpb": 1.4022175311568954
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116124.2564644367,
+      "bpb": 1.402628145836327
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116555.3749406114,
+      "bpb": 1.4031699304139587
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115918.1054208186,
+      "bpb": 1.402369076781607
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115625.3177159876,
+      "bpb": 1.4020011318389431
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115529.089039702,
+      "bpb": 1.4018802017104086
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115592.4154576585,
+      "bpb": 1.401959783724406
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115790.8222656026,
+      "bpb": 1.402209120634285
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116107.0281300656,
+      "bpb": 1.4026064950689017
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116528.1721001975,
+      "bpb": 1.4031357447313249
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115888.7650934272,
+      "bpb": 1.4023322049290614
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115650.6330194324,
+      "bpb": 1.4020329454626739
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115604.513160076,
+      "bpb": 1.4019749868505924
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115714.4845974706,
+      "bpb": 1.402113187442896
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115956.770567596,
+      "bpb": 1.4024176670911706
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116314.5737464353,
+      "bpb": 1.402867316676692
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116775.3878671713,
+      "bpb": 1.4034464196322989
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115810.1161241531,
+      "bpb": 1.4022333671363103
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115560.0225769375,
+      "bpb": 1.4019190757423323
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115503.1018393598,
+      "bpb": 1.4018475437169815
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115603.1470705196,
+      "bpb": 1.4019732700922203
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115836.199128054,
+      "bpb": 1.4022661455256227
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116185.3358094953,
+      "bpb": 1.4027049039642974
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116637.959526524,
+      "bpb": 1.4032737140777776
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115771.765613705,
+      "bpb": 1.4021851722287537
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115508.8979384843,
+      "bpb": 1.4018548276477096
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115440.4331112243,
+      "bpb": 1.4017687882187138
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115529.8610491306,
+      "bpb": 1.4018811718910558
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115753.029213246,
+      "bpb": 1.4021616262817114
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116092.8823797032,
+      "bpb": 1.402588718170418
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116536.7262764424,
+      "bpb": 1.4031464947247025
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115775.535119854,
+      "bpb": 1.4021899093495447
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115499.0422586892,
+      "bpb": 1.4018424420608926
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115418.2553621568,
+      "bpb": 1.4017409175449305
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115496.3428561501,
+      "bpb": 1.4018390497343158
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115708.9466597028,
+      "bpb": 1.4021062279423402
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116038.8710109517,
+      "bpb": 1.4025208423352973
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116473.3187017217,
+      "bpb": 1.4030668107213782
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115823.2883213088,
+      "bpb": 1.402249920575021
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115532.278875785,
+      "bpb": 1.401884210362532
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115438.355798956,
+      "bpb": 1.4017661776700778
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115504.3458327875,
+      "bpb": 1.4018491070377181
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115705.6738611646,
+      "bpb": 1.4021021150316866
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116024.994072985,
+      "bpb": 1.402503403252097
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116449.401107315,
+      "bpb": 1.4030367535920745
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115851.8439231012,
+      "bpb": 1.402285806266568
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115614.063151123,
+      "bpb": 1.401986988279786
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115568.9298068956,
+      "bpb": 1.4019302694166642
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115680.3298195153,
+      "bpb": 1.402070265292788
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115924.3706896268,
+      "bpb": 1.402376950315688
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116284.1798556522,
+      "bpb": 1.4028291208159474
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116747.1980665624,
+      "bpb": 1.403410993641393
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115776.2498552874,
+      "bpb": 1.4021908075542293
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115526.4347452056,
+      "bpb": 1.4018768660708985
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115470.4321947768,
+      "bpb": 1.4018064879270538
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115571.8417246863,
+      "bpb": 1.4019339288101664
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115806.5869724937,
+      "bpb": 1.4022289320678851
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116157.6703116111,
+      "bpb": 1.4026701368621795
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116612.440738231,
+      "bpb": 1.4032416447355873
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115741.0917810593,
+      "bpb": 1.4021466245663763
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115478.426994266,
+      "bpb": 1.4018165349542722
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115410.8099344708,
+      "bpb": 1.4017315609106942
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115501.535053417,
+      "bpb": 1.401845574744397
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115726.3325619586,
+      "bpb": 1.4021280767245914
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116068.070757784,
+      "bpb": 1.4025575375209103
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116514.0019305833,
+      "bpb": 1.4031179371452815
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115748.19395102,
+      "bpb": 1.402155549830231
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115471.825562397,
+      "bpb": 1.4018082389656414
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115391.8132144585,
+      "bpb": 1.4017076878212835
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115471.1284186617,
+      "bpb": 1.4018073628683616
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115685.2954202816,
+      "bpb": 1.402076505540104
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116017.0406967178,
+      "bpb": 1.4024934082812486
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116453.513568677,
+      "bpb": 1.4030419217030814
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115799.4221404828,
+      "bpb": 1.4022199280569243
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115508.455677187,
+      "bpb": 1.4018542718600007
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115415.2311430238,
+      "bpb": 1.4017371170228556
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115482.3771219738,
+      "bpb": 1.4018214990613334
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115685.1994744428,
+      "bpb": 1.4020763849654163
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116006.2745286934,
+      "bpb": 1.4024798784881218
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116432.642597288,
+      "bpb": 1.4030156932507098
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115886.6731991451,
+      "bpb": 1.4023295760552767
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115647.5075215157,
+      "bpb": 1.4020290176640242
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115601.751016792,
+      "bpb": 1.4019715156780141
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115713.0687729158,
+      "bpb": 1.4021114081827835
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115957.4338104464,
+      "bpb": 1.4024185005853664
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116317.8852369487,
+      "bpb": 1.4028714782113705
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116781.8010878265,
+      "bpb": 1.4034544790967756
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115813.9033780675,
+      "bpb": 1.402238126560635
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115562.6314045936,
+      "bpb": 1.4019223542438763
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115505.9391117357,
+      "bpb": 1.401851109303939
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115607.203266278,
+      "bpb": 1.4019783674945057
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115842.2130326182,
+      "bpb": 1.4022737031714307
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116193.8810016662,
+      "bpb": 1.402715642667431
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116649.4936088622,
+      "bpb": 1.4032882089052399
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115781.702335164,
+      "bpb": 1.4021976596602517
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115517.5061006881,
+      "bpb": 1.4018656454849898
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115449.1298975423,
+      "bpb": 1.4017797174295048
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115539.644563444,
+      "bpb": 1.4018934667878487
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115764.6440881342,
+      "bpb": 1.4021762226407943
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116106.9073015712,
+      "bpb": 1.4026063432242963
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116553.6228358485,
+      "bpb": 1.4031677285520774
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115791.8967893813,
+      "bpb": 1.4022104709833045
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115513.9194191433,
+      "bpb": 1.4018611381190262
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115433.0759109296,
+      "bpb": 1.4017595424594282
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115512.1127613634,
+      "bpb": 1.4018588677006232
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115726.4173302837,
+      "bpb": 1.40212818325255
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116058.6253206544,
+      "bpb": 1.4025456674841372
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116495.822854776,
+      "bpb": 1.4030950915855285
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115846.3550627064,
+      "bpb": 1.4022789084413179
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115553.6991195567,
+      "bpb": 1.401911129082944
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115459.568628259,
+      "bpb": 1.4017928357336948
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115526.365727149,
+      "bpb": 1.4018767793362288
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1115729.2581763119,
+      "bpb": 1.4021317533304998
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116050.7319331765,
+      "bpb": 1.4025357479009202
+    },
+    {
+      "temperature": 1.125,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1116477.7623698413,
+      "bpb": 1.4030723950583721
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116767.9179795962,
+      "bpb": 1.403437032259434
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116591.039303599,
+      "bpb": 1.4032147496525333
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116594.7634989992,
+      "bpb": 1.4032194298315177
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116746.130277522,
+      "bpb": 1.4034096517558876
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1117023.2312078364,
+      "bpb": 1.4037578832022033
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117410.5388445444,
+      "bpb": 1.4042446109022757
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117896.4605429657,
+      "bpb": 1.4048552664336205
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116678.3334625736,
+      "bpb": 1.403324451814847
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116489.707927309,
+      "bpb": 1.40308740698471
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116482.8166037202,
+      "bpb": 1.4030787466905073
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116624.4229164384,
+      "bpb": 1.403256702683038
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116892.4412033036,
+      "bpb": 1.403593520013706
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117271.222618498,
+      "bpb": 1.404069532850981
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117749.085901767,
+      "bpb": 1.4046700614096006
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116628.5738019906,
+      "bpb": 1.4032619190815454
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116427.4008577242,
+      "bpb": 1.4030091059810557
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116409.1607972458,
+      "bpb": 1.402986183782151
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116540.3242036812,
+      "bpb": 1.4031510162230774
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116798.6181105897,
+      "bpb": 1.4034756129708226
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117168.2637325712,
+      "bpb": 1.40394014489939
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117637.4862313233,
+      "bpb": 1.4045298146244207
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116620.4522767905,
+      "bpb": 1.4032517127987174
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116405.8927219193,
+      "bpb": 1.4029820768071355
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116375.5365784988,
+      "bpb": 1.4029439283833252
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116495.5431792587,
+      "bpb": 1.403094740118611
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116743.4402023405,
+      "bpb": 1.4034062711509574
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117103.3121714592,
+      "bpb": 1.4038585205755711
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117563.2843360007,
+      "bpb": 1.4044365654487567
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116655.8247796409,
+      "bpb": 1.4032961652580196
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116426.9997950196,
+      "bpb": 1.4030086019674257
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116383.7238218933,
+      "bpb": 1.4029542172539013
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116491.8259365,
+      "bpb": 1.4030900686769787
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116728.622870393,
+      "bpb": 1.4033876502790292
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117078.0538110062,
+      "bpb": 1.4038267785118326
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.025,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117528.1381531917,
+      "bpb": 1.4043923974047945
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116490.6932288595,
+      "bpb": 1.4030886452085714
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116319.8820204511,
+      "bpb": 1.4028739875598821
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116329.9055821262,
+      "bpb": 1.4028865841230744
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116487.7003583908,
+      "bpb": 1.4030848840822168
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116771.3006689548,
+      "bpb": 1.4034412832693692
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117165.1451427937,
+      "bpb": 1.4039362257821664
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117657.619421769,
+      "bpb": 1.4045551159109226
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116404.979803769,
+      "bpb": 1.402980929547155
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116222.3449751027,
+      "bpb": 1.4027514132100505
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116221.6797796264,
+      "bpb": 1.4027505772619988
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116369.6434112303,
+      "bpb": 1.4029365224675132
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116644.0929960757,
+      "bpb": 1.4032814219803478
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1117029.3451322094,
+      "bpb": 1.4037655665424382
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117513.696536541,
+      "bpb": 1.4043742486925268
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116359.2466855384,
+      "bpb": 1.4029234569508422
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116163.9851223193,
+      "bpb": 1.4026780726553347
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116151.8958226591,
+      "bpb": 1.4026628800888543
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116289.3439131342,
+      "bpb": 1.402835610462892
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116553.9984931387,
+      "bpb": 1.4031682006388413
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116930.0462776385,
+      "bpb": 1.4036407781351765
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117405.6898398139,
+      "bpb": 1.4042385171806535
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116355.309768226,
+      "bpb": 1.4029185094452232
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116146.5797197279,
+      "bpb": 1.4026561993671027
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116122.2962697484,
+      "bpb": 1.4026256824688075
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116248.5125151612,
+      "bpb": 1.4027842978355576
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116502.6976680122,
+      "bpb": 1.4031037311312482
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116868.9010995887,
+      "bpb": 1.4035639372751931
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117335.2252109088,
+      "bpb": 1.4041499646102604
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116395.0271803904,
+      "bpb": 1.4029684221317893
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116171.9471752662,
+      "bpb": 1.4026880785301261
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116134.6637204736,
+      "bpb": 1.4026412245864337
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116248.898178339,
+      "bpb": 1.402784782496674
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116491.9083024785,
+      "bpb": 1.4030901721859197
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116847.597606916,
+      "bpb": 1.4035371652753428
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0375,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117303.9627013765,
+      "bpb": 1.404110677160386
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116286.8701041937,
+      "bpb": 1.402832501638738
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116120.3717971705,
+      "bpb": 1.4026232639930976
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116135.0622534752,
+      "bpb": 1.4026417254209975
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116297.7488940507,
+      "bpb": 1.4028461729631965
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116586.3911776617,
+      "bpb": 1.403208908374354
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116985.3814115413,
+      "bpb": 1.4037103175397867
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117483.074034825,
+      "bpb": 1.4043357655374893
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116204.7823553644,
+      "bpb": 1.4027293423477636
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1116026.3853992745,
+      "bpb": 1.402505151725354
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116030.3158887513,
+      "bpb": 1.4025100911531418
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116183.1030789576,
+      "bpb": 1.4027020981022476
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116462.5288184434,
+      "bpb": 1.4030532511254024
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116852.8626683913,
+      "bpb": 1.4035437818535348
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117342.3700144067,
+      "bpb": 1.4041589434514823
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116162.825564023,
+      "bpb": 1.402676615443834
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115971.723880306,
+      "bpb": 1.4024364588494886
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115964.1570391804,
+      "bpb": 1.4024269496355493
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116106.3581869714,
+      "bpb": 1.4026056531545408
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116375.9206599034,
+      "bpb": 1.4029444110566345
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116756.98399093,
+      "bpb": 1.4034232915668896
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117237.719121065,
+      "bpb": 1.404027429162067
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116162.8182849623,
+      "bpb": 1.4026766062962719
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115958.1678796466,
+      "bpb": 1.4024194230867055
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115938.3308222666,
+      "bpb": 1.4023944939492456
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116069.227172695,
+      "bpb": 1.4025589907821339
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116328.2497636043,
+      "bpb": 1.4028845032636632
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116699.4003674164,
+      "bpb": 1.403350926495876
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117170.7492333502,
+      "bpb": 1.403943268416623
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116206.6207078137,
+      "bpb": 1.4027316525967097
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115987.5375826955,
+      "bpb": 1.4024563318555032
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115954.62174635,
+      "bpb": 1.402414966677536
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116073.4609838128,
+      "bpb": 1.4025643113928128
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116321.235737577,
+      "bpb": 1.4028756887698786
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116681.8016436882,
+      "bpb": 1.403328810261873
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.05,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117143.122705873,
+      "bpb": 1.4039085502884339
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116156.3588344418,
+      "bpb": 1.4026684887349392
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115992.4241383225,
+      "bpb": 1.4024624727671613
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1116010.155097086,
+      "bpb": 1.402484755180316
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116176.2028540336,
+      "bpb": 1.4026934266217783
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116468.4347361624,
+      "bpb": 1.4030606730646458
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116871.184403129,
+      "bpb": 1.4035668066920997
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117372.7654632516,
+      "bpb": 1.404197141270236
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116077.6548035517,
+      "bpb": 1.4025695817465125
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115901.747815324,
+      "bpb": 1.4023485202550983
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115908.6493619122,
+      "bpb": 1.4023571933964967
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116064.7315571122,
+      "bpb": 1.4025533411630051
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116347.6829528809,
+      "bpb": 1.4029089248619617
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116741.7145531625,
+      "bpb": 1.4034041025356865
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117235.0501060374,
+      "bpb": 1.4040240750233342
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116039.2275780905,
+      "bpb": 1.402521290431557
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115850.5396195464,
+      "bpb": 1.4022841671543755
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115845.8717139214,
+      "bpb": 1.4022783010191548
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115991.2992222533,
+      "bpb": 1.4024610590903854
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116264.3214890324,
+      "bpb": 1.402804164899265
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116649.0186490975,
+      "bpb": 1.4032876120255195
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117133.5196800344,
+      "bpb": 1.4038964822106648
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116042.8981013168,
+      "bpb": 1.4025259031609707
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115840.582509974,
+      "bpb": 1.402271654101231
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115823.57005509,
+      "bpb": 1.4022502746285495
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115957.6215914413,
+      "bpb": 1.4024187365688667
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116220.035614226,
+      "bpb": 1.402748511047011
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116594.7537054792,
+      "bpb": 1.4032194175240469
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117069.8042146899,
+      "bpb": 1.4038164112826303
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116090.5294465553,
+      "bpb": 1.4025857612503085
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115873.699207466,
+      "bpb": 1.4023132717004636
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115843.5311334357,
+      "bpb": 1.4022753596225785
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115965.4520226307,
+      "bpb": 1.4024285770352094
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116216.5473667383,
+      "bpb": 1.4027441273826677
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116580.6122195683,
+      "bpb": 1.4032016459846797
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.0625,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117045.5680478625,
+      "bpb": 1.4037859538048518
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116099.0387068503,
+      "bpb": 1.4025964547980214
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115935.923263602,
+      "bpb": 1.402391468381504
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115955.0727706328,
+      "bpb": 1.402415533477648
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116122.9557437077,
+      "bpb": 1.4026265112266556
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116417.3296203464,
+      "bpb": 1.4029964495040301
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116822.4566172026,
+      "bpb": 1.4035055707108648
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.0625,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117326.6003919616,
+      "bpb": 1.4041391258405285
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116023.4798354246,
+      "bpb": 1.4025015003168197
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115848.3196135275,
+      "bpb": 1.4022813772831693
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115856.5718832947,
+      "bpb": 1.4022917478720849
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1116014.4247600324,
+      "bpb": 1.4024901208458207
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116299.4563756883,
+      "bpb": 1.4028483187474041
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116695.8054899834,
+      "bpb": 1.4033464088301777
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117191.6458954029,
+      "bpb": 1.4039695291543315
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115988.3389075063,
+      "bpb": 1.4024573388766541
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115800.3228214737,
+      "bpb": 1.4022210599385234
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115796.9350367635,
+      "bpb": 1.402216802525284
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115944.0663251616,
+      "bpb": 1.4024017017289747
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116219.1044419445,
+      "bpb": 1.4027473408471491
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116606.0573372468,
+      "bpb": 1.4032336227453523
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.1875,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117093.0030996837,
+      "bpb": 1.4038455652131678
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1115995.4392884616,
+      "bpb": 1.402466261892274
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115793.7175397612,
+      "bpb": 1.4022127591118123
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115777.912325833,
+      "bpb": 1.4021928967732078
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115913.5982159302,
+      "bpb": 1.402363412598252
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116177.9615880474,
+      "bpb": 1.4026956368146084
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116554.8711264096,
+      "bpb": 1.4031692972730017
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.25,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117032.303914655,
+      "bpb": 1.4037692848305334
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0375,
+      "nll_nats": 1116046.6464110464,
+      "bpb": 1.4025306136443203
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.05,
+      "nll_nats": 1115830.3292796742,
+      "bpb": 1.4022587689145496
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0625,
+      "nll_nats": 1115801.2925086096,
+      "bpb": 1.4022222785398233
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.075,
+      "nll_nats": 1115924.7757449672,
+      "bpb": 1.4023774593468443
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.0875,
+      "nll_nats": 1116177.7516964823,
+      "bpb": 1.4026953730448577
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1,
+      "nll_nats": 1116543.9412647523,
+      "bpb": 1.40315556176685
+    },
+    {
+      "temperature": 1.15,
+      "unigram_prior_weight": 0.075,
+      "copy_gate_shift": 0.3125,
+      "mixture_weight": 0.1125,
+      "nll_nats": 1117011.214771662,
+      "bpb": 1.4037427822029251
+    }
+  ],
+  "reference": {
+    "temperature": 1.1,
+    "unigram_prior_weight": 0.05,
+    "copy_gate_shift": 0.1875,
+    "mixture_weight": 0.075,
+    "nll_nats": 1115462.925485365,
+    "bpb": 1.4017970542803586
+  },
+  "best": {
+    "temperature": 1.125,
+    "unigram_prior_weight": 0.0625,
+    "copy_gate_shift": 0.25,
+    "mixture_weight": 0.0625,
+    "nll_nats": 1115391.8132144585,
+    "bpb": 1.4017076878212835
+  },
+  "bpb_gain": 8.936645907509089e-05,
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "seconds": 28.501273399975616,
+  "train_unigram_tokens": 3613343,
+  "new_gradient_targets": 0,
+  "no_test_scoring": true,
+  "note": "Validation selects four deployment scalars from one fixed local grid after train-only distillation; no model weights change.",
+  "source_sha256": "19e433ac0f01db9411efd6f4127dd0d20a74baf636ca6516bfd788d0cd0babf9"
+}

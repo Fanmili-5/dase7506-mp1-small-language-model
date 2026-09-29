@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260924180220
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称:
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage97 -RunId stage97-20260924-a
+进程 ID: 82064
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage97-20260924-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+  },
+  "best_validation": {
+    "epoch": 0,
+    "bpb": 1.403024160078049,
+    "token_ppl": 19.385607709098604,
+    "nll_nats": 1116439.3799719773,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 3.2236328999861144
+  },
+  "observed_train_targets": 18066710,
+  "train_seconds": 275.7916964000906,
+  "validation_seconds": 16.233685399929527,
+  "device": "cuda:0",
+  "device_name": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "peak_allocated_gb": 0.931446784,
+  "peak_reserved_gb": 1.161822208
+}
+
+Stage97 complete: inspect corrected fixed-teacher output LoRA; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260924180756
+**********************

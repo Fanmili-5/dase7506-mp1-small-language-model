@@ -1,0 +1,114 @@
+{
+  "purpose": "target_only_train_suffix_mixture_diagnostic",
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "test_scored": false,
+  "source_sha256": "b1a1925ba9f74acc4f2949adfb40169427dc1f11493dfaaed1aeb909d3a21ab9",
+  "target_cache_sha256": "75dc47298d03f807dd47e1a44a8d1bdb31d128631225acad273a6e528d78a6e3",
+  "train_sha256": "c58d555a94ada0882d1e8c0b3dc7ba68e1c269da5ad9e7a057300245d130c4e8",
+  "validation_sha256": "714a24a5de7459876f7cfdc64837e551dd7cde2a51f95b763ee083fff273e307",
+  "tokenizer_sha256": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+  "baseline_bpb": 1.3996861620421412,
+  "rows": [
+    {
+      "order": 6,
+      "eligible_targets": 369239,
+      "active_targets": 32302,
+      "correct_target_in_train_successors": 18185,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": 1384.90317512537,
+          "validation_bpb": 1.3979457606832082
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": 2011.6563959253208,
+          "validation_bpb": 1.3971581228347374
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": 2416.860817615722,
+          "validation_bpb": 1.3966489043284749
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": 2317.4222639040495,
+          "validation_bpb": 1.396773868294995
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "eligible_targets": 367767,
+      "active_targets": 18099,
+      "correct_target_in_train_successors": 11271,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": 1078.8806395292545,
+          "validation_bpb": 1.3983303377759477
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": 1601.3137844744624,
+          "validation_bpb": 1.3976737984800998
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": 2025.076378664175,
+          "validation_bpb": 1.3971412580050402
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": 2272.103884835504,
+          "validation_bpb": 1.3968308196905381
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "eligible_targets": 366295,
+      "active_targets": 11217,
+      "correct_target_in_train_successors": 7519,
+      "scores": [
+        {
+          "weight": 0.0,
+          "gain_nats": 0.0,
+          "validation_bpb": 1.3996861620421412
+        },
+        {
+          "weight": 0.02,
+          "gain_nats": 948.2340904511593,
+          "validation_bpb": 1.3984945206846444
+        },
+        {
+          "weight": 0.05,
+          "gain_nats": 1408.4501642621924,
+          "validation_bpb": 1.397916169291818
+        },
+        {
+          "weight": 0.1,
+          "gain_nats": 1818.2460073608574,
+          "validation_bpb": 1.397401180767693
+        },
+        {
+          "weight": 0.2,
+          "gain_nats": 2183.637609351752,
+          "validation_bpb": 1.3969419948462005
+        }
+      ]
+    }
+  ],
+  "deployment_note": "This target-only scan is not a predictor or resource-qualified artifact"
+}

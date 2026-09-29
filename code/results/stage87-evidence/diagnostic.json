@@ -1,0 +1,118 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "purpose": "bounded_weight_direction_screen",
+  "start_sha256": "3be9468b122da4c486726e8bcc59692005d0fc90dcbdd6a59c41b24d42d20b0f",
+  "end_sha256": "20a81b19eef6784ec0b2c1935057a84e819e0f420b7e9e1187c9b117696db1a7",
+  "counts_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "alphas": [
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0,
+    1.125,
+    1.25,
+    1.375,
+    1.5
+  ],
+  "results": [
+    {
+      "alpha": 0.5,
+      "bpb": 1.4060580142104806,
+      "token_ppl": 19.51027648534284,
+      "nll_nats": 1118853.532431297,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 3.5385275000007823
+    },
+    {
+      "alpha": 0.625,
+      "bpb": 1.4046519787628835,
+      "token_ppl": 19.452399544632843,
+      "nll_nats": 1117734.6968559735,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.513508800009731
+    },
+    {
+      "alpha": 0.75,
+      "bpb": 1.403698278148213,
+      "token_ppl": 19.413239915305414,
+      "nll_nats": 1116975.8012123927,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5823555000242777
+    },
+    {
+      "alpha": 0.875,
+      "bpb": 1.40316499823539,
+      "token_ppl": 19.3913774353799,
+      "nll_nats": 1116551.4502196126,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5077457999577746
+    },
+    {
+      "alpha": 1.0,
+      "bpb": 1.4030241600801088,
+      "token_ppl": 19.38560770918298,
+      "nll_nats": 1116439.3799736165,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.497698399994988
+    },
+    {
+      "alpha": 1.125,
+      "bpb": 1.4032513724093303,
+      "token_ppl": 19.39491678147586,
+      "nll_nats": 1116620.1814160831,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.533733399992343
+    },
+    {
+      "alpha": 1.25,
+      "bpb": 1.4038255358059955,
+      "token_ppl": 19.418460644569144,
+      "nll_nats": 1117077.0649429783,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.565805700025521
+    },
+    {
+      "alpha": 1.375,
+      "bpb": 1.4047285177295852,
+      "token_ppl": 19.455545711326156,
+      "nll_nats": 1117795.6018061228,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5805973000242375
+    },
+    {
+      "alpha": 1.5,
+      "bpb": 1.4059448691917513,
+      "token_ppl": 19.505612708251103,
+      "nll_nats": 1118763.4986612797,
+      "targets": 376599,
+      "utf8_bytes": 1148007,
+      "seconds": 2.5149652999825776
+    }
+  ],
+  "best": {
+    "alpha": 1.0,
+    "bpb": 1.4030241600801088,
+    "token_ppl": 19.38560770918298,
+    "nll_nats": 1116439.3799736165,
+    "targets": 376599,
+    "utf8_bytes": 1148007,
+    "seconds": 2.497698399994988
+  },
+  "stage85_reference_bpb": 1.4030241331845539,
+  "gain_over_stage85": -2.6895554894323936e-08,
+  "train_unigram_tokens": 3613343,
+  "validation_selected_weights_not_exported": true,
+  "no_test_scoring": true,
+  "next_gate": "Refine and export only if the bounded direction improves Stage85 materially.",
+  "source_sha256": "d54e89f37e8d208abfc66eade06854ccacbb97cbbb0a4310ea82aa50632d3658"
+}

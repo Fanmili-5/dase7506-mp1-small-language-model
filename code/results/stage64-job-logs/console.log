@@ -1,0 +1,53 @@
+﻿**********************
+Windows PowerShell 脚本开始
+开始时间: 20260923165618
+用户名: FANXUHAO\23223
+RunAs 用户: FANXUHAO\23223
+配置名称: 
+计算机: FANXUHAO (Microsoft Windows NT 10.0.26200.0)
+主机应用程序: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File C:\Users\23223\mp1-challenge-20260919\repo\code\scripts\run_windows_job.ps1 -Job stage64 -RunId stage64-20260923-a
+进程 ID: 63964
+PSVersion: 5.1.26100.8875
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8875
+BuildVersion: 10.0.26100.8875
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+已启动脚本，输出文件为 C:\Users\23223\mp1-challenge-20260919\repo\code\job-logs\stage64-20260923-a\console.log
+OK      common.py
+OK      evaluate.py
+OK      model.py
+OK      configs/baseline.json
+OK      data/manifest.json
+OK      data/tokenizer.json
+OK      data/wikitext_train.txt
+OK      data/wikitext_validation.txt
+OK      data/wikitext_test.txt
+OK      tests/test_contract.py
+  "split": "validation",
+  "precision": "fp32",
+  "no_test_scoring": true,
+  "source_hashes": {
+    "student_ngram_hybrid_conv_collapsed.py": "bec776cd365a6839d8e0bbcd2bc40b3beba898f6cdcb9065b8536832a04e3958",
+    "student_hybrid_conv_structured.py": "81e61cc36bc6aec3711de27c9860c7ac6b80238b8b5481c5bfa7710a04d9c34e",
+    "student_ngram_collapsed.py": "c3803889f9bc9fcd5c3e1076eef2aa60852380ec9ab91c56f7c0a47e7a9d31a6",
+    "student_ngram_fast.py": "fda4b7b04bc91cfee6466c13fe610525bdcc0d41fa17a4277e271873237b6fd0",
+    "student_ngram.py": "0b04b2a8c2869679a770176e71b45b970a9dcccd2a941b39f9d04655e538ebf2",
+    "student_structured.py": "6bc2e61a2a53e25416bba3818b8bc41af72c1bef5221244306027ea7bf3faa18",
+    "student.py": "e5dc885178e1ebcc4b89215ca719ecd83687709db879cd5eafc4e504b0c67dec",
+    "common.py": "d40dc1fe6578b5993a563bdb4d9e5317ddc9fae8afe48822b66571c7042e84db",
+    "evaluate.py": "128bcb2dab0be0d427505bddb4671e3ab3a8f78e114be79a689c0f9029af133d",
+    "data/tokenizer.json": "020d1bc6aa4449c4f352b2e03d0e0fb4f39287f15297705e421b1fa7d817262e",
+    "requirements.txt": "901a883f6b85ac79faaac149808f5eee8ec0ed0c36482255304c0124700319af"
+  },
+  "qualified": true
+}
+
+Stage64 complete: inspect primary-emphasis/MKN qualification; no test scoring.
+**********************
+Windows PowerShell 脚本结束
+结束时间: 20260923170423
+**********************

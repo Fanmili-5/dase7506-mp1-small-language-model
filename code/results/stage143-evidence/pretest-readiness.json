@@ -1,0 +1,21 @@
+{
+  "status": "pretest_readiness_audited_only_not_frozen_or_submitted",
+  "checkpoint_sha256": "256e0e3cd32e23c8ef2551a80ab3b39fd094401c9034853849da35b9963c6da3",
+  "graph_sha256": "5da1de435c86b40c97718e8a5bbc990af9f2eab431cb8a907b36fbc3bcce5ef4",
+  "windows_validation_bpb": 1.399686162042141,
+  "clean_extract_validation_bpb": 1.399686162042141,
+  "linux_validation_bpb": 1.3996861790624688,
+  "validation_targets": 376599,
+  "validation_utf8_bytes": 1148007,
+  "windows_cpu_time_ratio": 3.6177016681343095,
+  "windows_peak_rss_bytes": 2176729088,
+  "conservative_inference_asset_bytes": 55810412,
+  "inference_file_count_plus_checkpoint": 18,
+  "pending": [
+    "explicit method freeze and immutable source/checkpoint manifest",
+    "one full-test FP32 CPU score only after freeze",
+    "matching final report PDF of at most 10 pages",
+    "student ID and course website score issue before 29 September",
+    "publicly accessible immutable code and matching checkpoint-bundle links by 30 September"
+  ]
+}

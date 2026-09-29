@@ -1,5 +1,256 @@
 # AI assistance disclosure
 
+## Stage190 canonical ASCII-letter pair diagnostic (26 September 2026)
+
+Codex designed, preregistered, implemented and ran a fixed-tokenizer
+follow-up to Stage189. It constructed a 35,039-pair noncanonical mask from
+all ordered pairs of pure ASCII-letter BPE symbols, checked zero true-pair
+incidence on train/validation, and measured one fixed 0.9 adjustment on
+complete Windows CPU FP32 validation. The 0.000581-BPB gain missed the
+declared 0.015 advancement gate, so Codex stopped without inference
+deployment or test scoring. The student must review the mask's causal
+construction, empirical-not-universal safety status and negative decision.
+
+## Stage189 tokenizer-pair support diagnostic (26 September 2026)
+
+Codex used a failure-analysis/composition brainstorming framework to propose
+a fixed-tokenizer BPE-merge support test. It preregistered the incidence and
+0.015-BPB advancement gates, implemented the train/validation-only scripts,
+ran them on the Windows host, and interpreted the complete-validation result.
+The 1,792 direct merge pairs never occurred as true adjacent targets in the
+supplied train or validation token streams. The fixed 0.9 downweight improved
+Stage143 by just 0.000590 BPB, below the gate, so Codex did not deploy a new
+inference rule or score test. This is substantive AI-led experimental work;
+the student should understand why a merge pair need not be universally
+impossible across pre-tokenization boundaries and why empirical zero
+incidence alone is not a proof for unseen text.
+
+## Stage183 frozen-expert fusion diagnostic (26 September 2026)
+
+Codex proposed, preregistered, implemented and ran a normalized geometric
+fusion screen for the unchanged Stage143 neural and MKN experts. The fixed
+five-cell grid used complete validation targets only to measure NLL, not to
+train an inference parameter. Its best cell improved by 0.001439 BPB,
+below the declared 0.015 gate, so Codex stopped without deployment, new
+resource qualification or test scoring. The student must review the causal
+input-only formula, the zero-count floor, the complete normalization and
+the negative decision. This was substantive AI-led experimental work.
+
+## Stages181–182 architecture diagnostics (26 September 2026)
+
+Codex designed, implemented, tested and interpreted a validation-only
+intermediate-layer readout screen for the retained Stage143 Transformer.
+The readout weights and layer choices were fixed before scoring. Its best
+32,768-target gain was about 0.0041 bits per target, below the declared
+0.020 gate, so no validation-fitted layer mixture or new inference asset
+was promoted. Codex then designed and ran an isolated Stage54-matched
+attention-head comparison (eight heads versus four at the same width),
+including input-only OpenVINO parity, size and timing preflight before
+training. The four-head endpoint was 1.518811476 BPB versus 1.519950369
+for the eight-head control, below the declared 0.015-BPB advancement gain.
+The pilot stopped without long training, Stage143 replacement or test
+evaluation. These are substantive AI-led diagnostics, not proof that other
+attention configurations cannot improve the task.
+
+## Stage143 freeze and final-release tooling (26 September 2026)
+
+Codex implemented and tested a read-only method-freeze preflight, a
+freeze-gated full-test entry point and a fail-closed final-release packager.
+The entry point also supports a SHA-pinned Git-less Windows copy after the
+freeze is committed on the Mac. These tools check the recorded inference file
+set and hashes, source identity, test-score metadata, report replacement and
+Git cleanliness where available. The packager also checks that the fixed
+scorer's per-window loss sidecar sums to its reported full-test NLL; synthetic
+metadata and loss-sidecar tests exercise rejection paths. Passing these
+structural gates is not a full-test result, an originality claim, or a
+substitute for the student's review of the implementation. No Stage143
+method freeze, complete-test score or final submission bundle had been
+created when this disclosure section was written.
+
+## Stage180 hidden-matrix Muon pilot (26 September 2026)
+
+Codex proposed and implemented an isolated, matched 2,400-step optimizer
+comparison, using the same Stage54 model, seed, training data, loss, batch,
+context and 7,200-step schedule horizon. Hidden block matrices use a small
+single-GPU adaptation of Keller Jordan's MIT-licensed Muon implementation
+(https://github.com/KellerJordan/Muon); embeddings, norms and auxiliary/output
+parameters retain AdamW. The source and license are disclosed in
+`code/muon_pilot.py` and `code/third_party/Muon-LICENSE.txt`. Codex wrote the
+tests, fixed a 0.020-BPB improvement gate before execution, deployed the
+Windows validation-only job and audited the complete-validation outcome.
+The pilot scored 1.534018833 BPB versus the matched AdamW control 1.519950369,
+so the route stopped without a long run, inference promotion or test score. This is
+substantive AI assistance and reused algorithmic work. The student must
+understand the optimizer partition, source attribution, comparison and result
+before submission.
+
+## Stage168 sharpness-aware optimization pilot (25 September 2026)
+
+Codex used structured failure analysis and idea screening to select one
+fixed, training-only SAM experiment for the retained causal Transformer
+family. It adapted the general optimizer concept and quarter-batch ascent
+from Bahri, Mobahi and Tay (ACL 2022), while writing project-specific code,
+tests and a matched Windows runner. Codex preregistered, executed and
+audited the 2,400-step comparison. The endpoint was 1.522014969 BPB versus
+1.519950369 for the control, so the route stopped without a new inference
+candidate or test score. The published T5 fine-tuning results were not
+treated as evidence of a gain in this from-scratch task. This is substantive
+AI-led design, implementation and interpretation; the student must review
+the optimizer, unequal training compute, evidence and negative conclusion.
+
+## Stage164–167 pilots and portability checks (25 September 2026)
+
+Codex proposed, implemented, preregistered, ran and interpreted the matched
+Stage164 multiscale-convolution and Stage165 training-only input-embedding
+masking pilots. Both regressed against their same-schedule control and were
+stopped without inference promotion or test scoring. Codex then installed
+the pinned OpenVINO dependency in a local Mac environment, diagnosed a
+pre-scoring ARM64 device-discovery abort, built the Linux x86-64 CI check,
+identified a runner CPU-thread mismatch, and reproduced Stage143's full
+validation BPB with the unchanged checkpoint and scorer. These were
+substantive AI-led development and verification steps. The Linux run is a
+score reproduction, not a second resource qualification; the student must
+review the portability caveats before submission.
+
+## Stage163 compact train-only kNN-LM pilot (25 September 2026)
+
+Codex adapted the train-only datastore/interpolated-neighbor concept from
+Khandelwal et al., ICLR 2020 (https://arxiv.org/abs/1911.00172), to a
+prespecified 100k-key, 64D-quantized, GPU exact-search validation screen.
+Codex designed, implemented, executed and interpreted the experiment; all
+nonzero mixture weights worsened Stage143, so the route stopped without a
+CPU index or test score. The reused conceptual method and substantive AI
+assistance must remain credited in the student's final report/README if
+discussed. This is a negative diagnostic, not a deployable predictor.
+
+## Stage162 sparse second-expert oracle (25 September 2026)
+
+Codex designed, preregistered, implemented and audited a validation-only
+hindsight upper bound for calling the rejected Stage155 Transformer on a
+subset of independent windows. At a 30% window budget the impossible oracle
+reached only 1.388114 BPB, and even unbounded selection reached 1.376080.
+The predeclared 1.33 gate failed; Codex stopped without a quantized router,
+CPU claim or test score. The oracle uses validation labels after prediction
+and must never be used as an inference rule. This is substantive AI-led
+diagnostic work.
+
+## Stage161 train-only frequency-focus loss (25 September 2026)
+
+Codex used prior error allocation to design, implement, preregister, execute
+and analyze a matched Stage54 pilot that increased training weight for
+medium-frequency targets absent from the current input prefix. Initial
+inference predictions matched the control exactly, but the 2,400-step
+complete validation endpoint was 1.521144191 BPB, worse than the matched
+1.519950369 control. Codex stopped before full training or test scoring.
+This is substantive AI-led experimental work; the student should inspect
+the train-only target mask, normalized loss and negative result.
+
+## Stage160 context-conditioned morphology residual (25 September 2026)
+
+Codex proposed, implemented, preregistered and ran a zero-start spelling
+residual on a frozen Transformer/count/copy predictor. The synthetic CPU
+preflight passed, but the fixed training pilot regressed from 1.399686195
+to 1.402679625 complete validation BPB. Codex stopped at the prespecified
+quality gate without promoting or test-scoring the candidate. This was
+substantive AI-led design, code, execution and analysis; the student should
+review the frozen-base boundary and negative result.
+
+## Stage159 compact complementary expert (25 September 2026)
+
+Codex used failure analysis, composition and simplicity checks to propose a
+small independent Transformer within Stage143's spare resource budget. It
+implemented and ran the input-only OpenVINO parity/speed/asset preflight,
+then a fixed matched-schedule training and validation-only mixture pilot.
+Although the preflight passed, both nonzero mixtures worsened BPB; Codex
+rejected the full-run/deployment route at its predeclared quality gate.
+This was substantive AI-led design, code and analysis, not a test score.
+
+## Stage158 bounded teacher-transfer continuation (25 September 2026)
+
+Codex preregistered, implemented, ran and audited one fixed low-learning-rate
+continuation from Stage157, with the teacher frozen and training sampler
+advanced beyond the pilot. The endpoint improved to 1.403105391 validation
+BPB but failed to beat Stage143; the predeclared average was 1.403214959.
+Codex stopped this route without CPU promotion or new test scoring. The
+student must understand the additional training cost and why the measured
+gain did not justify a deployable candidate.
+
+## Stage157 train-only transfer pilot (25 September 2026)
+
+Codex designed a fixed Stage143/Stage155 teacher-to-single-student transfer
+experiment and implemented the parity, memory and speed preflight plus a
+bounded train-only pilot. The preflight passed, and the 900-step pilot gained
+0.004728523 validation BPB without reaching Stage143. This is substantive
+AI-generated experiment design, code, execution and analysis. The student
+must review the teacher/student separation, training-only labels,
+normalization, validation gate and eventual asset boundary.
+
+## Stage156 complementary-error diagnostic (25 September 2026)
+
+Codex predeclared, implemented and ran a hash-pinned complete-validation
+diagnostic comparing the retained Stage143 model to the rejected Stage155
+average. Their fixed equal-probability mixture scored 1.376182664 BPB, which
+passed a threshold for considering train-only distillation. This diagnostic
+uses validation target probabilities and is not a deployable, resource-audited
+predictor or test result. The student must understand that distinction and
+review any later distillation design before submission.
+
+## Stage155 neural-budget reallocation (25 September 2026)
+
+Codex analyzed the limited measured benefit and resource cost of the count
+expert, proposed a larger single-neural allocation, wrote the prespecified
+feasibility and quality gates, implemented the Windows OpenVINO/GPU screens,
+and ran the matched seed-17 pilot and fresh 7,200-step long run. The 2,400-step
+validation gain of 0.022450508 BPB authorized the long run; the fixed
+last-five average scored 1.409877270 BPB and failed to beat Stage143's
+1.399686162. Codex preserved the negative evidence and did not promote,
+CPU-qualify or test-score Stage155.
+This is substantive AI-led design, code and analysis. The student must
+understand the model, the removal of the count expert, the comparison and the
+remaining CPU/asset risks before submission.
+
+## Stage146–154 mechanism and architecture screens (25 September 2026)
+
+Codex analyzed Stage143's validation errors, tested bounded train-only
+suffix and byte-context diagnostics, implemented and ran matched width,
+depth and shared-trunk architecture pilots, and applied prespecified
+continuation gates. Stage153 failed its input-only timing screen; Stage154
+passed that screen but gained only 0.005998 BPB at the matched 2,400-step
+endpoint and was not continued. These were substantive AI-designed and
+AI-executed experiments. The student must inspect the source, resource
+assumptions, validation evidence and negative decisions before submission.
+No new test score was generated.
+
+## Stage144–145 target revision (25 September 2026)
+
+After the student lowered the development target to 1.35 validation BPB,
+Codex designed and ran a train-only exact-suffix coverage diagnostic and a
+resource-screened six-attention/two-convolution architecture pilot. It
+reconnected the existing private Windows tunnel, implemented the experiment
+scripts, ran the 2,400-step matched-budget GPU job, compared the complete
+validation trajectory with the archived Stage54 control, and rejected the
+long run under its predeclared 0.015-BPB advancement gate. This is substantive
+AI-led experiment design, coding, execution and interpretation. The student
+must review the code, gate rationale, evidence and resource constraints.
+Codex then audited Stage143 train/validation error groups and ran a separate,
+predeclared validation-target-probability screen for train-only long-suffix
+retrieval. The best diagnostic gain was 0.003037 BPB, so the route was rejected
+without building a deployable index. No new test result was generated.
+
+## Latest Stage141–143 work (25 September 2026)
+
+Codex screened speed mechanisms for the existing Stage105 predictor, exported
+and checked its frozen neural feature extractor as an ONNX graph, implemented
+the OpenVINO CPU inference path and compact checkpoint packaging, and ran the
+complete Windows validation scorer plus three alternating fresh-process
+resource repetitions. It selected Stage143 because the locally measured
+1.399686162 BPB, 3.617702x CPU time, 2,176,729,088-byte peak RSS and
+55,810,412-byte conservative asset sum satisfy the assignment limits on this
+machine. Earlier failed routes and exact evidence remain in the repository.
+The student must still inspect and understand the graph/export equivalence,
+train-only count tables, copy/gate behavior, resource measurements and
+portability risk before submission. This is not a new test score.
+
 OpenAI Codex provided substantive assistance in this project. Its contributions
 included analysis of the assignment constraints, design and implementation of the
 configurable experiment framework, drafting of model variants and training tools,
@@ -139,3 +390,168 @@ to this task. Proposed gains are unverified until actual CPU FP32 scores arrive.
 The long schedule is separately accounted as extra training, not an equal-budget
 architecture comparison. Substantive AI assistance must remain disclosed in the
 final README/report, and the student must be able to explain the implementation.
+
+## Stage169 strong-student transfer assistance
+
+Codex formulated the bounded Stage169 hypothesis from earlier Stage156–158
+validation evidence, implemented the differentiable Stage103 student and
+train-only Stage105/Stage155 teacher preflight, prespecified matched
+teacher-versus-hard-label arms, deployed and monitored the Windows run, and
+audited the complete-validation negative result. The adapted concept is
+knowledge distillation from a fixed teacher probability mixture, not a new
+algorithm claim. The student must review the loss, source-only training rule,
+the two-arm comparison and its failed continuation gate. No new test score
+was generated and Stage143 remains the qualified candidate.
+
+## Stages170–173 cross-host resource and backend assistance
+
+Codex set up an independent Linux same-host baseline/Stage143 resource audit,
+profiled the inference bottleneck, predeclared and ran a paired OpenVINO versus
+ONNX Runtime FP32 feature comparison, and diagnosed why the hosted two-logical-
+CPU runner cannot reproduce the course example's four-thread procedure.
+The one-thread Linux time ratio failed at 5.50255x; ONNX Runtime's 5.31%
+feature-time gain failed the predeclared 12% advancement gate; the attempted
+four-thread Linux run produced no candidate timing. These checks changed no
+model weights, frozen Stage143 inference files, validation selection or test
+score. The student must understand the host-specific limits before reporting
+resource compliance.
+
+## Stage174 training-only byte supervision assistance
+
+Codex selected the first/last ByteLevel auxiliary-prediction pilot from a
+failure-analysis shortlist, fixed a same-budget quality gate, and implemented
+the additional training-only heads, exact-inference export helpers, structural
+tests, training runner and Windows task scripts. The concept is generic
+auxiliary multitask supervision applied to the existing Stage54 hybrid model;
+it is not claimed as an original language-model architecture. Only the
+supplied tokenizer and training targets define auxiliary labels. The student
+must understand how the hook captures each causal hidden state and how the
+heads are removed for inference. No validation gain, resource qualification
+or test score is implied by implementation and unit tests alone. The later
+complete-validation pilot slightly regressed against its matched control.
+
+## Stage175 current-expert oracle assistance
+
+Codex distinguished the older Stage22 oracle from the current Stage143
+experts, implemented and tested a target-only diagnostic for the frozen
+Stage143 neural/MKN pair, ran it on complete Windows CPU FP32 validation,
+and archived its reconstruction checks and aggregate result. The 1.300186476
+BPB oracle uses validation answers to select an expert at each target and is
+impossible to deploy; no validation-fitted gate, new checkpoint, or test score
+was created. The student must be able to explain both why this oracle is a
+feasibility bound and why its gap cannot be reported as a real model gain.
+
+## Stage176 causal gate feasibility assistance
+
+Codex fixed a two-direction, out-of-half diagnostic before observing its
+result, implemented the 294-feature zero-start residual gate and tests,
+ran it using the unchanged Stage143 predictor, and archived both negative
+held-out directions. Although all inputs to the gate were causal, its
+coefficients were fitted to validation answers solely for feasibility
+analysis; they are not a legal inference asset or submission result. The
+combined 1.400044877-BPB diagnostic failed its 1.35 advancement gate.
+The student must understand the distinction between a causal input feature
+and a coefficient illegally learned from validation targets.
+
+## Stage177 parallel-mixer preflight assistance
+
+Codex designed the parallel local-convolution/global-attention candidate,
+implemented zero-start training and inference modules plus structural tests,
+and ran an input-only Windows OpenVINO parity, asset and timing preflight.
+The candidate was rejected before gradient training because its feature graph
+exceeded the predeclared timing ratio. This is an adaptation of standard
+causal attention and gated convolution within the existing Transformer,
+not an original architecture claim. The student must understand the
+additional branch, its zero-start initialization and the distinction between
+feature-only timing and complete submission resource qualification.
+
+## Stages178–179 output-head triage and dropout control assistance
+
+Codex synthesized the existing output-head comparisons and recorded why they
+did not justify another mixture-of-softmax or head-only training run. It then
+selected, preregistered, implemented, unit-tested, remotely ran and audited one
+Stage54-matched dropout-0.20 control, including fixed seed, train-target count,
+checkpoint averaging, independent CPU FP32 validation and source hashes. The
+candidate regressed and was rejected; no test score or new submission model
+was produced. The student must understand the one-variable comparison,
+training-only versus inference behavior of dropout, and the failed fixed
+advancement gate. This is substantive AI assistance, not evidence that every
+regularization method fails.
+
+## Stages180–184 assistance
+
+Codex planned, implemented, ran and audited the rejected Stage180 optimizer
+pilot and Stage182 head-count pilot, and diagnosed the Stage181 intermediate
+readout and Stage183 normalized expert-fusion alternatives on validation only.
+For Stage184, Codex proposed the training-only per-example block drop path,
+predeclared its matched control and fixed advancement gate, implemented and
+tested the hooks, ran the Windows pilot, and audited the complete-validation
+result. The Stage184 intervention made the fixed endpoint worse and was
+stopped. These are substantive AI-assisted experiment-design, coding,
+execution and interpretation contributions; none establishes a superior
+submitted model or uses the held-out test set for development selection.
+
+## Stage185 design-space triage and release preparation
+
+Codex rechecked the assignment boundary and existing local experiments,
+organized untested and rejected directions using a structured ideation
+framework, updated the archived training-cost audit and Stage143 report
+draft, and recorded a deadline-aware decision not to launch an unsupported
+GPU sweep. This planning and documentation are substantive AI assistance.
+The student must review both the technical ranking and final submission
+choice; the triage is not a proof that better methods are impossible.
+
+## Stage186 narrow parallel-attention assistance
+
+Codex designed and preregistered a quarter-width attention path in all four
+local blocks, implemented and tested the causal zero-start training/inference
+views, ran and audited its Windows input-only OpenVINO resource screen, and
+ran the one fixed matched 2,400-step GPU validation pilot. The small
+0.005196-BPB early gain missed the predeclared 0.020 advancement gate; Codex
+stopped without full training, deployment qualification or test scoring.
+The student must understand the added attention branch, zero-start equality,
+the limited early gain and the distinction between feature-level feasibility
+and complete submission compliance.
+
+## Stage143 Chinese implementation explainer (26 September 2026)
+
+Codex drafted a source-linked explanation and self-check covering the
+architecture, causal data flow, training lineage, score/resource evidence and
+non-deployable oracle distinction. This is substantive AI-assisted writing,
+not proof of student understanding. Before submission the student must check
+the claims against code and answer the self-check in their own words.
+
+## Stage187 Linux node-level runtime diagnostic (26 September 2026)
+
+Codex preregistered, implemented and ran a validation-input-only OpenVINO
+operation profile on the unchanged Stage143 graph, checked output equality,
+archived the raw node timings and rejected a speculative local rewrite when
+no single operation had a plausible 12% feature-time saving. This is
+substantive AI-assisted profiling and interpretation, not a new model,
+complete resource qualification, validation BPB or test score. The student
+must understand that the Windows resource pass and Linux one-thread failure
+remain separate observations.
+
+## Stage143 final-report rendering gate (26 September 2026)
+
+Codex prepared a fail-closed report renderer that requires a committed
+freeze, matching full-test CPU FP32 metadata and complete window-loss
+sidecar before replacing the historical Stage10 `REPORT.pdf`. It also
+created synthetic metadata-only tests for draft-field substitution and
+rejection of template drift. No real Stage143 full-test result or final PDF
+was generated by this work. This is substantive AI-assisted submission
+tooling and report writing; the student must inspect the final rendered
+pages, verify all claims and understand the implementation before posting.
+
+## Stage188 train-only Witten–Bell count comparison (26 September 2026)
+
+Codex proposed and preregistered a same-support count-estimator swap,
+implemented the train-only Witten–Bell builder and synthetic unit tests,
+verified sparse-table identity and normalization, transferred its candidate
+to Windows, ran the unchanged complete CPU FP32 validation scorer and
+audited the loss/hash records. The result was 1.414884002 BPB, worse than
+the retained Stage143 candidate, so the predeclared quality gate stopped
+the route without deployment or test scoring. This was substantive
+AI-assisted design, coding, execution and interpretation. The student must
+understand that the failure is for this exact frozen-gate swap, not proof
+that every count estimator is inferior.

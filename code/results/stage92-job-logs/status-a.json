@@ -1,0 +1,9 @@
+﻿{
+    "exit_code":  1,
+    "run_id":  "stage92-20260924-a",
+    "error":  "Stage92 dependency tests failed\r\n所在位置 C:\\Users\\23223\\mp1-challenge-20260919\\repo\\code\\scripts\\run_stage92_windows.ps1:14 字符: 28\r\n+ if ($LASTEXITCODE -ne 0) { throw \"Stage92 dependency tests failed\" }\r\n+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Stage92 dependency tests failed:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Stage92 dependency tests failed\r\n \r\n",
+    "updated_utc":  "2026-09-24T09:05:49.5582535Z",
+    "started_utc":  "2026-09-24T09:05:44.7863247Z",
+    "status":  "failed",
+    "job":  "stage92"
+}

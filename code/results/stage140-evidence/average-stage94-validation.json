@@ -1,0 +1,17 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "precision": "fp32",
+  "purpose": "fixed_stage140_average_stage94_order5_gate",
+  "neural_sha256": "79526ef74cab775844eba2d6a089e98a3ca0dd271b529782fa224cb6e2a3490d",
+  "counts_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "source_sha256": "0c5a733ac322f1c7c82a9d1a2f6de89083a65bc30de1966669f6befce7e27504",
+  "train_unigram_tokens": 3613343,
+  "stage92_fixed_reference_bpb": 1.4017076878212835,
+  "next_gate_requires_bpb_below_1_4": false,
+  "no_test_scoring": true,
+  "bpb": 1.4089322601866243,
+  "nll_nats": 1121140.678645026,
+  "targets": 376599,
+  "neural_seconds": 2.6359729999676347
+}

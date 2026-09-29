@@ -16,6 +16,9 @@ from train_experiment import (atomic_json_dump, atomic_torch_save, checkpoint_pa
                               learning_rate, training_autocast)
 
 START_SHA = "4df8cd2f31288bdee0a62e080b74039a594dc9eb4b0302c36a8e80335227d50f"
+START_STAGE = "Stage54 fixed five-checkpoint training average"
+DROPOUT_RNG_SEED = 54017
+COMPARISON = "resource-neutral low-LR continuation of Stage54 average"
 STEPS = 4800
 PRIOR_STEPS = 7200
 BATCH = 32
@@ -56,7 +59,7 @@ def main():
     model, implementation_sha = make_model("student_hybrid_conv_rdrop", config, device)
     model.load_state_dict(start_payload["model"], strict=True)
     # Reset only the stochastic regularization stream; initialization is loaded.
-    torch.manual_seed(54017); torch.cuda.manual_seed_all(54017)
+    torch.manual_seed(DROPOUT_RNG_SEED); torch.cuda.manual_seed_all(DROPOUT_RNG_SEED)
     optimizer = torch.optim.AdamW(model.parameters(), lr=2e-4,
                                   betas=(.9, .999), weight_decay=.1)
     data = load_data(); tokens = data["train"][0].to(device)
@@ -68,8 +71,8 @@ def main():
     offsets = tuple(config["future_prediction_offsets"]); span = 256 + max(offsets)
     plan = dict(
         protocol=PROTOCOL, status="training", start_checkpoint_sha256=START_SHA,
-        start_stage="Stage54 fixed five-checkpoint training average",
-        seed=17, dropout_rng_seed=54017, prior_sampling_steps=PRIOR_STEPS,
+        start_stage=START_STAGE,
+        seed=17, dropout_rng_seed=DROPOUT_RNG_SEED, prior_sampling_steps=PRIOR_STEPS,
         continuation_steps=STEPS, additional_primary_targets=TARGETS,
         primary_stochastic_presentations=2 * TARGETS,
         deep_supervision_label_presentations=2 * TARGETS * len(
@@ -79,7 +82,7 @@ def main():
         stochastic_forwards_per_window=2,
         optimizer="fresh AdamW", optimizer_betas=[.9, .999], weight_decay=.1,
         peak_learning_rate=2e-4, minimum_learning_rate=2e-5, warmup_steps=50,
-        comparison="resource-neutral low-LR continuation of Stage54 average",
+        comparison=COMPARISON,
         precision=precision, parameters=sum(p.numel() for p in model.parameters()),
         implementation_sha256=implementation_sha, source_hashes=sources,
         started_utc=datetime.now(timezone.utc).isoformat(), no_test_scoring=True)

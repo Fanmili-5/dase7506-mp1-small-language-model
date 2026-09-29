@@ -1,0 +1,534 @@
+{
+  "protocol": "7506-mp1-wt2-v2",
+  "split": "validation",
+  "purpose": "diagnostic_only_no_export",
+  "method": "two_contiguous_half_crossfit_frequency_group_mixture",
+  "neural_sha256": "20a81b19eef6784ec0b2c1935057a84e819e0f420b7e9e1187c9b117696db1a7",
+  "counts_sha256": "b91b42f069276a881e21eface99e285a40b2484e25e54d44176414886a20d2d2",
+  "stage79_screen_sha256": "5d641ca530375770aabd6cb67173b262dfa8e13b7ae07a0ffdd8988a19ba336e",
+  "selected_scalar_calibration": {
+    "temperature": 1.1,
+    "unigram_prior_weight": 0.05,
+    "copy_gate_shift": 0.1875,
+    "mixture_weight": 0.075,
+    "nll_nats": 1116439.3790295422,
+    "bpb": 1.4030241588936954
+  },
+  "fixed_weight": 0.075,
+  "fixed_bpb": 1.4030241673303845,
+  "group_counts": [
+    4,
+    8,
+    16,
+    32
+  ],
+  "fine_group_summary": [
+    {
+      "group": 0,
+      "token_types": 64,
+      "minimum_train_frequency": 0,
+      "maximum_train_frequency": 0,
+      "total_train_occurrences": 0
+    },
+    {
+      "group": 1,
+      "token_types": 64,
+      "minimum_train_frequency": 0,
+      "maximum_train_frequency": 35,
+      "total_train_occurrences": 488
+    },
+    {
+      "group": 2,
+      "token_types": 64,
+      "minimum_train_frequency": 36,
+      "maximum_train_frequency": 96,
+      "total_train_occurrences": 4438
+    },
+    {
+      "group": 3,
+      "token_types": 64,
+      "minimum_train_frequency": 97,
+      "maximum_train_frequency": 175,
+      "total_train_occurrences": 8407
+    },
+    {
+      "group": 4,
+      "token_types": 64,
+      "minimum_train_frequency": 176,
+      "maximum_train_frequency": 281,
+      "total_train_occurrences": 14623
+    },
+    {
+      "group": 5,
+      "token_types": 64,
+      "minimum_train_frequency": 285,
+      "maximum_train_frequency": 398,
+      "total_train_occurrences": 22103
+    },
+    {
+      "group": 6,
+      "token_types": 64,
+      "minimum_train_frequency": 398,
+      "maximum_train_frequency": 417,
+      "total_train_occurrences": 26037
+    },
+    {
+      "group": 7,
+      "token_types": 64,
+      "minimum_train_frequency": 418,
+      "maximum_train_frequency": 434,
+      "total_train_occurrences": 27290
+    },
+    {
+      "group": 8,
+      "token_types": 64,
+      "minimum_train_frequency": 434,
+      "maximum_train_frequency": 452,
+      "total_train_occurrences": 28430
+    },
+    {
+      "group": 9,
+      "token_types": 64,
+      "minimum_train_frequency": 453,
+      "maximum_train_frequency": 475,
+      "total_train_occurrences": 29696
+    },
+    {
+      "group": 10,
+      "token_types": 64,
+      "minimum_train_frequency": 475,
+      "maximum_train_frequency": 501,
+      "total_train_occurrences": 31202
+    },
+    {
+      "group": 11,
+      "token_types": 64,
+      "minimum_train_frequency": 502,
+      "maximum_train_frequency": 525,
+      "total_train_occurrences": 32799
+    },
+    {
+      "group": 12,
+      "token_types": 64,
+      "minimum_train_frequency": 525,
+      "maximum_train_frequency": 551,
+      "total_train_occurrences": 34434
+    },
+    {
+      "group": 13,
+      "token_types": 64,
+      "minimum_train_frequency": 552,
+      "maximum_train_frequency": 581,
+      "total_train_occurrences": 36198
+    },
+    {
+      "group": 14,
+      "token_types": 64,
+      "minimum_train_frequency": 582,
+      "maximum_train_frequency": 617,
+      "total_train_occurrences": 38290
+    },
+    {
+      "group": 15,
+      "token_types": 64,
+      "minimum_train_frequency": 617,
+      "maximum_train_frequency": 659,
+      "total_train_occurrences": 40852
+    },
+    {
+      "group": 16,
+      "token_types": 64,
+      "minimum_train_frequency": 660,
+      "maximum_train_frequency": 695,
+      "total_train_occurrences": 43315
+    },
+    {
+      "group": 17,
+      "token_types": 64,
+      "minimum_train_frequency": 696,
+      "maximum_train_frequency": 741,
+      "total_train_occurrences": 45973
+    },
+    {
+      "group": 18,
+      "token_types": 64,
+      "minimum_train_frequency": 742,
+      "maximum_train_frequency": 794,
+      "total_train_occurrences": 48923
+    },
+    {
+      "group": 19,
+      "token_types": 64,
+      "minimum_train_frequency": 795,
+      "maximum_train_frequency": 869,
+      "total_train_occurrences": 53361
+    },
+    {
+      "group": 20,
+      "token_types": 64,
+      "minimum_train_frequency": 869,
+      "maximum_train_frequency": 943,
+      "total_train_occurrences": 57887
+    },
+    {
+      "group": 21,
+      "token_types": 64,
+      "minimum_train_frequency": 943,
+      "maximum_train_frequency": 1023,
+      "total_train_occurrences": 62587
+    },
+    {
+      "group": 22,
+      "token_types": 64,
+      "minimum_train_frequency": 1024,
+      "maximum_train_frequency": 1129,
+      "total_train_occurrences": 69107
+    },
+    {
+      "group": 23,
+      "token_types": 64,
+      "minimum_train_frequency": 1130,
+      "maximum_train_frequency": 1262,
+      "total_train_occurrences": 76635
+    },
+    {
+      "group": 24,
+      "token_types": 64,
+      "minimum_train_frequency": 1263,
+      "maximum_train_frequency": 1460,
+      "total_train_occurrences": 87211
+    },
+    {
+      "group": 25,
+      "token_types": 64,
+      "minimum_train_frequency": 1467,
+      "maximum_train_frequency": 1713,
+      "total_train_occurrences": 101604
+    },
+    {
+      "group": 26,
+      "token_types": 64,
+      "minimum_train_frequency": 1713,
+      "maximum_train_frequency": 1992,
+      "total_train_occurrences": 118969
+    },
+    {
+      "group": 27,
+      "token_types": 64,
+      "minimum_train_frequency": 2025,
+      "maximum_train_frequency": 2497,
+      "total_train_occurrences": 143681
+    },
+    {
+      "group": 28,
+      "token_types": 64,
+      "minimum_train_frequency": 2504,
+      "maximum_train_frequency": 3462,
+      "total_train_occurrences": 193608
+    },
+    {
+      "group": 29,
+      "token_types": 64,
+      "minimum_train_frequency": 3463,
+      "maximum_train_frequency": 5509,
+      "total_train_occurrences": 275281
+    },
+    {
+      "group": 30,
+      "token_types": 64,
+      "minimum_train_frequency": 5513,
+      "maximum_train_frequency": 9627,
+      "total_train_occurrences": 463816
+    },
+    {
+      "group": 31,
+      "token_types": 64,
+      "minimum_train_frequency": 9637,
+      "maximum_train_frequency": 113798,
+      "total_train_occurrences": 1396098
+    }
+  ],
+  "candidates": {
+    "4": {
+      "groups": 4,
+      "folds": [
+        {
+          "train": "first_half",
+          "evaluate": "second_half",
+          "nll_nats": 569288.8202209387,
+          "targets": 188183,
+          "weights": [
+            0.046213033335552184,
+            0.05227772559065935,
+            0.058783421301682424,
+            0.07905817002051697
+          ],
+          "minimum_weight": 0.046213033335552184,
+          "maximum_weight": 0.07905817002051697,
+          "mean_weight": 0.05908308756210273
+        },
+        {
+          "train": "second_half",
+          "evaluate": "first_half",
+          "nll_nats": 547083.5396820626,
+          "targets": 188416,
+          "weights": [
+            0.04788471753714783,
+            0.051881179866411144,
+            0.06932459850031687,
+            0.08541401123644103
+          ],
+          "minimum_weight": 0.04788471753714783,
+          "maximum_weight": 0.08541401123644103,
+          "mean_weight": 0.06362612678507923
+        }
+      ],
+      "crossfit_bpb": 1.402939936270048,
+      "gain_over_fixed": 8.423106033639272e-05
+    },
+    "8": {
+      "groups": 8,
+      "folds": [
+        {
+          "train": "first_half",
+          "evaluate": "second_half",
+          "nll_nats": 569292.6164098247,
+          "targets": 188183,
+          "weights": [
+            0.06514791405531427,
+            0.042270703463901646,
+            0.053798892834759166,
+            0.05086668649317415,
+            0.05066983673282676,
+            0.06491907859072545,
+            0.069995886810779,
+            0.08142642644678033
+          ],
+          "minimum_weight": 0.042270703463901646,
+          "maximum_weight": 0.08142642644678033,
+          "mean_weight": 0.0598869281785326
+        },
+        {
+          "train": "second_half",
+          "evaluate": "first_half",
+          "nll_nats": 547087.1578929167,
+          "targets": 188416,
+          "weights": [
+            0.050538539647385715,
+            0.047087148268695436,
+            0.04017456194184675,
+            0.06287677776305062,
+            0.07205145935131191,
+            0.06710818187149419,
+            0.07622280053993796,
+            0.08781295208823954
+          ],
+          "minimum_weight": 0.04017456194184675,
+          "maximum_weight": 0.08781295208823954,
+          "mean_weight": 0.06298405268399526
+        }
+      ],
+      "crossfit_bpb": 1.4029492539116097,
+      "gain_over_fixed": 7.491341877474689e-05
+    },
+    "16": {
+      "groups": 16,
+      "folds": [
+        {
+          "train": "first_half",
+          "evaluate": "second_half",
+          "nll_nats": 569294.7378823339,
+          "targets": 188183,
+          "weights": [
+            0.053013514474171027,
+            0.06918880250224335,
+            0.05249807011755356,
+            0.036569948847832164,
+            0.04721195386714209,
+            0.06019163860969933,
+            0.04867125904164902,
+            0.05305005392482292,
+            0.04266080883980841,
+            0.05787971185724841,
+            0.07048818701400344,
+            0.060221998278500485,
+            0.06923721686098683,
+            0.07070526307699207,
+            0.09154269093291109,
+            0.07803641207837349
+          ],
+          "minimum_weight": 0.036569948847832164,
+          "maximum_weight": 0.09154269093291109,
+          "mean_weight": 0.06007297064524611
+        },
+        {
+          "train": "second_half",
+          "evaluate": "first_half",
+          "nll_nats": 547088.3688583067,
+          "targets": 188416,
+          "weights": [
+            0.09582230287287498,
+            0.04242816513257286,
+            0.045252653868376125,
+            0.04821162540198443,
+            0.038272353076843554,
+            0.042064810962237784,
+            0.05983234353147448,
+            0.06596160835688876,
+            0.07015054598272756,
+            0.07372443579083676,
+            0.06299809649395449,
+            0.0706611885926982,
+            0.06461114573731416,
+            0.08546372320868414,
+            0.09586868401044024,
+            0.08528932941634045
+          ],
+          "minimum_weight": 0.038272353076843554,
+          "maximum_weight": 0.09586868401044024,
+          "mean_weight": 0.06541331327726556
+        }
+      ],
+      "crossfit_bpb": 1.4029534417707699,
+      "gain_over_fixed": 7.072555961462612e-05
+    },
+    "32": {
+      "groups": 32,
+      "folds": [
+        {
+          "train": "first_half",
+          "evaluate": "second_half",
+          "nll_nats": 569308.4429715599,
+          "targets": 188183,
+          "weights": [
+            0.07341049640468446,
+            0.04290795825410252,
+            0.02523155584487875,
+            0.11639401355436019,
+            0.0460133839604395,
+            0.05719081443121634,
+            0.0477834551355573,
+            0.026395013451454105,
+            0.050380368934940876,
+            0.04400991063326321,
+            0.06268641539659545,
+            0.0579657853793327,
+            0.04202186309981528,
+            0.05574599661891148,
+            0.05660051564338398,
+            0.04980371049657173,
+            0.04252960655173994,
+            0.04286921125567117,
+            0.06067014657164692,
+            0.05542401831840211,
+            0.08654434182584389,
+            0.05567726378939097,
+            0.06460934401917619,
+            0.05574331639758006,
+            0.058490934138640455,
+            0.08079452068668568,
+            0.07262297256331986,
+            0.06898905319531481,
+            0.09004421423028175,
+            0.09269927379430645,
+            0.10325265705723988,
+            0.0677345309188693
+          ],
+          "minimum_weight": 0.02523155584487875,
+          "maximum_weight": 0.11639401355436019,
+          "mean_weight": 0.06103864570480054
+        },
+        {
+          "train": "second_half",
+          "evaluate": "first_half",
+          "nll_nats": 547089.2237764183,
+          "targets": 188416,
+          "weights": [
+            0.07336131853121604,
+            0.11108154083649885,
+            0.03176989906831367,
+            0.053212030856335885,
+            0.057341306630192004,
+            0.036935689784165865,
+            0.044617160587213676,
+            0.051414351376990464,
+            0.04430782101797477,
+            0.03213691618481561,
+            0.03913787626154227,
+            0.04480824697362379,
+            0.042607744152481454,
+            0.07704011977776642,
+            0.06903051680884449,
+            0.06331060974327822,
+            0.08678759478614893,
+            0.05635171185083306,
+            0.06483788621465894,
+            0.08229038404767275,
+            0.06638471292532956,
+            0.05957699674239325,
+            0.06506400433207597,
+            0.07650008975082459,
+            0.06857292247826252,
+            0.06127521051254602,
+            0.06819899710709902,
+            0.10101798978081421,
+            0.07776030511318649,
+            0.10919563753736683,
+            0.09473676406150419,
+            0.08137377796422741
+          ],
+          "minimum_weight": 0.03176989906831367,
+          "maximum_weight": 0.11108154083649885,
+          "mean_weight": 0.06537619168113117
+        }
+      ],
+      "crossfit_bpb": 1.4029717392640617,
+      "gain_over_fixed": 5.242806632277386e-05
+    }
+  },
+  "best": {
+    "groups": 4,
+    "folds": [
+      {
+        "train": "first_half",
+        "evaluate": "second_half",
+        "nll_nats": 569288.8202209387,
+        "targets": 188183,
+        "weights": [
+          0.046213033335552184,
+          0.05227772559065935,
+          0.058783421301682424,
+          0.07905817002051697
+        ],
+        "minimum_weight": 0.046213033335552184,
+        "maximum_weight": 0.07905817002051697,
+        "mean_weight": 0.05908308756210273
+      },
+      {
+        "train": "second_half",
+        "evaluate": "first_half",
+        "nll_nats": 547083.5396820626,
+        "targets": 188416,
+        "weights": [
+          0.04788471753714783,
+          0.051881179866411144,
+          0.06932459850031687,
+          0.08541401123644103
+        ],
+        "minimum_weight": 0.04788471753714783,
+        "maximum_weight": 0.08541401123644103,
+        "mean_weight": 0.06362612678507923
+      }
+    ],
+    "crossfit_bpb": 1.402939936270048,
+    "gain_over_fixed": 8.423106033639272e-05
+  },
+  "targets": 376599,
+  "utf8_bytes": 1148007,
+  "seconds": 18.843866599956527,
+  "validation_fit_diagnostic_only": true,
+  "exported_checkpoint": false,
+  "no_test_scoring": true,
+  "next_gate": "Only a material cross-fit gain permits fitting the same bounded frequency mechanism from supplied training text.",
+  "source_sha256": "37d098a6271299dbcfc64320d5059cc6e63fc9cf5c7b6aeab0feb0b50c3548bb"
+}
