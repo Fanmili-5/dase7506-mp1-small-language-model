@@ -15,12 +15,13 @@ Fair timing comparisons use the same machine, CPU FP32 scorer, workload and
 requested thread budget for both predictors. Hardware availability and any
 runtime reduction in actual worker count should be recorded explicitly.
 
-## Complete validation measurement
+## Initial static candidate: complete validation measurement
 
 The candidate executes the original hash-pinned FP32 feature graph in blocks of
 eight independent windows. It retains the original heads, count tables and gate.
 Export checks establish identical checkpoint tensors and configuration; the
 checkpoint is reserialized only to select the candidate implementation.
+These measurements apply to the execution source at commit `4655b11`.
 
 | Host | Threads | Repetitions | Candidate / baseline median time | Peak RSS, bytes | Result |
 | --- | ---: | ---: | ---: | ---: | --- |
@@ -61,7 +62,26 @@ requested four PyTorch threads, but OpenVINO selected only two feature workers.
 The three candidate validation scores were all 1.3996861775854912.
 [Complete measurement](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36564423243).
 
-A follow-up explicitly permits OpenVINO logical workers while retaining the
-same four-thread ceiling. It changes scheduling only, not weights, precision or
-predictions. Do not replace the frozen release or reuse its qualification
-records for this branch without a completed audit of the exact candidate.
+A follow-up at commit `0d335dc` explicitly permits OpenVINO logical workers
+while retaining the same four-thread ceiling. On that Linux runner, the baseline
+used four PyTorch threads and the candidate used four PyTorch/OpenVINO threads.
+Three complete validation repetitions measured baseline median 5.280414 s,
+candidate median 28.303853 s, ratio **5.360158**, and peak RSS 2,292,768,768 bytes.
+The validation BPB remained 1.3996861775854912. The timing limit still fails on
+that host. Do not compare absolute seconds across the two CI hosts as a speedup.
+[Logical-worker measurement](https://github.com/Fanmili-5/dase7506-mp1-small-language-model/actions/runs/36565249601).
+
+This changes scheduling only, not weights or precision. The Windows run also
+passed all 57 tests without skips and the synthetic numerical/causality checks,
+with four actual OpenVINO workers. Three complete validation repetitions gave
+baseline median 22.910182 s, candidate median 74.373097 s, ratio **3.246290**,
+and peak RSS 2,207,744,000 bytes. All three validation scores were
+1.399686161908931. The raw reports are `resources-windows-logical4.json` and
+`equivalence-windows-logical4.json` in the independent Windows audit checkout's
+`code/results/runtime-audit/` directory, and were retrieved locally. The exact
+candidate implementation SHA-256 is
+`111e34302cf1095a18c57fc4d01f880ce1cc11e58316eac381d8ba38776c8c12`.
+None of these candidate records replaces the released
+model's Windows qualification. No rule requiring Linux single-thread execution
+was found in the supplied course documents; the Linux measurements document
+cross-host risk rather than a separate single-thread submission requirement.
